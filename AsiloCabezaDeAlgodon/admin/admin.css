@@ -2,18 +2,17 @@
    Configuracion general
 ======================================== */
 :root {
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
-    --bg: #f4f7fb;
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --bg: #f5f7fb;
     --white: #ffffff;
     --text: #172033;
-    --text-light: #64748b;
-    --border: #e5eaf1;
+    --muted: #7b8498;
+    --border: #e8ebf2;
     --sidebar: #111827;
-    --blue: #3b82f6;
-    --purple: #8b5cf6;
     --green: #10b981;
     --orange: #f59e0b;
+    --purple: #8b5cf6;
 }
 
 * {
@@ -50,26 +49,21 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 0 10px 30px;
+    padding: 0 10px;
+    margin-bottom: 35px;
 }
 
 .logo-icon {
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        #3b82f6,
-        #8b5cf6
-    );
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-size: 22px;
-    box-shadow:
-        0 8px 20px rgba(59, 130, 246, .35);
 }
+
 
 .logo-text h2 {
     color: white;
@@ -254,18 +248,15 @@ body {
 }
 
 .profile-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        #3b82f6,
-        #8b5cf6
-    );
-    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary-light);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--primary);
+    font-size: 15px;
     font-weight: 700;
 }
 

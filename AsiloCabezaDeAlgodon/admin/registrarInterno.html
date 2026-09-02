@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Interno | Cabeza de Algodón</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="registrarInterno.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Cabeza de Algodón</h2>
+                <span>Administración</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+            <p class="menu-title">PRINCIPAL</p>
+            <a href="../admin/dashboard.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <p class="menu-title">GESTIÓN</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-users"></i>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="../admin/internos.html" class="menu-item active">
+                <i class="ph ph-person-simple"></i>
+                <span>Internos</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>Familiares</span>
+            </a>
+
+
+            <p class="menu-title">ADMINISTRACIÓN</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-wallet"></i>
+                <span>Finanzas</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-chart-line-up"></i>
+                <span>Reportes</span>
+            </a>
+
+
+            <p class="menu-title">SISTEMA</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-gear"></i>
+                <span>Configuración</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-mini">
+
+                <div class="admin-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+
+            </div>
+
+
+            <a href="../index.html" class="logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="breadcrumb">  
+                    <a href="../admin/dashboard.html" class="breadcrumb-link">
+                        Administración
+                    </a>
+                    <i class="ph ph-caret-right"></i>
+                    <a href="../admin/internos.html" class="breadcrumb-link">
+                        Internos
+                    </a>
+                    <i class="ph ph-caret-right"></i>
+                    <strong>Registrar</strong>
+                </div>
+
+
+                <h1>Registrar nuevo interno</h1>
+
+                <p>
+                    Ingresa la información necesaria para crear
+                    el expediente del interno.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button class="notification-btn">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Administrador</strong>
+                        <span>Administrador</span>
+                    </div>
+
+                    <i class="ph ph-caret-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             FORMULARIO
+        ========================== -->
+
+        <form id="formInterno">
+
+
+            <!-- DATOS PERSONALES -->
+
+            <section class="form-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon blue">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <h2>Datos personales</h2>
+                        <p>Información básica del interno.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="nombre">
+                            Nombre
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Ej. Juan"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="apellido">
+                            Apellido
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="apellido"
+                            name="apellido"
+                            placeholder="Ej. Pérez"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="fechaNacimiento">
+                            Fecha de nacimiento
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaNacimiento"
+                            name="fechaNacimiento"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="genero">
+                            Género
+                            <span>*</span>
+                        </label>
+
+                        <select id="genero" name="genero" required>
+
+                            <option value="">
+                                Seleccionar
+                            </option>
+
+                            <option value="masculino">
+                                Masculino
+                            </option>
+
+                            <option value="femenino">
+                                Femenino
+                            </option>
+
+                            <option value="otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="dpi">
+                            DPI
+                        </label>
+
+                        <input
+                            type="text"
+                            id="dpi"
+                            name="dpi"
+                            placeholder="Ej. 1234 56789 0101">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="fechaIngreso">
+                            Fecha de ingreso
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaIngreso"
+                            name="fechaIngreso"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTACTO -->
+
+            <section class="form-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon green">
+                        <i class="ph ph-phone"></i>
+                    </div>
+
+                    <div>
+                        <h2>Información de contacto</h2>
+                        <p>Datos de contacto y emergencia.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="telefono">
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            placeholder="Ej. 5555-5555">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="direccion">
+                            Dirección
+                        </label>
+
+                        <input
+                            type="text"
+                            id="direccion"
+                            name="direccion"
+                            placeholder="Dirección de procedencia">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FAMILIAR RESPONSABLE -->
+
+            <section class="form-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon purple">
+                        <i class="ph ph-users-three"></i>
+                    </div>
+
+                    <div>
+                        <h2>Familiar responsable</h2>
+                        <p>
+                            Información necesaria para mantener
+                            comunicación con la familia.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="familiarNombre">
+                            Nombre del familiar
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="familiarNombre"
+                            name="familiarNombre"
+                            placeholder="Nombre completo"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="parentesco">
+                            Parentesco
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="parentesco"
+                            name="parentesco"
+                            required>
+
+                            <option value="">
+                                Seleccionar
+                            </option>
+
+                            <option value="hijo">
+                                Hijo/a
+                            </option>
+
+                            <option value="hermano">
+                                Hermano/a
+                            </option>
+
+                            <option value="sobrino">
+                                Sobrino/a
+                            </option>
+
+                            <option value="nieto">
+                                Nieto/a
+                            </option>
+
+                            <option value="otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="familiarTelefono">
+                            Teléfono
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="familiarTelefono"
+                            name="familiarTelefono"
+                            placeholder="Ej. 5555-5555"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="familiarCorreo">
+                            Correo electrónico
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="familiarCorreo"
+                            name="familiarCorreo"
+                            placeholder="familiar@correo.com"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <i class="ph ph-info"></i>
+
+                    <p>
+                        El correo electrónico será utilizado posteriormente
+                        para enviar notificaciones relacionadas con citas,
+                        atenciones médicas y resultados.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- INFORMACIÓN MÉDICA INICIAL -->
+
+            <section class="form-card">
+
+                <div class="card-header">
+
+                    <div class="header-icon orange">
+                        <i class="ph ph-first-aid-kit"></i>
+                    </div>
+
+                    <div>
+                        <h2>Información médica inicial</h2>
+                        <p>
+                            Información disponible al momento
+                            del ingreso.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- PSICOPATOLOGÍA -->
+
+                <div class="optional-section">
+
+                    <div class="optional-title">
+
+                        <div>
+                            <h3>Psicopatología</h3>
+
+                            <p>
+                                Registrar únicamente si el interno
+                                presenta alguna condición.
+                            </p>
+                        </div>
+
+                        <span class="optional-badge">
+                            Opcional
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="psicopatologia">
+                            Condición o padecimiento
+                        </label>
+
+                        <textarea
+                            id="psicopatologia"
+                            name="psicopatologia"
+                            rows="3"
+                            placeholder="Describa la psicopatología o padecimiento, si aplica..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MEDICAMENTOS -->
+
+                <div class="optional-section">
+
+                    <div class="optional-title">
+
+                        <div>
+                            <h3>Medicamentos actuales</h3>
+
+                            <p>
+                                Medicamentos que utiliza actualmente,
+                                si corresponde.
+                            </p>
+                        </div>
+
+                        <span class="optional-badge">
+                            Opcional
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="medicamento">
+                                Medicamento
+                            </label>
+
+                            <input
+                                type="text"
+                                id="medicamento"
+                                name="medicamento"
+                                placeholder="Ej. Paracetamol">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="cantidad">
+                                Cantidad
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cantidad"
+                                name="cantidad"
+                                placeholder="Ej. 500 mg">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="frecuencia">
+                                Frecuencia
+                            </label>
+
+                            <input
+                                type="text"
+                                id="frecuencia"
+                                name="frecuencia"
+                                placeholder="Ej. Cada 8 horas">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tiempo">
+                                Tiempo de aplicación
+                            </label>
+
+                            <input
+                                type="text"
+                                id="tiempo"
+                                name="tiempo"
+                                placeholder="Ej. 7 días">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTONES -->
+
+            <div class="form-actions">
+
+                <a href="dashboard.html" class="btn-cancel">
+                    <i class="ph ph-x"></i>
+                    Cancelar
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="btn-save">
+
+                    <i class="ph ph-check"></i>
+                    Registrar interno
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
