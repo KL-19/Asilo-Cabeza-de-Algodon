@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratorio | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="Laboratorio.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- BARRA LATERAL -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+
+                <h2>Cabeza de Algodón</h2>
+
+                <span>Sistema de Gestión</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PERFIL -->
+
+        <div class="laboratory-profile">
+
+            <div class="laboratory-avatar">
+
+                <i class="ph ph-flask"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong>Laboratorio</strong>
+
+                <span>Área de diagnóstico</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ============================= -->
+        <!-- MENÚ -->
+        <!-- ============================= -->
+
+        <nav class="menu">
+
+
+            <p class="menu-title">
+                PRINCIPAL
+            </p>
+
+
+            <a href="#" class="menu-item active">
+
+                <i class="ph ph-squares-four"></i>
+
+                <span>Inicio</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-clipboard-text"></i>
+
+                <span>Solicitudes pendientes</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-flask"></i>
+
+                <span>Exámenes en proceso</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-file-plus"></i>
+
+                <span>Registrar resultados</span>
+
+            </a>
+
+
+            <p class="menu-title">
+                CONSULTAS
+            </p>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-files"></i>
+
+                <span>Resultados</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-clock-counter-clockwise"></i>
+
+                <span>Historial de exámenes</span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- ============================= -->
+        <!-- PARTE INFERIOR -->
+        <!-- ============================= -->
+
+        <div class="sidebar-bottom">
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-gear"></i>
+
+                <span>Configuración</span>
+
+            </a>
+
+
+            <a href="../index.html" class="menu-item logout">
+
+                <i class="ph ph-sign-out"></i>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ============================= -->
+
+    <main class="main-content">
+
+
+        <!-- ============================= -->
+        <!-- HEADER -->
+        <!-- ============================= -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <p class="welcome-small">
+                    Panel de laboratorio
+                </p>
+
+                <h1 id="greeting">
+                    Buenos días
+                </h1>
+
+            </div>
+
+
+
+            <div class="top-actions">
+
+
+                <!-- NOTIFICACIONES -->
+
+                <button class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+
+                <!-- PERFIL -->
+
+                <div class="top-profile">
+
+
+                    <div class="small-avatar">
+
+                        <i class="ph ph-flask"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Laboratorio</strong>
+
+                        <span>Área de diagnóstico</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ============================= -->
+        <!-- ESTADÍSTICAS -->
+        <!-- ============================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- SOLICITUDES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="ph ph-clipboard-text"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Solicitudes pendientes</span>
+
+                    <strong>6</strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EN PROCESO -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="ph ph-flask"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Exámenes en proceso</span>
+
+                    <strong>4</strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESULTADOS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="ph ph-file-plus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Resultados pendientes</span>
+
+                    <strong>3</strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REALIZADOS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="ph ph-check-circle"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Exámenes realizados</span>
+
+                    <strong>28</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- ACCIONES -->
+        <!-- ============================= -->
+
+        <section class="section-header">
+
+
+            <div>
+
+                <h2>Gestión de laboratorio</h2>
+
+                <p>
+                    Administra las solicitudes y resultados de los
+                    exámenes médicos de los internos.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="actions-grid">
+
+
+            <!-- SOLICITUDES -->
+
+            <button class="action-card">
+
+
+                <div class="action-icon orange">
+
+                    <i class="ph ph-clipboard-text"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Solicitudes pendientes</h3>
+
+                    <p>
+                        Revisar los exámenes solicitados por los especialistas.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+
+            <!-- EXAMEN -->
+
+            <button class="action-card">
+
+
+                <div class="action-icon blue">
+
+                    <i class="ph ph-flask"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Realizar examen</h3>
+
+                    <p>
+                        Gestionar los exámenes solicitados al interno.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+
+            <!-- RESULTADOS -->
+
+            <button class="action-card">
+
+
+                <div class="action-icon purple">
+
+                    <i class="ph ph-file-plus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Registrar resultados</h3>
+
+                    <p>
+                        Registrar los resultados obtenidos del examen.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+
+            <!-- HISTORIAL -->
+
+            <button class="action-card">
+
+
+                <div class="action-icon green">
+
+                    <i class="ph ph-files"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Consultar resultados</h3>
+
+                    <p>
+                        Consultar resultados de exámenes realizados.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- PANELES -->
+        <!-- ============================= -->
+
+        <section class="content-grid">
+
+
+            <!-- ============================= -->
+            <!-- SOLICITUDES RECIENTES -->
+            <!-- ============================= -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h2>Solicitudes recientes</h2>
+
+                        <p>
+                            Últimos exámenes solicitados.
+                        </p>
+
+                    </div>
+
+
+                    <button class="view-all">
+                        Ver todas
+                    </button>
+
+                </div>
+
+
+
+                <div class="request-list">
+
+
+                    <!-- SOLICITUD 1 -->
+
+                    <div class="request">
+
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-flask"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>
+                                Interno #0025
+                            </strong>
+
+                            <span>
+                                Hemograma · Dr. Cardiología
+                            </span>
+
+                        </div>
+
+
+                        <span class="status pending">
+                            Pendiente
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- SOLICITUD 2 -->
+
+                    <div class="request">
+
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-flask"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>
+                                Interno #0018
+                            </strong>
+
+                            <span>
+                                Glucosa · Dr. Medicina Interna
+                            </span>
+
+                        </div>
+
+
+                        <span class="status processing">
+                            En proceso
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- SOLICITUD 3 -->
+
+                    <div class="request">
+
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-flask"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>
+                                Interno #0031
+                            </strong>
+
+                            <span>
+                                Perfil lipídico · Dr. Cardiología
+                            </span>
+
+                        </div>
+
+
+                        <span class="status ready">
+                            Resultado
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- SOLICITUD 4 -->
+
+                    <div class="request">
+
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-flask"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>
+                                Interno #0012
+                            </strong>
+
+                            <span>
+                                Examen de orina · Dr. Neurología
+                            </span>
+
+                        </div>
+
+
+                        <span class="status pending">
+                            Pendiente
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- EXÁMENES DEL DÍA -->
+            <!-- ============================= -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h2>Exámenes del día</h2>
+
+                        <p>
+                            Actividades programadas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXAMEN 1 -->
+
+                <div class="exam">
+
+
+                    <div class="date-box">
+
+                        <strong>
+                            09:00
+                        </strong>
+
+                        <span>
+                            AM
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Interno #0025
+                        </strong>
+
+                        <span>
+                            Hemograma
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXAMEN 2 -->
+
+                <div class="exam">
+
+
+                    <div class="date-box">
+
+                        <strong>
+                            10:30
+                        </strong>
+
+                        <span>
+                            AM
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Interno #0018
+                        </strong>
+
+                        <span>
+                            Glucosa
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXAMEN 3 -->
+
+                <div class="exam">
+
+
+                    <div class="date-box">
+
+                        <strong>
+                            01:00
+                        </strong>
+
+                        <span>
+                            PM
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Interno #0031
+                        </strong>
+
+                        <span>
+                            Perfil lipídico
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXAMEN 4 -->
+
+                <div class="exam">
+
+
+                    <div class="date-box">
+
+                        <strong>
+                            03:30
+                        </strong>
+
+                        <span>
+                            PM
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Interno #0012
+                        </strong>
+
+                        <span>
+                            Examen de orina
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="Lab.js"></script>
+
+</body>
+
+</html>

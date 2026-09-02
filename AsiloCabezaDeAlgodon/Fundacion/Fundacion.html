@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fundación | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="Fundacion.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- BARRA LATERAL -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL -->
+
+        <div class="foundation-profile">
+
+            <div class="foundation-avatar">
+                <i class="ph ph-buildings"></i>
+            </div>
+
+            <div>
+
+                <strong>Fundación</strong>
+
+                <span>Coordinación médica</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MENÚ -->
+
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+
+
+            <a href="#" class="menu-item active">
+
+                <i class="ph ph-squares-four"></i>
+
+                <span>Inicio</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item" data-section="solicitudes">
+
+                <i class="ph ph-clipboard-text"></i>
+
+                <span>Solicitudes pendientes</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item" data-section="programar">
+
+                <i class="ph ph-calendar-plus"></i>
+
+                <span>Programar atención</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item" data-section="citas">
+
+                <i class="ph ph-calendar-check"></i>
+
+                <span>Citas programadas</span>
+
+            </a>
+
+
+            <p class="menu-title">ATENCIÓN MÉDICA</p>
+
+
+            <a href="#" class="menu-item" data-section="atenciones">
+
+                <i class="ph ph-stethoscope"></i>
+
+                <span>Atenciones realizadas</span>
+
+            </a>
+
+
+            <p class="menu-title">PAGOS</p>
+
+
+            <a href="#" class="menu-item" data-section="servicios">
+
+                <i class="ph ph-receipt"></i>
+
+                <span>Servicios pendientes</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item" data-section="pagos">
+
+                <i class="ph ph-credit-card"></i>
+
+                <span>Estado de pagos</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- PARTE INFERIOR -->
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-gear"></i>
+
+                <span>Configuración</span>
+
+            </a>
+
+
+            <a href="../index.html" class="menu-item logout">
+
+                <i class="ph ph-sign-out"></i>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ============================= -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome-small">
+                    Panel de Fundación
+                </p>
+
+                <h1 id="greeting">
+                    Buenos días
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <!-- NOTIFICACIONES -->
+
+                <button class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- PERFIL -->
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+
+                        <i class="ph ph-buildings"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Fundación</strong>
+
+                        <span>Coordinación médica</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ============================= -->
+        <!-- TARJETAS DE RESUMEN -->
+        <!-- ============================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- SOLICITUDES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="ph ph-clipboard-text"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Solicitudes pendientes</span>
+
+                    <strong>5</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- CITAS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="ph ph-calendar-check"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Citas programadas</span>
+
+                    <strong>8</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ATENCIONES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="ph ph-stethoscope"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Atenciones realizadas</span>
+
+                    <strong>24</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAGOS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="ph ph-credit-card"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>Pagos pendientes</span>
+
+                    <strong>3</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- ACCIONES PRINCIPALES -->
+        <!-- ============================= -->
+
+        <section class="section-header">
+
+            <div>
+
+                <h2>Gestión de la Fundación</h2>
+
+                <p>
+                    Coordina la atención médica y administra los servicios del asilo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="actions-grid">
+
+
+            <!-- SOLICITUDES -->
+
+            <button class="action-card" id="btnSolicitudes">
+
+                <div class="action-icon blue">
+
+                    <i class="ph ph-clipboard-text"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Gestionar solicitudes</h3>
+
+                    <p>
+                        Revisar y asignar especialistas a los internos.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+            <!-- PROGRAMAR -->
+
+            <button class="action-card" id="btnProgramar">
+
+                <div class="action-icon green">
+
+                    <i class="ph ph-calendar-plus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Programar atención</h3>
+
+                    <p>
+                        Asignar fecha y hora para la consulta médica.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+            <!-- CITAS -->
+
+            <button class="action-card" id="btnCitas">
+
+                <div class="action-icon purple">
+
+                    <i class="ph ph-calendar-check"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Consultar citas</h3>
+
+                    <p>
+                        Ver las atenciones médicas programadas.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+
+            <!-- PAGOS -->
+
+            <button class="action-card" id="btnPagos">
+
+                <div class="action-icon orange">
+
+                    <i class="ph ph-credit-card"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Revisar pagos</h3>
+
+                    <p>
+                        Consultar servicios y pagos pendientes.
+                    </p>
+
+                </div>
+
+
+                <i class="ph ph-arrow-right action-arrow"></i>
+
+            </button>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- PANELES INFERIORES -->
+        <!-- ============================= -->
+
+        <section class="content-grid">
+
+
+            <!-- SOLICITUDES PENDIENTES -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Solicitudes pendientes</h2>
+
+                        <p>
+                            Solicitudes médicas que requieren atención.
+                        </p>
+
+                    </div>
+
+
+                    <button class="view-all">
+                        Ver todas
+                    </button>
+
+                </div>
+
+
+                <div class="request-list">
+
+
+                    <!-- SOLICITUD 1 -->
+
+                    <div class="request">
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>Interno #0012</strong>
+
+                            <span>
+                                Cardiología · Médico especialista requerido
+                            </span>
+
+                        </div>
+
+
+                        <span class="status pending">
+                            Pendiente
+                        </span>
+
+                    </div>
+
+
+                    <!-- SOLICITUD 2 -->
+
+                    <div class="request">
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>Interno #0025</strong>
+
+                            <span>
+                                Neurología · Médico especialista requerido
+                            </span>
+
+                        </div>
+
+
+                        <span class="status pending">
+                            Pendiente
+                        </span>
+
+                    </div>
+
+
+                    <!-- SOLICITUD 3 -->
+
+                    <div class="request">
+
+                        <div class="request-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="request-info">
+
+                            <strong>Interno #0031</strong>
+
+                            <span>
+                                Traumatología · Médico especialista requerido
+                            </span>
+
+                        </div>
+
+
+                        <span class="status scheduled">
+                            Asignada
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRÓXIMAS CITAS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Próximas citas</h2>
+
+                        <p>
+                            Atenciones médicas programadas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CITA 1 -->
+
+                <div class="appointment">
+
+                    <div class="date-box">
+
+                        <strong>28</strong>
+
+                        <span>AGO</span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Interno #0025</strong>
+
+                        <span>
+                            Cardiología · 10:00 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CITA 2 -->
+
+                <div class="appointment">
+
+                    <div class="date-box">
+
+                        <strong>29</strong>
+
+                        <span>AGO</span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Interno #0018</strong>
+
+                        <span>
+                            Neurología · 09:30 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CITA 3 -->
+
+                <div class="appointment">
+
+                    <div class="date-box">
+
+                        <strong>30</strong>
+
+                        <span>AGO</span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Interno #0031</strong>
+
+                        <span>
+                            Traumatología · 11:00 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- ESTADO DE PAGOS -->
+        <!-- ============================= -->
+
+        <section class="payments-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Estado de servicios y pagos</h2>
+
+                    <p>
+                        Resumen de servicios médicos pendientes de pago.
+                    </p>
+
+                </div>
+
+
+                <button class="view-all">
+                    Ver detalles
+                </button>
+
+            </div>
+
+
+            <div class="payment-grid">
+
+
+                <!-- SERVICIO 1 -->
+
+                <div class="payment-item">
+
+                    <div class="payment-icon">
+
+                        <i class="ph ph-flask"></i>
+
+                    </div>
+
+
+                    <div class="payment-info">
+
+                        <strong>Exámenes de laboratorio</strong>
+
+                        <span>
+                            Laboratorio clínico
+                        </span>
+
+                    </div>
+
+
+                    <div class="payment-status">
+
+                        <span class="status payment-pending">
+                            Pendiente
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICIO 2 -->
+
+                <div class="payment-item">
+
+                    <div class="payment-icon">
+
+                        <i class="ph ph-stethoscope"></i>
+
+                    </div>
+
+
+                    <div class="payment-info">
+
+                        <strong>Consulta especializada</strong>
+
+                        <span>
+                            Atención médica
+                        </span>
+
+                    </div>
+
+
+                    <div class="payment-status">
+
+                        <span class="status payment-paid">
+                            Pagado
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICIO 3 -->
+
+                <div class="payment-item">
+
+                    <div class="payment-icon">
+
+                        <i class="ph ph-heartbeat"></i>
+
+                    </div>
+
+
+                    <div class="payment-info">
+
+                        <strong>Estudios cardiológicos</strong>
+
+                        <span>
+                            Servicio especializado
+                        </span>
+
+                    </div>
+
+
+                    <div class="payment-status">
+
+                        <span class="status payment-pending">
+                            Pendiente
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    <script src="Fundacion.js"></script>
+</body>
+
+</html>
+

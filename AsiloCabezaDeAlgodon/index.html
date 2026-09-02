@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Cabeza de Algodón</title>
+    <!-- Vinculación correcta al CSS externo -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes e Iconos por CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <main class="login-card">
+        <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <div class="avatar-box">
+                <i class="ph ph-user-circle-gear"></i>
+            </div>
+        </div>
+
+        <div class="card-header">
+            <h2>Bienvenido</h2>
+            <p>Asilo de Ancianos <span>Cabeza de Algodón</span></p>
+        </div>
+
+        <form id="loginForm" class="login-form" autocomplete="off">
+            <div class="input-group">
+                <label for="username">Usuario o Correo</label>
+                <div class="input-wrapper">
+                    <input type="text" id="username" placeholder="ejemplo@algodon.org" required>
+                    <i class="ph ph-envelope-simple icon"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <i class="ph ph-lock-key icon"></i>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <label class="remember-me">
+                    <input type="checkbox">
+                    <span>Recordarme</span>
+                </label>
+                <a href="#" class="forgot-pass">¿Olvidaste tu clave?</a>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <span>Iniciar Sesión</span>
+                <i class="ph ph-arrow-right"></i>
+            </button>
+            <p id="loginMessage" class="login-message"></p>
+        </form>
+
+        <div class="card-footer">
+            <p>¿Problemas con tu acceso? <p></p>
+                <a href="#">Contactacte al administrador correspondiente</a></p>
+        </div>
+    </main>
+    <script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel Médico Especialista | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="Especialista.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <i class="ph ph-heartbeat"></i>
+
+            </div>
+
+
+            <div class="logo-text">
+
+                <h2>Cabeza de Algodón</h2>
+
+                <span>Asilo de Ancianos</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <nav class="menu">
+
+
+            <p class="menu-title">
+                MENÚ PRINCIPAL
+            </p>
+
+
+            <a href="#" class="menu-item active">
+
+                <i class="ph ph-house"></i>
+
+                <span>Inicio</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-calendar-check"></i>
+
+                <span>Mis citas</span>
+
+                <span class="menu-badge">
+                    3
+                </span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-users-three"></i>
+
+                <span>Mis pacientes</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-notebook"></i>
+
+                <span>Historial médico</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-test-tube"></i>
+
+                <span>Laboratorio</span>
+
+                <span class="notification-count">
+                    2
+                </span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-pill"></i>
+
+                <span>Recetas</span>
+
+            </a>
+
+
+
+            <p class="menu-title menu-secondary">
+                CUENTA
+            </p>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-bell"></i>
+
+                <span>Notificaciones</span>
+
+            </a>
+
+
+            <a href="#" class="menu-item">
+
+                <i class="ph ph-user"></i>
+
+                <span>Mi perfil</span>
+
+            </a>
+
+
+            <a href="../index.html" class="menu-item logout">
+
+                <i class="ph ph-sign-out"></i>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+        </nav>
+
+
+
+        <!-- USUARIO -->
+
+        <div class="user-sidebar">
+
+
+            <div class="user-avatar">
+
+                <i class="ph ph-stethoscope"></i>
+
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>Dr. Carlos Méndez</strong>
+
+                <span>Cardiología</span>
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <p class="welcome-small">
+                    Panel médico
+                </p>
+
+                <h1 id="greeting">
+                    Buenos días
+                </h1>
+
+            </div>
+
+
+
+            <div class="topbar-right">
+
+
+                <!-- NOTIFICACIONES -->
+
+                <button class="notification-button">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+
+                <!-- PERFIL -->
+
+                <div class="profile">
+
+
+                    <div class="profile-avatar">
+
+                        <i class="ph ph-stethoscope"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Dr. Carlos Méndez
+                        </strong>
+
+                        <span>
+                            Cardiología
+                        </span>
+
+                    </div>
+
+
+                    <i class="ph ph-caret-down"></i>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             DASHBOARD
+        ====================================================== -->
+
+        <section class="dashboard-content">
+
+
+
+            <!-- =================================================
+                 TARJETAS DE ESTADÍSTICAS
+            ================================================== -->
+
+            <div class="stats-grid">
+
+
+                <!-- CITAS -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon blue">
+
+                        <i class="ph ph-calendar-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Citas de hoy
+                        </span>
+
+                        <strong>
+                            4
+                        </strong>
+
+                        <small>
+                            Programadas
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- PACIENTES -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon purple">
+
+                        <i class="ph ph-users-three"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Pacientes atendidos
+                        </span>
+
+                        <strong>
+                            28
+                        </strong>
+
+                        <small>
+                            Este mes
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- SOLICITUDES -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon orange">
+
+                        <i class="ph ph-file-text"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Solicitudes pendientes
+                        </span>
+
+                        <strong>
+                            3
+                        </strong>
+
+                        <small>
+                            Por revisar
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- LABORATORIO -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon green">
+
+                        <i class="ph ph-test-tube"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Exámenes pendientes
+                        </span>
+
+                        <strong>
+                            2
+                        </strong>
+
+                        <small>
+                            Esperando resultados
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ACCIONES RÁPIDAS
+            ================================================== -->
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <span class="section-label">
+                        ACCIONES RÁPIDAS
+                    </span>
+
+                    <h2>
+                        Gestión médica
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="quick-actions">
+
+
+                <button class="quick-card">
+
+
+                    <div class="quick-icon blue">
+
+                        <i class="ph ph-user-plus"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Nueva atención
+                        </strong>
+
+                        <span>
+                            Registrar visita médica
+                        </span>
+
+                    </div>
+
+
+                    <i class="ph ph-arrow-up-right"></i>
+
+
+                </button>
+
+
+
+                <button class="quick-card">
+
+
+                    <div class="quick-icon purple">
+
+                        <i class="ph ph-notebook"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Historial médico
+                        </strong>
+
+                        <span>
+                            Consultar expediente
+                        </span>
+
+                    </div>
+
+
+                    <i class="ph ph-arrow-up-right"></i>
+
+
+                </button>
+
+
+
+                <button class="quick-card">
+
+
+                    <div class="quick-icon green">
+
+                        <i class="ph ph-test-tube"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Laboratorio
+                        </strong>
+
+                        <span>
+                            Revisar resultados
+                        </span>
+
+                    </div>
+
+
+                    <i class="ph ph-arrow-up-right"></i>
+
+
+                </button>
+
+
+
+                <button class="quick-card">
+
+
+                    <div class="quick-icon orange">
+
+                        <i class="ph ph-pill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Nueva receta
+                        </strong>
+
+                        <span>
+                            Registrar medicamento
+                        </span>
+
+                    </div>
+
+
+                    <i class="ph ph-arrow-up-right"></i>
+
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRÓXIMA CITA
+            ================================================== -->
+
+            <div class="section-header appointment-header">
+
+
+                <div>
+
+                    <span class="section-label">
+                        PRÓXIMA ATENCIÓN
+                    </span>
+
+                    <h2>
+                        Paciente próximo
+                    </h2>
+
+                </div>
+
+
+                <button class="view-all">
+
+                    Ver agenda
+
+                    <i class="ph ph-arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="next-appointment">
+
+
+                <!-- PACIENTE -->
+
+                <div class="patient-main">
+
+
+                    <div class="patient-icon">
+
+                        <i class="ph ph-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="patient-label">
+                            PACIENTE
+                        </span>
+
+                        <h3>
+                            Juan Carlos López
+                        </h3>
+
+                        <p>
+                            Solicitud por dolor en el pecho
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- HORA -->
+
+                <div class="appointment-detail">
+
+
+                    <span>
+                        Fecha
+                    </span>
+
+                    <strong>
+                        28 Ago 2026
+                    </strong>
+
+                </div>
+
+
+
+                <div class="appointment-detail">
+
+
+                    <span>
+                        Hora
+                    </span>
+
+                    <strong>
+                        03:00 PM
+                    </strong>
+
+                </div>
+
+
+
+                <div class="appointment-detail">
+
+
+                    <span>
+                        Enfermero
+                    </span>
+
+                    <strong>
+                        Asignado
+                    </strong>
+
+                </div>
+
+
+
+                <button class="btn-attend">
+
+                    Atender paciente
+
+                    <i class="ph ph-arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 AGENDA
+            ================================================== -->
+
+            <div class="section-header table-header">
+
+
+                <div>
+
+                    <span class="section-label">
+                        AGENDA DEL DÍA
+                    </span>
+
+                    <h2>
+                        Consultas programadas
+                    </h2>
+
+                </div>
+
+
+                <span class="date-label">
+
+                    <i class="ph ph-calendar"></i>
+
+                    28 de agosto, 2026
+
+                </span>
+
+
+            </div>
+
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Hora
+                            </th>
+
+                            <th>
+                                Paciente
+                            </th>
+
+                            <th>
+                                Motivo
+                            </th>
+
+                            <th>
+                                Enfermero
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody>
+
+
+                        <!-- CITA 1 -->
+
+                        <tr>
+
+
+                            <td>
+
+                                <strong class="time">
+                                    09:00 AM
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="patient-cell">
+
+
+                                    <div class="mini-avatar">
+                                        MP
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            María Pérez
+                                        </strong>
+
+                                        <span>
+                                            EXP-00125
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Control médico
+                            </td>
+
+
+                            <td>
+                                Ana López
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completada
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button class="action-button">
+
+                                    <i class="ph ph-dots-three-vertical"></i>
+
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+
+
+                        <!-- CITA 2 -->
+
+                        <tr>
+
+
+                            <td>
+
+                                <strong class="time">
+                                    11:00 AM
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="patient-cell">
+
+
+                                    <div class="mini-avatar">
+                                        RP
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Roberto Pérez
+                                        </strong>
+
+                                        <span>
+                                            EXP-00131
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Dolor articular
+                            </td>
+
+
+                            <td>
+                                Miguel Santos
+                            </td>
+
+
+                            <td>
+
+                                <span class="status confirmed">
+                                    Confirmada
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button class="action-button">
+
+                                    <i class="ph ph-dots-three-vertical"></i>
+
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+
+
+                        <!-- CITA 3 -->
+
+                        <tr>
+
+
+                            <td>
+
+                                <strong class="time">
+                                    03:00 PM
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="patient-cell">
+
+
+                                    <div class="mini-avatar">
+                                        JC
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Juan Carlos López
+                                        </strong>
+
+                                        <span>
+                                            EXP-00142
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Dolor en el pecho
+                            </td>
+
+
+                            <td>
+                                Carlos Ramírez
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button class="action-button">
+
+                                    <i class="ph ph-dots-three-vertical"></i>
+
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+
+
+                        <!-- CITA 4 -->
+
+                        <tr>
+
+
+                            <td>
+
+                                <strong class="time">
+                                    04:30 PM
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="patient-cell">
+
+
+                                    <div class="mini-avatar">
+                                        AG
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Ana García
+                                        </strong>
+
+                                        <span>
+                                            EXP-00148
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Seguimiento
+                            </td>
+
+
+                            <td>
+                                Pedro Gómez
+                            </td>
+
+
+                            <td>
+
+                                <span class="status confirmed">
+                                    Confirmada
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button class="action-button">
+
+                                    <i class="ph ph-dots-three-vertical"></i>
+
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 AVISO LABORATORIO
+            ================================================== -->
+
+            <div class="laboratory-banner">
+
+
+                <div class="lab-banner-icon">
+
+                    <i class="ph ph-test-tube"></i>
+
+                </div>
+
+
+                <div class="lab-banner-content">
+
+                    <strong>
+                        Resultados de laboratorio disponibles
+                    </strong>
+
+                    <p>
+                        Hay 2 resultados de exámenes pendientes de revisión.
+                    </p>
+
+                </div>
+
+
+                <button>
+
+                    Revisar resultados
+
+                    <i class="ph ph-arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+    <script src="Especialista.js"></script>
+
+</body>
+
+</html>

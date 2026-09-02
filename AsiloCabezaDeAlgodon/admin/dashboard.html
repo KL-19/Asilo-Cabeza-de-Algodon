@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Asilo Nueva Vida</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+    <aside class="sidebar">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Cabeza de Algodón</h2>
+                <span>Administración</span>
+            </div>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="menu">
+            <p class="menu-title">PRINCIPAL</p>
+            <a href="#" class="menu-item active">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <p class="menu-title">GESTIÓN</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-users"></i>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-person-simple"></i>
+                <span>Internos</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>Familiares</span>
+            </a>
+
+            <p class="menu-title">ADMINISTRACIÓN</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-wallet"></i>
+                <span>Finanzas</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-chart-line-up"></i>
+                <span>Reportes</span>
+            </a>
+
+            <p class="menu-title">SISTEMA</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-gear"></i>
+                <span>Configuración</span>
+            </a>
+
+        </nav>
+
+        <!-- Usuario / cerrar sesión -->
+        <div class="sidebar-bottom">
+            <div class="admin-mini">
+                <div class="admin-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+
+            </div>
+
+            <a href="../index.html" class="logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div class="page-title">
+                <h1 id="greeting">Buenos días</h1>
+                <p>
+                    Bienvenido al panel de administración
+                    del  Asilo de Ancianos Cabeza de Algodón.
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="notification-btn">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+                    <div class="profile-info">
+                        <strong>Administrador</strong>
+                        <span>Administrador</span>
+                    </div>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+             TARJETAS DE RESUMEN
+        ========================== -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="ph ph-person-simple"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Internos registrados</span>
+                    <h2>35</h2>
+                    <small>
+                        <i class="ph ph-arrow-up"></i>
+                        8% este mes
+                    </small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="ph ph-user-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <span>Usuarios del sistema</span>
+                    <h2>12</h2>
+                    <small>
+                        <i class="ph ph-arrow-up"></i>
+                        2 nuevos
+                    </small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="ph ph-calendar-check"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Citas programadas</span>
+                    <h2>18</h2>
+                    <small>
+                        Esta semana
+                    </small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <i class="ph ph-warning"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Pendientes</span>
+                    <h2>4</h2>
+                    <small class="warning-text">
+                        Requieren atención
+                    </small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             CONTENIDO INFERIOR
+        ========================== -->
+        <section class="dashboard-grid">
+
+            <!-- ACTIVIDAD RECIENTE -->
+            <div class="dashboard-card activity-card">
+                <div class="card-header">
+                    <div>
+                        <h3>Actividad reciente</h3>
+                        <p>Últimos movimientos registrados</p>
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="ph ph-dots-three"></i>
+                    </button>
+                </div>
+
+                <div class="activity-list">
+                    <div class="activity-item">
+
+                        <div class="activity-icon blue">
+                            <i class="ph ph-user-plus"></i>
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Nuevo interno registrado</strong>
+                            <span>
+                                Se registró un nuevo interno en el sistema.
+                            </span>
+                            <small>Hace 15 minutos</small>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon purple">
+                            <i class="ph ph-calendar-plus"></i>
+                        </div>
+                        <div class="activity-text">
+                            <strong>Nueva solicitud médica</strong>
+                            <span>
+                                Se creó una solicitud para especialista.
+                            </span>
+                            <small>Hace 1 hora</small>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon green">
+                            <i class="ph ph-hand-heart"></i>
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Donación registrada</strong>
+                            <span>
+                                Se registró una nueva donación.
+                            </span>
+                            <small>Hace 3 horas</small>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon orange">
+                            <i class="ph ph-receipt"></i>
+                        </div>
+                        <div class="activity-text">
+                            <strong>Pago pendiente</strong>
+                            <span>
+                                Existe un pago pendiente a la fundación.
+                            </span>
+                            <small>Ayer</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRÓXIMAS CITAS -->
+            <div class="dashboard-card appointments-card">
+                <div class="card-header">
+                    <div>
+                        <h3>Próximas citas</h3>
+                        <p>Agenda médica</p>
+                    </div>
+                    <a href="#" class="view-all">
+                        Ver todas
+                    </a>
+                </div>
+
+                <div class="appointments-list">
+                    <div class="appointment">
+                        <div class="appointment-date">
+                            <strong>26</strong>
+                            <span>AGO</span>
+                        </div>
+
+                        <div class="appointment-info">
+                            <strong>Consulta médica</strong>
+                            <span>
+                                Interno #00125
+                            </span>
+                        </div>
+
+                        <span class="appointment-status scheduled">
+                            Programada
+                        </span>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appointment-date">
+                            <strong>27</strong>
+                            <span>AGO</span>
+                        </div>
+
+                        <div class="appointment-info">
+                            <strong>Cardiología</strong>
+                            <span>
+                                Interno #00118
+                            </span>
+                        </div>
+
+                        <span class="appointment-status scheduled">
+                            Programada
+                        </span>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appointment-date">
+                            <strong>29</strong>
+                            <span>AGO</span>
+                        </div>
+
+                        <div class="appointment-info">
+                            <strong>Examen de laboratorio</strong>
+                            <span>
+                                Interno #00103
+                            </span>
+                        </div>
+
+                        <span class="appointment-status pending">
+                            Pendiente
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+             ACCESOS RÁPIDOS
+        ========================== -->
+        <section class="quick-section">
+            <div class="card-header">
+                <div>
+                    <h3>Accesos rápidos</h3>
+                    <p>Operaciones frecuentes</p>
+                </div>
+            </div>
+
+            <div class="quick-grid">
+                <a href="#" class="quick-card">
+                    <div class="quick-icon blue">
+                        <i class="ph ph-user-plus"></i>
+                    </div>
+
+                    <div>
+                        <strong>Nuevo usuario</strong>
+                        <span>
+                            Crear una cuenta
+                        </span>
+                    </div>
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <div class="quick-icon purple">
+                        <i class="ph ph-person-simple"></i>
+                    </div>
+
+                    <div>
+                        <strong>Registrar interno</strong>
+                        <span>
+                            Crear expediente
+                        </span>
+                    </div>
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <div class="quick-icon green">
+                        <i class="ph ph-hand-heart"></i>
+                    </div>
+
+                    <div>
+                        <strong>Registrar donación</strong>
+                        <span>
+                            Agregar donación
+                        </span>
+                    </div>
+
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <div class="quick-icon orange">
+                        <i class="ph ph-chart-bar"></i>
+                    </div>
+
+                    <div>
+                        <strong>Ver reportes</strong>
+                        <span>
+                            Consultar información
+                        </span>
+                    </div>
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+    <script src="admin.js"></script>
+</body>
+
+</html>
