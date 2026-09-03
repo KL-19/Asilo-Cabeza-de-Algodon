@@ -914,81 +914,70 @@ body {
 /* ========================================
    RESPONSIVE
 ======================================== */
-
-@media (max-width: 900px) {
-
-    .form-grid {
-
-        grid-template-columns: 1fr;
-
+@media (max-width: 1150px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
-
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
     .sidebar {
-
         width: 75px;
-
         padding: 20px 10px;
-
     }
-
 
     .logo-text,
     .menu-item span,
     .menu-title,
-    .admin-mini div:last-child {
-
+    .admin-mini div:last-child,
+    .logout span {
         display: none;
-
     }
-
 
     .logo {
-
         justify-content: center;
-
     }
-
 
     .menu-item {
-
         justify-content: center;
-
     }
-
 
     .admin-mini {
-
         justify-content: center;
-
     }
 
+    .logout {
+        justify-content: center;
+    }
 
     .main-content {
-
         margin-left: 75px;
-
         padding: 25px;
-
     }
+}
 
-
+@media (max-width: 700px) {
     .topbar {
+        flex-direction: column;
+        gap: 20px;
+    }
 
+    .topbar-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
         align-items: flex-start;
-
+        gap: 15px;
     }
 
-
-    .profile-info,
-    .profile > i {
-
-        display: none;
-
+    .search-box {
+        width: 100%;
     }
-
 }

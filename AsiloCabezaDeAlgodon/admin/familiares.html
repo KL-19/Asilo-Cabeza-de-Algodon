@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Familiares | Cabeza de Algodón</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="familiares.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+    <aside class="sidebar">
+        <!-- LOGO -->
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Cabeza de Algodón</h2>
+                <span>Administración</span>
+            </div>
+        </div>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+            <a href="dashboard.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <p class="menu-title">GESTIÓN</p>
+            <a href="#" class="menu-item">
+                <i class="ph ph-users"></i>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="internos.html" class="menu-item">
+                <i class="ph ph-person-simple"></i>
+                <span>Internos</span>
+            </a>
+
+            <a href="familiares.html" class="menu-item active">
+                <i class="ph ph-users-three"></i>
+                <span>Familiares</span>
+            </a>
+
+            <p class="menu-title">ADMINISTRACIÓN</p>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-wallet"></i>
+                <span>Finanzas</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-chart-line-up"></i>
+                <span>Reportes</span>
+            </a>
+
+            <p class="menu-title">SISTEMA</p>
+            <a href="#" class="menu-item">
+                <i class="ph ph-gear"></i>
+                <span>Configuración</span>
+            </a>
+
+        </nav>
+
+        <!-- USUARIO -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-mini">
+                <div class="admin-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+            </div>
+
+            <a href="../index.html" class="logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="breadcrumb">
+                    <a href="../admin/dashboard.html">
+                        Administración
+                    </a>
+                    <i class="ph ph-caret-right"></i>
+                    <strong>Familiares</strong>
+                </div>
+
+                <h1>Familiares</h1>
+                <p>
+                    Consulta la información de los familiares responsables
+                    de los internos del asilo.
+                </p>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="notification-btn">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Administrador</strong>
+                        <span>Administrador</span>
+                    </div>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+             ESTADÍSTICAS
+        ========================== -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="ph ph-users-three"></i>
+
+                </div>
+
+                <div class="stat-info">
+                    <span>Familiares registrados</span>
+                    <h2>28</h2>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="ph ph-user-circle-check"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Con interno asociado</span>
+                    <h2>25</h2>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="ph ph-envelope"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Correos registrados</span>
+                    <h2>26</h2>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="ph ph-phone"></i>
+                </div>
+
+                <div class="stat-info">
+                    <span>Teléfonos registrados</span>
+                    <h2>28</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+             LISTADO
+        ========================== -->
+        <section class="content-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Familiares registrados</h2>
+                    <p>
+                        Consulta los familiares responsables
+                        y los internos asociados.
+                    </p>
+                </div>
+
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input
+                        type="text"
+                        placeholder="Buscar familiar..."
+                        id="searchInput">
+                </div>
+            </div>
+
+            <!-- TABLA -->
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Familiar</th>
+                            <th>Parentesco</th>
+                            <th>Teléfono</th>
+                            <th>Correo electrónico</th>
+                            <th>Interno asociado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="familyTable">
+
+                        <tr>
+                            <td>
+                                <div class="person">
+                                    <div class="person-avatar blue">
+                                        <i class="ph ph-user"></i>
+                                    </div>
+
+                                    <div>
+                                        <strong>
+                                            María López
+                                        </strong>
+                                        <span>
+                                            Familiar responsable
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                Hija
+                            </td>
+
+                            <td>
+                                5555-1234
+                            </td>
+
+                            <td>
+                                maria@email.com
+                            </td>
+
+                            <td>
+                                <span class="resident-badge">
+                                    Interno #00125
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn">
+                                    <i class="ph ph-eye"></i>
+                                    Ver información
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="person">
+                                    <div class="person-avatar purple">
+                                        <i class="ph ph-user"></i>
+                                    </div>
+
+                                    <div>
+                                        <strong>
+                                            Carlos Hernández
+                                        </strong>
+                                        <span>
+                                            Familiar responsable
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                Hijo
+                            </td>
+
+                            <td>
+                                5555-4521
+                            </td>
+
+                            <td>
+                                carlos@email.com
+                            </td>
+
+                            <td>
+                                <span class="resident-badge">
+                                    Interno #00118
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn">
+                                    <i class="ph ph-eye"></i>
+                                    Ver información
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="person">
+                                    <div class="person-avatar green">
+                                        <i class="ph ph-user"></i>
+                                    </div>
+                                    <div>
+                                        <strong>
+                                            Ana Martínez
+                                        </strong>
+                                        <span>
+                                            Familiar responsable
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                Hermana
+                            </td>
+
+                            <td>
+                                5555-7896
+                            </td>
+
+                            <td>
+                                ana@email.com
+                            </td>
+
+                            <td>
+                                <span class="resident-badge">
+                                    Interno #00103
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn">
+                                    <i class="ph ph-eye"></i>
+                                    Ver información
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="person">
+                                    <div class="person-avatar orange">
+                                        <i class="ph ph-user"></i>
+                                    </div>
+                                    <div>
+                                        <strong>
+                                            José Ramírez
+                                        </strong>
+                                        <span>
+                                            Familiar responsable
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                Hijo
+                            </td>
+
+                            <td>
+                                5555-3210
+                            </td>
+
+                            <td>
+                                jose@email.com
+                            </td>
+
+                            <td>
+                                <span class="resident-badge">
+                                    Interno #00098
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn">
+                                    <i class="ph ph-eye"></i>
+                                    Ver información
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- =========================
+             INFORMACIÓN
+        ========================== -->
+        <section class="info-panel">
+
+            <div class="info-icon">
+                <i class="ph ph-info"></i>
+            </div>
+
+            <div>
+                <strong>
+                    Información de familiares
+                </strong>
+                <p>
+                    Los familiares se registran y asocian al interno
+                    durante el proceso de registro. Desde este apartado
+                    únicamente se consulta su información de contacto
+                    y el interno relacionado.
+                </p>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

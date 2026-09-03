@@ -322,6 +322,15 @@ body {
 
 }
 
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
 
 .section-label {
 
@@ -1263,163 +1272,70 @@ tbody tr:hover {
 /* ========================================
    RESPONSIVE
 ======================================== */
-
-@media (max-width: 1100px) {
-
-    .summary-grid {
-
+@media (max-width: 1150px) {
+    .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-
     }
-
 }
 
-
-@media (max-width: 850px) {
-
-    .filters {
-
-        flex-wrap: wrap;
-
-    }
-
-
-    .search-box {
-
-        flex-basis: 100%;
-
-    }
-
-
-    .internos-panel {
-
-        padding: 18px;
-
-    }
-
-}
-
-
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
     .sidebar {
-
         width: 75px;
-
         padding: 20px 10px;
-
     }
-
 
     .logo-text,
     .menu-item span,
     .menu-title,
-    .admin-mini div:last-child {
-
+    .admin-mini div:last-child,
+    .logout span {
         display: none;
-
     }
-
 
     .logo {
-
         justify-content: center;
-
     }
-
 
     .menu-item {
-
         justify-content: center;
-
     }
-
 
     .admin-mini {
-
         justify-content: center;
-
     }
 
+    .logout {
+        justify-content: center;
+    }
 
     .main-content {
-
         margin-left: 75px;
-
         padding: 25px;
-
     }
-
-
-    .topbar {
-
-        align-items: flex-start;
-
-    }
-
-
-    .profile-info,
-    .profile > i {
-
-        display: none;
-
-    }
-
-
-    .summary-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .panel-header {
-
-        align-items: flex-start;
-
-        gap: 15px;
-
-    }
-
 }
 
-
-@media (max-width: 600px) {
-
+@media (max-width: 700px) {
     .topbar {
-
         flex-direction: column;
-
         gap: 20px;
-
     }
-
 
     .topbar-actions {
-
         width: 100%;
-
         justify-content: flex-end;
-
     }
 
-
-    .filters select,
-    .filter-button {
-
-        flex: 1;
-
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .table-footer {
-
+    .card-header {
         flex-direction: column;
-
-        gap: 15px;
-
         align-items: flex-start;
-
+        gap: 15px;
     }
 
+    .search-box {
+        width: 100%;
+    }
 }

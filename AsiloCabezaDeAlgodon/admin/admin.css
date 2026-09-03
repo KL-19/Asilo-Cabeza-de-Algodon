@@ -596,38 +596,39 @@ body {
 /* ========================================
    RESPONSIVE
 ======================================== */
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
     .stats-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .quick-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
     .sidebar {
         width: 75px;
         padding: 20px 10px;
     }
 
     .logo-text,
-    .menu-title,
     .menu-item span,
-    .admin-mini div,
+    .menu-title,
+    .admin-mini div:last-child,
     .logout span {
         display: none;
     }
 
     .logo {
         justify-content: center;
-        padding-bottom: 25px;
     }
 
     .menu-item {
+        justify-content: center;
+    }
+
+    .admin-mini {
+        justify-content: center;
+    }
+
+    .logout {
         justify-content: center;
     }
 
@@ -635,32 +636,30 @@ body {
         margin-left: 75px;
         padding: 25px;
     }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
-@media (max-width: 600px) {
-
-    .main-content {
-        padding: 18px;
-    }
-
+@media (max-width: 700px) {
     .topbar {
-        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .profile-info,
-    .profile > i {
-        display: none;
+    .topbar-actions {
+        width: 100%;
+        justify-content: flex-end;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
     }
 
-    .quick-grid {
-        grid-template-columns: 1fr;
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 100%;
     }
 }
