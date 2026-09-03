@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuevo Usuario | Cabeza de Algodón</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="nuevoRegistro.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Cabeza de Algodón</h2>
+                <span>Administración</span>
+            </div>
+
+        </div>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="menu">
+
+            <p class="menu-title">
+                PRINCIPAL
+            </p>
+
+            <a href="dashboard.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <p class="menu-title">
+                GESTIÓN
+            </p>
+
+            <a href="usuarios.html" class="menu-item active">
+                <i class="ph ph-users"></i>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="internos.html" class="menu-item">
+                <i class="ph ph-person-simple"></i>
+                <span>Internos</span>
+            </a>
+
+            <a href="familiares.html" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>Familiares</span>
+            </a>
+
+            <p class="menu-title">
+                ADMINISTRACIÓN
+            </p>
+            <a href="#" class="menu-item">
+                <i class="ph ph-wallet"></i>
+                <span>Finanzas</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="ph ph-chart-line-up"></i>
+                <span>Reportes</span>
+            </a>
+
+            <p class="menu-title">
+                SISTEMA
+            </p>
+            <a href="#" class="menu-item">
+                <i class="ph ph-gear"></i>
+                <span>Configuración</span>
+            </a>
+
+        </nav>
+
+        <!-- USUARIO -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-mini">
+                <div class="admin-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+            </div>
+
+
+            <a href="../index.html" class="logout">
+                <i class="ph ph-sign-out"></i>
+                <span>
+                    Cerrar sesión
+                </span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div class="page-title">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">
+                        Administración
+                    </a>
+
+                    <i class="ph ph-caret-right"></i>
+                    <a href="usuarios.html">
+                        Usuarios
+                    </a>
+
+                    <i class="ph ph-caret-right"></i>
+                    <strong>
+                        Nuevo usuario
+                    </strong>
+                </div>
+
+                <h1>
+                    Registrar nuevo usuario
+                </h1>
+                <p>
+                    Crea una nueva cuenta para un miembro
+                    autorizado del sistema.
+                </p>
+            </div>
+
+            <!-- ACCIONES DEL HEADER -->
+            <div class="topbar-actions">
+                <button class="notification-btn">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+                    <div class="profile-info">
+                        <strong>
+                            Administrador
+                        </strong>
+                        <span>
+                            Administrador
+                        </span>
+                    </div>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- =========================
+             FORMULARIO
+        ========================== -->
+        <section class="form-card">
+
+            <!-- ENCABEZADO -->
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="ph ph-user-plus"></i>
+                </div>
+
+                <div>
+                    <h2>
+                        Información del usuario
+                    </h2>
+                    <p>
+                        Completa los datos necesarios para
+                        crear la cuenta.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FORMULARIO -->
+            <form id="userForm">
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="ph ph-identification-card"></i>
+                        <div>
+                            <h3>
+                                Datos personales
+                            </h3>
+
+                            <p>
+                                Información básica del usuario.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <!-- NOMBRE COMPLETO -->
+                        <div class="form-group full">
+                            <label for="nombreCompleto">
+                                Nombre completo
+                                <span>*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-user"></i>
+                                <input
+                                    type="text"
+                                    id="nombreCompleto"
+                                    name="nombreCompleto"
+                                    placeholder="Ej. María López García"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- NOMBRE DE USUARIO -->
+                        <div class="form-group">
+                            <label for="nombreUsuario">
+                                Nombre de usuario
+                                <span>*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-at"></i>
+                                <input
+                                    type="text"
+                                    id="nombreUsuario"
+                                    name="nombreUsuario"
+                                    placeholder="Ej. maria.lopez"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- CORREO -->
+                        <div class="form-group">
+                            <label for="correo">
+                                Correo electrónico
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+                                <i class="ph ph-envelope"></i>
+                                <input
+                                    type="email"
+                                    id="correo"
+                                    name="correo"
+                                    placeholder="Ej. maria@gmail.com"
+                                    required>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- =========================
+                     ACCESO AL SISTEMA
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <i class="ph ph-lock-key"></i>
+
+                        <div>
+
+                            <h3>
+                                Acceso al sistema
+                            </h3>
+
+                            <p>
+                                Configura las credenciales de acceso.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- CONTRASEÑA -->
+                        <div class="form-group">
+
+                            <label for="password">
+                                Contraseña
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="ph ph-lock"></i>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Ingrese una contraseña"
+                                    required>
+
+                                <button
+                                    type="button"
+                                    class="password-btn">
+
+                                    <i class="ph ph-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ROL -->
+                        <div class="form-group">
+
+                            <label for="rol">
+                                Rol
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper select-wrapper">
+
+                                <i class="ph ph-shield-check"></i>
+
+                                <select
+                                    id="rol"
+                                    name="rol"
+                                    required>
+
+                                    <option value="" selected disabled>
+                                        Seleccione un rol
+                                    </option>
+
+                                    <option value="medico-general">
+                                        Médico General
+                                    </option>
+
+                                    <option value="enfermero">
+                                        Enfermero
+                                    </option>
+
+                                </select>
+
+                                <i class="ph ph-caret-down select-arrow"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ESTADO
+                ========================== -->
+                <div class="form-section status-section">
+
+                    <div class="section-title">
+
+                        <i class="ph ph-user-circle-check"></i>
+
+                        <div>
+
+                            <h3>
+                                Estado de la cuenta
+                            </h3>
+
+                            <p>
+                                Define si el usuario podrá acceder
+                                al sistema.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch-container">
+
+                        <input
+                            type="checkbox"
+                            id="activo"
+                            name="activo"
+                            checked>
+
+                        <span class="switch"></span>
+
+                        <div class="switch-text">
+
+                            <strong>
+                                Usuario activo
+                            </strong>
+
+                            <span>
+                                El usuario podrá iniciar sesión
+                                en el sistema.
+                            </span>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =========================
+                     INFORMACIÓN
+                ========================== -->
+                <div class="info-panel">
+
+                    <i class="ph ph-info"></i>
+
+                    <p>
+                        El rol asignado determinará los módulos
+                        y funciones a los que tendrá acceso
+                        el usuario dentro del sistema.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     BOTONES
+                ========================== -->
+                <div class="form-actions">
+
+                    <a
+                        href="usuarios.html"
+                        class="btn-secondary">
+
+                        <i class="ph ph-x"></i>
+
+                        Cancelar
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="ph ph-user-plus"></i>
+
+                        Crear usuario
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
