@@ -1,0 +1,1491 @@
+:root {
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --bg: #f5f7fb;
+    --white: #ffffff;
+    --text: #172033;
+    --muted: #7b8498;
+    --border: #e8ebf2;
+    --sidebar: #111827;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --purple: #8b5cf6;
+    --red: #ef4444;
+    --pink: #ec4899;
+    --teal: #14b8a6;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--sidebar);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+    margin-bottom: 35px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.logo h2 {
+    font-size: 17px;
+}
+
+.logo span {
+    font-size: 10px;
+    color: #9ca3af;
+}
+
+/* MENU */
+.menu {
+    flex: 1;
+}
+
+.menu-title {
+    font-size: 9px;
+    color: #6b7280;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 20px 10px 8px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 14px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.25s;
+}
+
+.menu-item i {
+    font-size: 19px;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.07);
+    color: white;
+}
+
+.menu-item.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* PARTE INFERIOR */
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.admin-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.admin-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #93c5fd;
+}
+
+.admin-mini strong {
+    display: block;
+    font-size: 11px;
+}
+
+.admin-mini span {
+    display: block;
+    font-size: 9px;
+    color: #9ca3af;
+    margin-top: 3px;
+}
+
+/* LOGOUT */
+.logout {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.25s;
+}
+
+.logout i {
+    font-size: 19px;
+}
+
+.logout:hover {
+    background: rgba(239,68,68,0.15);
+    color: #fca5a5;
+}
+
+/*  CONTENIDO PRINCIPAL  */
+.main-content {
+    margin-left: 260px;
+    padding: 32px 40px;
+}
+
+/* TOPBAR */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.page-title p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.breadcrumb a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.breadcrumb strong {
+    color: var(--text);
+}
+
+.breadcrumb i {
+    font-size: 12px;
+    color: #aab1c0;
+}
+
+/* ACCIONES */
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.notification-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    font-size: 20px;
+    color: var(--muted);
+}
+
+.notification-dot {
+    width: 7px;
+    height: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+/* PERFIL */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.profile-info strong {
+    display: block;
+    font-size: 12px;
+}
+
+.profile-info span {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+/* TARJETAS DE RESUMEN */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.summary-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.summary-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.summary-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.summary-icon.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.summary-icon.purple {
+    background: #f5f3ff;
+    color: #8b5cf6;
+}
+
+.summary-icon.orange {
+    background: #fffbeb;
+    color: #f59e0b;
+}
+
+.summary-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.summary-card strong {
+    font-size: 20px;
+}
+
+/* ENCABEZADO DE SECCIÓN */
+.section-header {
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 17px;
+}
+
+.section-header p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+/* GRID DE REPORTES */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* TARJETA DE REPORTE */
+.report-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    position: relative;
+    min-height: 245px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.25s;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    border-color: #d9deea;
+    box-shadow: 0 8px 25px rgba(23,32,51,0.06);
+}
+
+/* ICONO */
+.report-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    margin-bottom: 16px;
+}
+
+.report-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.report-icon.purple {
+    background: #f5f3ff;
+    color: #8b5cf6;
+}
+
+.report-icon.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.report-icon.orange {
+    background: #fffbeb;
+    color: #f59e0b;
+}
+
+.report-icon.teal {
+    background: #f0fdfa;
+    color: #14b8a6;
+}
+
+.report-icon.red {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.report-icon.pink {
+    background: #fdf2f8;
+    color: #ec4899;
+}
+
+/* CONTENIDO */
+.report-content h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.report-content p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* ETIQUETAS */
+.report-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 13px;
+}
+
+.report-tags span {
+    background: #f5f7fb;
+    color: #667085;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+/* BOTÓN */
+.report-button {
+    margin-top: auto;
+    align-self: flex-start;
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 0 0;
+}
+
+.report-button i {
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.report-button:hover i {
+    transform: translateX(4px);
+}
+
+/* PANEL INFORMATIVO */
+.info-panel {
+    margin-top: 22px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.info-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    background: white;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.info-panel h3 {
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.info-panel p {
+    color: #64748b;
+    font-size: 10px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 75px;
+        padding: 20px 10px;
+    }
+
+    .logo-text,
+    .menu-item span,
+    .menu-title,
+    .admin-mini div:last-child,
+    .logout span {
+        display: none;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    .menu-item {
+        justify-content: center;
+    }
+
+    .admin-mini {
+        justify-content: center;
+    }
+
+    .logout {
+        justify-content: center;
+    }
+
+    .main-content {
+        margin-left: 75px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 650px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .topbar-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
+
+/*MODAL DE REPORTES*/
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 25px;
+}
+
+/* Cuando el modal está activo */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* CONTENEDOR DEL MODAL */
+.modal {
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.20);
+    padding: 28px;
+}
+
+/* ENCABEZADO */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.modal-header p {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #f5f7fb;
+    border-radius: 9px;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* FILTROS*/
+.modal-filters {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 15px;
+    padding: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 12px;
+    background: white;
+    color: var(--text);
+    font-size: 10px;
+    outline: none;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: var(--primary);
+}
+
+/* BOTÓN GENERAR */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+.btn-generate {
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 9px;
+    padding: 11px 17px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: 0.2s;
+}
+
+.btn-generate:hover {
+    background: #1d4ed8;
+}
+
+/* RESULTADO*/
+.report-result {
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+}
+
+/* INFORMACIÓN DEL PACIENTE */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.result-header span {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.result-header strong {
+    font-size: 11px;
+}
+
+/*TABLA */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.table-container th {
+    background: #f8fafc;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px;
+}
+
+.table-container td {
+    padding: 13px 12px;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    color: #667085;
+}
+
+.table-container td strong {
+    color: var(--text);
+    font-size: 10px;
+}
+
+.amount {
+    font-weight: 700;
+    color: var(--text) !important;
+}
+
+/* TOTAL */
+.report-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    padding: 18px 5px;
+    border-bottom: 1px solid var(--border);
+}
+
+.report-total span {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.report-total strong {
+    font-size: 18px;
+    color: var(--text);
+}
+
+/* BOTONES DE DESCARGA*/
+.download-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn-pdf,
+.btn-excel {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 9px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.btn-pdf {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.btn-excel {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.btn-pdf:hover {
+    background: #fee2e2;
+}
+
+.btn-excel:hover {
+    background: #d1fae5;
+}
+
+/* RESPONSIVE DEL MODAL */
+@media (max-width: 700px) {
+    .modal {
+        padding: 20px;
+        max-height: 95vh;
+    }
+
+    .modal-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .download-actions {
+        flex-direction: column;
+    }
+
+    .btn-pdf,
+    .btn-excel {
+        justify-content: center;
+    }
+}
+
+/* MODAL - ANÁLISIS MÉDICOS*/
+.modal-medico {
+    max-width: 900px;
+}
+
+/* FILTRO ÚNICO */
+.single-filter {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+}
+
+/* RESULTADO MÉDICO*/
+.medical-result {
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+}
+
+/* SECCIONES MÉDICAS */
+.medical-section {
+    margin-bottom: 25px;
+}
+
+.medical-section-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 14px;
+}
+
+.medical-title-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.medical-title-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.medical-title-icon.purple {
+    background: #f5f3ff;
+    color: #8b5cf6;
+}
+
+.medical-title-icon.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.medical-title-icon.orange {
+    background: #fffbeb;
+    color: #f59e0b;
+}
+
+.medical-section-title h3 {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.medical-section-title span {
+    font-size: 9px;
+    color: var(--muted);
+}
+
+/* DATOS GENERALES */
+.medical-data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.medical-data {
+    background: white;
+    padding: 13px;
+}
+
+.medical-data span {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.medical-data strong {
+    font-size: 10px;
+    color: var(--text);
+}
+
+/* FICHA MÉDICA*/
+.medical-box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.medical-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.medical-row:last-child {
+    border-bottom: none;
+}
+
+.medical-row span {
+    font-size: 9px;
+    color: var(--muted);
+    min-width: 150px;
+}
+
+.medical-row strong {
+    font-size: 10px;
+    color: var(--text);
+    text-align: right;
+}
+
+/* HISTORIAL MÉDICO*/
+.medical-history {
+    border-left: 2px solid #dbeafe;
+    padding-left: 18px;
+}
+
+.history-item {
+    position: relative;
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.history-item:last-child {
+    padding-bottom: 0;
+}
+
+.history-date {
+    min-width: 55px;
+    height: 28px;
+    border-radius: 7px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.history-content strong {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+
+.history-content span {
+    display: block;
+    color: var(--primary);
+    font-size: 8px;
+    margin-bottom: 6px;
+}
+
+.history-content p {
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+/* MEDICAMENTOS */
+.medicine-table {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.medicine-header,
+.medicine-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 15px;
+    padding: 12px;
+}
+
+.medicine-header {
+    background: #f8fafc;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.medicine-row {
+    border-top: 1px solid var(--border);
+    font-size: 9px;
+    color: var(--muted);
+}
+
+.medicine-row strong {
+    color: var(--text);
+    font-size: 10px;
+}
+
+/* RESPONSIVE - ANÁLISIS MÉDICOS */
+@media (max-width: 650px) {
+    .medical-data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .medical-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .medical-row strong {
+        text-align: left;
+    }
+
+    .medicine-header,
+    .medicine-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MODAL - COBROS POR PACIENTE*/
+.modal-cobros {
+    max-width: 900px;
+}
+
+/* RESULTADO DE COBROS */
+.charges-result {
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+}
+
+/* SECCIÓN DE COBROS */
+.charges-section {
+    margin-bottom: 20px;
+}
+
+.charges-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 14px;
+}
+
+.charges-title-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.charges-title-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.charges-title h3 {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.charges-title span {
+    font-size: 9px;
+    color: var(--muted);
+}
+
+/* TABLA DE COBROS*/
+.charges-table {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.charges-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.charges-table th {
+    background: #f8fafc;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px;
+}
+
+.charges-table td {
+    padding: 13px 12px;
+    border-top: 1px solid var(--border);
+    font-size: 9px;
+    color: #667085;
+}
+
+.charge-amount {
+    font-weight: 700;
+    color: var(--text) !important;
+}
+
+/* RESUMEN DE GASTOS MÉDICOS */
+.medical-expenses {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.expense-summary {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 12px;
+}
+
+.expense-summary span {
+    display: block;
+    font-size: 8px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.expense-summary strong {
+    font-size: 11px;
+    color: var(--text);
+}
+
+/* RESPONSIVE - COBROS */
+@media (max-width: 700px) {
+    .medical-expenses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 500px) {
+    .medical-expenses {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MODAL 4 - PAGOS A LA FUNDACIÓN */
+.modal-fundacion {
+    max-width: 900px;
+}
+
+.fundacion-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.fundacion-info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.fundacion-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #f3e8ff;
+    color: #8b5cf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.fundacion-icon.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.fundacion-info-box span {
+    display: block;
+    font-size: 8px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.fundacion-info-box strong {
+    font-size: 10px;
+    color: var(--text);
+}
+
+.charges-title-icon.purple {
+    background: #f3e8ff;
+    color: #8b5cf6;
+}
+
+.status-paid {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #ecfdf5;
+    color: #059669;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.fundacion-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+/* MODAL 5 - DONACIONES Y COBROS */
+.modal-donaciones {
+    max-width: 950px;
+}
+
+.income-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.income-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.income-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.income-icon.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.income-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.income-icon.purple {
+    background: #f3e8ff;
+    color: #8b5cf6;
+}
+
+.income-card span {
+    display: block;
+    font-size: 8px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.income-card strong {
+    font-size: 12px;
+    color: var(--text);
+}
+
+.income-type {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.income-type.donation {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.income-type.charge {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.income-total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.income-total > div {
+    min-width: 230px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    text-align: right;
+}
+
+.income-total span {
+    display: block;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.income-total strong {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .fundacion-info {
+        grid-template-columns: 1fr;
+    }
+
+    .fundacion-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .income-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .income-total {
+        justify-content: stretch;
+    }
+
+    .income-total > div {
+        width: 100%;
+    }
+
+}
+
+/*MODAL 6 - EXÁMENES MÉDICOS */
+.modal-examenes {
+    max-width: 950px;
+}
+
+.patient-report-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.patient-report-info > div {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 13px;
+}
+
+.patient-report-info span {
+    display: block;
+    font-size: 8px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.patient-report-info strong {
+    display: block;
+    font-size: 10px;
+    color: var(--text);
+}
+
+.exam-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+/* MODAL 7 - MEDICAMENTOS */
+.modal-medicamentos {
+    max-width: 950px;
+}
+
+.medicine-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .patient-report-info {
+        grid-template-columns: 1fr;
+    }
+
+    .exam-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .medicine-summary {
+        grid-template-columns: 1fr;
+    }
+}

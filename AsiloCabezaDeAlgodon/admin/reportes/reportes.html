@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reportes | Cabeza de Algodón</title>
+
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="reportes.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BARRA LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Cabeza de Algodón</h2>
+                <span>Administración</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+
+            <a href="../dashboard.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Dashboard</span>
+            </a>
+
+
+            <p class="menu-title">GESTIÓN</p>
+
+            <a href="../usuarios/usuarios.html" class="menu-item">
+                <i class="ph ph-users"></i>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="../internos/internos.html" class="menu-item">
+                <i class="ph ph-person-simple"></i>
+                <span>Internos</span>
+            </a>
+
+            <a href="../familiares/familiares.html" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>Familiares</span>
+            </a>
+
+
+            <p class="menu-title">ADMINISTRACIÓN</p>
+
+            <a href="../finanzas/finanzas.html" class="menu-item">
+                <i class="ph ph-wallet"></i>
+                <span>Finanzas</span>
+            </a>
+
+            <a href="reportes.html" class="menu-item active">
+                <i class="ph ph-chart-line-up"></i>
+                <span>Reportes</span>
+            </a>
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-mini">
+
+                <div class="admin-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+
+            </div>
+
+
+            <a href="../../index.html" class="logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             ENCABEZADO
+        ================================================== -->
+
+        <div class="topbar">
+
+            <div class="page-title">
+
+                <div class="breadcrumb">
+
+                    <a href="../dashboard.html">
+                        Administración
+                    </a>
+
+                    <i class="ph ph-caret-right"></i>
+
+                    <strong>Reportes</strong>
+
+                </div>
+
+                <h1>Reportes</h1>
+
+                <p>
+                    Consulta y genera informes sobre la información del asilo.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button class="notification-btn">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Administrador</strong>
+                        <span>Administrador</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TARJETAS DE RESUMEN
+        ================================================== -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="summary-icon blue">
+                    <i class="ph ph-files"></i>
+                </div>
+
+                <div>
+                    <span>Reportes disponibles</span>
+                    <strong>7</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon green">
+                    <i class="ph ph-chart-bar"></i>
+                </div>
+
+                <div>
+                    <span>Reportes generados</span>
+                    <strong>24</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon purple">
+                    <i class="ph ph-users-three"></i>
+                </div>
+
+                <div>
+                    <span>Internos registrados</span>
+                    <strong>35</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon orange">
+                    <i class="ph ph-calendar-blank"></i>
+                </div>
+
+                <div>
+                    <span>Periodo actual</span>
+                    <strong>2026</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             REPORTES DISPONIBLES
+        ================================================== -->
+
+        <section class="section-header">
+
+            <div>
+                <h2>Informes disponibles</h2>
+
+                <p>
+                    Selecciona el tipo de reporte que deseas consultar.
+                </p>
+            </div>
+
+        </section>
+
+
+
+        <section class="reports-grid">
+
+
+            <!-- REPORTE 1 -->
+
+            <div class="report-card">
+
+                <div class="report-icon blue">
+                    <i class="ph ph-stethoscope"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Costos de citas por paciente</h3>
+
+                    <p>
+                        Consulta el costo de cada cita médica,
+                        incluyendo exámenes de laboratorio y medicamentos.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Paciente</span>
+                        <span>Citas</span>
+                        <span>Gastos médicos</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 2 -->
+
+            <div class="report-card">
+
+                <div class="report-icon purple">
+                    <i class="ph ph-notebook"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Análisis médicos por paciente</h3>
+
+                    <p>
+                        Consulta la ficha médica del interno,
+                        motivo de reclutamiento, diagnósticos y medicamentos.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Ficha médica</span>
+                        <span>Diagnóstico</span>
+                        <span>Medicamentos</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 3 -->
+
+            <div class="report-card">
+
+                <div class="report-icon green">
+                    <i class="ph ph-receipt"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Cobros por paciente</h3>
+
+                    <p>
+                        Consulta los cobros realizados a cada paciente
+                        dentro de un rango de fechas, incluyendo gastos médicos.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Paciente</span>
+                        <span>Fechas</span>
+                        <span>Gastos médicos</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 4 -->
+
+            <div class="report-card">
+
+                <div class="report-icon orange">
+                    <i class="ph ph-hand-coins"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Pagos a la Fundación</h3>
+
+                    <p>
+                        Consulta los pagos realizados a la Fundación
+                        y el detalle correspondiente.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Fundación</span>
+                        <span>Pagos</span>
+                        <span>Finanzas</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 5 -->
+
+            <div class="report-card">
+
+                <div class="report-icon teal">
+                    <i class="ph ph-chart-pie-slice"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Entradas de donaciones y cobros</h3>
+
+                    <p>
+                        Consulta las entradas económicas provenientes
+                        de donaciones y cobros realizados.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Donaciones</span>
+                        <span>Cobros</span>
+                        <span>Ingresos</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 6 -->
+
+            <div class="report-card">
+
+                <div class="report-icon red">
+                    <i class="ph ph-test-tube"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Exámenes médicos por paciente</h3>
+
+                    <p>
+                        Consulta los exámenes médicos y de laboratorio
+                        realizados a un interno.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Paciente</span>
+                        <span>Exámenes</span>
+                        <span>Resultados</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+
+            <!-- REPORTE 7 -->
+
+            <div class="report-card">
+
+                <div class="report-icon pink">
+                    <i class="ph ph-pill"></i>
+                </div>
+
+                <div class="report-content">
+
+                    <h3>Medicamentos aplicados por paciente</h3>
+
+                    <p>
+                        Consulta los medicamentos administrados a cada
+                        interno, incluyendo cantidad y tiempo de aplicación.
+                    </p>
+
+                    <div class="report-tags">
+                        <span>Paciente</span>
+                        <span>Medicamentos</span>
+                        <span>Aplicación</span>
+                    </div>
+
+                </div>
+
+                <button class="report-button">
+                    Generar reporte
+                    <i class="ph ph-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INFORMACIÓN
+        ================================================== -->
+
+        <section class="info-panel">
+
+            <div class="info-icon">
+                <i class="ph ph-info"></i>
+            </div>
+
+            <div>
+
+                <h3>¿Cómo funcionan los reportes?</h3>
+
+                <p>
+                    Los reportes se generan a partir de la información
+                    registrada en el sistema. Puedes seleccionar un paciente,
+                    establecer un rango de fechas y consultar la información
+                    correspondiente.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+     MODAL - COSTOS DE CITAS POR PACIENTE
+====================================================== -->
+
+<div class="modal-overlay" id="modalCostosCitas">
+
+    <div class="modal">
+
+        <!-- ENCABEZADO DEL MODAL -->
+        <div class="modal-header">
+
+            <div>
+                <h2>Costos de citas por paciente</h2>
+
+                <p>
+                    Consulta el costo de las citas médicas,
+                    exámenes y medicamentos de un paciente.
+                </p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalCostos">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="modal-filters">
+
+            <div class="form-group">
+
+                <label for="pacienteReporte">
+                    Paciente
+                </label>
+
+                <select id="pacienteReporte">
+
+                    <option value="">
+                        Seleccione un paciente
+                    </option>
+
+                    <option value="1">
+                        Juan Pérez
+                    </option>
+
+                    <option value="2">
+                        María López
+                    </option>
+
+                    <option value="3">
+                        Carlos Ramírez
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fechaInicio">
+                    Fecha inicial
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaInicio"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fechaFin">
+                    Fecha final
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaFin"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN GENERAR -->
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+
+                <i class="ph ph-chart-bar"></i>
+
+                Generar reporte
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO DEL REPORTE -->
+        <div class="report-result">
+
+            <div class="result-header">
+
+                <div>
+                    <span>Paciente</span>
+                    <strong>Juan Pérez</strong>
+                </div>
+
+                <div>
+                    <span>Periodo</span>
+                    <strong>01/09/2026 - 08/09/2026</strong>
+                </div>
+
+            </div>
+
+
+            <!-- TABLA -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Fecha</th>
+                            <th>Detalle</th>
+                            <th>Costo</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>Cita médica</strong>
+                            </td>
+
+                            <td>
+                                02/09/2026
+                            </td>
+
+                            <td>
+                                Consulta médica general
+                            </td>
+
+                            <td class="amount">
+                                Q 150.00
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Examen</strong>
+                            </td>
+
+                            <td>
+                                02/09/2026
+                            </td>
+
+                            <td>
+                                Examen de laboratorio
+                            </td>
+
+                            <td class="amount">
+                                Q 80.00
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Medicamento</strong>
+                            </td>
+
+                            <td>
+                                02/09/2026
+                            </td>
+
+                            <td>
+                                Medicamento aplicado
+                            </td>
+
+                            <td class="amount">
+                                Q 45.00
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- TOTAL -->
+            <div class="report-total">
+
+                <span>Total de gastos médicos</span>
+
+                <strong>
+                    Q 275.00
+                </strong>
+
+            </div>
+
+
+            <!-- DESCARGAS -->
+            <div class="download-actions">
+
+                <button class="btn-pdf">
+
+                    <i class="ph ph-file-pdf"></i>
+
+                    Descargar PDF
+
+                </button>
+
+
+                <button class="btn-excel">
+
+                    <i class="ph ph-file-xls"></i>
+
+                    Exportar Excel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+     MODAL - ANÁLISIS MÉDICOS POR PACIENTE
+====================================================== -->
+
+<div class="modal-overlay" id="modalAnalisisMedicos">
+
+    <div class="modal modal-medico">
+
+        <!-- ENCABEZADO -->
+        <div class="modal-header">
+
+            <div>
+                <h2>Análisis médicos por paciente</h2>
+
+                <p>
+                    Consulta la ficha médica y el historial de atención
+                    de un paciente.
+                </p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalAnalisis">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- FILTRO DEL PACIENTE -->
+        <div class="modal-filters single-filter">
+
+            <div class="form-group">
+
+                <label for="pacienteAnalisis">
+                    Paciente
+                </label>
+
+                <select id="pacienteAnalisis">
+
+                    <option value="">
+                        Seleccione un paciente
+                    </option>
+
+                    <option value="1">
+                        Juan Pérez
+                    </option>
+
+                    <option value="2">
+                        María López
+                    </option>
+
+                    <option value="3">
+                        Carlos Ramírez
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN GENERAR -->
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+
+                <i class="ph ph-file-search"></i>
+
+                Generar reporte
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             FICHA DEL PACIENTE
+        ================================================== -->
+
+        <div class="medical-result">
+
+
+            <!-- DATOS GENERALES -->
+
+            <div class="medical-section">
+
+                <div class="medical-section-title">
+
+                    <div class="medical-title-icon blue">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <h3>Información del paciente</h3>
+                        <span>Datos generales del interno</span>
+                    </div>
+
+                </div>
+
+
+                <div class="medical-data-grid">
+
+                    <div class="medical-data">
+
+                        <span>Nombre completo</span>
+
+                        <strong>Juan Pérez</strong>
+
+                    </div>
+
+
+                    <div class="medical-data">
+
+                        <span>Edad</span>
+
+                        <strong>78 años</strong>
+
+                    </div>
+
+
+                    <div class="medical-data">
+
+                        <span>Fecha de ingreso</span>
+
+                        <strong>15/03/2026</strong>
+
+                    </div>
+
+
+                    <div class="medical-data">
+
+                        <span>Motivo de reclutamiento</span>
+
+                        <strong>Necesidad de cuidados permanentes</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FICHA MÉDICA -->
+
+            <div class="medical-section">
+
+                <div class="medical-section-title">
+
+                    <div class="medical-title-icon purple">
+                        <i class="ph ph-first-aid-kit"></i>
+                    </div>
+
+                    <div>
+                        <h3>Ficha médica</h3>
+                        <span>Información clínica registrada</span>
+                    </div>
+
+                </div>
+
+
+                <div class="medical-box">
+
+                    <div class="medical-row">
+
+                        <span>Antecedentes médicos</span>
+
+                        <strong>
+                            Hipertensión arterial
+                        </strong>
+
+                    </div>
+
+
+                    <div class="medical-row">
+
+                        <span>Diagnóstico actual</span>
+
+                        <strong>
+                            Hipertensión controlada
+                        </strong>
+
+                    </div>
+
+
+                    <div class="medical-row">
+
+                        <span>Alergias</span>
+
+                        <strong>
+                            No registradas
+                        </strong>
+
+                    </div>
+
+
+                    <div class="medical-row">
+
+                        <span>Observaciones</span>
+
+                        <strong>
+                            Requiere control periódico de presión arterial.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HISTORIAL MÉDICO -->
+
+            <div class="medical-section">
+
+                <div class="medical-section-title">
+
+                    <div class="medical-title-icon green">
+                        <i class="ph ph-stethoscope"></i>
+                    </div>
+
+                    <div>
+                        <h3>Historial de atención</h3>
+                        <span>Consultas y análisis realizados</span>
+                    </div>
+
+                </div>
+
+
+                <div class="medical-history">
+
+                    <div class="history-item">
+
+                        <div class="history-date">
+                            02 SEP
+                        </div>
+
+                        <div class="history-content">
+
+                            <strong>
+                                Consulta médica general
+                            </strong>
+
+                            <span>
+                                Médico General
+                            </span>
+
+                            <p>
+                                Motivo: control de presión arterial.
+                                Diagnóstico: hipertensión controlada.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="history-date">
+                            18 AGO
+                        </div>
+
+                        <div class="history-content">
+
+                            <strong>
+                                Consulta médica
+                            </strong>
+
+                            <span>
+                                Médico General
+                            </span>
+
+                            <p>
+                                Motivo: malestar general.
+                                Diagnóstico: deshidratación leve.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MEDICAMENTOS -->
+
+            <div class="medical-section">
+
+                <div class="medical-section-title">
+
+                    <div class="medical-title-icon orange">
+                        <i class="ph ph-pill"></i>
+                    </div>
+
+                    <div>
+                        <h3>Medicamentos</h3>
+                        <span>Medicamentos registrados en la atención</span>
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-table">
+
+                    <div class="medicine-header">
+                        <span>Medicamento</span>
+                        <span>Cantidad</span>
+                        <span>Tiempo</span>
+                    </div>
+
+
+                    <div class="medicine-row">
+
+                        <strong>
+                            Losartán
+                        </strong>
+
+                        <span>
+                            50 mg
+                        </span>
+
+                        <span>
+                            Cada 24 horas
+                        </span>
+
+                    </div>
+
+
+                    <div class="medicine-row">
+
+                        <strong>
+                            Paracetamol
+                        </strong>
+
+                        <span>
+                            500 mg
+                        </span>
+
+                        <span>
+                            Según necesidad
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             DESCARGAS
+        ================================================== -->
+
+        <div class="download-actions">
+
+            <button class="btn-pdf">
+
+                <i class="ph ph-file-pdf"></i>
+
+                Descargar PDF
+
+            </button>
+
+
+            <button class="btn-excel">
+
+                <i class="ph ph-file-xls"></i>
+
+                Exportar Excel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+     MODAL - COBROS POR PACIENTE
+====================================================== -->
+
+<div class="modal-overlay" id="modalCobrosPaciente">
+
+    <div class="modal modal-cobros">
+
+        <!-- ENCABEZADO -->
+        <div class="modal-header">
+
+            <div>
+                <h2>Cobros por paciente</h2>
+
+                <p>
+                    Consulta los cobros realizados a un paciente
+                    dentro de un rango de fechas.
+                </p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalCobros">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <div class="modal-filters">
+
+            <div class="form-group">
+
+                <label for="pacienteCobros">
+                    Paciente
+                </label>
+
+                <select id="pacienteCobros">
+
+                    <option value="">
+                        Seleccione un paciente
+                    </option>
+
+                    <option value="1">
+                        Juan Pérez
+                    </option>
+
+                    <option value="2">
+                        María López
+                    </option>
+
+                    <option value="3">
+                        Carlos Ramírez
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fechaInicioCobros">
+                    Fecha inicial
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaInicioCobros"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fechaFinCobros">
+                    Fecha final
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaFinCobros"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN GENERAR -->
+
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+
+                <i class="ph ph-chart-bar"></i>
+
+                Generar reporte
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             RESULTADO
+        ================================================== -->
+
+        <div class="charges-result">
+
+
+            <!-- INFORMACIÓN DEL PACIENTE -->
+
+            <div class="result-header">
+
+                <div>
+
+                    <span>Paciente</span>
+
+                    <strong>
+                        Juan Pérez
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Periodo</span>
+
+                    <strong>
+                        01/09/2026 - 08/09/2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 COBROS
+            ================================================== -->
+
+            <div class="charges-section">
+
+                <div class="charges-title">
+
+                    <div class="charges-title-icon blue">
+                        <i class="ph ph-receipt"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Detalle de cobros
+                        </h3>
+
+                        <span>
+                            Cobros registrados durante el periodo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="charges-table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Fecha
+                                </th>
+
+                                <th>
+                                    Concepto
+                                </th>
+
+                                <th>
+                                    Tipo
+                                </th>
+
+                                <th>
+                                    Monto
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    02/09/2026
+                                </td>
+
+                                <td>
+                                    Cuota mensual
+                                </td>
+
+                                <td>
+                                    Cuota
+                                </td>
+
+                                <td class="charge-amount">
+                                    Q 500.00
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    02/09/2026
+                                </td>
+
+                                <td>
+                                    Consulta médica
+                                </td>
+
+                                <td>
+                                    Gasto médico
+                                </td>
+
+                                <td class="charge-amount">
+                                    Q 150.00
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    02/09/2026
+                                </td>
+
+                                <td>
+                                    Examen de laboratorio
+                                </td>
+
+                                <td>
+                                    Gasto médico
+                                </td>
+
+                                <td class="charge-amount">
+                                    Q 80.00
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    02/09/2026
+                                </td>
+
+                                <td>
+                                    Medicamento
+                                </td>
+
+                                <td>
+                                    Gasto médico
+                                </td>
+
+                                <td class="charge-amount">
+                                    Q 45.00
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESUMEN DE GASTOS MÉDICOS
+            ================================================== -->
+
+            <div class="medical-expenses">
+
+                <div class="expense-summary">
+
+                    <span>
+                        Cuota mensual
+                    </span>
+
+                    <strong>
+                        Q 500.00
+                    </strong>
+
+                </div>
+
+
+                <div class="expense-summary">
+
+                    <span>
+                        Consultas médicas
+                    </span>
+
+                    <strong>
+                        Q 150.00
+                    </strong>
+
+                </div>
+
+
+                <div class="expense-summary">
+
+                    <span>
+                        Exámenes
+                    </span>
+
+                    <strong>
+                        Q 80.00
+                    </strong>
+
+                </div>
+
+
+                <div class="expense-summary">
+
+                    <span>
+                        Medicamentos
+                    </span>
+
+                    <strong>
+                        Q 45.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TOTAL
+            ================================================== -->
+
+            <div class="report-total">
+
+                <span>
+                    Total de cobros
+                </span>
+
+                <strong>
+                    Q 775.00
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             DESCARGAS
+        ================================================== -->
+
+        <div class="download-actions">
+
+            <button class="btn-pdf">
+
+                <i class="ph ph-file-pdf"></i>
+
+                Descargar PDF
+
+            </button>
+
+
+            <button class="btn-excel">
+
+                <i class="ph ph-file-xls"></i>
+
+                Exportar Excel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     MODAL 4 - PAGOS A LA FUNDACIÓN
+========================================================= -->
+<div class="modal-overlay" id="modalPagosFundacion">
+
+    <div class="modal modal-fundacion">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">REPORTE FINANCIERO</span>
+                <h2>Pagos a la Fundación</h2>
+                <p>Consulta los pagos registrados durante un período determinado.</p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalFundacion">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="modal-filters">
+
+            <div class="form-group">
+                <label>Fecha inicial</label>
+                <input type="date" value="2026-09-01">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha final</label>
+                <input type="date" value="2026-09-08">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+
+                <select>
+                    <option>Todos</option>
+                    <option>Registrado</option>
+                    <option>Pendiente</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+                <i class="ph ph-file-search"></i>
+                Generar reporte
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <div class="report-result fundacion-result">
+
+            <div class="result-header">
+
+                <div>
+                    <span>PERÍODO DEL REPORTE</span>
+                    <strong>01/09/2026 - 08/09/2026</strong>
+                </div>
+
+                <div class="result-status">
+                    <i class="ph ph-check-circle"></i>
+                    Reporte generado
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÓN -->
+            <div class="fundacion-info">
+
+                <div class="fundacion-info-box">
+
+                    <div class="fundacion-icon">
+                        <i class="ph ph-buildings"></i>
+                    </div>
+
+                    <div>
+                        <span>Entidad</span>
+                        <strong>Fundación Cabeza de Algodón</strong>
+                    </div>
+
+                </div>
+
+                <div class="fundacion-info-box">
+
+                    <div class="fundacion-icon green">
+                        <i class="ph ph-calendar"></i>
+                    </div>
+
+                    <div>
+                        <span>Período</span>
+                        <strong>Septiembre 2026</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLA -->
+            <div class="charges-section">
+
+                <div class="charges-title">
+
+                    <div class="charges-title-icon purple">
+                        <i class="ph ph-receipt"></i>
+                    </div>
+
+                    <div>
+                        <h3>Pagos registrados</h3>
+                        <span>Detalle de movimientos registrados</span>
+                    </div>
+
+                </div>
+
+
+                <div class="charges-table">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Concepto</th>
+                                <th>Referencia</th>
+                                <th>Estado</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>02/09/2026</td>
+                                <td>Pago registrado</td>
+                                <td>PF-00125</td>
+                                <td>
+                                    <span class="status-paid">Registrado</span>
+                                </td>
+                                <td class="charge-amount">Q 500.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>05/09/2026</td>
+                                <td>Pago registrado</td>
+                                <td>PF-00126</td>
+                                <td>
+                                    <span class="status-paid">Registrado</span>
+                                </td>
+                                <td class="charge-amount">Q 750.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>08/09/2026</td>
+                                <td>Pago registrado</td>
+                                <td>PF-00127</td>
+                                <td>
+                                    <span class="status-paid">Registrado</span>
+                                </td>
+                                <td class="charge-amount">Q 600.00</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+            <div class="fundacion-summary">
+
+                <div class="expense-summary">
+
+                    <span>TOTAL DE PAGOS</span>
+                    <strong>3</strong>
+
+                </div>
+
+                <div class="expense-summary">
+
+                    <span>MONTO TOTAL</span>
+                    <strong>Q 1,850.00</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESCARGAS -->
+            <div class="download-actions">
+
+                <button class="btn-pdf">
+                    <i class="ph ph-file-pdf"></i>
+                    Descargar PDF
+                </button>
+
+                <button class="btn-excel">
+                    <i class="ph ph-file-xls"></i>
+                    Exportar Excel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     MODAL 5 - DONACIONES Y COBROS
+========================================================= -->
+<div class="modal-overlay" id="modalDonacionesCobros">
+
+    <div class="modal modal-donaciones">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="modal-label">REPORTE FINANCIERO</span>
+                <h2>Donaciones y cobros</h2>
+                <p>Consulta las entradas económicas registradas en el período.</p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalDonaciones">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="modal-filters">
+
+            <div class="form-group">
+                <label>Fecha inicial</label>
+                <input type="date" value="2026-09-01">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha final</label>
+                <input type="date" value="2026-09-08">
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de entrada</label>
+
+                <select>
+                    <option>Todos</option>
+                    <option>Donaciones</option>
+                    <option>Cobros a familiares</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+                <i class="ph ph-file-search"></i>
+                Generar reporte
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <div class="report-result income-result">
+
+            <div class="result-header">
+
+                <div>
+                    <span>PERÍODO DEL REPORTE</span>
+                    <strong>01/09/2026 - 08/09/2026</strong>
+                </div>
+
+                <div class="result-status">
+                    <i class="ph ph-check-circle"></i>
+                    Reporte generado
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN DE ENTRADAS -->
+            <div class="income-summary">
+
+                <div class="income-card">
+
+                    <div class="income-icon green">
+                        <i class="ph ph-hand-heart"></i>
+                    </div>
+
+                    <div>
+                        <span>Donaciones</span>
+                        <strong>Q 5,500.00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="income-card">
+
+                    <div class="income-icon blue">
+                        <i class="ph ph-users-three"></i>
+                    </div>
+
+                    <div>
+                        <span>Cobros a familiares</span>
+                        <strong>Q 2,300.00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="income-card">
+
+                    <div class="income-icon purple">
+                        <i class="ph ph-wallet"></i>
+                    </div>
+
+                    <div>
+                        <span>Total de entradas</span>
+                        <strong>Q 7,800.00</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DETALLE -->
+            <div class="charges-section">
+
+                <div class="charges-title">
+
+                    <div class="charges-title-icon green">
+                        <i class="ph ph-arrow-down"></i>
+                    </div>
+
+                    <div>
+                        <h3>Detalle de entradas</h3>
+                        <span>Donaciones y cobros registrados</span>
+                    </div>
+
+                </div>
+
+
+                <div class="charges-table">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                                <th>Responsable</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>01/09/2026</td>
+                                <td>
+                                    <span class="income-type donation">
+                                        Donación
+                                    </span>
+                                </td>
+                                <td>Donación empresarial</td>
+                                <td>Empresa Nacional S.A.</td>
+                                <td class="charge-amount">Q 3,000.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>03/09/2026</td>
+                                <td>
+                                    <span class="income-type donation">
+                                        Donación
+                                    </span>
+                                </td>
+                                <td>Donación particular</td>
+                                <td>Donante particular</td>
+                                <td class="charge-amount">Q 2,500.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>05/09/2026</td>
+                                <td>
+                                    <span class="income-type charge">
+                                        Cobro
+                                    </span>
+                                </td>
+                                <td>Cuota mensual</td>
+                                <td>Familiar de Juan Pérez</td>
+                                <td class="charge-amount">Q 500.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>06/09/2026</td>
+                                <td>
+                                    <span class="income-type charge">
+                                        Cobro
+                                    </span>
+                                </td>
+                                <td>Gastos médicos</td>
+                                <td>Familiar de María López</td>
+                                <td class="charge-amount">Q 800.00</td>
+                            </tr>
+
+                            <tr>
+                                <td>08/09/2026</td>
+                                <td>
+                                    <span class="income-type charge">
+                                        Cobro
+                                    </span>
+                                </td>
+                                <td>Cuota mensual</td>
+                                <td>Familiar de Carlos Ramírez</td>
+                                <td class="charge-amount">Q 1,000.00</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+            <div class="income-total">
+
+                <div>
+                    <span>Total de entradas del período</span>
+                    <strong>Q 7,800.00</strong>
+                </div>
+
+            </div>
+
+
+            <!-- DESCARGAS -->
+            <div class="download-actions">
+
+                <button class="btn-pdf">
+                    <i class="ph ph-file-pdf"></i>
+                    Descargar PDF
+                </button>
+
+                <button class="btn-excel">
+                    <i class="ph ph-file-xls"></i>
+                    Exportar Excel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     MODAL 6 - EXÁMENES MÉDICOS POR PACIENTE
+========================================================= -->
+<div class="modal-overlay" id="modalExamenesPaciente">
+
+    <div class="modal modal-examenes">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="modal-label">REPORTE MÉDICO</span>
+                <h2>Exámenes médicos realizados</h2>
+                <p>Consulta los exámenes realizados a un paciente durante un período.</p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalExamenes">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="modal-filters">
+
+            <div class="form-group">
+                <label>Paciente</label>
+
+                <select>
+                    <option>Seleccionar paciente</option>
+                    <option>Juan Pérez</option>
+                    <option>María López</option>
+                    <option>Carlos Ramírez</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Fecha inicial</label>
+                <input type="date" value="2026-09-01">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha final</label>
+                <input type="date" value="2026-09-08">
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+                <i class="ph ph-file-search"></i>
+                Generar reporte
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <div class="report-result exams-result">
+
+            <div class="result-header">
+
+                <div>
+                    <span>PACIENTE</span>
+                    <strong>Juan Pérez</strong>
+                </div>
+
+                <div class="result-status">
+                    <i class="ph ph-check-circle"></i>
+                    Reporte generado
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÓN DEL PACIENTE -->
+            <div class="patient-report-info">
+
+                <div>
+                    <span>EDAD</span>
+                    <strong>78 años</strong>
+                </div>
+
+                <div>
+                    <span>FECHA DE INGRESO</span>
+                    <strong>15/03/2026</strong>
+                </div>
+
+                <div>
+                    <span>PERÍODO</span>
+                    <strong>01/09/2026 - 08/09/2026</strong>
+                </div>
+
+            </div>
+
+
+            <!-- EXÁMENES -->
+            <div class="charges-section">
+
+                <div class="charges-title">
+
+                    <div class="charges-title-icon blue">
+                        <i class="ph ph-test-tube"></i>
+                    </div>
+
+                    <div>
+                        <h3>Exámenes realizados</h3>
+                        <span>Historial de exámenes médicos del paciente</span>
+                    </div>
+
+                </div>
+
+
+                <div class="charges-table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Examen</th>
+                                <th>Motivo</th>
+                                <th>Resultado</th>
+                                <th>Estado</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>02/09/2026</td>
+                                <td>Hemograma completo</td>
+                                <td>Control general</td>
+                                <td>Valores normales</td>
+                                <td>
+                                    <span class="status-paid">
+                                        Completado
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>04/09/2026</td>
+                                <td>Glucosa</td>
+                                <td>Control de glucemia</td>
+                                <td>105 mg/dL</td>
+                                <td>
+                                    <span class="status-paid">
+                                        Completado
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>07/09/2026</td>
+                                <td>Presión arterial</td>
+                                <td>Control periódico</td>
+                                <td>125/80 mmHg</td>
+                                <td>
+                                    <span class="status-paid">
+                                        Completado
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+            <div class="exam-summary">
+
+                <div class="expense-summary">
+
+                    <span>EXÁMENES REALIZADOS</span>
+                    <strong>3</strong>
+
+                </div>
+
+                <div class="expense-summary">
+
+                    <span>EXÁMENES PENDIENTES</span>
+                    <strong>0</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESCARGAS -->
+            <div class="download-actions">
+
+                <button class="btn-pdf">
+                    <i class="ph ph-file-pdf"></i>
+                    Descargar PDF
+                </button>
+
+                <button class="btn-excel">
+                    <i class="ph ph-file-xls"></i>
+                    Exportar Excel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     MODAL 7 - MEDICAMENTOS APLICADOS POR PACIENTE
+========================================================= -->
+<div class="modal-overlay" id="modalMedicamentosPaciente">
+
+    <div class="modal modal-medicamentos">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="modal-label">REPORTE MÉDICO</span>
+                <h2>Medicamentos aplicados</h2>
+                <p>Consulta los medicamentos administrados a un paciente.</p>
+            </div>
+
+            <button class="modal-close" id="cerrarModalMedicamentos">
+                <i class="ph ph-x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- FILTROS -->
+        <div class="modal-filters">
+
+            <div class="form-group">
+                <label>Paciente</label>
+
+                <select>
+                    <option>Seleccionar paciente</option>
+                    <option>Juan Pérez</option>
+                    <option>María López</option>
+                    <option>Carlos Ramírez</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Fecha inicial</label>
+                <input type="date" value="2026-09-01">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha final</label>
+                <input type="date" value="2026-09-08">
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button class="btn-generate">
+                <i class="ph ph-file-search"></i>
+                Generar reporte
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <div class="report-result medicines-result">
+
+            <div class="result-header">
+
+                <div>
+                    <span>PACIENTE</span>
+                    <strong>Juan Pérez</strong>
+                </div>
+
+                <div class="result-status">
+                    <i class="ph ph-check-circle"></i>
+                    Reporte generado
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÓN -->
+            <div class="patient-report-info">
+
+                <div>
+                    <span>EDAD</span>
+                    <strong>78 años</strong>
+                </div>
+
+                <div>
+                    <span>DIAGNÓSTICO</span>
+                    <strong>Hipertensión controlada</strong>
+                </div>
+
+                <div>
+                    <span>PERÍODO</span>
+                    <strong>01/09/2026 - 08/09/2026</strong>
+                </div>
+
+            </div>
+
+
+            <!-- MEDICAMENTOS -->
+            <div class="charges-section">
+
+                <div class="charges-title">
+
+                    <div class="charges-title-icon purple">
+                        <i class="ph ph-pill"></i>
+                    </div>
+
+                    <div>
+                        <h3>Medicamentos administrados</h3>
+                        <span>Registro de medicamentos aplicados al paciente</span>
+                    </div>
+
+                </div>
+
+
+                <div class="charges-table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Medicamento</th>
+                                <th>Dosis</th>
+                                <th>Frecuencia</th>
+                                <th>Administrado por</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>02/09/2026</td>
+                                <td>Losartán</td>
+                                <td>50 mg</td>
+                                <td>Cada 24 horas</td>
+                                <td>Enfermero</td>
+                            </tr>
+
+                            <tr>
+                                <td>03/09/2026</td>
+                                <td>Losartán</td>
+                                <td>50 mg</td>
+                                <td>Cada 24 horas</td>
+                                <td>Enfermero</td>
+                            </tr>
+
+                            <tr>
+                                <td>04/09/2026</td>
+                                <td>Paracetamol</td>
+                                <td>500 mg</td>
+                                <td>Según necesidad</td>
+                                <td>Enfermero</td>
+                            </tr>
+
+                            <tr>
+                                <td>05/09/2026</td>
+                                <td>Losartán</td>
+                                <td>50 mg</td>
+                                <td>Cada 24 horas</td>
+                                <td>Enfermero</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+            <div class="medicine-summary">
+
+                <div class="expense-summary">
+
+                    <span>MEDICAMENTOS REGISTRADOS</span>
+                    <strong>4</strong>
+
+                </div>
+
+                <div class="expense-summary">
+
+                    <span>MEDICAMENTOS DIFERENTES</span>
+                    <strong>2</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESCARGAS -->
+            <div class="download-actions">
+
+                <button class="btn-pdf">
+                    <i class="ph ph-file-pdf"></i>
+                    Descargar PDF
+                </button>
+
+                <button class="btn-excel">
+                    <i class="ph ph-file-xls"></i>
+                    Exportar Excel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+    <script src="reportes.js"></script>
+</body>
+</html>
