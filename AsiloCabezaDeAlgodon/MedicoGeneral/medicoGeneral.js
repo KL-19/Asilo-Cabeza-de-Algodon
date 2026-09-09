@@ -1,5 +1,4 @@
 const btnEvaluar = document.getElementById("btnEvaluar");
-const btnHistorial = document.getElementById("btnHistorial");
 const btnSolicitud = document.getElementById("btnSolicitud");
 const btnSolicitudes = document.getElementById("btnSolicitudes");
 
@@ -9,14 +8,6 @@ btnEvaluar.addEventListener("click", () => {
     alert("Aquí comenzará la evaluación médica del interno.");
 
 });
-
-
-btnHistorial.addEventListener("click", () => {
-
-    alert("Aquí se consultará el historial médico del interno.");
-
-});
-
 
 btnSolicitud.addEventListener("click", () => {
 

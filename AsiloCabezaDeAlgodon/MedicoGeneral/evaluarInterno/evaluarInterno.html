@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Evaluar interno | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="evaluarInterno.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BARRA LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL DEL MÉDICO -->
+
+        <div class="doctor-profile">
+
+            <div class="doctor-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>Dr. Médico General</strong>
+                <span>Médico General</span>
+            </div>
+
+        </div>
+
+
+        <!-- MENÚ -->
+
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+
+            <a href="../medicoGeneral.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="evaluarInterno.html" class="menu-item active">
+                <i class="ph ph-stethoscope"></i>
+                <span>Evaluar interno</span>
+            </a>
+
+
+            <p class="menu-title">SOLICITUDES</p>
+
+            <a href="../nuevaSolicitud/nuevaSolicitud.html" class="menu-item">
+                <i class="ph ph-paper-plane-tilt"></i>
+                <span>Nueva solicitud</span>
+            </a>
+
+            <a href="../misSolicitudes/misSolicitudes.html" class="menu-item">
+                <i class="ph ph-clipboard-text"></i>
+                <span>Mis solicitudes</span>
+            </a>
+
+        </nav>
+
+
+        <!-- CERRAR SESIÓN -->
+
+        <div class="sidebar-bottom">
+
+            <a href="../../index.html" class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             BARRA SUPERIOR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome-small">Atención médica</p>
+
+                <h1>Evaluar interno</h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <strong>Dr. Médico General</strong>
+                        <span>Médico General</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             ENCABEZADO DE LA PÁGINA
+        ================================================== -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h2>Nueva evaluación médica</h2>
+
+                <p>
+                    Selecciona un interno para consultar su información
+                    y registrar la evaluación médica.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SELECCIONAR INTERNO
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Seleccionar interno</h2>
+
+                    <p>
+                        Busca al interno que será evaluado.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="search-area">
+
+                <div class="form-group search-group">
+
+                    <label for="interno">
+                        Interno
+                    </label>
+
+                    <div class="input-icon">
+
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="interno"
+                            placeholder="Buscar por nombre o número de interno..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn-primary" id="btnSeleccionar">
+
+                    <i class="ph ph-user-plus"></i>
+
+                    Seleccionar interno
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INFORMACIÓN DEL INTERNO
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Información del interno</h2>
+
+                    <p>
+                        Datos generales del interno seleccionado.
+                    </p>
+
+                </div>
+
+                <span class="selected-status">
+                    Interno seleccionado
+                </span>
+
+            </div>
+
+
+            <div class="patient-info">
+
+                <div class="patient-avatar">
+
+                    <i class="ph ph-user"></i>
+
+                </div>
+
+
+                <div class="patient-main">
+
+                    <h3>María López García</h3>
+
+                    <span>Interno #0025</span>
+
+                </div>
+
+
+                <div class="patient-data">
+
+                    <div>
+
+                        <span>Edad</span>
+
+                        <strong>78 años</strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Habitación</span>
+
+                        <strong>H-12</strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Fecha de ingreso</span>
+
+                        <strong>15/03/2025</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÓN HISTORIAL -->
+
+            <div class="history-action">
+
+                <div>
+
+                    <div class="history-icon">
+                        <i class="ph ph-file-medical"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>Historial médico</strong>
+
+                        <span>
+                            Consulta los antecedentes y registros médicos de este interno.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn-secondary" id="btnHistorial">
+
+                    <i class="ph ph-file-text"></i>
+
+                    Ver historial médico
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EVALUACIÓN MÉDICA
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Evaluación médica</h2>
+
+                    <p>
+                        Registra la información correspondiente a la atención.
+                    </p>
+
+                </div>
+
+                <span class="required-text">
+                    * Campos obligatorios
+                </span>
+
+            </div>
+
+
+            <!-- MOTIVO DE CONSULTA -->
+
+            <div class="form-section">
+
+                <h3>
+                    Motivo de consulta
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="motivo">
+                        Motivo de la consulta *
+                    </label>
+
+                    <textarea
+                        id="motivo"
+                        rows="3"
+                        placeholder="Describe el motivo por el cual el interno está siendo evaluado..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIGNOS VITALES -->
+
+            <div class="form-section">
+
+                <h3>
+                    Signos vitales
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="presion">
+                            Presión arterial
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="text"
+                                id="presion"
+                                placeholder="120/80"
+                            >
+
+                            <span>mmHg</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="temperatura">
+                            Temperatura
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="temperatura"
+                                step="0.1"
+                                placeholder="36.5"
+                            >
+
+                            <span>°C</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="frecuencia">
+                            Frecuencia cardíaca
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="frecuencia"
+                                placeholder="72"
+                            >
+
+                            <span>bpm</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="saturacion">
+                            Saturación de oxígeno
+                        </label>
+
+                        <div class="input-unit">
+
+                            <input
+                                type="number"
+                                id="saturacion"
+                                placeholder="98"
+                            >
+
+                            <span>%</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DIAGNÓSTICO -->
+
+            <div class="form-section">
+
+                <h3>
+                    Diagnóstico
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="diagnostico">
+                        Diagnóstico *
+                    </label>
+
+                    <textarea
+                        id="diagnostico"
+                        rows="3"
+                        placeholder="Escribe el diagnóstico determinado durante la evaluación..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRATAMIENTO -->
+
+            <div class="form-section">
+
+                <h3>
+                    Tratamiento y observaciones
+                </h3>
+
+
+                <div class="form-group">
+
+                    <label for="tratamiento">
+                        Tratamiento indicado
+                    </label>
+
+                    <textarea
+                        id="tratamiento"
+                        rows="3"
+                        placeholder="Describe el tratamiento, medicamentos o indicaciones..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="observaciones">
+                        Observaciones
+                    </label>
+
+                    <textarea
+                        id="observaciones"
+                        rows="3"
+                        placeholder="Agrega cualquier observación adicional..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- REFERENCIA -->
+            <div class="form-section">
+
+    <!-- OPCIÓN DE REFERENCIA -->
+
+    <div class="referral-box">
+
+        <div class="referral-info">
+
+            <div class="referral-icon">
+                <i class="ph ph-paper-plane-tilt"></i>
+            </div>
+
+            <div>
+
+                <h3>¿Requiere atención de un especialista?</h3>
+
+                <p>
+                    Si el interno necesita atención especializada,
+                    al guardar la evaluación se generará una solicitud
+                    para la Fundación.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="requiereEspecialista"
+            >
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="referral-fields">
+
+        <!-- ESPECIALIDAD -->
+
+        <div class="form-group">
+
+            <label for="especialidad">
+                Especialidad requerida *
+            </label>
+
+            <select id="especialidad">
+
+                <option value="">
+                    Seleccionar especialidad
+                </option>
+
+                <option value="cardiologia">
+                    Cardiología
+                </option>
+
+                <option value="neurologia">
+                    Neurología
+                </option>
+
+                <option value="traumatologia">
+                    Traumatología
+                </option>
+
+                <option value="geriatria">
+                    Geriatría
+                </option>
+
+                <option value="oftalmologia">
+                    Oftalmología
+                </option>
+
+                <option value="otra">
+                    Otra especialidad
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ENFERMERO ACOMPAÑANTE -->
+
+        <div class="form-group">
+
+            <label for="enfermero">
+                Enfermero(a) acompañante *
+            </label>
+
+            <select id="enfermero">
+
+                <option value="">
+                    Seleccionar enfermero(a)
+                </option>
+
+                <!--
+                    Estos datos después vendrán de la base de datos.
+                    Solo se mostrarán enfermeros disponibles.
+                -->
+
+                <option value="enfermero-01">
+                    Enfermero Juan Pérez — Disponible
+                </option>
+
+                <option value="enfermera-02">
+                    Enfermera María López — Disponible
+                </option>
+
+                <option value="enfermero-03">
+                    Enfermero Carlos García — Disponible
+                </option>
+
+            </select>
+
+            <span class="field-help">
+                Solo se muestran enfermeros disponibles para acompañamiento.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFORMACIÓN DEL FLUJO -->
+
+    <div class="referral-notice">
+
+        <i class="ph ph-info"></i>
+
+        <p>
+            El enfermero seleccionado quedará reservado para esta solicitud.
+            La Fundación asignará posteriormente la fecha, hora y médico especialista.
+        </p>
+
+    </div>
+
+</div>
+
+            <!-- BOTONES -->
+
+            <div class="form-actions">
+
+                <a href="../evaluarInterno/evaluarInterno.html" class="btn-cancel">
+                    <i class="ph ph-x"></i>
+                    Cancelar
+                </a>
+                
+                <button class="btn-primary" id="btnGuardar">
+
+                    <i class="ph ph-check"></i>
+
+                    Guardar evaluación
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+</body>
+</html>

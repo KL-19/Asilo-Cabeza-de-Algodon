@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nueva solicitud | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="nuevaSolicitud.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BARRA LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL DEL MÉDICO -->
+
+        <div class="doctor-profile">
+
+            <div class="doctor-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>Dr. Médico General</strong>
+                <span>Médico General</span>
+            </div>
+
+        </div>
+
+
+        <!-- MENÚ -->
+
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+
+            <a href="../medicoGeneral.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="../evaluarInterno/evaluarInterno.html" class="menu-item">
+                <i class="ph ph-stethoscope"></i>
+                <span>Evaluar interno</span>
+            </a>
+
+
+            <p class="menu-title">SOLICITUDES</p>
+
+            <a href="../nuevaSolicitud/nuevaSolicitud.html" class="menu-item active">
+                <i class="ph ph-paper-plane-tilt"></i>
+                <span>Nueva solicitud</span>
+            </a>
+
+            <a href="../misSolicitudes/misSolicitudes.html" class="menu-item">
+                <i class="ph ph-clipboard-text"></i>
+                <span>Mis solicitudes</span>
+            </a>
+
+        </nav>
+
+
+        <!-- CERRAR SESIÓN -->
+
+        <div class="sidebar-bottom">
+
+            <a href="../../index.html" class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             BARRA SUPERIOR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome-small">Solicitudes médicas</p>
+
+                <h1>Nueva solicitud</h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <strong>Dr. Médico General</strong>
+                        <span>Médico General</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             ENCABEZADO
+        ================================================== -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h2>Crear solicitud de atención especializada</h2>
+
+                <p>
+                    Registra una solicitud para que la Fundación gestione
+                    la atención del interno con un médico especialista.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FORMULARIO
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Información de la solicitud</h2>
+
+                    <p>
+                        Completa los datos necesarios para realizar la referencia.
+                    </p>
+
+                </div>
+
+                <span class="required-text">
+                    * Campos obligatorios
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 INTERNO
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3>Interno</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label for="interno">
+                            Interno *
+                        </label>
+
+                        <div class="input-icon">
+
+                            <i class="ph ph-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="interno"
+                                placeholder="Buscar por nombre o número de interno..."
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMACIÓN DEL INTERNO -->
+
+                <div class="patient-preview">
+
+                    <div class="patient-avatar">
+
+                        <i class="ph ph-user"></i>
+
+                    </div>
+
+
+                    <div class="patient-main">
+
+                        <strong>María López García</strong>
+
+                        <span>Interno #0025</span>
+
+                    </div>
+
+
+                    <div class="patient-data">
+
+                        <div>
+                            <span>Edad</span>
+                            <strong>78 años</strong>
+                        </div>
+
+                        <div>
+                            <span>Habitación</span>
+                            <strong>H-12</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ESPECIALIDAD
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3>Atención requerida</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="especialidad">
+                            Especialidad requerida *
+                        </label>
+
+                        <select id="especialidad">
+
+                            <option value="">
+                                Seleccionar especialidad
+                            </option>
+
+                            <option value="cardiologia">
+                                Cardiología
+                            </option>
+
+                            <option value="neurologia">
+                                Neurología
+                            </option>
+
+                            <option value="traumatologia">
+                                Traumatología
+                            </option>
+
+                            <option value="geriatria">
+                                Geriatría
+                            </option>
+
+                            <option value="oftalmologia">
+                                Oftalmología
+                            </option>
+
+                            <option value="otra">
+                                Otra especialidad
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="prioridad">
+                            Prioridad *
+                        </label>
+
+                        <select id="prioridad">
+
+                            <option value="">
+                                Seleccionar prioridad
+                            </option>
+
+                            <option value="normal">
+                                Normal
+                            </option>
+
+                            <option value="urgente">
+                                Urgente
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ENFERMERO ACOMPAÑANTE
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3>Enfermero(a) acompañante</h3>
+
+
+                <div class="nurse-box">
+
+                    <div class="nurse-icon">
+
+                        <i class="ph ph-first-aid-kit"></i>
+
+                    </div>
+
+
+                    <div class="nurse-content">
+
+                        <div class="form-group">
+
+                            <label for="enfermero">
+                                Enfermero(a) disponible *
+                            </label>
+
+                            <select id="enfermero">
+
+                                <option value="">
+                                    Seleccionar enfermero(a)
+                                </option>
+
+                                <option value="enfermero-01">
+                                    Enfermero Juan Pérez — Disponible
+                                </option>
+
+                                <option value="enfermera-02">
+                                    Enfermera María López — Disponible
+                                </option>
+
+                                <option value="enfermero-03">
+                                    Enfermero Carlos García — Disponible
+                                </option>
+
+                            </select>
+
+                            <span class="field-help">
+                                Solo se muestran enfermeros disponibles en este momento.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reservation-notice">
+
+                    <i class="ph ph-info"></i>
+
+                    <p>
+                        Al enviar la solicitud, el enfermero seleccionado
+                        quedará reservado para acompañar al interno.
+                        Su asignación quedará vinculada a la fecha y hora
+                        que posteriormente determine la Fundación.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MOTIVO DE REFERENCIA
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3>Motivo de la solicitud</h3>
+
+
+                <div class="form-group">
+
+                    <label for="motivo">
+                        Motivo de referencia *
+                    </label>
+
+                    <textarea
+                        id="motivo"
+                        rows="4"
+                        placeholder="Describe por qué el interno necesita atención especializada..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 OBSERVACIONES
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3>Información adicional</h3>
+
+
+                <div class="form-group">
+
+                    <label for="observaciones">
+                        Observaciones
+                    </label>
+
+                    <textarea
+                        id="observaciones"
+                        rows="4"
+                        placeholder="Agrega información adicional que deba conocer la Fundación..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 INFORMACIÓN DEL FLUJO
+            ================================================== -->
+
+            <div class="request-flow">
+
+                <div class="flow-icon">
+
+                    <i class="ph ph-buildings"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>¿Qué sucede después?</strong>
+
+                    <p>
+                        La solicitud será enviada a la Fundación.
+                        Ellos gestionarán la atención y asignarán
+                        el médico especialista, la fecha y la hora.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOTONES
+            ================================================== -->
+
+            <div class="form-actions">
+
+                <a href="../nuevaSolicitud/nuevaSolicitud.html" class="btn-cancel">
+                    <i class="ph ph-x"></i>
+                    Cancelar
+                </a>
+
+                <button class="btn-primary" id="btnEnviar">
+
+                    <i class="ph ph-paper-plane-tilt"></i>
+
+                    Enviar solicitud
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
