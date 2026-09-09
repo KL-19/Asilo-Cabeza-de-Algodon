@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Panel del Enfermero | Cabeza de Algodón</title>
+    <title>Enfermero | Cabeza de Algodón</title>
 
     <link rel="stylesheet" href="enfermero.css">
 
@@ -17,63 +17,53 @@
 
 <body>
 
-    <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar">
+        <!-- LOGO -->
         <div class="logo">
 
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
             </div>
 
-            <div class="logo-text">
+            <div>
                 <h2>Cabeza de Algodón</h2>
-                <span>Asilo de Ancianos</span>
+                <span>Sistema de Gestión</span>
             </div>
 
         </div>
 
+        <!-- PERFIL DEL ENFERMERO -->
+        <div class="nurse-profile">
+            <div class="nurse-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>Enfermero</strong>
+                <span>Enfermero</span>
+            </div>
+        </div>
+
+        <!-- MENÚ -->
         <nav class="menu">
-            <p class="menu-title">MENÚ PRINCIPAL</p>
-            <a href="#" class="menu-item active">
-                <i class="ph ph-house"></i>
+            <p class="menu-title">PRINCIPAL</p>
+            <a href="Enfermero.html" class="menu-item active">
+                <i class="ph ph-squares-four"></i>
                 <span>Inicio</span>
             </a>
 
-            <a href="#" class="menu-item">
+            <a href="../Enfermero/misAsignaciones.html" class="menu-item">
                 <i class="ph ph-users-three"></i>
                 <span>Mis asignaciones</span>
             </a>
+        </nav>
 
-            <a href="#" class="menu-item">
-                <i class="ph ph-bell"></i>
-                <span>Notificaciones</span>
-                <span class="notification-count">2</span>
-            </a>
-
-            <p class="menu-title menu-secondary">CUENTA</p>
-
-            <a href="#" class="menu-item">
-                <i class="ph ph-user"></i>
-                <span>Mi perfil</span>
-            </a>
-
-            <a href="../index.html" class="logout">
+        <!-- CERRAR SESIÓN -->
+        <div class="sidebar-bottom">
+            <a href="../../AsiloCabezaDeAlgodon/index.html" class="menu-item logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
             </a>
-        </nav>
-
-        <!-- Información del usuario -->
-        <div class="user-sidebar">
-            <div class="user-avatar">
-                <i class="ph ph-user"></i>
-            </div>
-
-            <div class="user-info">
-                <strong>Enfermero</strong>
-                <span>Personal de atención</span>
-            </div>
-
         </div>
     </aside>
 
@@ -84,33 +74,37 @@
         <header class="topbar">
             <div>
                 <p class="welcome-small">Panel de atención</p>
-                <h1>
-                    Bienvenido, Enfermero 
+                <h1 id="greeting">
+                    Buenos días
                 </h1>
             </div>
 
-            <div class="topbar-right">
-                <button class="notification-button">
+            <div class="top-actions">
+
+                <!-- NOTIFICACIONES -->
+                <button class="notification">
                     <i class="ph ph-bell"></i>
                     <span class="notification-dot"></span>
                 </button>
 
-                <div class="profile">
-                    <div class="profile-avatar">
+                <!-- PERFIL SUPERIOR -->
+                <div class="top-profile">
+                    <div class="small-avatar">
                         <i class="ph ph-user"></i>
                     </div>
+
                     <div>
                         <strong>Enfermero</strong>
-                        <span>Personal de atención</span>
+                        <span>Enfermero</span>
                     </div>
-                    <i class="ph ph-caret-down"></i>
                 </div>
             </div>
         </header>
 
         <!-- ================= CONTENIDO ================= -->
         <section class="dashboard-content">
-            <!-- TARJETAS -->
+
+            <!-- TARJETAS DE RESUMEN -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon blue">
@@ -254,18 +248,10 @@
                                     </strong>
                                 </div>
                             </td>
-                            <td>
-                                28 Ago 2026
-                            </td>
-                            <td>
-                                03:00 PM
-                            </td>
-                            <td>
-                                Cardiología
-                            </td>
-                            <td>
-                                Dr. Especialista
-                            </td>
+                            <td>28 Ago 2026</td>
+                            <td>03:00 PM</td>
+                            <td>Cardiología</td>
+                            <td>Dr. Especialista</td>
                             <td>
                                 <span class="status pending">
                                     Pendiente
@@ -290,18 +276,10 @@
                                     </strong>
                                 </div>
                             </td>
-                            <td>
-                                30 Ago 2026
-                            </td>
-                            <td>
-                                10:00 AM
-                            </td>
-                            <td>
-                                Neurología
-                            </td>
-                            <td>
-                                Dra. Especialista
-                            </td>
+                            <td>30 Ago 2026</td>
+                            <td>10:00 AM</td>
+                            <td>Neurología</td>
+                            <td>Dra. Especialista</td>
                             <td>
                                 <span class="status confirmed">
                                     Confirmada
@@ -326,18 +304,10 @@
                                     </strong>
                                 </div>
                             </td>
-                            <td>
-                                02 Sep 2026
-                            </td>
-                            <td>
-                                02:00 PM
-                            </td>
-                            <td>
-                                Traumatología
-                            </td>
-                            <td>
-                                Dr. Especialista
-                            </td>
+                            <td>02 Sep 2026</td>
+                            <td>02:00 PM</td>
+                            <td>Traumatología</td>
+                            <td>Dr. Especialista</td>
                             <td>
                                 <span class="status confirmed">
                                     Confirmada
@@ -371,6 +341,6 @@
 
         </section>
     </main>
-    <script src="Enfermero.js"></script>
+    <script src="../Enfermero/Enfermero.js"></script>
 </body>
 </html>
