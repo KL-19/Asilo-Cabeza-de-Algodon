@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Servicios pendientes | Fundación</title>
+
+    <link rel="stylesheet" href="serviciosPendientes.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- BARRA LATERAL -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL FUNDACIÓN -->
+
+        <div class="foundation-profile">
+
+            <div class="foundation-avatar">
+                <i class="ph ph-buildings"></i>
+            </div>
+
+            <div>
+                <strong>Fundación</strong>
+                <span>Coordinación médica</span>
+            </div>
+
+        </div>
+
+
+        <!-- MENÚ -->
+
+        <nav class="menu">
+
+            <p class="menu-title">PRINCIPAL</p>
+
+            <a href="../Fundacion.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Inicio</span>
+
+            </a>
+
+
+            <p class="menu-title">SOLICITUDES</p>
+
+            <a href="../solicitudesP/solicitudesPendientes.html" class="menu-item">
+
+                <i class="ph ph-clipboard-text"></i>
+
+                <span>Solicitudes pendientes</span>
+
+            </a>
+
+
+            <a href="../citasProgramadas/citasProgramadas.html" class="menu-item">
+
+                <i class="ph ph-calendar-check"></i>
+
+                <span>Citas programadas</span>
+
+            </a>
+
+
+            <p class="menu-title">ATENCIÓN MÉDICA</p>
+
+            <a href="../atencionesRealizadas/atencionesRealizadas.html" class="menu-item">
+
+                <i class="ph ph-stethoscope"></i>
+
+                <span>Atenciones realizadas</span>
+
+            </a>
+
+
+            <p class="menu-title">PAGOS</p>
+
+            <a href="serviciosPendientes.html" class="menu-item active">
+
+                <i class="ph ph-receipt"></i>
+
+                <span>Servicios pendientes</span>
+
+            </a>
+
+
+            <a href="../estadoDePagos/estadoPagos.html" class="menu-item">
+
+                <i class="ph ph-credit-card"></i>
+
+                <span>Estado de pagos</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- CERRAR SESIÓN -->
+
+        <div class="sidebar-bottom">
+
+            <a href="../../index.html" class="menu-item logout">
+
+                <i class="ph ph-sign-out"></i>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ============================= -->
+
+    <main class="main-content">
+
+        <!-- ENCABEZADO -->
+
+        <header class="topbar">
+
+            <div class="topbar-title">
+
+                <span>Pagos</span>
+
+                <h1>Servicios pendientes</h1>
+
+                <p>
+                    Consulte los servicios médicos realizados que se encuentran
+                    pendientes de pago por parte de los familiares responsables.
+                </p>
+
+            </div>
+
+            <div class="topbar-actions">
+                <!-- NOTIFICACIONES -->
+
+                <button class="notification">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <!-- PERFIL -->
+                 <div class="top-profile">
+                    <div class="small-avatar">
+                        <i class="ph ph-buildings"></i>
+                    </div>
+
+                    <div>
+                        <strong>Fundación</strong>
+                        <span>Coordinación médica</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ============================= -->
+        <!-- TARJETAS DE RESUMEN -->
+        <!-- ============================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- SERVICIOS PENDIENTES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="ph ph-receipt"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Servicios pendientes</span>
+
+                    <strong>12</strong>
+
+                    <small>Servicios por cobrar</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONTO PENDIENTE -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="ph ph-currency-dollar"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Monto pendiente</span>
+
+                    <strong>Q 4,850</strong>
+
+                    <small>Total por cobrar</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICIOS DEL MES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="ph ph-calendar"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Este mes</span>
+
+                    <strong>7</strong>
+
+                    <small>Servicios generados</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAMILIARES CON SALDO -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="ph ph-users"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Familiares con saldo</span>
+
+                    <strong>9</strong>
+
+                    <small>Con servicios pendientes</small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- CONTENEDOR DE SERVICIOS -->
+        <!-- ============================= -->
+
+        <section class="services-container">
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Servicios pendientes de pago</h2>
+
+                    <p>
+                        Servicios médicos registrados que aún no han sido pagados.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- FILTROS -->
+            <!-- ============================= -->
+
+            <div class="filters">
+
+
+                <!-- BUSCAR INTERNO -->
+
+                <div class="filter-group">
+
+                    <label>Buscar interno</label>
+
+                    <div class="input-search">
+
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Nombre o número de interno"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- TIPO DE SERVICIO -->
+
+                <div class="filter-group">
+
+                    <label>Tipo de servicio</label>
+
+                    <select>
+
+                        <option value="">Todos los servicios</option>
+                        <option>Consulta médica</option>
+                        <option>Examen de laboratorio</option>
+                        <option>Medicamentos</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FECHA -->
+
+                <div class="filter-group">
+
+                    <label>Fecha</label>
+
+                    <input type="date">
+
+                </div>
+
+
+                <!-- BOTÓN FILTRAR -->
+
+                <div class="filter-action">
+
+                    <button class="btn-filter">
+
+                        <i class="ph ph-funnel"></i>
+
+                        Filtrar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- TABLA -->
+            <!-- ============================= -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Interno</th>
+                            <th>Servicio</th>
+                            <th>Descripción</th>
+                            <th>Fecha</th>
+                            <th>Familiar responsable</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- ============================= -->
+                        <!-- SERVICIO 1 -->
+                        <!-- ============================= -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>María López García</strong>
+
+                                        <span>#0025</span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="service-type consultation">
+
+                                    Consulta médica
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                Consulta especializada de Cardiología
+
+                            </td>
+
+
+                            <td>
+                                20 Sep 2026
+                            </td>
+
+
+                            <td>
+                                María López
+                            </td>
+
+
+                            <td>
+
+                                <strong class="amount">
+                                    Q 350.00
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ============================= -->
+                        <!-- SERVICIO 2 -->
+                        <!-- ============================= -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>José Ramírez</strong>
+
+                                        <span>#0018</span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="service-type laboratory">
+
+                                    Examen de laboratorio
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                Hemograma completo y perfil lipídico
+
+                            </td>
+
+
+                            <td>
+                                18 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Juan Pérez
+                            </td>
+
+
+                            <td>
+
+                                <strong class="amount">
+                                    Q 275.00
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ============================= -->
+                        <!-- SERVICIO 3 -->
+                        <!-- ============================= -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>Pedro González</strong>
+
+                                        <span>#0031</span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="service-type medication">
+
+                                    Medicamentos
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                Medicamento indicado en receta médica
+
+                            </td>
+
+
+                            <td>
+                                15 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Carlos García
+                            </td>
+
+
+                            <td>
+
+                                <strong class="amount">
+                                    Q 125.00
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ============================= -->
+                        <!-- SERVICIO 4 -->
+                        <!-- ============================= -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>Ana Martínez</strong>
+
+                                        <span>#0012</span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="service-type consultation">
+
+                                    Consulta médica
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                Consulta especializada de Geriatría
+
+                            </td>
+
+
+                            <td>
+                                12 Sep 2026
+                            </td>
+
+
+                            <td>
+                                María López
+                            </td>
+
+
+                            <td>
+
+                                <strong class="amount">
+                                    Q 300.00
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- PAGINACIÓN -->
+            <!-- ============================= -->
+
+            <div class="pagination">
+
+                <span>
+                    Mostrando 4 de 12 servicios
+                </span>
+
+
+                <div class="pagination-buttons">
+
+                    <button class="page-btn disabled">
+
+                        <i class="ph ph-caret-left"></i>
+
+                    </button>
+
+                    <button class="page-btn active">
+                        1
+                    </button>
+
+                    <button class="page-btn">
+                        2
+                    </button>
+
+                    <button class="page-btn">
+                        3
+                    </button>
+
+                    <button class="page-btn">
+
+                        <i class="ph ph-caret-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

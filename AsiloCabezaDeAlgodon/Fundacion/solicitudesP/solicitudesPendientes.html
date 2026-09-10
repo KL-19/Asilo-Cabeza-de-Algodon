@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitudes pendientes | Cabeza de Algodón</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="solicitudesPendientes.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <i class="ph ph-heartbeat"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>Cabeza de Algodón</h2>
+
+                <span>Sistema de Gestión</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PERFIL FUNDACIÓN -->
+
+        <div class="foundation-profile">
+
+            <div class="foundation-avatar">
+
+                <i class="ph ph-buildings"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong>Fundación</strong>
+
+                <span>Coordinación médica</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MENÚ
+        ================================================== -->
+
+        <nav class="menu">
+            <p class="menu-title">PRINCIPAL</p>
+
+
+            <a href="../Fundacion.html" class="menu-item">
+                <i class="ph ph-squares-four"></i>
+                <span>Inicio</span>
+            </a>
+        
+            <!-- SOLICITUDES -->
+            <p class="menu-title">
+                SOLICITUDES
+            </p>
+
+            <a href="solicitudesPendientes.html" class="menu-item active">
+                <i class="ph ph-clipboard-text"></i>
+                <span>Solicitudes pendientes</span>
+            </a>
+
+            <a href="../citasProgramadas/citasProgramadas.html" class="menu-item">
+                <i class="ph ph-calendar-check"></i>
+                <span>Citas programadas</span>
+            </a>
+
+            <!-- ATENCIÓN MÉDICA -->
+            <p class="menu-title">
+                ATENCIÓN MÉDICA
+            </p>
+
+            <a href="../atencionesRealizadas/atencionesRealizadas.html"
+               class="menu-item">
+                <i class="ph ph-stethoscope"></i>
+                <span>Atenciones realizadas</span>
+            </a>
+
+            <!-- PAGOS -->
+            <p class="menu-title">
+                PAGOS
+            </p>
+
+            <a href="../serviciosPendientes/serviciosPendientes.html"
+               class="menu-item">
+                <i class="ph ph-receipt"></i>
+                <span>Servicios pendientes</span>
+            </a>
+
+
+            <a href="../estadoDePagos/estadoPagos.html"
+               class="menu-item">
+                <i class="ph ph-credit-card"></i>
+                <span>Estado de pagos</span>
+            </a>
+        </nav>
+
+        <!-- =================================================
+             CERRAR SESIÓN
+        ================================================== -->
+        <div class="sidebar-bottom">
+            <a href="../../index.html"
+               class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+        </div>
+    </aside>
+
+
+       <!-- ============================= -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ============================= -->
+
+    <main class="main-content">
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="topbar-title"> 
+                <span> Solicitudes Médicas</span> 
+                <h1> Solicitudes pendientes </h1> 
+                <p> Revise las solicitudes enviadas por el Médico General y programe la atención con el especialista correspondiente. </p> 
+            </div>
+
+
+            <div class="top-actions">
+                <!-- NOTIFICACIONES -->
+                <button class="notification">
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <!-- PERFIL -->
+                <div class="top-profile">
+                    <div class="small-avatar">
+                        <i class="ph ph-buildings"></i>
+                    </div>
+
+                    <div>
+                        <strong>Fundación</strong>
+                        <span>Coordinación médica</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =================================================
+             RESUMEN
+        ================================================== -->
+
+        <section class="stats-grid">
+            <!-- TOTAL PENDIENTES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="ph ph-clipboard-text"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Total pendientes</span>
+
+                    <strong>3</strong>
+
+                </div>
+
+            </div>
+
+            <!-- PRIORIDAD ALTA -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="ph ph-warning"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Prioridad alta</span>
+
+                    <strong>2</strong>
+
+                </div>
+
+            </div>
+
+            <!-- RECIBIDAS HOY -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="ph ph-calendar-plus"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Recibidas hoy</span>
+
+                    <strong>1</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+             PANEL DE SOLICITUDES
+        ================================================== -->
+
+        <section class="content-panel">
+            <!-- CABECERA -->
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Solicitudes recibidas
+                    </h3>
+
+                    <p>
+                        Solicitudes pendientes de asignación de especialista y horario.
+                    </p>
+
+                </div>
+
+                <!-- BUSCADOR -->
+                <div class="filter-box">
+
+                    <i class="ph ph-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="buscarSolicitud"
+                        placeholder="Buscar interno...">
+
+                </div>
+
+            </div>
+
+            <!-- =================================================
+                 TABLA
+            ================================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Interno</th>
+
+                            <th>Especialidad</th>
+
+                            <th>Prioridad</th>
+
+                            <th>Enfermero(a)</th>
+
+                            <th>Fecha de solicitud</th>
+
+                            <th>Estado</th>
+
+                            <th>Acción</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <!-- =================================================
+                             SOLICITUD 1
+                        ================================================== -->
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-person"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            María López García
+                                        </strong>
+
+                                        <span>
+                                            Interno #0025
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Cardiología
+                            </td>
+
+                            <td>
+                                <span class="priority high">
+                                    Alta
+                                </span>
+
+                            </td>
+
+                            <td>
+                                María López
+                            </td>
+
+                            <td>
+                                18 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn-view"
+                                    onclick="abrirSolicitud()">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Revisar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- =================================================
+                             SOLICITUD 2
+                        ================================================== -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-person"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            José Ramírez López
+                                        </strong>
+
+                                        <span>
+                                            Interno #0018
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Neurología
+                            </td>
+
+                            <td>
+
+                                <span class="priority normal">
+                                    Normal
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Juan Pérez
+                            </td>
+
+                            <td>
+                                17 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn-view"
+                                    onclick="abrirSolicitud()">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Revisar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- =================================================
+                             SOLICITUD 3
+                        ================================================== -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-person"></i>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Pedro González
+                                        </strong>
+
+                                        <span>
+                                            Interno #0031
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Traumatología
+                            </td>
+
+
+                            <td>
+
+                                <span class="priority high">
+                                    Alta
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                Carlos García
+                            </td>
+
+
+                            <td>
+                                17 Sep 2026
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    class="btn-view"
+                                    onclick="abrirSolicitud()">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Revisar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- =================================================
+                             SOLICITUD 4
+                        ================================================== -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-info">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-person"></i>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Ana Martínez
+                                        </strong>
+
+                                        <span>
+                                            Interno #0012
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Geriatría
+                            </td>
+
+                            <td>
+
+                                <span class="priority normal">
+                                    Normal
+                                </span>
+
+                            </td>
+
+                            <td>
+                                María López
+                            </td>
+
+                            <td>
+                                16 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pendiente
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn-view"
+                                    onclick="abrirSolicitud()">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Revisar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =================================================
+         MODAL - REVISAR SOLICITUD
+    ================================================== -->
+
+    <div class="modal-overlay"
+         id="modalSolicitud">
+
+        <div class="modal">
+
+            <!-- =================================================
+                 CABECERA DEL MODAL
+            ================================================== -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-label">
+                        SOLICITUD MÉDICA
+                    </span>
+
+                    <h2>
+                        Revisar solicitud
+                    </h2>
+
+                    <p>
+                        Revise la información y asigne el especialista
+                        y horario para la atención.
+                    </p>
+
+                </div>
+
+                <button
+                    class="close-modal"
+                    onclick="cerrarSolicitud()">
+
+                    <i class="ph ph-x"></i>
+
+                </button>
+
+            </div>
+
+            <!-- =================================================
+                 INFORMACIÓN DEL INTERNO
+            ================================================== -->
+
+            <div class="modal-section">
+
+
+                <h3>
+
+                    <i class="ph ph-user"></i>
+
+                    Información del interno
+
+                </h3>
+
+                <div class="patient-detail">
+
+                    <div class="large-avatar">
+
+                        <i class="ph ph-person"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            María López García
+                        </strong>
+
+                        <span>
+                            Interno #0025
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+
+                        <span>Edad</span>
+
+                        <strong>
+                            78 años
+                        </strong>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span>Habitación</span>
+
+                        <strong>
+                            H-12
+                        </strong>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span>Especialidad</span>
+
+                        <strong>
+                            Cardiología
+                        </strong>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <span>Prioridad</span>
+
+                        <strong class="text-high">
+                            Alta
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =================================================
+                 INFORMACIÓN MÉDICA
+            ================================================== -->
+
+            <div class="modal-section">
+
+                <h3>
+
+                    <i class="ph ph-stethoscope"></i>
+
+                    Información de la solicitud
+
+                </h3>
+
+                <div class="medical-info">
+
+                    <div>
+
+                        <span>
+                            Motivo de referencia
+                        </span>
+
+                        <p>
+                            El interno presenta episodios frecuentes
+                            de dolor en el pecho y dificultad para respirar.
+                            Se solicita valoración por Cardiología.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Diagnóstico del Médico General
+                        </span>
+
+                        <p>
+                            Dolor torácico recurrente. Se requiere
+                            evaluación especializada para descartar
+                            complicaciones cardiovasculares.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Enfermero(a) acompañante
+                        </span>
+
+                        <p>
+                            <strong>
+                                María López
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =================================================
+                 PROGRAMAR ATENCIÓN
+            ================================================== -->
+
+            <div class="modal-section">
+
+
+                <h3>
+
+                    <i class="ph ph-calendar-plus"></i>
+
+                    Programar atención
+
+                </h3>
+
+                <div class="form-grid">
+
+
+                    <!-- MÉDICO ESPECIALISTA -->
+
+                    <div class="form-group">
+
+                        <label for="medicoEspecialista">
+                            Médico especialista *
+                        </label>
+
+
+                        <select id="medicoEspecialista">
+
+                            <option value="">
+                                Seleccionar especialista
+                            </option>
+
+                            <option>
+                                Dr. Carlos Méndez — Cardiología
+                            </option>
+
+                            <option>
+                                Dra. Laura Ramírez — Cardiología
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- FECHA -->
+
+                    <div class="form-group">
+
+                        <label for="fechaAtencion">
+                            Fecha *
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="fechaAtencion">
+
+                    </div>
+
+                    <!-- HORA -->
+
+                    <div class="form-group">
+
+                        <label for="horaAtencion">
+                            Hora *
+                        </label>
+
+
+                        <select id="horaAtencion">
+
+                            <option value="">
+                                Seleccionar hora
+                            </option>
+
+                            <option>
+                                08:00 AM
+                            </option>
+
+                            <option>
+                                09:00 AM
+                            </option>
+
+                            <option>
+                                10:00 AM
+                            </option>
+
+                            <option>
+                                11:00 AM
+                            </option>
+
+                            <option>
+                                02:00 PM
+                            </option>
+
+                            <option>
+                                03:00 PM
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- AVISO -->
+
+                <div class="schedule-notice">
+
+                    <i class="ph ph-info"></i>
+
+                    <p>
+
+                        Al confirmar la programación, la solicitud
+                        dejará de aparecer en esta bandeja y pasará
+                        a <strong>Citas programadas</strong>.
+                        El sistema notificará al personal correspondiente.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- =================================================
+                 ACCIONES
+            ================================================== -->
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-cancel"
+                    onclick="cerrarSolicitud()">
+
+                    <i class="ph ph-x"></i>
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    class="btn-confirm"
+                    id="btnConfirmar">
+
+                    <i class="ph ph-calendar-check"></i>
+
+                    Confirmar programación
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="solicitudesPendientes.js"></script>
+
+</body>
+
+</html>
