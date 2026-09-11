@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar resultado | Cabeza de Algodón</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="registrarResultado.css">
+</head>
+
+<body>
+
+    <main class="main-content">
+
+        <!-- ENCABEZADO -->
+        <header class="page-header">
+
+            <div class="header-left">
+
+                <a href="../Examenes/Examenes.html" class="back-button">
+                    <i class="ph ph-arrow-left"></i>
+                    Volver a exámenes
+                </a>
+
+                <span class="section-label">
+                    Laboratorio
+                </span>
+
+                <h1>Registrar resultado</h1>
+
+                <p>
+                    Ingrese los resultados obtenidos del examen realizado
+                    y guarde la información en la visita médica correspondiente.
+                </p>
+
+            </div>
+
+            <div class="header-icon">
+                <i class="ph ph-flask"></i>
+            </div>
+
+        </header>
+
+        <!-- INFORMACIÓN DEL PACIENTE -->
+        <section class="patient-card">
+
+            <div class="patient-icon">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div class="patient-info">
+
+                <span class="card-label">
+                    Paciente
+                </span>
+
+                <h2 id="nombrePaciente">
+                    María López García
+                </h2>
+
+                <span class="patient-code">
+                    Interno #0025
+                </span>
+
+            </div>
+
+            <div class="patient-details">
+
+                <div>
+                    <span>Atención médica</span>
+                    <strong id="atencionId">
+                        AT-00125
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Fecha</span>
+                    <strong id="fechaExamen">
+                        10/09/2026
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- INFORMACIÓN DEL EXAMEN -->
+        <section class="exam-header-card">
+
+            <div>
+
+                <span class="card-label">
+                    Examen solicitado
+                </span>
+
+                <h2 id="nombreExamen">
+                    Hemograma completo
+                </h2>
+
+                <p>
+                    Solicitud asociada a la atención médica
+                    <strong id="atencionTexto">AT-00125</strong>.
+                </p>
+
+            </div>
+
+            <span class="status processing">
+                En proceso
+            </span>
+
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <div>
+                    <h2>Resultados del examen</h2>
+
+                    <p>
+                        Ingrese los valores obtenidos por el laboratorio.
+                    </p>
+                </div>
+
+                <i class="ph ph-clipboard-text"></i>
+
+            </div>
+
+     
+            <div id="resultadosContainer" class="results-grid">
+
+                <!-- EJEMPLO: HEMOGRAMA -->
+
+                <div class="field-group">
+                    <label for="hemoglobina">
+                        Hemoglobina
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="hemoglobina"
+                            step="0.1"
+                            placeholder="Ej. 13.2"
+                        >
+
+                        <span>g/dL</span>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="hematocrito">
+                        Hematocrito
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="hematocrito"
+                            step="0.1"
+                            placeholder="Ej. 40"
+                        >
+
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="leucocitos">
+                        Leucocitos
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="leucocitos"
+                            placeholder="Ej. 7200"
+                        >
+                        <span>/µL</span>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="plaquetas">
+                        Plaquetas
+                    </label>
+
+                    <div class="input-unit">
+                        <input
+                            type="number"
+                            id="plaquetas"
+                            placeholder="Ej. 250000"
+                        >
+
+                        <span>/µL</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- OBSERVACIONES -->
+            <div class="observations">
+
+                <label for="observaciones">
+                    Observaciones del laboratorio
+                </label>
+
+                <textarea
+                    id="observaciones"
+                    rows="5"
+                    placeholder="Escriba aquí las observaciones relevantes del examen..."
+                ></textarea>
+
+            </div>
+
+            <!-- INFORMACIÓN -->
+            <div class="info-box">
+
+                <i class="ph ph-info"></i>
+
+                <p>
+                    Los resultados quedarán asociados a la atención médica
+                    correspondiente y podrán ser consultados posteriormente
+                    por el médico especialista.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- BOTONES -->
+        <footer class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                onclick="cancelarRegistro()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                class="btn-save"
+                onclick="registrarResultado()"
+            >
+                <i class="ph ph-check"></i>
+                Registrar resultado
+            </button>
+
+        </footer>
+
+    </main>
+
+
+    <!-- MENSAJE DE ÉXITO -->
+    <div id="successMessage" class="success-message">
+
+        <div class="success-icon">
+            <i class="ph ph-check"></i>
+        </div>
+
+        <div>
+            <strong>Resultado registrado</strong>
+
+            <span>
+                El resultado fue asociado correctamente a la atención médica.
+            </span>
+        </div>
+
+    </div>
+
+    <script src="registrarResultado.js"></script>
+
+</body>
+</html>

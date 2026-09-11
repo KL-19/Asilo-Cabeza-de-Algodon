@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historial de exámenes | Cabeza de Algodón</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="HistorialExamenes.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+
+        <div class="laboratory-profile">
+
+            <div class="laboratory-avatar">
+                <i class="ph ph-flask"></i>
+            </div>
+
+            <div>
+                <strong>Laboratorio</strong>
+                <span>Área de diagnóstico</span>
+            </div>
+
+        </div>
+
+
+
+        <nav class="menu">
+
+
+            <p class="menu-title">
+                PRINCIPAL
+            </p>
+
+
+            <a href="../Laboratorio.html" class="menu-item">
+
+                <i class="ph ph-squares-four"></i>
+
+                <span>
+                    Inicio
+                </span>
+
+            </a>
+
+
+            <a href="../solicitudesPendientes/solicitudesPendientes.html"
+                class="menu-item">
+
+                <i class="ph ph-clipboard-text"></i>
+
+                <span>
+                    Solicitudes pendientes
+                </span>
+
+            </a>
+
+
+            <a href="../Examenes/Examenes.html"
+                class="menu-item">
+
+                <i class="ph ph-flask"></i>
+
+                <span>
+                    Exámenes
+                </span>
+
+            </a>
+
+            <p class="menu-title">
+                CONSULTAS
+            </p>
+
+            <a href="HistorialExamenes.html"
+                class="menu-item active">
+                <i class="ph ph-clock-counter-clockwise"></i>
+                <span>
+                    Historial de exámenes
+                </span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../../index.html"
+                class="menu-item logout">
+
+                <i class="ph ph-sign-out"></i>
+
+                <span>
+                    Cerrar sesión
+                </span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="welcome-small">
+                    Consultas
+                </span>
+
+                <h1>
+                    Historial de exámenes
+                </h1>
+
+                <p>
+                    Consulte el historial de exámenes realizados
+                    a los internos del asilo.
+                </p>
+
+            </div>
+
+            <div class="top-actions">
+
+
+                <button class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+
+                        <i class="ph ph-flask"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Laboratorio
+                        </strong>
+
+                        <span>
+                            Área de diagnóstico
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+             ESTADÍSTICAS
+        ========================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="ph ph-files"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total de exámenes
+                    </span>
+
+                    <strong>
+                        86
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="ph ph-calendar-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Este mes
+                    </span>
+
+                    <strong>
+                        28
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="ph ph-users"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Internos atendidos
+                    </span>
+
+                    <strong>
+                        24
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="ph ph-test-tube"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Tipos de exámenes
+                    </span>
+
+                    <strong>
+                        8
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <!-- =========================
+             PANEL HISTORIAL
+        ========================== -->
+        <section class="history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Historial de exámenes
+                    </h2>
+
+                    <p>
+                        Registro histórico de los exámenes
+                        realizados en el laboratorio.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- =========================
+                 FILTROS
+            ========================== -->
+            <div class="filters">
+
+                <div class="filter-group">
+
+                    <label for="buscar">
+                        Buscar interno
+                    </label>
+
+                    <div class="input-search">
+
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscar"
+                            placeholder="Nombre o código del interno">
+
+                    </div>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="tipoExamen">
+                        Tipo de examen
+                    </label>
+
+                    <select id="tipoExamen">
+
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="hemograma">
+                            Hemograma
+                        </option>
+
+                        <option value="orina">
+                            Examen de orina
+                        </option>
+
+                        <option value="lipidico">
+                            Perfil lipídico
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="desde">
+                        Desde
+                    </label>
+
+                    <input
+                        type="date"
+                        id="desde">
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="hasta">
+                        Hasta
+                    </label>
+
+                    <input
+                        type="date"
+                        id="hasta">
+
+                </div>
+
+                <button
+                    class="btn-filter"
+                    onclick="filtrarHistorial()">
+
+                    <i class="ph ph-funnel"></i>
+
+                    Filtrar
+
+                </button>
+
+            </div>
+
+            <!-- =========================
+                 TABLA
+            ========================== -->
+            <div class="table-container">
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Interno
+                            </th>
+
+                            <th>
+                                Examen
+                            </th>
+
+                            <th>
+                                Atención médica
+                            </th>
+
+                            <th>
+                                Fecha
+                            </th>
+
+                            <th>
+                                Responsable
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Detalle
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            María López García
+                                        </strong>
+
+                                        <span>
+                                            #0025
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Hemograma completo
+                            </td>
+
+                            <td>
+                                AT-00125
+                            </td>
+
+                            <td>
+                                10 Sep 2026
+                            </td>
+
+                            <td>
+                                Laboratorio
+                            </td>
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completado
+                                </span>
+
+                            </td>
+
+                            <td>
+                                <button class="btn-detail" onclick="abrirResultado('hemograma')">
+                                    <i class="ph ph-eye"></i>
+                                    Ver resultado
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            José Ramírez
+                                        </strong>
+
+                                        <span>
+                                            #0018
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Examen general de orina
+                            </td>
+
+                            <td>
+                                AT-00121
+                            </td>
+
+                            <td>
+                                09 Sep 2026
+                            </td>
+
+                            <td>
+                                Laboratorio
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completado
+                                </span>
+
+                            </td>
+
+                            <td>
+                                <button class="btn-detail" onclick="abrirResultado('hemograma')">
+                                    <i class="ph ph-eye"></i>
+                                    Ver resultado
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Pedro González
+                                        </strong>
+
+                                        <span>
+                                            #0031
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Perfil lipídico
+                            </td>
+
+                            <td>
+                                AT-00118
+                            </td>
+
+                            <td>
+                                08 Sep 2026
+                            </td>
+
+                            <td>
+                                Laboratorio
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completado
+                                </span>
+
+                            </td>
+
+                            <td>
+                                <button class="btn-detail" onclick="abrirResultado('hemograma')">
+                                    <i class="ph ph-eye"></i>
+                                    Ver resultado
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Ana Martínez
+                                        </strong>
+
+                                        <span>
+                                            #0012
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Hemograma completo
+                            </td>
+
+                            <td>
+                                AT-00114
+                            </td>
+
+                            <td>
+                                06 Sep 2026
+                            </td>
+
+                            <td>
+                                Laboratorio
+                            </td>
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completado
+                                </span>
+
+                            </td>
+
+                            <td>
+                                <button class="btn-detail" onclick="abrirResultado('hemograma')">
+                                    <i class="ph ph-eye"></i>
+                                    Ver resultado
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="patient-avatar">
+
+                                        <i class="ph ph-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Roberto Pérez
+                                        </strong>
+
+                                        <span>
+                                            #0009
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Perfil lipídico
+                            </td>
+
+                            <td>
+                                AT-00108
+                            </td>
+
+                            <td>
+                                04 Sep 2026
+                            </td>
+
+                            <td>
+                                Laboratorio
+                            </td>
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completado
+                                </span>
+
+                            </td>
+
+                            <td>
+                                <button class="btn-detail" onclick="abrirResultado('hemograma')">
+                                    <i class="ph ph-eye"></i>
+                                    Ver resultado
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+                 PAGINACIÓN
+            ========================== -->
+
+            <div class="pagination">
+
+
+                <span>
+                    Mostrando 5 de 86 exámenes
+                </span>
+
+                <div class="pagination-buttons">
+
+                    <button disabled>
+
+                        <i class="ph ph-caret-left"></i>
+
+                    </button>
+
+                    <button class="active">
+                        1
+                    </button>
+
+                    <button>
+                        2
+                    </button>
+
+                    <button>
+                        3
+                    </button>
+
+                    <button>
+                        4
+                    </button>
+
+                    <button>
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    /*MODAL*/
+    <div id="resultadoModal" class="modal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">Resultado de examen</span>
+                <h2 id="modalTitulo">Hemograma completo</h2>
+            </div>
+
+            <button class="close-modal" onclick="cerrarResultado()">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+        <div class="modal-patient">
+
+            <div class="modal-patient-icon">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong id="modalPaciente">
+                    María López García
+                </strong>
+
+                <span id="modalInterno">
+                    Interno #0025
+                </span>
+            </div>
+
+        </div>
+
+        <div class="modal-info-grid">
+
+            <div>
+                <span>Atención médica</span>
+                <strong id="modalAtencion">AT-00125</strong>
+            </div>
+
+            <div>
+                <span>Fecha del examen</span>
+                <strong id="modalFecha">10 Sep 2026</strong>
+            </div>
+
+            <div>
+                <span>Estado</span>
+                <strong class="result-status">
+                    Completado
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="result-section">
+
+            <div class="result-section-header">
+                <h3>Resultados</h3>
+                <i class="ph ph-flask"></i>
+            </div>
+
+            <div id="resultadoCampos" class="result-grid">
+
+            </div>
+
+        </div>
+
+        <div class="observations-box">
+
+            <span>Observaciones del laboratorio</span>
+
+            <p id="modalObservaciones">
+                Resultado dentro de los parámetros esperados.
+            </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="btn-close" onclick="cerrarResultado()">
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <script src="HistorialExamenes.js"></script>
+
+</body>
+
+</html>
