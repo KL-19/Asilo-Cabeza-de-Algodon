@@ -147,6 +147,23 @@ body {
     color: white;
 }
 
+.menu-badge,
+.notification-count {
+    margin-left: auto;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ef4444;
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
 /* ================================= */
 /* CONTENIDO */
 /* ================================= */

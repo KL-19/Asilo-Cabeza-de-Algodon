@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Citas pendientes de resultados | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="citasPendientesResultados.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+<!-- =========================================================
+     BARRA LATERAL
+========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="ph ph-heartbeat"></i>
+        </div>
+
+        <div>
+            <h2>Cabeza de Algodón</h2>
+            <span>Sistema de Gestión</span>
+        </div>
+
+    </div>
+
+
+    <div class="doctor-profile">
+
+        <div class="doctor-avatar">
+            <i class="ph ph-user"></i>
+        </div>
+
+        <div>
+            <strong>Dr. Carlos Méndez</strong>
+            <span>Cardiología</span>
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <p class="menu-title">MENÚ PRINCIPAL</p>
+
+        <a href="../Especialista.html" class="menu-item">
+            <i class="ph ph-house"></i>
+            <span>Inicio</span>
+        </a>
+
+        <a href="../MisCitas/misCitas.html" class="menu-item">
+            <i class="ph ph-calendar-check"></i>
+            <span>Mis citas</span>
+            <span class="menu-badge">3</span>
+        </a>
+
+        <a href="../pendientesDeResultadosLab/citasPendientesResultados.html" class="menu-item active">
+            <i class="ph ph-test-tube"></i>
+            <span>Citas pendientes de resultados</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <i class="ph ph-users-three"></i>
+            <span>Mis pacientes</span>
+        </a>
+
+
+        <p class="menu-title">CONSULTAS</p>
+
+        <a href="#" class="menu-item">
+            <i class="ph ph-test-tube"></i>
+            <span>Laboratorio</span>
+            <span class="notification-count">2</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <i class="ph ph-pill"></i>
+            <span>Recetas</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="../../index.html" class="menu-item logout">
+            <i class="ph ph-sign-out"></i>
+            <span>Cerrar sesión</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     CONTENIDO PRINCIPAL
+========================================================= -->
+
+<main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="welcome-small">Resultados de laboratorio</p>
+
+            <h1>Citas pendientes de resultados</h1>
+
+            <p class="page-description">
+                Revise los resultados de laboratorio asociados a sus atenciones médicas.
+            </p>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <button class="notification">
+
+                <i class="ph ph-bell"></i>
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <div class="top-profile">
+
+                <div class="small-avatar">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong>Dr. Carlos Méndez</strong>
+                    <span>Cardiología</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         RESUMEN
+    ====================================================== -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon orange">
+                <i class="ph ph-hourglass"></i>
+            </div>
+
+            <div>
+                <span>Esperando resultados</span>
+                <strong>2</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+                <i class="ph ph-check-circle"></i>
+            </div>
+
+            <div>
+                <span>Resultados recibidos</span>
+                <strong>2</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+                <i class="ph ph-file-medical"></i>
+            </div>
+
+            <div>
+                <span>Pendientes de revisión</span>
+                <strong>2</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LISTADO
+    ====================================================== -->
+
+    <section class="content-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="section-label">ATENCIONES MÉDICAS</span>
+
+                <h2>Citas con resultados de laboratorio</h2>
+
+                <p>
+                    Estas atenciones tienen exámenes asociados que ya fueron procesados por laboratorio.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FILTROS -->
+
+        <div class="filters">
+
+            <div class="search-box">
+
+                <i class="ph ph-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="buscarPaciente"
+                    placeholder="Buscar paciente..."
+                >
+
+            </div>
+
+
+            <select id="filtroEstado">
+
+                <option value="todos">Todos los estados</option>
+
+                <option value="recibidos">
+                    Resultados recibidos
+                </option>
+
+                <option value="pendientes">
+                    Esperando resultados
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- TABLA -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>PACIENTE</th>
+
+                        <th>ATENCIÓN</th>
+
+                        <th>FECHA</th>
+
+                        <th>EXÁMENES</th>
+
+                        <th>ESTADO</th>
+
+                        <th>ACCIÓN</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tablaResultados">
+
+
+                    <!-- =================================================
+                         EJEMPLO 1
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+
+                            <div class="patient-cell">
+
+                                <div class="patient-avatar">
+                                    <i class="ph ph-user"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>Juan Carlos López</strong>
+
+                                    <span>EXP-00142</span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="attention-number">
+                                AT-00142
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="date">
+                                28 Ago 2026
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="exam-info">
+
+                                <strong>2 exámenes</strong>
+
+                                <span>Hemograma, Glucosa</span>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status received">
+
+                                <i class="ph ph-check-circle"></i>
+
+                                Resultados recibidos
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn-review" onclick="verResultados('AT-00142')">
+                                <i class="ph ph-eye"></i>
+                                Ver resultados
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- =================================================
+                         EJEMPLO 2
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+
+                            <div class="patient-cell">
+
+                                <div class="patient-avatar">
+                                    <i class="ph ph-user"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>María Elena Pérez</strong>
+
+                                    <span>EXP-00125</span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="attention-number">
+                                AT-00125
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="date">
+                                27 Ago 2026
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="exam-info">
+
+                                <strong>1 examen</strong>
+
+                                <span>Electrocardiograma</span>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status pending">
+
+                                <i class="ph ph-hourglass"></i>
+
+                                Esperando resultados
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="btn-review disabled"
+                                disabled
+                            >
+
+                                <i class="ph ph-clock"></i>
+
+                                Pendiente
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="citasPendientesResultados.js"></script>
+
+</body>
+</html>
