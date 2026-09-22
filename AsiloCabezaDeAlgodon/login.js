@@ -37,6 +37,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             // Guardar datos en el navegador
             localStorage.setItem('usuarioLogueado', data.usuario);
             localStorage.setItem('rolUsuario', data.rol);
+            localStorage.setItem('usuarioId', data.usuarioId);
 
             setTimeout(() => {
                 switch (data.rol) {

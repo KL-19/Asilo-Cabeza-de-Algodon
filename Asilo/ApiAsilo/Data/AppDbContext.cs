@@ -9,5 +9,6 @@ namespace ApiAsilo.Data
 
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Donacion> Donaciones { get; set; }
     }
 }

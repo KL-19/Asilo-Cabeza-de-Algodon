@@ -43,6 +43,7 @@ namespace ApiAsilo.Controllers
             // 3. Login Exitoso
             return Ok(new { 
                 mensaje = "Acceso concedido", 
+                usuarioId = usuario.Id,
                 usuario = usuario.NombreUsuario,
                 rol = usuario.Rol?.Nombre 
             });

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historial de Laboratorio | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="historialLaboratorio.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <div class="doctor-profile">
+            <div class="doctor-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>Dr. Carlos Méndez</strong>
+                <span>Cardiología</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <p class="menu-title">
+                MENÚ PRINCIPAL
+            </p>
+
+            <a href="../mEspecialista.html" class="menu-item">
+                <i class="ph ph-house"></i>
+                <span>
+                    Inicio
+                </span>
+            </a>
+
+            <a href="../MisCitas/misCitas.html" class="menu-item">
+                <i class="ph ph-calendar-check"></i>
+                <span>
+                    Mis citas
+                </span>
+                <span class="menu-badge">
+                    3
+                </span>
+            </a>
+
+            <a href="../pendientesDeResultadosLab/citasPendientesResultados.html" class="menu-item">
+                <i class="ph ph-test-tube"></i>
+                <span>
+                    Citas pendientes de resultados
+                </span>
+            </a>
+
+            <a href="../pacientes/misPacientes.html" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>
+                    Mis pacientes
+                </span>
+            </a>
+
+            <p class="menu-title">
+                CONSULTAS
+            </p>
+
+            <a href="../lab/hitorialLaboratorio.html" class="menu-item active">
+                <i class="ph ph-test-tube"></i>
+                <span>Historial de Laboratorio</span>
+                <span class="notification-count">
+                    2
+                </span>
+            </a>
+
+            <a href="../recetas/historialRecetas.html" class="menu-item">
+                <i class="ph ph-pill"></i>
+                <span>
+                    Historial de Recetas
+                </span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../../index.html" class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>
+                    Cerrar sesión
+                </span>
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome-small">
+                    Consulta de exámenes
+                </p>
+
+                <h1>
+                    Historial de laboratorio
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification" type="button">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+
+                        <i class="ph ph-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Dr. Carlos Méndez
+                        </strong>
+
+                        <span>
+                            Cardiología
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= HISTORIAL ================= -->
+         <section class="history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Historial de laboratorio
+                    </h2>
+
+                    <p>
+                        Consulte los exámenes de laboratorio realizados a sus pacientes.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ================= FILTROS ================= -->
+              <div class="filters">
+
+                <div class="filter-group">
+
+                    <label for="buscar">
+                        Buscar interno
+                    </label>
+
+                    <div class="input-search">
+
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscar"
+                            placeholder="Nombre o código del interno">
+
+                    </div>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="tipoExamen">
+                        Tipo de examen
+                    </label>
+
+                    <select id="tipoExamen">
+
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="hemograma">
+                            Hemograma
+                        </option>
+
+                        <option value="orina">
+                            Examen de orina
+                        </option>
+
+                        <option value="lipidico">
+                            Perfil lipídico
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="desde">
+                        Desde
+                    </label>
+
+                    <input
+                        type="date"
+                        id="desde">
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="hasta">
+                        Hasta
+                    </label>
+
+                    <input
+                        type="date"
+                        id="hasta">
+
+                </div>
+
+                <button
+                    class="btn-filter"
+                    onclick="filtrarHistorial()">
+
+                    <i class="ph ph-funnel"></i>
+
+                    Filtrar
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= TABLA ================= -->
+
+            <div class="table-card">
+
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h3>
+                            Exámenes registrados
+                        </h3>
+
+                        <p>
+                            Historial de exámenes relacionados con las atenciones médicas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Paciente
+                                </th>
+
+                                <th>
+                                    Expediente
+                                </th>
+
+                                <th>
+                                    Atención
+                                </th>
+
+                                <th>
+                                    Examen
+                                </th>
+
+                                <th>
+                                    Fecha
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th>
+                                    Acción
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tablaLaboratorio">
+
+
+                            <!-- ================= PACIENTE 1 ================= -->
+
+                            <tr
+                                data-paciente="María Elena López"
+                                data-expediente="EXP-00125"
+                                data-examen="hemograma"
+                                data-fecha="reciente"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+
+                                        <div class="patient-avatar">
+
+                                            <i class="ph ph-user"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong>
+                                                María Elena López
+                                            </strong>
+
+                                            <span>
+                                                78 años
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="expediente">
+                                        EXP-00125
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="attention-id">
+                                        AT-00142
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Hemograma
+                                </td>
+
+
+                                <td>
+                                    14/09/2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status completed">
+
+                                        <i class="ph ph-check-circle"></i>
+
+                                        Disponible
+
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verResultado(
+                                            'AT-00142',
+                                            'María Elena López',
+                                            'EXP-00125',
+                                            'Hemograma',
+                                            '14/09/2026'
+                                        )"
+                                    >
+
+                                        <i class="ph ph-eye"></i>
+
+                                        Ver resultado
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                            <!-- ================= PACIENTE 2 ================= -->
+                            <tr
+                                data-paciente="José Antonio Pérez"
+                                data-expediente="EXP-00131"
+                                data-examen="orina"
+                                data-fecha="reciente"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                José Antonio Pérez
+                                            </strong>
+
+                                            <span>
+                                                81 años
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <span class="expediente">
+                                        EXP-00131
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="attention-id">
+                                        AT-00139
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Examen de orina
+                                </td>
+
+
+                                <td>
+                                    10/09/2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status completed">
+
+                                        <i class="ph ph-check-circle"></i>
+
+                                        Disponible
+
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verResultado(
+                                            'AT-00139',
+                                            'José Antonio Pérez',
+                                            'EXP-00131',
+                                            'Examen de orina',
+                                            '10/09/2026'
+                                        )"
+                                    >
+
+                                        <i class="ph ph-eye"></i>
+
+                                        Ver resultado
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ================= PACIENTE 3 ================= -->
+
+                            <tr
+                                data-paciente="Ana María García"
+                                data-expediente="EXP-00118"
+                                data-examen="lipidico"
+                                data-fecha="anterior"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+
+                                        <div class="patient-avatar">
+
+                                            <i class="ph ph-user"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong>
+                                                Ana María García
+                                            </strong>
+
+                                            <span>
+                                                75 años
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="expediente">
+                                        EXP-00118
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="attention-id">
+                                        AT-00135
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Perfil lipídico
+                                </td>
+
+
+                                <td>
+                                    05/08/2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status completed">
+
+                                        <i class="ph ph-check-circle"></i>
+
+                                        Disponible
+
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verResultado(
+                                            'AT-00135',
+                                            'Ana María García',
+                                            'EXP-00118',
+                                            'Perfil lipídico',
+                                            '05/08/2026'
+                                        )"
+                                    >
+
+                                        <i class="ph ph-eye"></i>
+
+                                        Ver resultado
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                            <!-- ================= PACIENTE 4 ================= -->
+                            <tr
+                                data-paciente="Carlos Ramírez"
+                                data-expediente="EXP-00144"
+                                data-examen="glucosa"
+                                data-fecha="anterior"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Carlos Ramírez
+                                            </strong>
+
+                                            <span>
+                                                83 años
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+
+                                    <span class="expediente">
+                                        EXP-00144
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="attention-id">
+                                        AT-00121
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Glucosa
+                                </td>
+
+
+                                <td>
+                                    25/07/2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status completed">
+
+                                        <i class="ph ph-check-circle"></i>
+
+                                        Disponible
+
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verResultado(
+                                            'AT-00121',
+                                            'Carlos Ramírez',
+                                            'EXP-00144',
+                                            'Glucosa',
+                                            '25/07/2026'
+                                        )"
+                                    >
+
+                                        <i class="ph ph-eye"></i>
+
+                                        Ver resultado
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ================= PACIENTE 5 ================= -->
+
+                            <tr
+                                data-paciente="Rosa Isabel Morales"
+                                data-expediente="EXP-00149"
+                                data-examen="hemograma"
+                                data-fecha="anterior"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+
+                                        <div class="patient-avatar">
+
+                                            <i class="ph ph-user"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong>
+                                                Rosa Isabel Morales
+                                            </strong>
+
+                                            <span>
+                                                79 años
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="expediente">
+                                        EXP-00149
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="attention-id">
+                                        AT-00098
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Hemograma
+                                </td>
+
+
+                                <td>
+                                    05/07/2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status completed">
+
+                                        <i class="ph ph-check-circle"></i>
+
+                                        Disponible
+
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verResultado(
+                                            'AT-00098',
+                                            'Rosa Isabel Morales',
+                                            'EXP-00149',
+                                            'Hemograma',
+                                            '05/07/2026'
+                                        )"
+                                    >
+
+                                        <i class="ph ph-eye"></i>
+
+                                        Ver resultado
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    
+    /*MODAL*/
+    <div id="resultadoModal" class="modal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">Resultado de examen</span>
+                <h2 id="modalTitulo">Hemograma completo</h2>
+            </div>
+
+            <button class="close-modal" onclick="cerrarResultado()">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+        <div class="modal-patient">
+
+            <div class="modal-patient-icon">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong id="modalPaciente">
+                    María López García
+                </strong>
+
+                <span id="modalInterno">
+                    Interno #0025
+                </span>
+            </div>
+
+        </div>
+
+        <div class="modal-info-grid">
+
+            <div>
+                <span>Atención médica</span>
+                <strong id="modalAtencion">AT-00125</strong>
+            </div>
+
+            <div>
+                <span>Fecha del examen</span>
+                <strong id="modalFecha">10 Sep 2026</strong>
+            </div>
+
+            <div>
+                <span>Estado</span>
+                <strong class="result-status">
+                    Completado
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="result-section">
+
+            <div class="result-section-header">
+                <h3>Resultados</h3>
+                <i class="ph ph-flask"></i>
+            </div>
+
+            <div id="resultadoCampos" class="result-grid">
+
+            </div>
+
+        </div>
+
+        <div class="observations-box">
+
+            <span>Observaciones del laboratorio</span>
+
+            <p id="modalObservaciones">
+                Resultado dentro de los parámetros esperados.
+            </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="btn-close" onclick="cerrarResultado()">
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <script src="historialLaboratorio.js"></script>
+
+</body>
+</html>

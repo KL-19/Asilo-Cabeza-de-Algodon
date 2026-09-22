@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis Pacientes | Cabeza de Algodón</title>
+
+    <link rel="stylesheet" href="MisPacientes.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+<body>
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL DEL MÉDICO -->
+        <div class="doctor-profile">
+            <div class="doctor-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>Dr. Carlos Méndez</strong>
+
+                <span>
+                    Cardiología
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- MENÚ -->
+        <nav class="menu">
+
+            <p class="menu-title">
+                MENÚ PRINCIPAL
+            </p>
+            <a href="../mEspecialista.html" class="menu-item">
+                <i class="ph ph-house"></i>
+                <span>
+                    Inicio
+                </span>
+            </a>
+
+            <a href="../MisCitas/misCitas.html" class="menu-item">
+                <i class="ph ph-calendar-check"></i>
+                <span>
+                    Mis citas
+                </span>
+
+                <span class="menu-badge">
+                    3
+                </span>
+            </a>
+
+            <a href="../pendientesDeResultadosLab/citasPendientesResultados.html" class="menu-item">
+                <i class="ph ph-test-tube"></i>
+                <span>
+                    Citas pendientes de resultados
+                </span>
+            </a>
+
+            <a href="../pacientes/misPacientes.html" class="menu-item active">
+                <i class="ph ph-users-three"></i>
+                <span>
+                    Mis pacientes
+                </span>
+            </a>
+
+            <!-- CONSULTAS -->
+            <p class="menu-title">
+                CONSULTAS
+            </p>
+
+            <a href="../lab/hitorialLaboratorio.html" class="menu-item">
+                <i class="ph ph-test-tube"></i>
+                <span>
+                    Historial de Laboratorio
+                </span>
+
+                <span class="notification-count">
+                    2
+                </span>
+            </a>
+
+            <a href="../recetas/historialRecetas.html"
+               class="menu-item">
+                <i class="ph ph-pill"></i>
+                <span>
+                    Historial de Recetas
+                </span>
+            </a>
+
+        </nav>
+
+        <!-- CERRAR SESIÓN -->
+        <div class="sidebar-bottom">
+            <a href="../../index.html" class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>
+                    Cerrar sesión
+                </span>
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome-small">
+                    Gestión de pacientes
+                </p>
+
+                <h1>
+                    Mis pacientes
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    type="button"
+                    class="notification">
+
+                    <i class="ph ph-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+
+                        <i class="ph ph-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Dr. Carlos Méndez
+                        </strong>
+
+                        <span>
+                            Cardiología
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             CONTENIDO
+        ====================================================== -->
+
+        <section class="patients-content">
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="section-label">
+                        PACIENTES
+                    </span>
+
+                    <h2>
+                        Lista de pacientes
+                    </h2>
+
+                    <p>
+                        Pacientes que han recibido atención médica con usted.
+                    </p>
+
+                </div>
+
+
+                <div class="patient-count">
+
+                    <i class="ph ph-users-three"></i>
+
+                    <span>
+                        5 pacientes
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTROS
+            ================================================== -->
+
+            <div class="filters-card">
+
+
+                <!-- BUSCAR -->
+
+                <div class="search-box">
+
+                    <i class="ph ph-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="buscarPaciente"
+                        placeholder="Buscar por nombre o expediente..."
+                    >
+
+                </div>
+
+
+                <!-- FILTRO -->
+
+                <div class="filter-box">
+
+                    <label for="filtroPaciente">
+                        Filtrar
+                    </label>
+
+                    <select id="filtroPaciente">
+
+                        <option value="todos">
+                            Todos los pacientes
+                        </option>
+
+                        <option value="reciente">
+                            Atención reciente
+                        </option>
+
+                        <option value="seguimiento">
+                            En seguimiento
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLA DE PACIENTES
+            ================================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Paciente
+                            </th>
+
+                            <th>
+                                Expediente
+                            </th>
+
+                            <th>
+                                Edad
+                            </th>
+
+                            <th>
+                                Última atención
+                            </th>
+
+                            <th>
+                                Diagnóstico
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tablaPacientes">
+
+
+                        <!-- PACIENTE 1 -->
+
+                        <tr data-estado="seguimiento">
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="mini-avatar">
+                                        JC
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Juan Carlos López
+                                        </strong>
+
+                                        <span>
+                                            Paciente
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                EXP-00142
+                            </td>
+
+
+                            <td>
+                                72 años
+                            </td>
+
+
+                            <td>
+                                15 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Hipertensión arterial controlada
+                            </td>
+
+
+                            <td>
+
+                                <span class="status follow-up">
+                                    En seguimiento
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn-view"
+                                    onclick="abrirFicha(
+                                        'Juan Carlos López',
+                                        '72 años',
+                                        'Hipertensión arterial controlada',
+                                        'Se recomienda continuar con el tratamiento indicado y mantener seguimiento médico.'
+                                    )">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Ver ficha
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- PACIENTE 2 -->
+
+                        <tr data-estado="reciente">
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="mini-avatar">
+                                        MP
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            María Pérez
+                                        </strong>
+
+                                        <span>
+                                            Paciente
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                EXP-00125
+                            </td>
+
+
+                            <td>
+                                68 años
+                            </td>
+
+
+                            <td>
+                                13 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Control médico
+                            </td>
+
+
+                            <td>
+
+                                <span class="status recent">
+                                    Atención reciente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn-view"
+                                    onclick="abrirFicha(
+                                        'María Pérez',
+                                        '68 años',
+                                        'Control médico',
+                                        'Paciente estable. Se recomienda continuar controles periódicos.'
+                                    )">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Ver ficha
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- PACIENTE 3 -->
+
+                        <tr data-estado="seguimiento">
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="mini-avatar">
+                                        RP
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Roberto Pérez
+                                        </strong>
+
+                                        <span>
+                                            Paciente
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                EXP-00131
+                            </td>
+
+
+                            <td>
+                                75 años
+                            </td>
+
+
+                            <td>
+                                12 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Dolor articular
+                            </td>
+
+
+                            <td>
+
+                                <span class="status follow-up">
+                                    En seguimiento
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn-view"
+                                    onclick="abrirFicha(
+                                        'Roberto Pérez',
+                                        '75 años',
+                                        'Dolor articular',
+                                        'Se indicó tratamiento y seguimiento de la evolución del dolor.'
+                                    )">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Ver ficha
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- PACIENTE 4 -->
+
+                        <tr data-estado="reciente">
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="mini-avatar">
+                                        AG
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Ana García
+                                        </strong>
+
+                                        <span>
+                                            Paciente
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                EXP-00148
+                            </td>
+
+
+                            <td>
+                                70 años
+                            </td>
+
+
+                            <td>
+                                14 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Seguimiento
+                            </td>
+
+
+                            <td>
+
+                                <span class="status recent">
+                                    Atención reciente
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn-view"
+                                    onclick="abrirFicha(
+                                        'Ana García',
+                                        '70 años',
+                                        'Seguimiento',
+                                        'Paciente estable. Se mantiene seguimiento médico según indicaciones.'
+                                    )">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Ver ficha
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- PACIENTE 5 -->
+
+                        <tr data-estado="seguimiento">
+
+                            <td>
+
+                                <div class="patient-cell">
+
+                                    <div class="mini-avatar">
+                                        EL
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Elena López
+                                        </strong>
+
+                                        <span>
+                                            Paciente
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                EXP-00153
+                            </td>
+
+
+                            <td>
+                                74 años
+                            </td>
+
+
+                            <td>
+                                10 Sep 2026
+                            </td>
+
+
+                            <td>
+                                Diabetes tipo 2
+                            </td>
+
+
+                            <td>
+
+                                <span class="status follow-up">
+                                    En seguimiento
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="btn-view"
+                                    onclick="abrirFicha(
+                                        'Elena López',
+                                        '74 años',
+                                        'Diabetes tipo 2',
+                                        'Se recomienda mantener control de glucosa y continuar tratamiento indicado.'
+                                    )">
+
+                                    <i class="ph ph-eye"></i>
+
+                                    Ver ficha
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL FICHA DEL PACIENTE
+    ====================================================== -->
+
+    <div
+        id="modalFicha"
+        class="modal-overlay">
+
+
+        <div class="modal">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span>
+                        ÚLTIMA ATENCIÓN
+                    </span>
+
+                    <h2 id="fichaNombre">
+                        Juan Carlos López
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    onclick="cerrarFicha()">
+
+                    <i class="ph ph-x"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- BODY -->
+
+            <div class="modal-body">
+
+
+                <!-- INFORMACIÓN DEL PACIENTE -->
+
+                <div class="ficha-patient">
+
+                    <div class="ficha-avatar">
+
+                        <i class="ph ph-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Paciente
+                        </span>
+
+                        <strong id="fichaNombrePaciente">
+                            Juan Carlos López
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DATOS -->
+
+                <div class="ficha-grid">
+
+
+                    <div class="ficha-field">
+
+                        <span>
+                            Edad
+                        </span>
+
+                        <strong id="fichaEdad">
+                            72 años
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ficha-field">
+
+                        <span>
+                            Última atención
+                        </span>
+
+                        <strong id="fichaFecha">
+                            15 Sep 2026
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DIAGNÓSTICO -->
+
+                <div class="ficha-section">
+
+                    <div class="ficha-section-title">
+
+                        <i class="ph ph-stethoscope"></i>
+
+                        <strong>
+                            Diagnóstico
+                        </strong>
+
+                    </div>
+
+
+                    <p id="fichaDiagnostico">
+                        Hipertensión arterial controlada.
+                    </p>
+
+                </div>
+
+
+
+                <!-- OBSERVACIONES -->
+
+                <div class="ficha-section">
+
+                    <div class="ficha-section-title">
+
+                        <i class="ph ph-notepad"></i>
+
+                        <strong>
+                            Observaciones
+                        </strong>
+
+                    </div>
+
+
+                    <p id="fichaObservaciones">
+                        Se recomienda continuar con el tratamiento indicado y mantener seguimiento médico.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn-modal-close"
+                    onclick="cerrarFicha()">
+
+                    Cerrar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="misPacientes.js"></script>
+
+</body>
+
+</html>

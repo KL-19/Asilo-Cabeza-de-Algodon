@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recetas | Cabeza de Algodón</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="historialRecetas.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>
+                    Cabeza de Algodón
+                </h2>
+
+                <span>
+                    Sistema de Gestión
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="doctor-profile">
+
+            <div class="doctor-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong>
+                    Dr. Carlos Méndez
+                </strong>
+
+                <span>
+                    Cardiología
+                </span>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-title">
+                MENÚ PRINCIPAL
+            </div>
+
+            <a href="../mEspecialista.html" class="menu-item">
+                <i class="ph ph-house"></i>
+                <span> Inicio</span>
+            </a>
+
+            <a href="../MisCitas/misCitas.html" class="menu-item" >
+                <i class="ph ph-calendar-check"></i>
+                <span>
+                    Mis citas
+                </span>
+                <span class="menu-badge">
+                    3
+                </span>
+            </a>
+
+            <a href="../pendientesDeResultadosLab/citasPendientesResultados.html" class="menu-item">
+                <i class="ph ph-test-tube"></i>
+                <span> Citas pendientes de resultados</span>
+            </a>
+
+            <a href="../pacientes/misPacientes.html" class="menu-item">
+                <i class="ph ph-users-three"></i>
+                <span>Mis pacientes</span>
+            </a>
+
+            <div class="menu-title">
+                CONSULTAS
+            </div>
+
+            <a href="../lab/hitorialLaboratorio.html" class="menu-item">
+                <i class="ph ph-flask"></i>
+                <span>
+                    Historial de Laboratorio
+                </span>
+                <span class="notification-count">
+                    2
+                </span>
+            </a>
+
+            <a href="../recetas/historialRecetas.html" class="menu-item active">
+                <i class="ph ph-pill"></i>
+                <span>Historial de Recetas</span>
+            </a>
+
+        </nav>
+
+        <a href="../../index.html" class="menu-item logout">
+            <i class="ph ph-sign-out"></i>
+            <span>Cerrar sesión</span>
+        </a>
+
+    </aside>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main class="main-content">
+
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
+
+            <div>
+                <p class="welcome-small">
+                    Consultas
+                </p>
+
+                <h1>
+                    Recetas
+                </h1>
+            </div>
+
+            <div class="top-actions">
+
+                <button
+                    class="notification"
+                    type="button"
+                >
+                    <i class="ph ph-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Dr. Carlos Méndez
+                        </strong>
+
+                        <span>
+                            Médico Especialista
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ================= HISTORIAL ================= -->
+        <section class="history-panel">
+
+            <div class="panel-header">
+                <div>
+                    <h2>
+                        Historial de recetas
+                    </h2>
+
+                    <p>
+                        Consulte las recetas y medicamentos prescritos a sus pacientes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ================= FILTROS ================= -->
+            <div class="filters">
+
+                <div class="filter-group">
+                    <label for="buscar">
+                        Buscar interno
+                    </label>
+
+                    <div class="input-search">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input
+                            type="text"
+                            id="buscar"
+                            placeholder="Nombre o código del interno"
+                        >
+                    </div>
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="medicamento">
+                        Medicamento
+                    </label>
+
+                    <select id="medicamento">
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="losartan">
+                            Losartán
+                        </option>
+
+                        <option value="paracetamol">
+                            Paracetamol
+                        </option>
+
+                        <option value="omeprazol">
+                            Omeprazol
+                        </option>
+
+                        <option value="metformina">
+                            Metformina
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="desde">
+                        Desde
+                    </label>
+
+                    <input
+                        type="date"
+                        id="desde"
+                    >
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="hasta">
+                        Hasta
+                    </label>
+
+                    <input
+                        type="date"
+                        id="hasta"
+                    >
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-filter"
+                    onclick="filtrarHistorial()"
+                >
+                    <i class="ph ph-funnel"></i>
+                    Filtrar
+                </button>
+
+            </div>
+
+            <!-- ================= TABLA ================= -->
+            <div class="table-card">
+
+                <div class="table-header">
+                    <div>
+                        <h3>
+                            Recetas registradas
+                        </h3>
+
+                        <p>
+                            Recetas relacionadas con las atenciones médicas realizadas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+
+                            <tr>
+                                <th>
+                                    Paciente
+                                </th>
+
+                                <th>
+                                    Expediente
+                                </th>
+
+                                <th>
+                                    Atención
+                                </th>
+
+                                <th>
+                                    Fecha
+                                </th>
+
+                                <th>
+                                    Medicamentos
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th>
+                                    Acción
+                                </th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tablaRecetas">
+
+                            <!-- ================= RECETA 1 ================= -->
+                            <tr
+                                data-paciente="María Elena López"
+                                data-expediente="EXP-00125"
+                                data-medicamento="losartan"
+                                data-fecha="2026-09-14"
+                            >
+
+                                <td>
+
+                                    <div class="patient-cell">
+
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                María Elena López
+                                            </strong>
+
+                                            <span>
+                                                78 años
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="expediente">
+                                        EXP-00125
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="attention-id">
+                                        AT-00142
+                                    </span>
+                                </td>
+
+                                <td>
+                                    14/09/2026
+                                </td>
+
+                                <td>
+                                    <div class="medicine-summary">
+                                        <strong>
+                                            Losartán 50 mg
+                                        </strong>
+
+                                        <span>
+                                            1 medicamento
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status delivered">
+                                        <i class="ph ph-check-circle"></i>
+                                        Entregada
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verReceta('AT-00142','María Elena López','EXP-00125','14/09/2026','Entregada')"
+                                    >
+                                        <i class="ph ph-eye"></i>
+                                        Ver receta
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <!-- ================= RECETA 2 ================= -->
+                            <tr
+                                data-paciente="José Antonio Pérez"
+                                data-expediente="EXP-00131"
+                                data-medicamento="paracetamol"
+                                data-fecha="2026-09-10"
+                            >
+                                <td>
+                                    <div class="patient-cell">
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                José Antonio Pérez
+                                            </strong>
+
+                                            <span>
+                                                81 años
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="expediente">
+                                        EXP-00131
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="attention-id">
+                                        AT-00139
+                                    </span>
+                                </td>
+
+                                <td>
+                                    10/09/2026
+                                </td>
+
+                                <td>
+                                    <div class="medicine-summary">
+                                        <strong>
+                                            Paracetamol 500 mg
+                                        </strong>
+
+                                        <span>
+                                            1 medicamento
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status delivered">
+                                        <i class="ph ph-check-circle"></i>
+                                        Entregada
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verReceta('AT-00139','José Antonio Pérez','EXP-00131','10/09/2026','Entregada')"
+                                    >
+                                        <i class="ph ph-eye"></i>
+                                        Ver receta
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <!-- ================= RECETA 3 ================= -->
+                            <tr
+                                data-paciente="Ana María García"
+                                data-expediente="EXP-00118"
+                                data-medicamento="metformina"
+                                data-fecha="2026-08-05"
+                            >
+                                <td>
+
+                                    <div class="patient-cell">
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Ana María García
+                                            </strong>
+
+                                            <span>
+                                                75 años
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="expediente">
+                                        EXP-00118
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="attention-id">
+                                        AT-00135
+                                    </span>
+                                </td>
+
+                                <td>
+                                    05/08/2026
+                                </td>
+
+                                <td>
+                                    <div class="medicine-summary">
+                                        <strong>
+                                            Metformina 850 mg
+                                        </strong>
+
+                                        <span>
+                                            1 medicamento
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status delivered">
+                                        <i class="ph ph-check-circle"></i>
+                                        Entregada
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verReceta('AT-00135','Ana María García','EXP-00118','05/08/2026','Entregada')"
+                                    >
+                                        <i class="ph ph-eye"></i>
+                                        Ver receta
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- ================= RECETA 4 ================= -->
+                            <tr
+                                data-paciente="Carlos Ramírez"
+                                data-expediente="EXP-00144"
+                                data-medicamento="omeprazol"
+                                data-fecha="2026-07-25"
+                            >
+                                <td>
+                                    <div class="patient-cell">
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Carlos Ramírez
+                                            </strong>
+
+                                            <span>
+                                                83 años
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="expediente">
+                                        EXP-00144
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="attention-id">
+                                        AT-00121
+                                    </span>
+                                </td>
+
+                                <td>
+                                    25/07/2026
+                                </td>
+
+                                <td>
+                                    <div class="medicine-summary">
+                                        <strong>
+                                            Omeprazol 20 mg
+                                        </strong>
+
+                                        <span>
+                                            1 medicamento
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status delivered">
+                                        <i class="ph ph-check-circle"></i>
+                                        Entregada
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verReceta('AT-00121','Carlos Ramírez','EXP-00144','25/07/2026','Entregada')"
+                                    >
+                                        <i class="ph ph-eye"></i>
+                                        Ver receta
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- ================= RECETA 5 ================= -->
+                            <tr
+                                data-paciente="Rosa Isabel Morales"
+                                data-expediente="EXP-00149"
+                                data-medicamento="losartan"
+                                data-fecha="2026-07-05"
+                            >
+                                <td>
+                                    <div class="patient-cell">
+                                        <div class="patient-avatar">
+                                            <i class="ph ph-user"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Rosa Isabel Morales
+                                            </strong>
+
+                                            <span>
+                                                79 años
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="expediente">
+                                        EXP-00149
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="attention-id">
+                                        AT-00098
+                                    </span>
+                                </td>
+
+                                <td>
+                                    05/07/2026
+                                </td>
+
+                                <td>
+                                    <div class="medicine-summary">
+                                        <strong>
+                                            Losartán 50 mg
+                                        </strong>
+
+                                        <span>
+                                            1 medicamento
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="status delivered">
+                                        <i class="ph ph-check-circle"></i>
+                                        Entregada
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn-view"
+                                        onclick="verReceta('AT-00098','Rosa Isabel Morales','EXP-00149','05/07/2026','Entregada')"
+                                    >
+                                        <i class="ph ph-eye"></i>
+                                        Ver receta
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= MODAL RECETA ================= -->
+    <div
+        id="recetaModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <!-- HEADER -->
+            <div class="modal-header">
+                <div>
+                    <span class="modal-label">
+                        Receta médica
+                    </span>
+
+                    <h2>
+                        Información de la receta
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    onclick="cerrarReceta()"
+                >
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+
+            <!-- PACIENTE -->
+            <div class="modal-patient">
+
+                <div class="modal-patient-icon">
+                    <i class="ph ph-user"></i>
+                </div>
+
+                <div>
+                    <strong id="modalPaciente">
+                        María Elena López
+                    </strong>
+
+                    <span id="modalExpediente">
+                        Expediente EXP-00125
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- INFORMACIÓN -->
+            <div class="modal-info-grid">
+
+                <div>
+                    <span>
+                        Atención médica
+                    </span>
+
+                    <strong id="modalAtencion">
+                        AT-00142
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Fecha de receta
+                    </span>
+
+                    <strong id="modalFecha">
+                        14/09/2026
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Estado
+                    </span>
+
+                    <strong
+                        id="modalEstado"
+                        class="result-status"
+                    >
+                        Entregada
+                    </strong>
+                </div>
+
+            </div>
+
+            <!-- MEDICAMENTOS -->
+            <div class="prescription-section">
+
+                <div class="prescription-section-header">
+                    <h3>
+                        Medicamentos prescritos
+                    </h3>
+                    <i class="ph ph-pill"></i>
+                </div>
+
+                <div id="medicamentosReceta">
+
+                    <div class="medicine-item">
+                        <div class="medicine-icon">
+                            <i class="ph ph-pill"></i>
+                        </div>
+
+                        <div class="medicine-info">
+                            <strong>
+                                Losartán 50 mg
+                            </strong>
+
+                            <span>
+                                1 tableta cada 12 horas
+                            </span>
+                        </div>
+
+                        <div class="medicine-duration">
+                            <span>
+                                Duración
+                            </span>
+
+                            <strong>
+                                30 días
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="medicine-item">
+                        <div class="medicine-icon">
+                            <i class="ph ph-pill"></i>
+                        </div>
+
+                        <div class="medicine-info">
+                            <strong>
+                                Paracetamol 500 mg
+                            </strong>
+
+                            <span>
+                                1 tableta cada 8 horas
+                            </span>
+                        </div>
+
+                        <div class="medicine-duration">
+                            <span>
+                                Duración
+                            </span>
+
+                            <strong>
+                                5 días
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- INDICACIONES -->
+            <div class="observations-box">
+                <span>
+                    Indicaciones médicas
+                </span>
+
+                <p id="modalIndicaciones">
+                    Tomar los medicamentos según las indicaciones
+                    establecidas y respetar los horarios de cada dosis.
+                </p>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn-close"
+                    onclick="cerrarReceta()"
+                >
+                    Cerrar
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="historialRecetas.js"></script>
+</body>
+</html>
