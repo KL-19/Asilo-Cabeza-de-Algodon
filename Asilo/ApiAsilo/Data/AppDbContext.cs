@@ -16,5 +16,6 @@ namespace ApiAsilo.Data
         public DbSet<MedicamentoCajon> MedicamentosCajon { get; set; }
         public DbSet<PerfilUsuario> PerfilesUsuario { get; set; }
         public DbSet<GastoOperativo> GastosOperativos { get; set; }
+        public DbSet<CuotaMensual> CuotasMensuales { get; set; }
     }
 }
