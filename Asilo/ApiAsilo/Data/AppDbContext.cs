@@ -14,5 +14,6 @@ namespace ApiAsilo.Data
         public DbSet<Familiar> Familiares { get; set; }
         public DbSet<Psicopatologia> Psicopatologias { get; set; }
         public DbSet<MedicamentoCajon> MedicamentosCajon { get; set; }
+        public DbSet<PerfilUsuario> PerfilesUsuario { get; set; }
     }
 }
