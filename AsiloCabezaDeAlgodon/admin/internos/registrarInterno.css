@@ -910,6 +910,20 @@ body {
 
 }
 
+.btn-add-medicine {
+    border: 1px dashed #cbd5e1;
+    background: white;
+    color: var(--primary);
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+}
 
 /* ========================================
    RESPONSIVE

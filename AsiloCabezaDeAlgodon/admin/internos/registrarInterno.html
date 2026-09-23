@@ -475,6 +475,19 @@
 
                     </div>
 
+                    <div class="form-group full">
+                        <label for="familiarDireccion">
+                            Dirección
+                        </label>
+                        
+                        <input
+                            type="text"
+                            id="familiarDireccion"
+                            name="familiarDireccion"
+                            placeholder="Dirección del familiar">
+
+                    </div>
+
                 </div>
 
 
@@ -555,28 +568,8 @@
 
                 <!-- MEDICAMENTOS -->
 
-                <div class="optional-section">
-
-                    <div class="optional-title">
-
-                        <div>
-                            <h3>Medicamentos actuales</h3>
-
-                            <p>
-                                Medicamentos que utiliza actualmente,
-                                si corresponde.
-                            </p>
-                        </div>
-
-                        <span class="optional-badge">
-                            Opcional
-                        </span>
-
-                    </div>
-
-
-                    <div class="form-grid">
-
+                <div id="medicamentosContainer">
+                    <div class="form-grid medicamento-item">
                         <div class="form-group">
 
                             <label for="medicamento">
@@ -587,13 +580,11 @@
                                 type="text"
                                 id="medicamento"
                                 name="medicamento"
+                                class="medicamento"
                                 placeholder="Ej. Paracetamol">
-
                         </div>
 
-
                         <div class="form-group">
-
                             <label for="cantidad">
                                 Cantidad
                             </label>
@@ -602,13 +593,11 @@
                                 type="text"
                                 id="cantidad"
                                 name="cantidad"
+                                class="cantidad"
                                 placeholder="Ej. 500 mg">
-
                         </div>
 
-
                         <div class="form-group">
-
                             <label for="frecuencia">
                                 Frecuencia
                             </label>
@@ -617,13 +606,11 @@
                                 type="text"
                                 id="frecuencia"
                                 name="frecuencia"
+                                class="frecuencia"
                                 placeholder="Ej. Cada 8 horas">
-
                         </div>
 
-
                         <div class="form-group">
-
                             <label for="tiempo">
                                 Tiempo de aplicación
                             </label>
@@ -632,11 +619,20 @@
                                 type="text"
                                 id="tiempo"
                                 name="tiempo"
-                                placeholder="Ej. 7 días">
-
+                                class="tiempo"
+                                placeholder="Ej. 5 días">
                         </div>
 
                     </div>
+
+                    <button
+                            type="button"
+                            class="btn-add-medicine"
+                            onclick="agregarMedicamento()"
+                        >
+                            <i class="ph ph-plus"></i>
+                            Agregar medicamento
+                    </button>
 
                 </div>
 
@@ -667,7 +663,7 @@
         </form>
 
     </main>
-
+    <script src="registrarInterno.js"></script>
 </body>
 
 </html>

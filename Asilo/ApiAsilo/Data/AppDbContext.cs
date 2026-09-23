@@ -10,5 +10,9 @@ namespace ApiAsilo.Data
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Donacion> Donaciones { get; set; }
+        public DbSet<Interno> Internos { get; set; }
+        public DbSet<Familiar> Familiares { get; set; }
+        public DbSet<Psicopatologia> Psicopatologias { get; set; }
+        public DbSet<MedicamentoCajon> MedicamentosCajon { get; set; }
     }
 }
