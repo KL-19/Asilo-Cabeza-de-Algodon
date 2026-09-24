@@ -11,6 +11,7 @@ formulario.addEventListener("submit", async function (event) {
         rolId: parseInt(document.getElementById("rol").value),
         numeroColegiado: document.getElementById("numeroColegiado").value.trim(),
         telefono: document.getElementById("telefono").value.trim(),
+        especialidad: document.getElementById("especialidad").value.trim(),
         activo: document.getElementById("activo").checked
     };
 

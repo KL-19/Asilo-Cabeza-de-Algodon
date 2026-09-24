@@ -32,8 +32,7 @@ namespace ApiAsilo.Models
 
         [ForeignKey("RolId")]
         public virtual Rol? Rol { get; set; }
-
-        [ForeignKey("Id")]
+        
         public virtual PerfilUsuario? PerfilUsuario { get; set; }
     }
 }

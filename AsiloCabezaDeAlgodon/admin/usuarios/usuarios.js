@@ -138,24 +138,23 @@ function mostrarPagina() {
                 </td>
 
                 <td>
-                    <div class="user-actions">
+                    <div class="actions">
                         <button
-                            class="view-btn"
+                            class="action-btn view"
                             title="Ver usuario"
                             data-id="${usuario.id}">
                             <i class="ph ph-eye"></i>
-                            Ver
                         </button>
 
                         <button
-                            class="edit-btn"
+                            class="action-btn edit"
                             title="Editar usuario"
                             data-id="${usuario.id}">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
 
                         <button
-                            class="delete-btn"
+                            class="action-btn delete"
                             title="Dar de baja"
                             data-id="${usuario.id}">
                             <i class="ph ph-user-minus"></i>
@@ -276,7 +275,7 @@ function obtenerClaseRol(rol) {
     ) {
         return "admin";
     }if (
-        texto.includes("médico general") || texto.includes("medico general")
+        texto.includes("médico general") || texto.includes("medico general") ||  texto.includes("medicogeneral")
     ) {
         return "doctor";
     }if (
@@ -449,7 +448,7 @@ tablaUsuarios.addEventListener(
     "click",
     function (event) {
         // VER
-        const botonVer = event.target.closest(".view-btn");
+        const botonVer = event.target.closest(".view");
 
         if (botonVer) {
             const id =parseInt(botonVer.dataset.id);
@@ -458,7 +457,7 @@ tablaUsuarios.addEventListener(
         }
 
         // EDITAR
-        const botonEditar = event.target.closest(".edit-btn");
+        const botonEditar = event.target.closest(".edit");
         if (botonEditar) {
             const id = botonEditar.dataset.id;
             window.location.href = "editarUsuario.html?id=" + id;
@@ -466,7 +465,7 @@ tablaUsuarios.addEventListener(
         }
 
         // DAR DE BAJA
-        const botonEliminar = event.target.closest(".delete-btn");
+        const botonEliminar = event.target.closest(".delete");
         if (botonEliminar) {
             const id = parseInt(botonEliminar.dataset.id);
             darDeBajaUsuario(id);

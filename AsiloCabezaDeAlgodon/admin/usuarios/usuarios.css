@@ -659,59 +659,56 @@ td {
 }
 
 /* ACCIONES */
-
-.user-actions {
+.actions {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
-.edit-btn,
-.delete-btn {
-    width: 32px;
-    height: 32px;
-    border: none;
+.action-btn {
+    width: 31px;
+    height: 31px;
     border-radius: 8px;
+    border: 1px solid var(--border);
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 16px;
-    background: #f5f6f8;
-    color: #697386;
-    transition: background 0.2s ease, color 0.2s ease;
+    font-size: 15px;
+    transition: 0.2s;
 }
 
-.edit-btn:hover {
-    background: #eef4ff;
-    color: #5b8def;
+.action-btn.view {
+    color: #2563eb;
 }
 
-.delete-btn:hover {
-    background: #fff0f0;
-    color: #d9534f;
+.action-btn.view:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
 }
 
-/* BOTÓN VER */
-
-.view-btn {
-    border: none;
-    background: transparent;
-    color: var(--primary);
-    font-size: 9px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
+.action-btn.edit {
+    color: #8b5cf6;
 }
 
-.view-btn i {
-    font-size: 16px;
+.action-btn.edit:hover {
+    background: #f5f3ff;
+    border-color: #ddd6fe;
 }
 
-.view-btn:hover {
-    color: #1d4ed8;
+.action-btn.delete {
+    color: #ef4444;
+}
+
+.action-btn.delete:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.action-btn.disabled {
+    color: #c5cad3;
+    cursor: not-allowed;
 }
 
 /* FOOTER DE TABLA */
