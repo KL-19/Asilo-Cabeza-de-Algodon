@@ -16,6 +16,46 @@ namespace ApiAsilo.Controllers
             _context = context;
         }
 
+        //obtener todos los usuarios
+        [HttpGet]
+        public async Task<IActionResult> ObtenerUsuarios()
+        {
+            var usuarios = await _context.Usuarios
+                .Include(u => u.Rol)
+                .Include(u => u.PerfilUsuario)
+                .OrderBy(u => u.NombreCompleto)
+                .Select(u => new
+                {
+                    id = u.Id,
+                    nombreCompleto = u.NombreCompleto,
+                    nombreUsuario = u.NombreUsuario,
+                    correo = u.Correo,
+                    rolId = u.RolId,
+                    rol = u.Rol == null
+                        ? null
+                        : u.Rol.Nombre,
+                    activo = u.Activo,
+
+                    perfil = u.PerfilUsuario == null
+                        ? null
+                        : new
+                        {
+                            numeroColegiado =
+                                u.PerfilUsuario.NumeroColegiado,
+
+                            telefono =
+                                u.PerfilUsuario.Telefono,
+
+                            especialidad =
+                                u.PerfilUsuario.Especialidad
+                        }
+                })
+                .ToListAsync();
+
+            return Ok(usuarios);
+        }
+
+        //registrar Usuario
         [HttpPost]
         public async Task<IActionResult> RegistrarUsuario(
             [FromBody] RegistroUsuarioDTO datos)
@@ -78,6 +118,87 @@ namespace ApiAsilo.Controllers
                 id = usuario.Id
             });
         }
+
+        //Editar usuario
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarUsuario(
+            int id,
+            [FromBody] EditarUsuarioDTO datos)
+        {
+            var usuario =
+                await _context.Usuarios
+                    .Include(u => u.PerfilUsuario)
+                    .FirstOrDefaultAsync(
+                        u => u.Id == id);
+
+
+            if (usuario == null)
+            {
+                return NotFound(new
+                {
+                    mensaje =
+                        "El usuario no existe."
+                });
+            }
+
+            //datos del usuario
+            usuario.NombreCompleto = datos.NombreCompleto;
+            usuario.NombreUsuario = datos.NombreUsuario;
+            usuario.Correo = datos.Correo;
+            usuario.RolId = datos.RolId;
+
+            //Contraseña
+            if (!string.IsNullOrWhiteSpace(
+                datos.Password))
+            {
+                usuario.PasswordHash = datos.Password;
+            }
+
+            //Perfil
+            if (usuario.PerfilUsuario != null)
+            {
+                usuario.PerfilUsuario.NumeroColegiado = datos.NumeroColegiado;
+                usuario.PerfilUsuario.Telefono = datos.Telefono;
+                usuario.PerfilUsuario.Especialidad = datos.Especialidad;
+            }
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                mensaje = "Usuario actualizado correctamente."
+            });
+        }
+
+        //Dar de baja
+        [HttpPut("{id}/baja")]
+        public async Task<IActionResult> DarDeBajaUsuario(
+            int id)
+        {
+            var usuario = await _context.Usuarios
+                    .FirstOrDefaultAsync(
+                        u => u.Id == id);
+            if (usuario == null)
+            {
+                return NotFound(new
+                {
+                    mensaje = "El usuario no existe."
+                });
+            }
+
+            if (!usuario.Activo)
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El usuario ya está dado de baja."
+                });
+            }
+            usuario.Activo = false;
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                mensaje = "Usuario dado de baja correctamente."
+            });
+        }
+
     }
 
     public class RegistroUsuarioDTO
@@ -91,5 +212,21 @@ namespace ApiAsilo.Controllers
         public string? Telefono { get; set; }
         public string? Especialidad { get; set; }
         public bool Activo { get; set; } = true;
+    }
+
+    //DTO Editar
+    public class EditarUsuarioDTO
+    {
+        public string NombreCompleto { get; set; }
+            = string.Empty;
+        public string NombreUsuario { get; set; }
+            = string.Empty;
+        public string Correo { get; set; }
+            = string.Empty;
+        public string? Password { get; set; }
+        public int RolId { get; set; }
+        public string? NumeroColegiado { get; set; }
+        public string? Telefono { get; set; }
+        public string? Especialidad { get; set; }
     }
 }

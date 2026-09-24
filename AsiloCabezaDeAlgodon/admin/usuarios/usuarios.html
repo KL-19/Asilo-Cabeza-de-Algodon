@@ -7,22 +7,16 @@
 
     <title>Usuarios | Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="usuarios.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         BARRA LATERAL
-    ========================== -->
+    <!-- BARRA LATERAL -->
     <aside class="sidebar">
 
         <!-- LOGO -->
@@ -35,7 +29,6 @@
                 <h2>Cabeza de Algodón</h2>
                 <span>Administración</span>
             </div>
-
         </div>
 
         <!-- NAVEGACIÓN -->
@@ -97,9 +90,7 @@
         </div>
     </aside>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
 
         <!-- HEADER -->
@@ -142,9 +133,7 @@
             </div>
         </header>
 
-        <!-- =========================
-             ESTADÍSTICAS
-        ========================== -->
+        <!-- ESTADÍSTICAS -->
         <section class="stats-grid">
 
             <div class="stat-card">
@@ -153,7 +142,7 @@
                 </div>
                 <div class="stat-info">
                     <span>Usuarios registrados</span>
-                    <h2>12</h2>
+                    <h2 id="totalUsuarios">0</h2>
                 </div>
             </div>
 
@@ -164,14 +153,12 @@
 
                 <div class="stat-info">
                     <span>Usuarios activos</span>
-                    <h2>10</h2>
+                    <h2 id="usuariosActivos">0</h2>
                 </div>
             </div>
         </section>
 
-        <!-- =========================
-             PANEL DE USUARIOS
-        ========================== -->
+        <!-- PANEL DE USUARIOS -->
         <section class="content-card">
             <div class="card-header">
                 
@@ -197,6 +184,21 @@
                             placeholder="Buscar usuario...">
                     </div>
 
+                     <select
+                        id="statusFilter">
+                        <option value="todos">
+                            Todos los estados
+                        </option>
+
+                        <option value="activo">
+                            Activos
+                        </option>
+
+                        <option value="inactivo">
+                            Inactivos
+                        </option>
+                    </select>
+
                     <button class="filter-btn">
                         <i class="ph ph-funnel"></i>
                         Filtrar
@@ -221,309 +223,29 @@
                     </thead>
 
                     <tbody id="userTable">
-
-                        <!-- ADMINISTRADOR -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar blue">
-                                        A
-                                    </div>
-                                    <div>
-                                        <strong>admin</strong>
-                                        <span>Administrador</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Administrador
-                            </td>
-
-                            <td>
-                                admin@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge admin">
-                                    Administrador
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- MÉDICO GENERAL -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar green">
-                                        MG
-                                    </div>
-                                    <div>
-                                        <strong>medico.general</strong>
-                                        <span>Médico General</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Dr. Médico General
-                            </td>
-
-                            <td>
-                                medico@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge doctor">
-                                    Médico General
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- ESPECIALISTA -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar purple">
-                                        ME
-                                    </div>
-                                    <div>
-                                        <strong>especialista</strong>
-                                        <span>Médico Especialista</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Dra. Especialista
-                            </td>
-
-                            <td>
-                                especialista@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge specialist">
-                                    Especialista
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- ENFERMERO -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar orange">
-                                        EN
-                                    </div>
-                                    <div>
-                                        <strong>enfermero</strong>
-                                        <span>Enfermero</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Enfermero
-                            </td>
-
-                            <td>
-                                enfermeria@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge nurse">
-                                    Enfermero
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- FARMACIA -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar pink">
-                                        FA
-                                    </div>
-                                    <div>
-                                        <strong>farmacia</strong>
-                                        <span>Farmacia</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Encargado de Farmacia
-                            </td>
-
-                            <td>
-                                farmacia@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge pharmacy">
-                                    Farmacia
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- LABORATORIO -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar cyan">
-                                        LA
-                                    </div>
-                                    <div>
-                                        <strong>laboratorio</strong>
-                                        <span>Laboratorio</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Encargado de Laboratorio
-                            </td>
-
-                            <td>
-                                laboratorio@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge laboratory">
-                                    Laboratorio
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- FUNDACIÓN -->
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <div class="user-avatar red">
-                                        FU
-                                    </div>
-
-                                    <div>
-                                        <strong>fundacion</strong>
-                                        <span>Fundación</span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Coordinador Fundación
-                            </td>
-
-                            <td>
-                                fundacion@cabezadealgodon.com
-                            </td>
-
-                            <td>
-                                <span class="role-badge foundation">
-                                    Fundación
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="status active">
-                                    Activo
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver
-                                </button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
+
+            <!-- FOOTER / PAGINACIÓN -->
+            <div class="table-footer">
+                <span>
+                    Mostrando
+                    <strong id="mostrandoUsuarios">0</strong>
+                    de
+                    <strong id="totalUsuariosFooter">0</strong>
+                </span>
+
+                <div
+                    class="pagination"
+                    id="pagination">
+
+                </div>
+            </div>
+
         </section>
 
-        <!-- =========================
-             INFORMACIÓN DE ROLES
-        ========================== -->
+        <!-- INFORMACIÓN DE ROLES -->
         <section class="info-panel">
             <div class="info-icon">
                 <i class="ph ph-shield-check"></i>
@@ -541,9 +263,141 @@
             </div>
 
         </section>
-
     </main>
 
-</body>
+    <!-- MODAL VER USUARIO -->
+    <div
+        class="modal-overlay"
+        id="usuarioModal">
 
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-label">
+                        INFORMACIÓN DEL USUARIO
+                    </span>
+
+                    <h2 id="modalNombreUsuario">
+                        -
+                    </h2>
+
+                    <p id="modalEstado">
+                        -
+                    </p>
+                </div>
+
+                <button
+                    class="modal-close"
+                    id="cerrarModal">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="modal-section">
+                    <h3>
+                        <i class="ph ph-user"></i>
+                        Datos del usuario
+                    </h3>
+
+                    <div class="modal-grid">
+
+                        <div class="modal-field">
+                            <span>
+                                Nombre completo
+                            </span>
+
+                            <strong id="modalNombreCompleto">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>
+                                Nombre de usuario
+                            </span>
+
+                            <strong id="modalUsuario">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>
+                                Correo
+                            </span>
+
+                            <strong id="modalCorreo">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>
+                                Rol
+                            </span>
+
+                            <strong id="modalRol">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-section">
+                    <h3>
+                        <i class="ph ph-identification-card"></i>
+                        Información profesional
+                    </h3>
+
+                    <div class="modal-grid">
+                        <div class="modal-field">
+                            <span>
+                                Número de colegiado
+                            </span>
+
+                            <strong id="modalColegiado">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>
+                                Teléfono
+                            </span>
+
+                            <strong id="modalTelefono">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong id="modalEspecialidad">
+                                -
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    class="modal-button"
+                    id="cerrarModalFooter">
+                    Cerrar
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="usuarios.js"></script>
+</body>
 </html>

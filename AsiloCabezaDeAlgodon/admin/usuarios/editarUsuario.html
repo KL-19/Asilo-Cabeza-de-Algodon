@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Editar usuario | Cabeza de Algodón
+    </title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script
+        src="https://unpkg.com/@phosphor-icons/web">
+    </script>
+
+    <link
+        rel="stylesheet"
+        href="editarUsuario.css">
+
+</head>
+
+
+<body>
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="breadcrumb">
+
+                    <a
+                        href="usuarios.html">
+
+                        Usuarios
+
+                    </a>
+
+                    <i class="ph ph-caret-right"></i>
+
+                    <strong>
+                        Editar usuario
+                    </strong>
+
+                </div>
+
+
+                <h1>
+                    Editar usuario
+                </h1>
+
+
+                <p>
+                    Actualiza la información y permisos
+                    del usuario.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="form-panel">
+
+
+            <div class="panel-header">
+
+                <h2>
+                    Información del usuario
+                </h2>
+
+                <p>
+                    Modifica los datos necesarios.
+                </p>
+
+            </div>
+
+
+
+            <form id="editarUsuarioForm">
+
+
+                <!-- DATOS GENERALES -->
+
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <i class="ph ph-user"></i>
+
+                        <div>
+
+                            <h3>
+                                Datos personales
+                            </h3>
+
+                            <p>
+                                Información de la cuenta.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombreCompleto"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Nombre de usuario
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombreUsuario"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Rol
+                            </label>
+
+                            <select
+                                id="rolId"
+                                required>
+
+                                <option value="">
+                                    Seleccione un rol
+                                </option>
+
+                                <option value="1">
+                                    Administrador
+                                </option>
+
+                                <option value="3">
+                                    Médico General
+                                </option>
+
+                                <option value="4">
+                                    Enfermero
+                                </option>
+
+                                <option value="5">
+                                    Fundación
+                                </option>
+
+                                <option value="6">
+                                    Médico Especialista
+                                </option>
+
+                                <option value="7">
+                                    Laboratorio
+                                </option>
+
+                                <option value="8">
+                                    Farmacia
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Nueva contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Dejar vacío para conservar la actual">
+
+                            <small>
+                                Si no desea cambiarla,
+                                deje este campo vacío.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PERFIL -->
+
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <i class="ph ph-identification-card"></i>
+
+                        <div>
+
+                            <h3>
+                                Información profesional
+                            </h3>
+
+                            <p>
+                                Datos adicionales del usuario.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Número de colegiado
+                            </label>
+
+                            <input
+                                type="text"
+                                id="numeroColegiado">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="text"
+                                id="telefono">
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Especialidad
+                            </label>
+
+                            <input
+                                type="text"
+                                id="especialidad">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BOTONES -->
+
+                <div class="form-footer">
+
+                    <a
+                        href="usuarios.html"
+                        class="btn-secondary">
+
+                        Cancelar
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="ph ph-check"></i>
+
+                        Guardar cambios
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+    <script
+        src="editarUsuario.js">
+    </script>
+
+</body>
+
+</html>
