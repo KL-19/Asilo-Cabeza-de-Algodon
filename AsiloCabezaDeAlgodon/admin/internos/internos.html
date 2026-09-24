@@ -7,23 +7,16 @@
 
     <title>Internos | Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="internos.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         BARRA LATERAL
-    ========================== -->
-
+    <!-- BARRA LATERAL -->
     <aside class="sidebar">
 
         <!-- Logo -->
@@ -39,7 +32,6 @@
         </div>
 
         <!-- NAVEGACIÓN -->
-
         <nav class="menu">
             <p class="menu-title">PRINCIPAL</p>
             <a href="../dashboard.html" class="menu-item">
@@ -77,11 +69,9 @@
 
 
         <!-- USUARIO -->
-
         <div class="sidebar-bottom">
 
             <div class="admin-mini">
-
                 <div class="admin-avatar">
                     <i class="ph ph-user"></i>
                 </div>
@@ -90,9 +80,7 @@
                     <strong>Administrador</strong>
                     <span>Administrador</span>
                 </div>
-
             </div>
-
 
             <a href="../../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
@@ -101,20 +89,13 @@
         </div>
     </aside>
 
-
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
-
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
 
-
         <!-- HEADER -->
-
         <header class="topbar">
 
             <div class="page-title">
-
                 <div class="breadcrumb">  
                     <a href="../dashboard.html" class="breadcrumb-link">
                         Administración
@@ -129,7 +110,6 @@
                     Administra la información de los residentes
                     del asilo.
                 </p>
-
             </div>
 
 
@@ -156,9 +136,7 @@
             </div>
         </header>
 
-        <!-- =========================
-             RESUMEN
-        ========================== -->
+        <!-- RESUMEN -->
         <section class="summary-grid">
 
             <div class="summary-card">
@@ -169,7 +147,7 @@
 
                 <div>
                     <span>Total de internos</span>
-                    <strong>35</strong>
+                    <strong id="totalInternos">0</strong>
                 </div>
 
             </div>
@@ -181,16 +159,13 @@
 
                 <div>
                     <span>Internos activos</span>
-                    <strong>32</strong>
+                    <strong id="internosActivos">0</strong>
                 </div>
 
             </div>
         </section>
 
-        <!-- =========================
-             PANEL DE INTERNOS
-        ========================== -->
-
+        <!-- PANEL DE INTERNOS -->
         <section class="internos-panel">
 
             <!-- CABECERA -->
@@ -210,23 +185,16 @@
             </div>
 
             <!-- FILTROS -->
-
             <div class="filters">
-
                 <div class="search-box">
-
                     <i class="ph ph-magnifying-glass"></i>
-
                     <input
                         type="text"
                         id="searchInput"
                         placeholder="Buscar por nombre, DPI o familiar...">
-
                 </div>
 
-
                 <select id="statusFilter">
-
                     <option value="todos">
                         Todos los estados
                     </option>
@@ -238,622 +206,44 @@
                     <option value="inactivo">
                         Inactivos
                     </option>
-
                 </select>
 
-
                 <button class="filter-button">
-
                     <i class="ph ph-funnel"></i>
-
                     Filtrar
-
                 </button>
-
             </div>
 
-
             <!-- TABLA -->
-
             <div class="table-container">
-
                 <table>
 
                     <thead>
-
                         <tr>
-
                             <th>INTERNO</th>
-
                             <th>EDAD</th>
-
                             <th>FAMILIAR RESPONSABLE</th>
-
                             <th>INGRESO</th>
-
                             <th>ESTADO</th>
-
                             <th>ACCIONES</th>
-
                         </tr>
-
                     </thead>
 
-
-                    <tbody>
-
-
-                        <!-- INTERNO 1 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="resident">
-
-                                    <div class="resident-avatar">
-                                        JP
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            Juan Pérez
-                                        </strong>
-
-                                        <span>
-                                            DPI: 1234 56789 0101
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                78 años
-                            </td>
-
-
-                            <td>
-
-                                <div class="family">
-
-                                    <strong>
-                                        María Pérez
-                                    </strong>
-
-                                    <span>
-                                        Hija
-                                    </span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                12 May 2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status active">
-                                    <i class="ph ph-circle"></i>
-                                    Activo
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actions">
-
-                                    <button
-                                        class="action-btn view"
-                                        title="Ver expediente">
-
-                                        <i class="ph ph-eye"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn edit"
-                                        title="Editar interno">
-
-                                        <i class="ph ph-pencil-simple"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn delete"
-                                        title="Dar de baja">
-
-                                        <i class="ph ph-user-minus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- INTERNO 2 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="resident">
-
-                                    <div class="resident-avatar purple-avatar">
-                                        CL
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            Carlos López
-                                        </strong>
-
-                                        <span>
-                                            DPI: 2345 67890 0102
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                82 años
-                            </td>
-
-
-                            <td>
-
-                                <div class="family">
-
-                                    <strong>
-                                        Ana López
-                                    </strong>
-
-                                    <span>
-                                        Hija
-                                    </span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                03 Abr 2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status active">
-
-                                    <i class="ph ph-circle"></i>
-
-                                    Activo
-
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actions">
-
-                                    <button
-                                        class="action-btn view"
-                                        title="Ver expediente">
-
-                                        <i class="ph ph-eye"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn edit"
-                                        title="Editar interno">
-
-                                        <i class="ph ph-pencil-simple"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn delete"
-                                        title="Dar de baja">
-
-                                        <i class="ph ph-user-minus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- INTERNO 3 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="resident">
-
-                                    <div class="resident-avatar green-avatar">
-                                        PG
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            Pedro Gómez
-                                        </strong>
-
-                                        <span>
-                                            DPI: 3456 78901 0103
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                75 años
-                            </td>
-
-
-                            <td>
-
-                                <div class="family">
-
-                                    <strong>
-                                        Luis Gómez
-                                    </strong>
-
-                                    <span>
-                                        Hijo
-                                    </span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                18 Feb 2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status active">
-
-                                    <i class="ph ph-circle"></i>
-
-                                    Activo
-
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actions">
-
-                                    <button
-                                        class="action-btn view"
-                                        title="Ver expediente">
-
-                                        <i class="ph ph-eye"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn edit"
-                                        title="Editar interno">
-
-                                        <i class="ph ph-pencil-simple"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn delete"
-                                        title="Dar de baja">
-
-                                        <i class="ph ph-user-minus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- INTERNO 4 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="resident">
-
-                                    <div class="resident-avatar orange-avatar">
-                                        RM
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            Rosa Martínez
-                                        </strong>
-
-                                        <span>
-                                            DPI: 4567 89012 0104
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                80 años
-                            </td>
-
-
-                            <td>
-
-                                <div class="family">
-
-                                    <strong>
-                                        José Martínez
-                                    </strong>
-
-                                    <span>
-                                        Hijo
-                                    </span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                08 Ene 2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status active">
-
-                                    <i class="ph ph-circle"></i>
-
-                                    Activo
-
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actions">
-
-                                    <button
-                                        class="action-btn view"
-                                        title="Ver expediente">
-
-                                        <i class="ph ph-eye"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn edit"
-                                        title="Editar interno">
-
-                                        <i class="ph ph-pencil-simple"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn delete"
-                                        title="Dar de baja">
-
-                                        <i class="ph ph-user-minus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- INTERNO 5 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="resident">
-
-                                    <div class="resident-avatar red-avatar">
-                                        MG
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            Miguel García
-                                        </strong>
-
-                                        <span>
-                                            DPI: 5678 90123 0105
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                76 años
-                            </td>
-
-
-                            <td>
-
-                                <div class="family">
-
-                                    <strong>
-                                        Laura García
-                                    </strong>
-
-                                    <span>
-                                        Hermana
-                                    </span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                15 Dic 2025
-                            </td>
-
-
-                            <td>
-
-                                <span class="status inactive">
-
-                                    <i class="ph ph-circle"></i>
-
-                                    Inactivo
-
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actions">
-
-                                    <button
-                                        class="action-btn view"
-                                        title="Ver expediente">
-
-                                        <i class="ph ph-eye"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn edit"
-                                        title="Editar interno">
-
-                                        <i class="ph ph-pencil-simple"></i>
-
-                                    </button>
-
-
-                                    <button
-                                        class="action-btn delete disabled"
-                                        title="Interno inactivo">
-
-                                        <i class="ph ph-user-minus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
+                    <tbody id="internosTableBody">
                     </tbody>
 
                 </table>
-
             </div>
 
-
             <!-- FOOTER DE TABLA -->
-
             <div class="table-footer">
-
                 <span>
-                    Mostrando <strong>5</strong> de
-                    <strong>35</strong> internos
+                    Mostrando <strong id="mostrandoInternos">0</strong> de
+                    <strong id="totalInternosFooter">0</strong>
                 </span>
-
-
-                <div class="pagination">
-
-                    <button disabled>
-                        <i class="ph ph-caret-left"></i>
-                    </button>
-
-                    <button class="current">
-                        1
-                    </button>
-
-                    <button>
-                        2
-                    </button>
-
-                    <button>
-                        3
-                    </button>
-
-                    <span>...</span>
-
-                    <button>
-                        7
-                    </button>
-
-                    <button>
-                        <i class="ph ph-caret-right"></i>
-                    </button>
-
+                
+                <div class="pagination"
+                id="pagination">
                 </div>
 
             </div>
@@ -862,6 +252,176 @@
 
     </main>
 
-</body>
+    <!-- MODAL EXPEDIENTE-->
+    <div class="modal-overlay" id="expedienteModal">
 
+        <div class="modal">
+            <!-- CABECERA DEL MODAL -->
+            <div class="modal-header">
+
+                <div>
+                    <span class="modal-label">
+                        EXPEDIENTE DEL INTERNO
+                    </span>
+
+                    <h2 id="modalNombre">
+                        -
+                    </h2>
+
+                    <p id="modalEstado">
+                        -
+                    </p>
+                </div>
+
+                <button
+                    class="modal-close"
+                    id="cerrarModal">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+
+            <!-- CONTENIDO -->
+            <div class="modal-body">
+
+                <!-- DATOS PERSONALES -->
+                <div class="modal-section">
+
+                    <h3>
+                        <i class="ph ph-user"></i>
+                        Datos personales
+                    </h3>
+
+                    <div class="modal-grid">
+
+                        <div class="modal-field">
+                            <span>Nombre completo</span>
+                            <strong id="modalNombreCompleto">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Edad</span>
+                            <strong id="modalEdad">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Fecha de nacimiento</span>
+                            <strong id="modalFechaNacimiento">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>DPI</span>
+                            <strong id="modalDPI">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Fecha de ingreso</span>
+                            <strong id="modalFechaIngreso">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- FAMILIAR -->
+                <div class="modal-section">
+
+                    <h3>
+                        <i class="ph ph-users-three"></i>
+                        Familiar responsable
+                    </h3>
+
+                    <div class="modal-grid">
+
+                        <div class="modal-field">
+                            <span>Nombre</span>
+                            <strong id="modalFamiliar">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Parentesco</span>
+                            <strong id="modalParentesco">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Teléfono</span>
+                            <strong id="modalTelefono">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="modal-field">
+                            <span>Correo</span>
+                            <strong id="modalCorreo">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- PSICOPATOLOGÍA -->
+                <div class="modal-section">
+
+                    <h3>
+                        <i class="ph ph-brain"></i>
+                        Condiciones y padecimientos
+                    </h3>
+
+                    <div
+                        class="modal-info-box"
+                        id="modalPsicopatologia">
+                        No registrado.
+                    </div>
+
+                </div>
+
+
+                <!-- MEDICAMENTOS -->
+                <div class="modal-section">
+
+                    <h3>
+                        <i class="ph ph-pill"></i>
+                        Medicamentos de cajón
+                    </h3>
+
+                    <div id="modalMedicamentos">
+
+                        <div class="modal-info-box">
+                            No hay medicamentos registrados.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PIE DEL MODAL -->
+            <div class="modal-footer">
+                <button
+                    class="modal-button"
+                    id="cerrarModalFooter">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="internos.js"></script>
+</body>
 </html>

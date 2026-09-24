@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using ApiAsilo.Data;
 using ApiAsilo.Models;
@@ -14,7 +15,69 @@ namespace ApiAsilo.Controllers
         {
             _context = context;
         }
+        //obtener todos los internos
+        [HttpGet]
+        public async Task<IActionResult> ObtenerInternos()
+        {
+            var internos = await _context.Internos
+                .Include(i => i.Familiar)
+                .Include(i => i.Psicopatologias)
+                .Include(i => i.MedicamentosCajon)
+                .OrderBy(i => i.Nombre)
+                .Select(i => new
+                {
+                    id = i.Id,
+                    nombre = i.Nombre,
+                    apellido = i.Apellido,
+                    nombreCompleto = i.Nombre + " " + i.Apellido,
+                    fechaNacimiento = i.FechaNacimiento,
+                    genero = i.Genero,
+                    dpi = i.DPI,
+                    fechaIngreso = i.FechaIngreso,
+                    direccion = i.DireccionAnterior,
+                    telefonoEmergencia = i.TelefonoEmergencia,
+                    activo = i.Activo,
 
+                    // Familiar responsable
+                    familiar = i.Familiar == null ? null : new
+                    {
+                        nombreCompleto = i.Familiar.NombreCompleto,
+                        parentesco = i.Familiar.Parentesco,
+                        telefono = i.Familiar.Telefono,
+                        correo = i.Familiar.Correo,
+                        direccion = i.Familiar.Direccion
+                    },
+
+                    // Psicopatología
+                    psicopatologias = i.Psicopatologias
+                        .Where(p => p.Activa)
+                        .Select(p => new
+                        {
+                            id = p.Id,
+                            condicionPadecimiento =
+                            p.CondicionPadecimiento
+                        })
+                    .ToList(),
+
+                    // Medicamentos de cajon
+                    medicamentos = i.MedicamentosCajon
+                        .Where(m => m.Activo)
+                        .Select(m => new
+                        {
+                            id = m.Id,
+                            medicamento = m.Medicamento,
+                            cantidad = m.Cantidad,
+                            frecuencia = m.Frecuencia,
+                            tiempoAplicacion =
+                            m.TiempoAplicacion
+                        })
+                        .ToList()
+                })
+                .ToListAsync();
+            return Ok(internos);
+        }
+
+        //registrar interno
         [HttpPost]
         public async Task<IActionResult> RegistrarInterno([FromBody] RegistroInternoDTO datos)
         {
@@ -98,58 +161,129 @@ namespace ApiAsilo.Controllers
                 id = interno.Id
             });
         }
-    }
+        
+        // dar de baja a un Interno
+        [HttpPut("{id}/baja")]
+        public async Task<IActionResult> DarDeBaja(int id)
+        {
+            var interno = await _context.Internos
+                .FirstOrDefaultAsync(i => i.Id == id);
 
+            if (interno == null){
+                return NotFound(new
+                {
+                    mensaje = "El interno no existe."
+                });
+            }
 
-    // DTO que recibe la información completa del formulario
-    public class RegistroInternoDTO
-    {
-        // Datos del interno
-        public string Nombre { get; set; } = string.Empty;
+            if (!interno.Activo){
+                return BadRequest(new
+                {
+                    mensaje = "El interno ya está dado de baja."
+                });
+            }
 
-        public string Apellido { get; set; } = string.Empty;
+            interno.Activo = false;
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                mensaje = "Interno dado de baja correctamente."
+            });
+        }
 
-        public DateTime FechaNacimiento { get; set; }
+        // EDITAR INTERNO
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarInterno(
+            int id,
+            [FromBody] EditarInternoDTO datos)
+        {
+            var interno = await _context.Internos
+                .Include(i => i.Familiar)
+                .FirstOrDefaultAsync(i => i.Id == id);
 
-        public string? Genero { get; set; }
+            if (interno == null){
+                return NotFound(new
+                {
+                    mensaje = "El interno no existe."
+                });
+            }
 
-        public string? DPI { get; set; }
+            // Datos del interno
+            interno.Nombre = datos.Nombre;
+            interno.Apellido = datos.Apellido;
+            interno.FechaNacimiento = datos.FechaNacimiento;
+            interno.Genero = datos.Genero;
+            interno.DPI = datos.DPI;
+            interno.FechaIngreso = datos.FechaIngreso;
+            interno.DireccionAnterior = datos.Direccion;
+            interno.TelefonoEmergencia = datos.Telefono;
 
-        public DateTime FechaIngreso { get; set; }
+            // Datos del familiar
+            if (interno.Familiar != null){
+                interno.Familiar.NombreCompleto = datos.FamiliarNombre;
+                interno.Familiar.Parentesco = datos.Parentesco;
+                interno.Familiar.Telefono = datos.FamiliarTelefono;
+                interno.Familiar.Correo = datos.FamiliarCorreo;
+                interno.Familiar.Direccion = datos.FamiliarDireccion;
+            }
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                mensaje = "Interno actualizado correctamente."
+            });
+        }
 
-        public string? Direccion { get; set; }
+        // DTO que recibe la información completa del formulario
+        public class RegistroInternoDTO
+        {
+            // Datos del interno
+            public string Nombre { get; set; } = string.Empty;
+            public string Apellido { get; set; } = string.Empty;
+            public DateTime FechaNacimiento { get; set; }
+            public string? Genero { get; set; }
+            public string? DPI { get; set; }
+            public DateTime FechaIngreso { get; set; }
+            public string? Direccion { get; set; }
+            public string? Telefono { get; set; }
 
-        public string? Telefono { get; set; }
+            // Datos del familiar
+            public string FamiliarNombre { get; set; } = string.Empty;
+            public string Parentesco { get; set; } = string.Empty;
+            public string FamiliarTelefono { get; set; } = string.Empty;
+            public string FamiliarCorreo { get; set; } = string.Empty;
+            public string? FamiliarDireccion { get; set; }
 
+            // Información médica inicial
+            public string? Psicopatologia { get; set; }
+            public List<MedicamentoDTO>? Medicamentos { get; set; }
+        }
 
-        // Datos del familiar
-        public string FamiliarNombre { get; set; } = string.Empty;
+        // DTO para cada medicamento
+        public class MedicamentoDTO
+        {
+            public string Medicamento { get; set; } = string.Empty;
+            public string Cantidad { get; set; } = string.Empty;
+            public string Frecuencia { get; set; } = string.Empty;
+            public string TiempoAplicacion { get; set; } = string.Empty;
+        }
 
-        public string Parentesco { get; set; } = string.Empty;
+        //DTO editar interno
+        public class EditarInternoDTO
+        {
+            public string Nombre { get; set; } = string.Empty;
+            public string Apellido { get; set; } = string.Empty;
+            public DateTime FechaNacimiento { get; set; }
+            public string? Genero { get; set; }
+            public string? DPI { get; set; }
+            public DateTime FechaIngreso { get; set; }
+            public string? Direccion { get; set; }
+            public string? Telefono { get; set; }
 
-        public string FamiliarTelefono { get; set; } = string.Empty;
-
-        public string FamiliarCorreo { get; set; } = string.Empty;
-
-        public string? FamiliarDireccion { get; set; }
-
-
-        // Información médica inicial
-        public string? Psicopatologia { get; set; }
-
-        public List<MedicamentoDTO>? Medicamentos { get; set; }
-    }
-
-
-    // DTO para cada medicamento
-    public class MedicamentoDTO
-    {
-        public string Medicamento { get; set; } = string.Empty;
-
-        public string Cantidad { get; set; } = string.Empty;
-
-        public string Frecuencia { get; set; } = string.Empty;
-
-        public string TiempoAplicacion { get; set; } = string.Empty;
+            public string FamiliarNombre { get; set; } = string.Empty;
+            public string Parentesco { get; set; } = string.Empty;
+            public string FamiliarTelefono { get; set; } = string.Empty;
+            public string FamiliarCorreo { get; set; } = string.Empty;
+            public string? FamiliarDireccion { get; set; }
+        }   
     }
 }

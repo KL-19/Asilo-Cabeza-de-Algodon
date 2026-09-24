@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar interno | Cabeza de Algodón</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="editarInterno.css">
+</head>
+
+<body>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- ENCABEZADO -->
+        <header class="topbar">
+            <div class="page-title">
+                <div class="breadcrumb">
+                    <a
+                        href="internos.html"
+                        class="breadcrumb-link">
+                        Internos
+                    </a>
+
+                    <i class="ph ph-caret-right"></i>
+                    <strong>Editar interno</strong>
+                </div>
+
+                <h1>Editar interno</h1>
+                <p>
+                    Actualiza la información del residente
+                    y su familiar responsable.
+                </p>
+
+            </div>
+        </header>
+
+        <!-- FORMULARIO-->
+        <section class="form-panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Información del interno</h2>
+                    <p>
+                        Modifica los datos que necesites.
+                    </p>
+                </div>
+            </div>
+
+            <form id="editarInternoForm">
+                <!-- DATOS DEL INTERNO -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="ph ph-user"></i>
+                        <div>
+                            <h3>Datos personales</h3>
+
+                            <p>
+                                Información básica del residente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apellido">
+                                Apellido
+                            </label>
+
+                            <input
+                                type="text"
+                                id="apellido"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaNacimiento">
+                                Fecha de nacimiento
+                            </label>
+
+                            <input
+                                type="date"
+                                id="fechaNacimiento"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genero">
+                                Género
+                            </label>
+
+                            <select id="genero">
+                                <option value="">
+                                    Seleccione
+                                </option>
+
+                                <option value="Femenino">
+                                    Femenino
+                                </option>
+
+                                <option value="Masculino">
+                                    Masculino
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dpi">
+                                DPI
+                            </label>
+
+                            <input
+                                type="text"
+                                id="dpi">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaIngreso">
+                                Fecha de ingreso
+                            </label>
+
+                            <input
+                                type="date"
+                                id="fechaIngreso"
+                                required>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="direccion">
+                                Dirección anterior
+                            </label>
+
+                            <input
+                                type="text"
+                                id="direccion">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">
+                                Teléfono de emergencia
+                            </label>
+
+                            <input
+                                type="text"
+                                id="telefono">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAMILIAR -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="ph ph-users-three"></i>
+                        <div>
+                            <h3>Familiar responsable</h3>
+
+                            <p>
+                                Información de contacto del familiar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="familiarNombre">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="familiarNombre"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parentesco">
+                                Parentesco
+                            </label>
+
+                            <input
+                                type="text"
+                                id="parentesco"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="familiarTelefono">
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="text"
+                                id="familiarTelefono">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="familiarCorreo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="familiarCorreo">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="familiarDireccion">
+                                Dirección
+                            </label>
+
+                            <input
+                                type="text"
+                                id="familiarDireccion">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BOTONES -->
+                <div class="form-footer">
+                    <a
+                        href="internos.html"
+                        class="btn-secondary">
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+                        <i class="ph ph-check"></i>
+                        Guardar cambios
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+    <script src="editarInterno.js"></script>
+</body>
+</html>

@@ -42,5 +42,9 @@ namespace ApiAsilo.Models
 
         [ForeignKey("FamiliarID")]
         public virtual Familiar? Familiar { get; set; }
+        public virtual ICollection<Psicopatologia> Psicopatologias { get; set; }
+        = new List<Psicopatologia>();
+        public virtual ICollection<MedicamentoCajon> MedicamentosCajon { get; set; }
+        = new List<MedicamentoCajon>();
     }
 }
