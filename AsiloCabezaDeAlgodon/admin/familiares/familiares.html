@@ -184,182 +184,21 @@
                     </thead>
 
                     <tbody id="familyTable">
-
-                        <tr>
-                            <td>
-                                <div class="person">
-                                    <div class="person-avatar blue">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>
-                                            María López
-                                        </strong>
-                                        <span>
-                                            Familiar responsable
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Hija
-                            </td>
-
-                            <td>
-                                5555-1234
-                            </td>
-
-                            <td>
-                                maria@email.com
-                            </td>
-
-                            <td>
-                                <span class="resident-badge">
-                                    Interno #00125
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver información
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="person">
-                                    <div class="person-avatar purple">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>
-                                            Carlos Hernández
-                                        </strong>
-                                        <span>
-                                            Familiar responsable
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Hijo
-                            </td>
-
-                            <td>
-                                5555-4521
-                            </td>
-
-                            <td>
-                                carlos@email.com
-                            </td>
-
-                            <td>
-                                <span class="resident-badge">
-                                    Interno #00118
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver información
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="person">
-                                    <div class="person-avatar green">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-                                    <div>
-                                        <strong>
-                                            Ana Martínez
-                                        </strong>
-                                        <span>
-                                            Familiar responsable
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Hermana
-                            </td>
-
-                            <td>
-                                5555-7896
-                            </td>
-
-                            <td>
-                                ana@email.com
-                            </td>
-
-                            <td>
-                                <span class="resident-badge">
-                                    Interno #00103
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver información
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="person">
-                                    <div class="person-avatar orange">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-                                    <div>
-                                        <strong>
-                                            José Ramírez
-                                        </strong>
-                                        <span>
-                                            Familiar responsable
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Hijo
-                            </td>
-
-                            <td>
-                                5555-3210
-                            </td>
-
-                            <td>
-                                jose@email.com
-                            </td>
-
-                            <td>
-                                <span class="resident-badge">
-                                    Interno #00098
-                                </span>
-                            </td>
-
-                            <td>
-                                <button class="view-btn">
-                                    <i class="ph ph-eye"></i>
-                                    Ver información
-                                </button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="table-footer">
+                <span>
+                    Mostrando <strong id="mostrandoFamiliares">0</strong>
+                    de
+                    <strong id="totalFamiliaresFooter">0</strong> familiares
+                </span>
+
+                <div
+                    class="pagination"
+                    id="pagination">
+                </div>
             </div>
         </section>
 
@@ -386,6 +225,104 @@
         </section>
     </main>
 
-</body>
+    <!-- MODAL FAMILIAR -->
+    <div
+        class="modal-overlay"
+        id="familiarModal">
 
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h2>Información del familiar</h2>
+                    <p>
+                        Datos de contacto e internos asociados.
+                    </p>
+                </div>
+
+                <button
+                    class="modal-close"
+                    id="cerrarModal">
+                    <i class="ph ph-x"></i>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="modal-person">
+                    <div class="modal-avatar">
+                        <i class="ph ph-user"></i>
+                    </div>
+
+                    <div>
+                        <strong id="modalNombreCompleto">
+                            -
+                        </strong>
+
+                        <span>
+                            Familiar responsable
+                        </span>
+                    </div>
+                </div>
+
+                <div class="modal-grid">
+                    <div class="modal-item">
+                        <span>Parentesco</span>
+                        <strong id="modalParentesco">
+                            -
+                        </strong>
+                    </div> 
+
+                    <div class="modal-item">
+                        <span>Teléfono</span>   
+                        <strong id="modalTelefono">
+                            -
+                        </strong>
+                    </div>
+
+                    <div class="modal-item">
+                        <span>Correo electrónico</span>
+                        <strong id="modalCorreo">
+                            -
+                        </strong>
+                    </div>
+
+                    <div class="modal-item">
+                        <span>Dirección</span> 
+                        <strong id="modalDireccion">
+                            -
+                        </strong>
+                    </div>
+
+                    <div class="modal-item">
+                        <span>Estado</span>
+                        <strong id="modalEstado">
+                            -
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Internos asociados</h3>
+                    
+                    <div
+                        class="modal-residents"
+                        id="modalInternos">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    class="modal-btn"
+                    id="cerrarModalFooter">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="familiares.js"></script>
+</body>
 </html>

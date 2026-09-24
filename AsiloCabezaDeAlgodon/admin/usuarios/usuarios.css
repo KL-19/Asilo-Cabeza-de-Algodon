@@ -520,11 +520,13 @@ td {
     width: 38px;
     height: 38px;
     border-radius: 10px;
+    background: #eff6ff;
+    color: #2563eb;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 800;
 }
 
 .user-avatar.blue {

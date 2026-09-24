@@ -81,21 +81,29 @@ namespace ApiAsilo.Controllers
         [HttpPost]
         public async Task<IActionResult> RegistrarInterno([FromBody] RegistroInternoDTO datos)
         {
-            // 1. Crear el familiar
-            var familiar = new Familiar
-            {
-                NombreCompleto = datos.FamiliarNombre,
-                Telefono = datos.FamiliarTelefono,
-                Correo = datos.FamiliarCorreo,
-                Direccion = datos.FamiliarDireccion,
-                Parentesco = datos.Parentesco,
-                Activo = true
-            };
+            Familiar familiar;
+            if (datos.FamiliarID.HasValue){
+                familiar = await _context.Familiares .FirstOrDefaultAsync(f => f.Id == datos.FamiliarID.Value);
+                if (familiar == null){
+                    return BadRequest(new
+                    {
+                        mensaje = "El familiar seleccionado no existe."
+                    });
+                }
+            }else{
+                familiar = new Familiar
+                {
+                    NombreCompleto = datos.FamiliarNombre,
+                    Telefono = datos.FamiliarTelefono,
+                    Correo = datos.FamiliarCorreo,
+                    Direccion = datos.FamiliarDireccion,
+                    Parentesco = datos.Parentesco,
+                    Activo = true
+                };
 
-            _context.Familiares.Add(familiar);
-
-            // Guardamos para obtener el ID del familiar
-            await _context.SaveChangesAsync();
+                _context.Familiares.Add(familiar);
+                await _context.SaveChangesAsync();
+            }
 
             // 2. Crear el interno
             var interno = new Interno
@@ -167,6 +175,7 @@ namespace ApiAsilo.Controllers
         public async Task<IActionResult> DarDeBaja(int id)
         {
             var interno = await _context.Internos
+                .Include(i => i.Familiar)
                 .FirstOrDefaultAsync(i => i.Id == id);
 
             if (interno == null){
@@ -185,6 +194,16 @@ namespace ApiAsilo.Controllers
 
             interno.Activo = false;
             await _context.SaveChangesAsync();
+
+            //actualizar estado del familiar 
+            if (interno.Familiar != null){
+                bool tieneOtroInternoActivo = await _context.Internos
+                .AnyAsync(i => i.FamiliarID == interno.FamiliarID && i.Activo);
+
+                interno.Familiar.Activo = tieneOtroInternoActivo;
+                await _context.SaveChangesAsync();
+            }
+
             return Ok(new
             {
                 mensaje = "Interno dado de baja correctamente."
@@ -246,6 +265,7 @@ namespace ApiAsilo.Controllers
             public string? Direccion { get; set; }
             public string? Telefono { get; set; }
 
+            public int? FamiliarID { get; set; }
             // Datos del familiar
             public string FamiliarNombre { get; set; } = string.Empty;
             public string Parentesco { get; set; } = string.Empty;

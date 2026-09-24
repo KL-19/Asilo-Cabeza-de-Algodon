@@ -26,5 +26,8 @@ namespace ApiAsilo.Models
         public string? Parentesco { get; set; }
 
         public bool Activo { get; set; } = true;
+
+        public virtual ICollection<Interno> Internos { get; set; }
+            = new List<Interno>();
     }
 }

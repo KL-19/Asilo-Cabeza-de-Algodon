@@ -384,8 +384,31 @@
 
                 <div class="form-grid">
 
-                    <div class="form-group">
+                    <div class="form-group full">
+                        <label>Familiar</label>
 
+                        <div class="familiar-opciones">
+                            <label>
+                                <input type="radio" name="tipoFamiliar" value="nuevo" checked>
+                                Registrar nuevo familiar
+                            </label>
+
+                            <label>
+                                <input type="radio" name="tipoFamiliar" value="existente">
+                                Seleccionar familiar existente
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full" id="familiarExistenteContainer" style="display: none;">
+                        <label for="familiarExistente">Familiar existente</label>
+
+                        <select id="familiarExistente">
+                            <option value="">Seleccione un familiar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="familiarNombre">
                             Nombre del familiar
                             <span>*</span>
@@ -399,7 +422,6 @@
                             required>
 
                     </div>
-
 
                     <div class="form-group">
 

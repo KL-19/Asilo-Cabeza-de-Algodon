@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Editar familiar | Cabeza de Algodón</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link
+        rel="stylesheet"
+        href="editarFamiliar.css">
+
+</head>
+
+<body>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- ENCABEZADO -->
+        <header class="topbar">
+            <div class="page-title">
+                <div class="breadcrumb">
+                    <a
+                        href="familiares.html"
+                        class="breadcrumb-link">
+                        Familiares
+                    </a>
+                    <i class="ph ph-caret-right"></i>
+                    <strong>
+                        Editar familiar
+                    </strong>
+                </div>
+
+                <h1>
+                    Editar familiar
+                </h1>
+
+                <p>
+                    Actualiza la información del familiar responsable.
+                </p>
+            </div>
+        </header>
+
+        <!-- FORMULARIO -->
+        <section class="form-panel">
+
+            <div class="panel-header">
+                <div>
+                    <h2>
+                        Información del familiar
+                    </h2>
+
+                    <p>
+                        Modifica los datos de contacto que necesites.
+                    </p>
+                </div>
+            </div>
+
+            <form id="editarFamiliarForm">
+
+                <!-- INFORMACIÓN DEL FAMILIAR -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="ph ph-user"></i>
+                        <div>
+                            <h3>
+                                Datos del familiar
+                            </h3>
+
+                            <p>
+                                Información personal y de contacto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <!-- NOMBRE -->
+                        <div class="form-group">
+                            <label for="nombreCompleto">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombreCompleto"
+                                required>
+                        </div>
+
+                        <!-- PARENTESCO -->
+                        <div class="form-group">
+                            <label for="parentesco">
+                                Parentesco
+                            </label>
+
+                            <select
+                                id="parentesco"
+                                required>
+
+                                <option value="">
+                                    Seleccione
+                                </option>
+
+                                <option value="hijo">
+                                    Hijo/a
+                                </option>
+
+                                <option value="hermano">
+                                    Hermano/a
+                                </option>
+
+                                <option value="sobrino">
+                                    Sobrino/a
+                                </option>
+
+                                <option value="nieto">
+                                    Nieto/a
+                                </option>
+
+                                <option value="otro">
+                                    Otro
+                                </option>
+
+                            </select>
+                        </div>
+
+                        <!-- TELÉFONO -->
+                        <div class="form-group">
+                            <label for="telefono">
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="text"
+                                id="telefono">
+                        </div>
+
+                        <!-- CORREO -->
+                        <div class="form-group">
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo">
+                        </div>
+
+                        <!-- DIRECCIÓN -->
+                        <div class="form-group full">
+                            <label for="direccion">
+                                Dirección
+                            </label>
+
+                            <input
+                                type="text"
+                                id="direccion">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- INFORMACIÓN DE INTERNOS -->
+                <div class="form-section">
+
+                    <div class="section-title">
+                        <i class="ph ph-users-three"></i>
+                        <div>
+                            <h3>
+                                Internos asociados
+                            </h3>
+
+                            <p>
+                                Internos relacionados con este familiar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="internos-asociados"
+                        id="internosAsociados">
+                    </div>
+
+                </div>
+
+                <!-- BOTONES -->
+                <div class="form-footer">
+                    <a
+                        href="familiares.html"
+                        class="btn-secondary">
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+                        <i class="ph ph-check"></i>
+                        Guardar cambios
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+    <script src="editarFamiliar.js"></script>
+</body>
+</html>
