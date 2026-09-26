@@ -44,7 +44,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
                     case 'Administrador':
                         window.location.href = "admin/dashboard.html";
                         break;
-                    case 'Doctor':
+                    case 'MedicoGeneral':
                         window.location.href = "MedicoGeneral/medicoGeneral.html";
                         break;
                     case 'Enfermero':

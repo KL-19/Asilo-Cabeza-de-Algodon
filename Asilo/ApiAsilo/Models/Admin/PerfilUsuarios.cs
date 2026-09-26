@@ -18,8 +18,9 @@ namespace ApiAsilo.Models
         [StringLength(20)]
         public string? Telefono { get; set; }
 
-        [StringLength(150)]
-        public string? Especialidad { get; set; }
+        public int? EspecialidadID { get; set; }
+        [ForeignKey("EspecialidadID")]
+        public virtual Especialidad? Especialidad { get; set; }
 
         public bool Activo { get; set; } = true;
 

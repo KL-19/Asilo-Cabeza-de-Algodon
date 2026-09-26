@@ -1,6 +1,26 @@
 const formulario = document.getElementById("editarUsuarioForm");
 const parametros = new URLSearchParams(window.location.search);
 const id = parametros.get("id");
+const selectEspecialidad = document.getElementById("especialidad");
+
+async function cargarEspecialidades() {
+    try {
+        const response = await fetch("http://localhost:5054/api/Especialidades");
+        if (!response.ok) {
+            throw new Error("No se pudieron obtener las especialidades.");
+        }
+        const especialidades = await response.json();
+        especialidades.forEach(especialidad => {
+            const option = document.createElement("option");
+            option.value = especialidad.id;
+            option.textContent = especialidad.nombre;
+            selectEspecialidad.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar especialidades:", error);
+    }
+}
 
 // CARGAR USUARIO
 async function cargarUsuario() {
@@ -38,7 +58,7 @@ async function cargarUsuario() {
         if (usuario.perfil) {
             document.getElementById("numeroColegiado").value = usuario.perfil.numeroColegiado || "";
             document.getElementById("telefono").value = usuario.perfil.telefono || "";
-            document.getElementById("especialidad").value = usuario.perfil.especialidad || "";
+            document.getElementById("especialidad").value = usuario.perfil.especialidadId || "";
         }
     }
     catch (error) {
@@ -62,7 +82,9 @@ formulario.addEventListener(
             rolId:parseInt(document.getElementById("rolId").value),
             numeroColegiado:document.getElementById("numeroColegiado").value.trim(),
             telefono:document.getElementById("telefono").value.trim(),
-            especialidad:document.getElementById("especialidad").value.trim()
+            especialidadID: document.getElementById("especialidad").value
+                ? parseInt(document.getElementById("especialidad").value)
+                : null
         };
 
         try {
@@ -98,4 +120,9 @@ formulario.addEventListener(
 );
 
 // INICIAR
-cargarUsuario();
+async function iniciar() {
+    await cargarEspecialidades();
+    await cargarUsuario();
+}
+
+iniciar();

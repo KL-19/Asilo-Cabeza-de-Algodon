@@ -23,6 +23,7 @@ namespace ApiAsilo.Controllers
             var usuarios = await _context.Usuarios
                 .Include(u => u.Rol)
                 .Include(u => u.PerfilUsuario)
+                    .ThenInclude(p => p.Especialidad)
                 .OrderBy(u => u.NombreCompleto)
                 .Select(u => new
                 {
@@ -47,7 +48,9 @@ namespace ApiAsilo.Controllers
                                 u.PerfilUsuario.Telefono,
 
                             especialidad =
-                                u.PerfilUsuario.Especialidad
+                                u.PerfilUsuario.Especialidad == null
+                                    ? null
+                                    : u.PerfilUsuario.Especialidad.Nombre
                         }
                 })
                 .ToListAsync();
@@ -104,7 +107,7 @@ namespace ApiAsilo.Controllers
                 UsuarioID = usuario.Id,
                 NumeroColegiado = datos.NumeroColegiado,
                 Telefono = datos.Telefono,
-                Especialidad = datos.Especialidad,
+                EspecialidadID = datos.EspecialidadID,
                 Activo = datos.Activo
             };
 
@@ -159,7 +162,7 @@ namespace ApiAsilo.Controllers
             {
                 usuario.PerfilUsuario.NumeroColegiado = datos.NumeroColegiado;
                 usuario.PerfilUsuario.Telefono = datos.Telefono;
-                usuario.PerfilUsuario.Especialidad = datos.Especialidad;
+                usuario.PerfilUsuario.EspecialidadID = datos.EspecialidadID;
             }
             await _context.SaveChangesAsync();
             return Ok(new
@@ -199,6 +202,23 @@ namespace ApiAsilo.Controllers
             });
         }
 
+        [HttpGet("enfermeros")]
+        public async Task<IActionResult> ObtenerEnfermeros() {
+            var enfermeros = await _context.Usuarios
+                .Include(u => u.Rol)
+                .Where(u =>
+                    u.Activo &&
+                    u.Rol != null &&
+                    u.Rol.Nombre == "Enfermero")
+                .OrderBy(u => u.NombreCompleto)
+                .Select(u => new
+                {
+                    id = u.Id,
+                    nombreCompleto = u.NombreCompleto
+                })
+                .ToListAsync();
+            return Ok(enfermeros);
+        }
     }
 
     public class RegistroUsuarioDTO
@@ -210,7 +230,7 @@ namespace ApiAsilo.Controllers
         public int RolId { get; set; }
         public string? NumeroColegiado { get; set; }
         public string? Telefono { get; set; }
-        public string? Especialidad { get; set; }
+        public int? EspecialidadID { get; set; }
         public bool Activo { get; set; } = true;
     }
 
@@ -227,6 +247,6 @@ namespace ApiAsilo.Controllers
         public int RolId { get; set; }
         public string? NumeroColegiado { get; set; }
         public string? Telefono { get; set; }
-        public string? Especialidad { get; set; }
+        public int? EspecialidadID { get; set; }
     }
 }
