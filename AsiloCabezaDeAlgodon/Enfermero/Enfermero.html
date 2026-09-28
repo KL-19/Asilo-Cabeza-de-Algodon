@@ -13,7 +13,6 @@
     rel="stylesheet">
 
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
 </head>
 
 <body>
@@ -22,7 +21,6 @@
 
     <!-- LOGO -->
     <div class="logo">
-
         <div class="logo-icon">
             <i class="ph ph-heartbeat"></i>
         </div>
@@ -31,79 +29,39 @@
             <h2>Cabeza de Algodón</h2>
             <span>Sistema de Gestión</span>
         </div>
-
     </div>
-
-
-    <!-- PERFIL DEL ENFERMERO -->
-    <div class="nurse-profile">
-
-        <div class="nurse-avatar">
-            <i class="ph ph-user"></i>
-        </div>
-
-        <div>
-            <strong>Enfermero</strong>
-            <span>Enfermero</span>
-        </div>
-
-    </div>
-
 
     <!-- MENÚ -->
     <nav class="menu">
-
-        <p class="menu-title">
-            PRINCIPAL
-        </p>
-
+        <p class="menu-title"> PRINCIPAL</p>
+        
         <a href="Enfermero.html"
            class="menu-item active">
-
             <i class="ph ph-squares-four"></i>
 
             <span>
                 Inicio
             </span>
-
         </a>
     </nav>
 
-
     <!-- CERRAR SESIÓN -->
     <div class="sidebar-bottom">
-
-        <a href="../../AsiloCabezaDeAlgodon/index.html"
-           class="menu-item logout">
-
+        <a href="../index.html" class="menu-item logout">
             <i class="ph ph-sign-out"></i>
-
             <span>
                 Cerrar sesión
             </span>
-
         </a>
-
     </div>
-
 </aside>
 
-
-<!-- =================================================
-     CONTENIDO PRINCIPAL
-================================================== -->
-
+<!-- CONTENIDO PRINCIPAL -->
 <main class="main-content">
 
-
-    <!-- =================================================
-         BARRA SUPERIOR
-    ================================================== -->
-
+    <!-- BARRA SUPERIOR -->
     <header class="topbar">
-
         <div>
-
             <p class="welcome-small">
                 Panel de atención
             </p>
@@ -111,66 +69,41 @@
             <h1 id="greeting">
                 Buenos días
             </h1>
-
         </div>
 
-
         <div class="top-actions">
-
             <!-- NOTIFICACIONES -->
-
             <button class="notification"
                     id="btnNotificacion"
                     title="Notificaciones">
-
                 <i class="ph ph-bell"></i>
 
                 <!-- Se muestra cuando existe una nueva cita programada -->
                 <span class="notification-dot"
                       id="notificationDot"></span>
-
             </button>
 
-
             <!-- PERFIL -->
-
             <div class="top-profile">
-
                 <div class="small-avatar">
-
                     <i class="ph ph-user"></i>
-
                 </div>
 
                 <div>
-
-                    <strong>
+                    <strong id="nombreEnfermeroTop">
                         Enfermero
                     </strong>
 
                     <span>
-                        Enfermero
+                        Enfermero(a)
                     </span>
-
                 </div>
-
             </div>
-
         </div>
-
     </header>
 
-
-
-    <!-- =================================================
-         CONTENIDO DEL DASHBOARD
-    ================================================== -->
-
+    <!-- CONTENIDO DEL DASHBOARD -->
     <section class="dashboard-content">
-        <!-- =================================================
-             PRÓXIMOS ACOMPAÑAMIENTOS
-        ================================================== -->
-<!--aqui integrar el de hoy, asi en vez de 29Sep le ponga hoy en el cuadrito-->
         <div class="section-header upcoming-header">
             <div>
                 <span class="section-label">
@@ -183,136 +116,15 @@
             </div>
         </div>
 
-
         <div class="upcoming-list">
-
-
-            <!-- ACOMPAÑAMIENTO 1 -->
-
-            <div class="upcoming-card">
-
-                <div class="upcoming-date">
-
-                    <strong>
-                        29
-                    </strong>
-
-                    <span>
-                        SEP
-                    </span>
-
-                </div>
-
-
-                <div class="upcoming-info">
-
-                    <strong>
-                        José Ramírez López
-                    </strong>
-
-                    <span>
-                        Neurología · 09:00 AM
-                    </span>
-
-                </div>
-
-
-                <span class="status scheduled">
-                    Programada
-                </span>
-
-            </div>
-
-
-            <!-- ACOMPAÑAMIENTO 2 -->
-
-            <div class="upcoming-card">
-
-                <div class="upcoming-date">
-
-                    <strong>
-                        30
-                    </strong>
-
-                    <span>
-                        SEP
-                    </span>
-
-                </div>
-
-
-                <div class="upcoming-info">
-
-                    <strong>
-                        Pedro González
-                    </strong>
-
-                    <span>
-                        Traumatología · 02:00 PM
-                    </span>
-
-                </div>
-
-
-                <span class="status scheduled">
-                    Programada
-                </span>
-
-            </div>
-
-
-            <!-- ACOMPAÑAMIENTO 3 -->
-
-            <div class="upcoming-card">
-
-                <div class="upcoming-date">
-
-                    <strong>
-                        01
-                    </strong>
-
-                    <span>
-                        OCT
-                    </span>
-
-                </div>
-
-
-                <div class="upcoming-info">
-
-                    <strong>
-                        Ana Martínez
-                    </strong>
-
-                    <span>
-                        Geriatría · 09:30 AM
-                    </span>
-
-                </div>
-
-
-                <span class="status scheduled">
-                    Programada
-                </span>
-
-            </div>
-
         </div>
 
-
-
-        <!-- =================================================
-             MIS ASIGNACIONES
-        ================================================== -->
-
+        <!-- MIS ASIGNACIONES -->
         <section id="misAsignaciones"
                  class="assignments-section">
 
-
             <div class="section-header">
-
                 <div>
-
                     <span class="section-label">
                         ASIGNACIONES
                     </span>
@@ -320,28 +132,17 @@
                     <h2>
                         Mis asignaciones
                     </h2>
-
                 </div>
-
             </div>
 
-
             <!-- FILTROS -->
-
             <div class="filter-panel">
-
-
                 <div class="filter-title">
-
                     <div class="filter-icon">
-
                         <i class="ph ph-funnel"></i>
-
                     </div>
 
-
                     <div>
-
                         <h3>
                             Filtrar asignaciones
                         </h3>
@@ -349,49 +150,34 @@
                         <p>
                             Busca una asignación específica.
                         </p>
-
                     </div>
-
                 </div>
-
 
                 <div class="filters">
 
-
                     <!-- BUSCAR -->
-
                     <div class="filter-group">
-
                         <label for="buscar">
                             Buscar interno
                         </label>
 
-
                         <div class="input-icon">
-
                             <i class="ph ph-magnifying-glass"></i>
-
                             <input
                                 type="text"
                                 id="buscar"
                                 placeholder="Nombre del interno..."
                             >
-
                         </div>
-
                     </div>
 
-
                     <!-- ESTADO -->
-
                     <div class="filter-group">
-
                         <label for="estado">
                             Estado
                         </label>
 
                         <select id="estado">
-
                             <option value="">
                                 Todos los estados
                             </option>
@@ -407,16 +193,11 @@
                             <option value="completada">
                                 Completada
                             </option>
-
                         </select>
-
                     </div>
 
-
                     <!-- FECHA -->
-
                     <div class="filter-group">
-
                         <label for="fecha">
                             Fecha
                         </label>
@@ -425,38 +206,15 @@
                             type="date"
                             id="fecha"
                         >
-
                     </div>
-
-
-                    <!-- BOTÓN -->
-
-                    <button class="btn-filter"
-                            id="btnFiltrar">
-
-                        <i class="ph ph-funnel"></i>
-
-                        Filtrar
-
-                    </button>
-
                 </div>
-
             </div>
 
-
-
-            <!-- =================================================
-                 LISTA DE ASIGNACIONES
-            ================================================== -->
-
+            <!-- LISTA DE ASIGNACIONES -->
             <div class="assignments-panel">
 
-
                 <div class="panel-header">
-
                     <div>
-
                         <h2>
                             Asignaciones
                         </h2>
@@ -465,454 +223,22 @@
                             Acompañamientos asignados para
                             atención especializada.
                         </p>
-
                     </div>
-
 
                     <span class="results-count">
-                        4 asignaciones
+                        0 asignaciones
                     </span>
-
                 </div>
-
-
-
-                <!-- =================================================
-                     ASIGNACIÓN 1
-                ================================================== -->
-
-                <div class="assignment-card">
-
-                    <div class="assignment-main">
-
-                        <div class="patient-avatar">
-
-                            <i class="ph ph-user"></i>
-
-                        </div>
-
-
-                        <div class="patient-info">
-
-                            <span class="patient-id">
-                                Interno #0025
-                            </span>
-
-                            <h3>
-                                María López García
-                            </h3>
-
-                            <p>
-                                Habitación H-12 · 78 años
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-details">
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Especialidad
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-heartbeat"></i>
-
-                                Cardiología
-
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Médico especialista
-                            </span>
-
-                            <strong>
-                                Dr. Carlos Méndez
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Fecha y hora
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-calendar"></i>
-
-                                28 Sep · 10:00 AM
-
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-status">
-
-                        <span class="status scheduled">
-                            Programada
-                        </span>
-
-                        <button class="btn-view">
-
-                            <i class="ph ph-eye"></i>
-
-                            Ver detalles
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     ASIGNACIÓN 2
-                ================================================== -->
-
-                <div class="assignment-card">
-
-                    <div class="assignment-main">
-
-                        <div class="patient-avatar">
-
-                            <i class="ph ph-user"></i>
-
-                        </div>
-
-
-                        <div class="patient-info">
-
-                            <span class="patient-id">
-                                Interno #0018
-                            </span>
-
-                            <h3>
-                                José Ramírez López
-                            </h3>
-
-                            <p>
-                                Habitación H-08 · 81 años
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-details">
-
-                        <div class="detail-item">
-
-                            <span>
-                                Especialidad
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-brain"></i>
-
-                                Neurología
-
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Médico especialista
-                            </span>
-
-                            <strong>
-                                Dra. Ana Rodríguez
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Fecha y hora
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-calendar"></i>
-
-                                29 Sep · 09:00 AM
-
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-status">
-
-                        <span class="status scheduled">
-                            Programada
-                        </span>
-
-                        <button class="btn-view">
-
-                            <i class="ph ph-eye"></i>
-
-                            Ver detalles
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     ASIGNACIÓN 3
-                ================================================== -->
-
-                <div class="assignment-card">
-
-                    <div class="assignment-main">
-
-                        <div class="patient-avatar">
-
-                            <i class="ph ph-user"></i>
-
-                        </div>
-
-
-                        <div class="patient-info">
-
-                            <span class="patient-id">
-                                Interno #0031
-                            </span>
-
-                            <h3>
-                                Pedro González
-                            </h3>
-
-                            <p>
-                                Habitación H-15 · 76 años
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-details">
-
-                        <div class="detail-item">
-
-                            <span>
-                                Especialidad
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-bone"></i>
-
-                                Traumatología
-
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Médico especialista
-                            </span>
-
-                            <strong>
-                                Pendiente de asignar
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Fecha y hora
-                            </span>
-
-                            <strong>
-                                Pendiente
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-status">
-
-                        <span class="status pending">
-                            Pendiente
-                        </span>
-
-                        <button class="btn-view">
-
-                            <i class="ph ph-eye"></i>
-
-                            Ver detalles
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     ASIGNACIÓN 4
-                ================================================== -->
-
-                <div class="assignment-card">
-
-                    <div class="assignment-main">
-
-                        <div class="patient-avatar">
-
-                            <i class="ph ph-user"></i>
-
-                        </div>
-
-
-                        <div class="patient-info">
-
-                            <span class="patient-id">
-                                Interno #0012
-                            </span>
-
-                            <h3>
-                                Ana Martínez
-                            </h3>
-
-                            <p>
-                                Habitación H-04 · 83 años
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-details">
-
-                        <div class="detail-item">
-
-                            <span>
-                                Especialidad
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-user-focus"></i>
-
-                                Geriatría
-
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Médico especialista
-                            </span>
-
-                            <strong>
-                                Dr. Roberto Pérez
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-item">
-
-                            <span>
-                                Fecha y hora
-                            </span>
-
-                            <strong>
-
-                                <i class="ph ph-calendar"></i>
-
-                                20 Sep · 09:30 AM
-
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="assignment-status">
-
-                        <span class="status completed">
-                            Completada
-                        </span>
-
-                        <button class="btn-view">
-
-                            <i class="ph ph-eye"></i>
-
-                            Ver detalles
-
-                        </button>
-
-                    </div>
-
-                </div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =================================================
-             AVISO
-        ================================================== -->
-
+        <!-- AVISO -->
         <div class="info-banner">
-
             <div class="info-icon">
-
                 <i class="ph ph-info"></i>
-
             </div>
 
-
             <div>
-
                 <h3>
                     Recuerda
                 </h3>
@@ -923,21 +249,93 @@
                     notificación cuando la Fundación confirme la
                     fecha, hora y médico especialista.
                 </p>
-
             </div>
-
         </div>
-
-
     </section>
-
 </main>
 
+<!-- MODAL DE DETALLES DE ASIGNACIÓN -->
+<div
+    id="modalDetalles"
+    class="modal-detalles"
+    style="display: none;"
+>
+    <div class="modal-detalles-contenido">
+        <div class="modal-detalles-header">
+            <div>
+                <span class="modal-label">
+                    ASIGNACIÓN
+                </span>
 
-<!-- JAVASCRIPT -->
+                <h2>
+                    Detalles del acompañamiento
+                </h2>
+            </div>
 
+            <button
+                type="button"
+                class="btn-cerrar-modal"
+                id="btnCerrarDetalles"
+            >
+                &times;
+            </button>
+        </div>
+
+        <div
+            id="contenidoDetalles"
+            class="contenido-detalles"
+        >
+            <p>
+                Cargando información...
+            </p>
+        </div>
+
+        <div class="modal-detalles-footer">
+            <button
+                type="button"
+                class="btn-details"
+                id="btnCerrarDetallesFooter"
+            >
+                Cerrar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE NOTIFICACIONES -->
+<div
+    id="panelNotificaciones"
+    class="panel-notificaciones"
+    style="display: none;"
+>
+    <div class="notificaciones-header">
+        <div>
+            <h3>
+                Notificaciones
+            </h3>
+
+            <span id="contadorNotificaciones">
+                0 nuevas
+            </span>
+        </div>
+
+        <button
+            type="button"
+            id="btnMarcarNotificaciones"
+        >
+            Marcar como vistas
+        </button>
+    </div>
+
+    <div
+        id="listaNotificaciones"
+        class="lista-notificaciones"
+    >
+        <div class="notificacion-vacia">
+            No tienes notificaciones nuevas.
+        </div>
+    </div>
+</div>
 <script src="Enfermero.js"></script>
-
 </body>
-
 </html>

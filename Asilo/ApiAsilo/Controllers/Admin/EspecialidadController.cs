@@ -19,7 +19,17 @@ namespace ApiAsilo.Controllers
         public async Task<IActionResult> ObtenerEspecialidades()
         {
             var especialidades = await _context.Especialidades
-                .Where(e => e.Activo)
+                .Where(e =>
+                    e.Activo &&
+                    _context.Usuarios.Any(u =>
+                        u.Activo &&
+                        u.Rol != null &&
+                        u.Rol.Nombre == "MedicoEspecialista" &&
+                        u.PerfilUsuario != null &&
+                        u.PerfilUsuario.Activo &&
+                        u.PerfilUsuario.EspecialidadID == e.Id
+                    )
+                )
                 .OrderBy(e => e.Nombre)
                 .Select(e => new
                 {
@@ -27,7 +37,6 @@ namespace ApiAsilo.Controllers
                     nombre = e.Nombre
                 })
                 .ToListAsync();
-
             return Ok(especialidades);
         }
     }

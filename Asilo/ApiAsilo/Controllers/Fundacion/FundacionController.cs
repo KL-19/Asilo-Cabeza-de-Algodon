@@ -255,7 +255,7 @@ namespace ApiAsilo.Controllers
                 Motivo = solicitud.Motivo,
                 Estado = "Programada",
                 Observaciones = solicitud.Observaciones
-            }
+            };
             _context.Citas.Add(cita);
             await _context.SaveChangesAsync();
 
