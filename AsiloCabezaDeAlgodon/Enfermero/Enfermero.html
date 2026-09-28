@@ -5,342 +5,939 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Enfermero | Cabeza de Algodón</title>
+<title>Enfermero | Cabeza de Algodón</title>
 
-    <link rel="stylesheet" href="enfermero.css">
+<link rel="stylesheet" href="enfermero.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 </head>
 
 <body>
+<!-- PANEL LATERAL-->
+<aside class="sidebar">
 
-    <aside class="sidebar">
-        <!-- LOGO -->
-        <div class="logo">
+    <!-- LOGO -->
+    <div class="logo">
 
-            <div class="logo-icon">
-                <i class="ph ph-heartbeat"></i>
-            </div>
+        <div class="logo-icon">
+            <i class="ph ph-heartbeat"></i>
+        </div>
 
-            <div>
-                <h2>Cabeza de Algodón</h2>
-                <span>Sistema de Gestión</span>
+        <div>
+            <h2>Cabeza de Algodón</h2>
+            <span>Sistema de Gestión</span>
+        </div>
+
+    </div>
+
+
+    <!-- PERFIL DEL ENFERMERO -->
+    <div class="nurse-profile">
+
+        <div class="nurse-avatar">
+            <i class="ph ph-user"></i>
+        </div>
+
+        <div>
+            <strong>Enfermero</strong>
+            <span>Enfermero</span>
+        </div>
+
+    </div>
+
+
+    <!-- MENÚ -->
+    <nav class="menu">
+
+        <p class="menu-title">
+            PRINCIPAL
+        </p>
+
+        <a href="Enfermero.html"
+           class="menu-item active">
+
+            <i class="ph ph-squares-four"></i>
+
+            <span>
+                Inicio
+            </span>
+
+        </a>
+    </nav>
+
+
+    <!-- CERRAR SESIÓN -->
+    <div class="sidebar-bottom">
+
+        <a href="../../AsiloCabezaDeAlgodon/index.html"
+           class="menu-item logout">
+
+            <i class="ph ph-sign-out"></i>
+
+            <span>
+                Cerrar sesión
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =================================================
+     CONTENIDO PRINCIPAL
+================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         BARRA SUPERIOR
+    ================================================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="welcome-small">
+                Panel de atención
+            </p>
+
+            <h1 id="greeting">
+                Buenos días
+            </h1>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <!-- NOTIFICACIONES -->
+
+            <button class="notification"
+                    id="btnNotificacion"
+                    title="Notificaciones">
+
+                <i class="ph ph-bell"></i>
+
+                <!-- Se muestra cuando existe una nueva cita programada -->
+                <span class="notification-dot"
+                      id="notificationDot"></span>
+
+            </button>
+
+
+            <!-- PERFIL -->
+
+            <div class="top-profile">
+
+                <div class="small-avatar">
+
+                    <i class="ph ph-user"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        Enfermero
+                    </strong>
+
+                    <span>
+                        Enfermero
+                    </span>
+
+                </div>
+
             </div>
 
         </div>
 
-        <!-- PERFIL DEL ENFERMERO -->
-        <div class="nurse-profile">
-            <div class="nurse-avatar">
-                <i class="ph ph-user"></i>
-            </div>
+    </header>
 
+
+
+    <!-- =================================================
+         CONTENIDO DEL DASHBOARD
+    ================================================== -->
+
+    <section class="dashboard-content">
+        <!-- =================================================
+             PRÓXIMOS ACOMPAÑAMIENTOS
+        ================================================== -->
+<!--aqui integrar el de hoy, asi en vez de 29Sep le ponga hoy en el cuadrito-->
+        <div class="section-header upcoming-header">
             <div>
-                <strong>Enfermero</strong>
-                <span>Enfermero</span>
+                <span class="section-label">
+                    AGENDA
+                </span>
+
+                <h2>
+                    Próximos acompañamientos
+                </h2>
             </div>
         </div>
 
-        <!-- MENÚ -->
-        <nav class="menu">
-            <p class="menu-title">PRINCIPAL</p>
-            <a href="Enfermero.html" class="menu-item active">
-                <i class="ph ph-squares-four"></i>
-                <span>Inicio</span>
-            </a>
 
-            <a href="../Enfermero/misAsignaciones.html" class="menu-item">
-                <i class="ph ph-users-three"></i>
-                <span>Mis asignaciones</span>
-            </a>
-        </nav>
+        <div class="upcoming-list">
 
-        <!-- CERRAR SESIÓN -->
-        <div class="sidebar-bottom">
-            <a href="../../AsiloCabezaDeAlgodon/index.html" class="menu-item logout">
-                <i class="ph ph-sign-out"></i>
-                <span>Cerrar sesión</span>
-            </a>
+
+            <!-- ACOMPAÑAMIENTO 1 -->
+
+            <div class="upcoming-card">
+
+                <div class="upcoming-date">
+
+                    <strong>
+                        29
+                    </strong>
+
+                    <span>
+                        SEP
+                    </span>
+
+                </div>
+
+
+                <div class="upcoming-info">
+
+                    <strong>
+                        José Ramírez López
+                    </strong>
+
+                    <span>
+                        Neurología · 09:00 AM
+                    </span>
+
+                </div>
+
+
+                <span class="status scheduled">
+                    Programada
+                </span>
+
+            </div>
+
+
+            <!-- ACOMPAÑAMIENTO 2 -->
+
+            <div class="upcoming-card">
+
+                <div class="upcoming-date">
+
+                    <strong>
+                        30
+                    </strong>
+
+                    <span>
+                        SEP
+                    </span>
+
+                </div>
+
+
+                <div class="upcoming-info">
+
+                    <strong>
+                        Pedro González
+                    </strong>
+
+                    <span>
+                        Traumatología · 02:00 PM
+                    </span>
+
+                </div>
+
+
+                <span class="status scheduled">
+                    Programada
+                </span>
+
+            </div>
+
+
+            <!-- ACOMPAÑAMIENTO 3 -->
+
+            <div class="upcoming-card">
+
+                <div class="upcoming-date">
+
+                    <strong>
+                        01
+                    </strong>
+
+                    <span>
+                        OCT
+                    </span>
+
+                </div>
+
+
+                <div class="upcoming-info">
+
+                    <strong>
+                        Ana Martínez
+                    </strong>
+
+                    <span>
+                        Geriatría · 09:30 AM
+                    </span>
+
+                </div>
+
+
+                <span class="status scheduled">
+                    Programada
+                </span>
+
+            </div>
+
         </div>
-    </aside>
 
-    <!-- ================= CONTENIDO PRINCIPAL ================= -->
-    <main class="main-content">
 
-        <!-- HEADER -->
-        <header class="topbar">
-            <div>
-                <p class="welcome-small">Panel de atención</p>
-                <h1 id="greeting">
-                    Buenos días
-                </h1>
-            </div>
 
-            <div class="top-actions">
+        <!-- =================================================
+             MIS ASIGNACIONES
+        ================================================== -->
 
-                <!-- NOTIFICACIONES -->
-                <button class="notification">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
+        <section id="misAsignaciones"
+                 class="assignments-section">
 
-                <!-- PERFIL SUPERIOR -->
-                <div class="top-profile">
-                    <div class="small-avatar">
-                        <i class="ph ph-user"></i>
-                    </div>
 
-                    <div>
-                        <strong>Enfermero</strong>
-                        <span>Enfermero</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- ================= CONTENIDO ================= -->
-        <section class="dashboard-content">
-
-            <!-- TARJETAS DE RESUMEN -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon blue">
-                        <i class="ph ph-users-three"></i>
-                    </div>
-
-                    <div>
-                        <span>Internos asignados</span>
-                        <strong>3</strong>
-                        <small>Actualmente</small>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon purple">
-                        <i class="ph ph-calendar-check"></i>
-                    </div>
-
-                    <div>
-                        <span>Próximo acompañamiento</span>
-                        <strong>Hoy</strong>
-                        <small>03:00 PM</small>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon green">
-                        <i class="ph ph-check-circle"></i>
-                    </div>
-
-                    <div>
-                        <span>Acompañamientos realizados</span>
-                        <strong>18</strong>
-                        <small>Este mes</small>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon orange">
-                        <i class="ph ph-bell-ringing"></i>
-                    </div>
-
-                    <div>
-                        <span>Nuevas notificaciones</span>
-                        <strong>2</strong>
-                        <small>Sin revisar</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= PRÓXIMO ACOMPAÑAMIENTO ================= -->
             <div class="section-header">
 
                 <div>
+
                     <span class="section-label">
-                        PRÓXIMA ACTIVIDAD
+                        ASIGNACIONES
                     </span>
 
                     <h2>
-                        Próximo acompañamiento
+                        Mis asignaciones
                     </h2>
+
                 </div>
 
-                <button class="view-all">
-                    Ver asignaciones
-                    <i class="ph ph-arrow-right"></i>
-                </button>
             </div>
 
-            <div class="next-assignment">
-                <div class="patient-icon">
-                    <i class="ph ph-user"></i>
-                </div>
 
-                <div class="patient-information">
-                    <span class="patient-label">
-                        INTERNO ASIGNADO
-                    </span>
-                    <h3>
-                        Juan Carlos López
-                    </h3>
-                    <p>
-                        <i class="ph ph-calendar"></i>
-                        Hoy, 28 de agosto de 2026
-                    </p>
-                </div>
+            <!-- FILTROS -->
 
-                <div class="appointment-info">
-                    <div>
-                        <span>Hora</span>
-                        <strong>03:00 PM</strong>
+            <div class="filter-panel">
+
+
+                <div class="filter-title">
+
+                    <div class="filter-icon">
+
+                        <i class="ph ph-funnel"></i>
+
                     </div>
 
+
                     <div>
-                        <span>Especialidad</span>
-                        <strong>Cardiología</strong>
+
+                        <h3>
+                            Filtrar asignaciones
+                        </h3>
+
+                        <p>
+                            Busca una asignación específica.
+                        </p>
+
                     </div>
+
                 </div>
 
-                <button class="btn-details">
-                    Ver detalles
-                    <i class="ph ph-arrow-right"></i>
-                </button>
+
+                <div class="filters">
+
+
+                    <!-- BUSCAR -->
+
+                    <div class="filter-group">
+
+                        <label for="buscar">
+                            Buscar interno
+                        </label>
+
+
+                        <div class="input-icon">
+
+                            <i class="ph ph-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="buscar"
+                                placeholder="Nombre del interno..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ESTADO -->
+
+                    <div class="filter-group">
+
+                        <label for="estado">
+                            Estado
+                        </label>
+
+                        <select id="estado">
+
+                            <option value="">
+                                Todos los estados
+                            </option>
+
+                            <option value="pendiente">
+                                Pendiente
+                            </option>
+
+                            <option value="programada">
+                                Programada
+                            </option>
+
+                            <option value="completada">
+                                Completada
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- FECHA -->
+
+                    <div class="filter-group">
+
+                        <label for="fecha">
+                            Fecha
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fecha"
+                        >
+
+                    </div>
+
+
+                    <!-- BOTÓN -->
+
+                    <button class="btn-filter"
+                            id="btnFiltrar">
+
+                        <i class="ph ph-funnel"></i>
+
+                        Filtrar
+
+                    </button>
+
+                </div>
+
             </div>
 
-            <!-- ================= TABLA ================= -->
-            <div class="section-header table-header">
-                <div>
-                    <span class="section-label">
-                        AGENDA
+
+
+            <!-- =================================================
+                 LISTA DE ASIGNACIONES
+            ================================================== -->
+
+            <div class="assignments-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Asignaciones
+                        </h2>
+
+                        <p>
+                            Acompañamientos asignados para
+                            atención especializada.
+                        </p>
+
+                    </div>
+
+
+                    <span class="results-count">
+                        4 asignaciones
                     </span>
-                    <h2>
-                        Mis próximas asignaciones
-                    </h2>
+
                 </div>
-            </div>
 
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Interno</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Especialidad</th>
-                            <th>Médico</th>
-                            <th>Estado</th>
-                            <th></th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        JC
-                                    </div>
-                                    <strong>
-                                        Juan Carlos López
-                                    </strong>
-                                </div>
-                            </td>
-                            <td>28 Ago 2026</td>
-                            <td>03:00 PM</td>
-                            <td>Cardiología</td>
-                            <td>Dr. Especialista</td>
-                            <td>
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-button">
-                                    <i class="ph ph-dots-three-vertical"></i>
-                                </button>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        MA
-                                    </div>
+                <!-- =================================================
+                     ASIGNACIÓN 1
+                ================================================== -->
 
-                                    <strong>
-                                        María Andrea Pérez
-                                    </strong>
-                                </div>
-                            </td>
-                            <td>30 Ago 2026</td>
-                            <td>10:00 AM</td>
-                            <td>Neurología</td>
-                            <td>Dra. Especialista</td>
-                            <td>
-                                <span class="status confirmed">
-                                    Confirmada
-                                </span>
-                            </td>
+                <div class="assignment-card">
 
-                            <td>
-                                <button class="action-button">
-                                    <i class="ph ph-dots-three-vertical"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    <div class="assignment-main">
 
-                        <tr>
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        RP
-                                    </div>
-                                    <strong>
-                                        Roberto Pérez
-                                    </strong>
-                                </div>
-                            </td>
-                            <td>02 Sep 2026</td>
-                            <td>02:00 PM</td>
-                            <td>Traumatología</td>
-                            <td>Dr. Especialista</td>
-                            <td>
-                                <span class="status confirmed">
-                                    Confirmada
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-button">
-                                    <i class="ph ph-dots-three-vertical"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                        <div class="patient-avatar">
 
-            <!-- ================= AVISO ================= -->
-            <div class="info-banner">
-                <div class="banner-icon">
-                    <i class="ph ph-info"></i>
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="patient-info">
+
+                            <span class="patient-id">
+                                Interno #0025
+                            </span>
+
+                            <h3>
+                                María López García
+                            </h3>
+
+                            <p>
+                                Habitación H-12 · 78 años
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-details">
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-heartbeat"></i>
+
+                                Cardiología
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Médico especialista
+                            </span>
+
+                            <strong>
+                                Dr. Carlos Méndez
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Fecha y hora
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-calendar"></i>
+
+                                28 Sep · 10:00 AM
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-status">
+
+                        <span class="status scheduled">
+                            Programada
+                        </span>
+
+                        <button class="btn-view">
+
+                            <i class="ph ph-eye"></i>
+
+                            Ver detalles
+
+                        </button>
+
+                    </div>
+
                 </div>
-                <div>
-                    <strong>
-                        Recuerda
-                    </strong>
-                    <p>
-                        Las asignaciones de nuevos internos aparecerán automáticamente
-                        en tu panel y recibirás una notificación cuando seas seleccionado.
-                    </p>
+
+
+
+                <!-- =================================================
+                     ASIGNACIÓN 2
+                ================================================== -->
+
+                <div class="assignment-card">
+
+                    <div class="assignment-main">
+
+                        <div class="patient-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="patient-info">
+
+                            <span class="patient-id">
+                                Interno #0018
+                            </span>
+
+                            <h3>
+                                José Ramírez López
+                            </h3>
+
+                            <p>
+                                Habitación H-08 · 81 años
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-details">
+
+                        <div class="detail-item">
+
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-brain"></i>
+
+                                Neurología
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Médico especialista
+                            </span>
+
+                            <strong>
+                                Dra. Ana Rodríguez
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Fecha y hora
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-calendar"></i>
+
+                                29 Sep · 09:00 AM
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-status">
+
+                        <span class="status scheduled">
+                            Programada
+                        </span>
+
+                        <button class="btn-view">
+
+                            <i class="ph ph-eye"></i>
+
+                            Ver detalles
+
+                        </button>
+
+                    </div>
+
                 </div>
+
+
+
+                <!-- =================================================
+                     ASIGNACIÓN 3
+                ================================================== -->
+
+                <div class="assignment-card">
+
+                    <div class="assignment-main">
+
+                        <div class="patient-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="patient-info">
+
+                            <span class="patient-id">
+                                Interno #0031
+                            </span>
+
+                            <h3>
+                                Pedro González
+                            </h3>
+
+                            <p>
+                                Habitación H-15 · 76 años
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-details">
+
+                        <div class="detail-item">
+
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-bone"></i>
+
+                                Traumatología
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Médico especialista
+                            </span>
+
+                            <strong>
+                                Pendiente de asignar
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Fecha y hora
+                            </span>
+
+                            <strong>
+                                Pendiente
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-status">
+
+                        <span class="status pending">
+                            Pendiente
+                        </span>
+
+                        <button class="btn-view">
+
+                            <i class="ph ph-eye"></i>
+
+                            Ver detalles
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ASIGNACIÓN 4
+                ================================================== -->
+
+                <div class="assignment-card">
+
+                    <div class="assignment-main">
+
+                        <div class="patient-avatar">
+
+                            <i class="ph ph-user"></i>
+
+                        </div>
+
+
+                        <div class="patient-info">
+
+                            <span class="patient-id">
+                                Interno #0012
+                            </span>
+
+                            <h3>
+                                Ana Martínez
+                            </h3>
+
+                            <p>
+                                Habitación H-04 · 83 años
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-details">
+
+                        <div class="detail-item">
+
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-user-focus"></i>
+
+                                Geriatría
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Médico especialista
+                            </span>
+
+                            <strong>
+                                Dr. Roberto Pérez
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <span>
+                                Fecha y hora
+                            </span>
+
+                            <strong>
+
+                                <i class="ph ph-calendar"></i>
+
+                                20 Sep · 09:30 AM
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-status">
+
+                        <span class="status completed">
+                            Completada
+                        </span>
+
+                        <button class="btn-view">
+
+                            <i class="ph ph-eye"></i>
+
+                            Ver detalles
+
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </section>
-    </main>
-    <script src="../Enfermero/Enfermero.js"></script>
+
+
+
+        <!-- =================================================
+             AVISO
+        ================================================== -->
+
+        <div class="info-banner">
+
+            <div class="info-icon">
+
+                <i class="ph ph-info"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Recuerda
+                </h3>
+
+                <p>
+                    Las nuevas asignaciones programadas aparecerán
+                    automáticamente en tu panel y recibirás una
+                    notificación cuando la Fundación confirme la
+                    fecha, hora y médico especialista.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="Enfermero.js"></script>
+
 </body>
+
 </html>

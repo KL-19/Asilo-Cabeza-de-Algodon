@@ -20,5 +20,6 @@ namespace ApiAsilo.Data
         public DbSet<CuotaMensual> CuotasMensuales { get; set; }
         public DbSet<EvaluacionMedica> EvaluacionesMedicas { get; set; }
         public DbSet<SolicitudEspecialista> SolicitudesEspecialista { get; set; }
+        public DbSet<Cita> Citas { get; set; }
     }
 }

@@ -158,12 +158,6 @@ body {
     margin-bottom: 30px;
 }
 
-.topbar-title span { 
-    display: block; 
-    font-size: 11px; color: 
-    var(--muted); margin-bottom: 5px; 
-}
-
 .topbar-title h1 { 
     font-size: 22px; 
     font-weight: 700; 
@@ -238,60 +232,6 @@ body {
     color: var(--muted);
 }
 
-
-/* ESTADÍSTICAS */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.stat-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-}
-
-.stat-icon.blue {
-    background: var(--primary-light);
-    color: var(--primary);
-}
-
-.stat-icon.orange {
-    background: #fff7ed;
-    color: var(--orange);
-}
-
-.stat-icon.purple {
-    background: #f5f3ff;
-    color: var(--purple);
-}
-
-.stat-card span {
-    display: block;
-    color: var(--muted);
-    font-size: 10px;
-    margin-bottom: 4px;
-}
-
-.stat-card strong {
-    font-size: 22px;
-}
 
 /* PANEL */
 .content-panel {
@@ -827,5 +767,79 @@ td {
     .btn-confirm {
         justify-content: center;
         width: 100%;
+    }
+}
+
+/* FOOTER DE LA TABLA */
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 18px;
+    border-top: 1px solid var(--border);
+    background: #fafbfc;
+}
+
+.table-info {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination-button,
+.page-number {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-family: inherit;
+    transition: .2s;
+}
+
+.pagination-button:hover:not(:disabled),
+.page-number:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.pagination-button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.page-number.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 5px;
+}
+
+.empty-table {
+    text-align: center !important;
+    padding: 35px !important;
+    color: var(--muted);
+}
+
+/* RESPONSIVE DEL FOOTER */
+@media (max-width: 550px) {
+    .table-footer {
+        flex-direction: column;
+        gap: 12px;
     }
 }
