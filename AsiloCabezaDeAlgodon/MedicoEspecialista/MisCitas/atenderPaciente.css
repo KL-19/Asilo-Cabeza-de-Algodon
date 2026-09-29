@@ -470,63 +470,62 @@ body {
 /* =====================================================
    EXÁMENES
 ===================================================== */
-
-.exam-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.exam-option {
-    border: 1px solid var(--border);
-    border-radius: 11px;
-    padding: 13px;
+.exam-item {
     display: flex;
-    align-items: center;
-    gap: 11px;
-    cursor: pointer;
-    transition: .2s;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fafbfc;
+    margin-bottom: 10px;
 }
 
-.exam-option:hover {
-    border-color: #bfdbfe;
-    background: #fafcff;
-}
-
-.exam-option input {
-    display: none;
-}
-
-.exam-check {
-    width: 18px;
-    height: 18px;
-    border: 1px solid #cbd5e1;
-    border-radius: 5px;
+.exam-number {
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 12px;
+    font-size: 9px;
+    font-weight: 700;
     flex-shrink: 0;
 }
 
-.exam-option input:checked + .exam-check {
-    background: var(--primary);
-    border-color: var(--primary);
+.exam-fields {
+    flex: 1;
 }
 
-.exam-option strong {
-    display: block;
-    font-size: 10px;
+.exam-fields .form-group {
+    margin-bottom: 0;
 }
 
-.exam-option span {
-    display: block;
-    color: var(--muted);
-    font-size: 8px;
-    margin-top: 3px;
+.exam-fields input,
+.exam-fields textarea {
+    width: 100%;
 }
 
+.btn-add-exam {
+    border: 1px dashed #cbd5e1;
+    background: white;
+    color: var(--primary);
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.btn-add-exam:hover {
+    background: var(--primary-light);
+    border-color: #93c5fd;
+}
 
 /* =====================================================
    MEDICAMENTOS

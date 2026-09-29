@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Atender paciente | Cabeza de Algodón</title>
-
     <link rel="stylesheet" href="atenderPaciente.css">
-
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -19,10 +17,7 @@
 </head>
 
 <body>
-    <!-- CONTENIDO PRINCIPAL -->
-
     <main class="main-content">
-        <!-- ENCABEZADO -->
 
         <header class="page-header">
             <div class="header-left">
@@ -32,7 +27,6 @@
                 </a>
 
                 <div class="title-area">
-
                     <span class="section-label">
                         ATENCIÓN MÉDICA
                     </span>
@@ -44,104 +38,71 @@
                     <p>
                         Registre la información correspondiente a la visita médica.
                     </p>
-
                 </div>
-
             </div>
-
         </header>
 
-
-        <!-- =================================================
-             INFORMACIÓN DEL PACIENTE
-        ================================================== -->
-
+        <!-- INFORMACIÓN DEL PACIENTE -->
         <section class="patient-card">
-
             <div class="patient-main">
-
                 <div class="patient-avatar">
                     <i class="ph ph-user"></i>
                 </div>
 
                 <div class="patient-info">
-
                     <span class="patient-label">
                         PACIENTE
                     </span>
 
-                    <h2>
-                        Juan Carlos López
+                    <h2 id="nombrePaciente">
+                        Cargando...
                     </h2>
 
-                    <p>
-                        Interno: EXP-00142
+                    <p id="expedientePaciente">
+                        Cargando...
                     </p>
-
                 </div>
-
             </div>
 
-
             <div class="patient-details">
-
                 <div class="detail-item">
-
                     <span>
                         Fecha de visita
                     </span>
-
                     <strong id="fechaVisita">
                         Cargando...
                     </strong>
-
                 </div>
 
                 <div class="detail-item">
-
                     <span>
                         Médico tratante
                     </span>
-
-                    <strong>
-                        Dr. Carlos Méndez
+                    <strong id="medicoTratante">
+                        Cargando...
                     </strong>
-
                 </div>
 
                 <div class="detail-item">
-
                     <span>
                         Especialidad
                     </span>
-
-                    <strong>
-                        Cardiología
+                    <strong id="especialidadPaciente">
+                        Cargando...
                     </strong>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =================================================
-             SOLICITUD
-        ================================================== -->
-
+        <!-- SOLICITUD RECIBIDA -->
         <section class="request-card">
-
             <div class="card-header">
-
                 <div class="card-title">
-
                     <div class="title-icon blue">
                         <i class="ph ph-file-text"></i>
                     </div>
 
                     <div>
-
                         <span>
                             SOLICITUD RECIBIDA
                         </span>
@@ -149,71 +110,51 @@
                         <h2>
                             Información de la consulta
                         </h2>
-
                     </div>
-
                 </div>
-
             </div>
 
             <div class="request-content">
-
                 <div class="request-field">
-
                     <span>
                         Motivo de visita
                     </span>
 
-                    <strong>
-                        Dolor en el pecho
+                    <strong id="motivoVisita">
+                        Cargando...
                     </strong>
-
                 </div>
 
                 <div class="request-field">
-
                     <span>
                         Enfermero que refiere
                     </span>
 
-                    <strong>
-                        Carlos Ramírez
+                    <strong id="enfermeroRefiere">
+                        Cargando...
                     </strong>
-
                 </div>
 
                 <div class="request-field full">
-
                     <span>
                         Descripción de la solicitud
                     </span>
 
-                    <p>
-                        El paciente presenta molestias en el pecho desde la mañana.
-                        Se solicita valoración médica para determinar la causa.
+                    <p id="descripcionSolicitud">
+                        Cargando...
                     </p>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =================================================
-             HISTORIAL MÉDICO
-        ================================================== -->
-
+        <!-- HISTORIAL MÉDICO-->
         <section class="history-access">
-
             <div>
-
                 <div class="history-icon">
                     <i class="ph ph-notebook"></i>
                 </div>
 
                 <div class="history-text">
-
                     <strong>
                         Historial médico del paciente
                     </strong>
@@ -221,9 +162,7 @@
                     <span>
                         Consulte visitas, diagnósticos, medicamentos y resultados anteriores.
                     </span>
-
                 </div>
-
             </div>
 
             <button
@@ -234,26 +173,17 @@
                 <i class="ph ph-eye"></i>
                 Ver historial médico
             </button>
-
         </section>
 
-
-        <!-- =================================================
-             FORMULARIO VISITA MÉDICA
-        ================================================== -->
-
+        <!-- FORMULARIO DE ATENCIÓN MÉDICA -->
         <section class="form-card">
-
             <div class="card-header">
-
                 <div class="card-title">
-
                     <div class="title-icon purple">
                         <i class="ph ph-stethoscope"></i>
                     </div>
 
                     <div>
-
                         <span>
                             VISITA MÉDICA
                         </span>
@@ -261,51 +191,30 @@
                         <h2>
                             Registro de atención
                         </h2>
-
                     </div>
-
                 </div>
-
             </div>
 
-
             <div class="form-content">
-
-
-                <!-- =================================================
-                     DIAGNÓSTICO
-                ================================================== -->
-
                 <div class="form-group">
-
                     <label for="diagnostico">
                         Diagnóstico
                     </label>
 
                     <textarea
                         id="diagnostico"
-                        placeholder="Ingrese el diagnóstico determinado..."
+                        placeholder="Ingrese el diagnóstico determinado durante la atención..."
                     ></textarea>
-
                 </div>
 
-
-                <!-- =================================================
-                     EXÁMENES DESPLEGABLE
-                ================================================== -->
-
                 <div class="subsection">
-
                     <div class="collapse-header">
-
                         <div class="subsection-header-content">
-
                             <div class="subsection-icon blue-icon">
                                 <i class="ph ph-test-tube"></i>
                             </div>
 
                             <div>
-
                                 <span class="subsection-label">
                                     LABORATORIO
                                 </span>
@@ -315,13 +224,10 @@
                                 </h3>
 
                                 <p>
-                                    Seleccione los exámenes que deben realizarse al paciente.
+                                    Registre los exámenes que deben realizarse al paciente.
                                 </p>
-
                             </div>
-
                         </div>
-
                         <button
                             type="button"
                             class="collapse-button"
@@ -330,239 +236,34 @@
                         >
                             <i class="ph ph-caret-down"></i>
                         </button>
-
                     </div>
-
 
                     <div
                         class="collapse-content"
                         id="examenesContent"
                     >
-
-                        <div class="exam-grid">
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="hemograma"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Hemograma
-                                    </strong>
-
-                                    <span>
-                                        Análisis de sangre
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="orina"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Examen de orina
-                                    </strong>
-
-                                    <span>
-                                        Análisis de orina
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="glucosa"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Glucosa
-                                    </strong>
-
-                                    <span>
-                                        Medición de glucosa
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="electrocardiograma"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Electrocardiograma
-                                    </strong>
-
-                                    <span>
-                                        Evaluación cardíaca
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="perfil-lipidico"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Perfil lipídico
-                                    </strong>
-
-                                    <span>
-                                        Colesterol y triglicéridos
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="creatinina"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Creatinina
-                                    </strong>
-
-                                    <span>
-                                        Evaluación de función renal
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="rayos-x"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Rayos X
-                                    </strong>
-
-                                    <span>
-                                        Estudio radiológico
-                                    </span>
-                                </div>
-
-                            </label>
-
-
-                            <label class="exam-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="examenes"
-                                    value="presion-arterial"
-                                >
-
-                                <div class="exam-check">
-                                    <i class="ph ph-check"></i>
-                                </div>
-
-                                <div>
-                                    <strong>
-                                        Control de presión arterial
-                                    </strong>
-
-                                    <span>
-                                        Evaluación de presión
-                                    </span>
-                                </div>
-
-                            </label>
-
+                        <div id="examenesContainer">
                         </div>
 
+                        <button
+                            type="button"
+                            class="btn-add-exam"
+                            onclick="agregarExamen()"
+                        >
+                            <i class="ph ph-plus"></i>
+                            Agregar examen
+                        </button>
                     </div>
-
                 </div>
 
-
-                <!-- =================================================
-                     MEDICAMENTOS DESPLEGABLE
-                ================================================== -->
-
                 <div class="subsection">
-
                     <div class="collapse-header">
-
                         <div class="subsection-header-content">
-
                             <div class="subsection-icon purple-icon">
                                 <i class="ph ph-pill"></i>
                             </div>
 
                             <div>
-
                                 <span class="subsection-label">
                                     TRATAMIENTO
                                 </span>
@@ -574,11 +275,8 @@
                                 <p>
                                     Registre los medicamentos indicados para el paciente.
                                 </p>
-
                             </div>
-
                         </div>
-
                         <button
                             type="button"
                             class="collapse-button"
@@ -587,75 +285,14 @@
                         >
                             <i class="ph ph-caret-down"></i>
                         </button>
-
                     </div>
-
 
                     <div
                         class="collapse-content"
                         id="medicamentosContent"
                     >
-
                         <div id="medicamentosContainer">
-
-                            <div class="medicine-item">
-
-                                <div class="medicine-number">
-                                    1
-                                </div>
-
-                                <div class="medicine-fields">
-
-                                    <div class="form-group">
-
-                                        <label>
-                                            Medicamento
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="medicamento[]"
-                                            placeholder="Ej. Paracetamol"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label>
-                                            Cantidad
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="cantidad[]"
-                                            placeholder="Ej. 10 tabletas"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label>
-                                            Frecuencia / tiempo
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="frecuencia[]"
-                                            placeholder="Ej. Cada 8 horas"
-                                        >
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
                         </div>
-
 
                         <button
                             type="button"
@@ -665,15 +302,11 @@
                             <i class="ph ph-plus"></i>
                             Agregar medicamento
                         </button>
-
                     </div>
-
                 </div>
 
                 <!-- OBSERVACIONES -->
-
                 <div class="form-group">
-
                     <label for="observaciones">
                         Observaciones médicas
                     </label>
@@ -682,24 +315,24 @@
                         id="observaciones"
                         placeholder="Ingrese observaciones relevantes sobre la atención..."
                     ></textarea>
-
                 </div>
 
-                <!-- RESULTADOS DE LABORATORIO SOLO SE MUESTRA AL REVISAR RESULTADOS-->
-                <div class="lab-results-section"
+                <!-- RESULTADOS DE LABORATORIO, SOLO SE MUESTRA CUANDO EXISTAN RESULTADOS
+                     PARA LA ATENCIÓN. -->
+                <div
+                    class="lab-results-section"
                     id="resultadosLaboratorio"
-                    style="display: none;" >
-                    
+                    style="display: none;"
+                >
                     <div class="collapse-header">
                         <div class="subsection-header-content">
-
                             <div class="subsection-icon green-icon">
                                 <i class="ph ph-flask"></i>
                             </div>
 
                             <div>
                                 <span class="subsection-label">
-                                RESULTADOS
+                                    RESULTADOS
                                 </span>
 
                                 <h3>
@@ -709,140 +342,49 @@
                                 <p>
                                     Resultados registrados por el laboratorio para esta atención.
                                 </p>
-
                             </div>
-
                         </div>
-
                     </div>
 
-                    <div class="lab-results-content">
-
-                        <!-- RESULTADO DE EJEMPLO -->
-                        <div class="lab-result-item">
-
-                            <div class="lab-result-header">
-                                <div>
-                                    <strong>
-                                        Hemograma
-                                    </strong>
-
-                                    <span>
-                                        Resultado registrado por laboratorio
-                                    </span>
-                                </div>
-                                <span class="lab-status">
-                                    Completado
-                                </span>
-                            </div>
-                            
-                            <div class="lab-result-data">
-
-                                <div>
-                                    <span>Hemoglobina</span>
-                                    <strong>13.8 g/dL</strong>
-                                </div>
-
-                                <div>
-                                    <span>Leucocitos</span>
-                                    <strong>7,200 /µL</strong>
-                                </div>
-
-                                <div>
-                                    <span>Plaquetas</span>
-                                    <strong>250,000 /µL</strong>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="lab-result-item">
-
-                            <div class="lab-result-header">
-
-                                <div>
-                                    <strong>
-                                        Glucosa
-                                    </strong>
-
-                                    <span>
-                                        Resultado registrado por laboratorio
-                                    </span>
-                                </div>  
-                                <span class="lab-status">
-                                    Completado
-                                </span>
-
-                            </div>
-
-                            <div class="lab-result-data">
-
-                                <div>
-                                    <span>Resultado</span>
-                                    <strong>98 mg/dL</strong>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <!-- OBSERVACIÓN DEL LABORATORIO -->
-                        <div class="lab-observation">
-                            <span>
-                                Observación del laboratorio
-                            </span>
-
-                            <p id="observacionLaboratorio">
-                                Los resultados se encuentran dentro de los parámetros establecidos.
-                            </p>
-
-                        </div>
-
+                    <div
+                        class="lab-results-content"
+                        id="labResultsContent"
+                    >
                     </div>
-
                 </div>
 
-                <!--DIAGNÓSTICO FINAL, SOLO PARA REVISIÓN DE RESULTADOS -->
+                <!-- SEGUNDA ATENCIÓN, SOLO APARECE CUANDO EXISTEN RESULTADOS
+                     DE LABORATORIO QUE DEBEN SER REVISADOS. -->
                 <div
-                id="seccionFinal"
-                style="display: none;">
-
+                    id="seccionFinal"
+                    style="display: none;"
+                >
                     <div class="form-group">
                         <label for="diagnosticoFinal">
                             Diagnóstico final
                         </label>
 
                         <textarea
-                        id="diagnosticoFinal"
-                        placeholder="Ingrese el diagnóstico final después de revisar los resultados..."
+                            id="diagnosticoFinal"
+                            placeholder="Ingrese el diagnóstico final después de revisar los resultados..."
                         ></textarea>
-
                     </div>
-                    
-                    <div class="form-group">
 
+                    <!-- OBSERVACIONES FINALES -->
+                    <div class="form-group">
                         <label for="observacionesFinales">
                             Observaciones médicas finales
                         </label>
 
                         <textarea
-                        id="observacionesFinales"
-                        placeholder="Ingrese las observaciones finales de la atención..."
+                            id="observacionesFinales"
+                            placeholder="Ingrese las observaciones finales de la atención..."
                         ></textarea>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- =================================================
-                 BOTONES
-            ================================================== -->
-
             <footer class="form-actions">
-
                 <button
                     type="button"
                     class="btn-cancel"
@@ -859,41 +401,28 @@
                     <i class="ph ph-check"></i>
                     Guardar visita médica
                 </button>
-
             </footer>
-
         </section>
-
     </main>
-
-
-    <!-- =====================================================
-         MODAL HISTORIAL MÉDICO
-    ====================================================== -->
-
+    <!-- MODAL HISTORIAL MÉDICO -->
     <div
         id="modalHistorial"
         class="modal-overlay"
     >
-
         <div class="modal">
-
             <div class="modal-header">
-
                 <div>
-
                     <span>
                         HISTORIAL MÉDICO
                     </span>
 
-                    <h2>
-                        Juan Carlos López
+                    <h2 id="historialNombrePaciente">
+                        Cargando...
                     </h2>
 
-                    <p>
-                        EXP-00142
+                    <p id="historialExpediente">
+                        Cargando...
                     </p>
-
                 </div>
 
                 <button
@@ -903,158 +432,25 @@
                 >
                     <i class="ph ph-x"></i>
                 </button>
-
             </div>
 
-
-            <div class="modal-body">
-
-                <!-- VISITA 1 -->
-
-                <div class="history-item">
-
-                    <div class="history-date">
-                        15 AGO 2026
-                    </div>
-
-                    <div class="history-content">
-
-                        <div class="history-top">
-
-                            <strong>
-                                Control médico
-                            </strong>
-
-                            <span>
-                                Medicina General
-                            </span>
-
-                        </div>
-
-                        <p>
-                            Diagnóstico: Hipertensión arterial controlada.
-                        </p>
-
-                        <div class="history-info">
-
-                            <span>
-                                <i class="ph ph-pill"></i>
-                                Losartán — 1 tableta cada 24 horas
-                            </span>
-
-                            <span>
-                                <i class="ph ph-user"></i>
-                                Dr. Roberto Pérez
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- VISITA 2 -->
-
-                <div class="history-item">
-
-                    <div class="history-date">
-                        02 AGO 2026
-                    </div>
-
-                    <div class="history-content">
-
-                        <div class="history-top">
-
-                            <strong>
-                                Dolor de cabeza
-                            </strong>
-
-                            <span>
-                                Medicina General
-                            </span>
-
-                        </div>
-
-                        <p>
-                            Diagnóstico: Cefalea tensional.
-                        </p>
-
-                        <div class="history-info">
-
-                            <span>
-                                <i class="ph ph-flask"></i>
-                                Hemograma realizado
-                            </span>
-
-                            <span>
-                                <i class="ph ph-user"></i>
-                                Dr. Roberto Pérez
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- VISITA 3 -->
-
-                <div class="history-item">
-
-                    <div class="history-date">
-                        20 JUL 2026
-                    </div>
-
-                    <div class="history-content">
-
-                        <div class="history-top">
-
-                            <strong>
-                                Dolor muscular
-                            </strong>
-
-                            <span>
-                                Traumatología
-                            </span>
-
-                        </div>
-
-                        <p>
-                            Diagnóstico: Dolor muscular leve.
-                        </p>
-
-                        <div class="history-info">
-
-                            <span>
-                                <i class="ph ph-pill"></i>
-                                Ibuprofeno — 1 tableta cada 8 horas
-                            </span>
-
-                            <span>
-                                <i class="ph ph-user"></i>
-                                Dra. María López
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <!-- CONTENIDO DEL HISTORIAL -->
+            <div
+                class="modal-body"
+                id="historialContenido"
+            >
             </div>
 
             <div class="modal-footer">
                 <button
-                    type="button" class="btn-modal-close"
-                    onclick="cerrarHistorial()">
+                    type="button"
+                    class="btn-modal-close"
+                    onclick="cerrarHistorial()"
+                >
                     Cerrar
                 </button>
             </div>
-
         </div>
-
     </div>
     <script src="atenderPaciente.js"></script>
 </body>
