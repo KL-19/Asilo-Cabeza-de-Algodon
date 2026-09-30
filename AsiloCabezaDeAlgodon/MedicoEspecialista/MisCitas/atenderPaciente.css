@@ -462,7 +462,7 @@ body {
     padding-top: 20px;
 }
 
-.collapse-content.active {
+.collapse-content.open {
     display: block;
 }
 

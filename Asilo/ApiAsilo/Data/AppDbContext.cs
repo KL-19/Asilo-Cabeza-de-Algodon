@@ -22,5 +22,11 @@ namespace ApiAsilo.Data
         public DbSet<SolicitudEspecialista> SolicitudesEspecialista { get; set; }
         public DbSet<Cita> Citas { get; set; }
         public DbSet<AtencionMedica> AtencionesMedicas { get; set; }
+        public DbSet<ExamenLaboratorio> ExamenesLaboratorio { get; set; }
+        public DbSet<ResultadoLaboratorio> ResultadosLaboratorio { get; set; }
+        public DbSet<Receta> Recetas { get; set; }
+        public DbSet<DetalleReceta> DetalleReceta { get; set; }
+        public DbSet<EntregaFarmacia> EntregasFarmacia { get; set; }
+        public DbSet<CargoCuenta> CargosCuenta { get; set; }
     }
 }

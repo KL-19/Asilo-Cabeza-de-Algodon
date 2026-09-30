@@ -33,12 +33,12 @@ namespace ApiAsilo.Models
         [ForeignKey("CitaID")]
         public virtual Cita? Cita { get; set; }
 
-        /* Exámenes solicitados durante esta atención
+        //Exámenes solicitados durante esta atención
         public virtual ICollection<ExamenLaboratorio> ExamenesLaboratorio { get; set; }
             = new List<ExamenLaboratorio>();
 
         // Recetas generadas durante esta atención
         public virtual ICollection<Receta> Recetas { get; set; }
-            = new List<Receta>();*/
+            = new List<Receta>();
     }
 }

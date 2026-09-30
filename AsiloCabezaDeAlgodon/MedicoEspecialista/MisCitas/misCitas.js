@@ -95,7 +95,7 @@ function cargarCitas() {
 
 function separarCitas() {
     citasPendientes = citas.filter(cita => {
-        return cita.estado === "Programada" || cita.estado === "Pendiente";
+        return cita.estado === "Programada";
     });
     citasCompletadas = citas.filter(cita => {
         return cita.estado === "Completada" || cita.estado === "Atendida" || cita.estado === "Finalizada";
@@ -460,17 +460,46 @@ function marcarNotificacionVista(citaId) {
 }
 
 function abrirVisita(citaId) {
+    console.log("Consultando atención de cita:", citaId);
     fetch(`${API}/Atenciones/cita/${citaId}`)
-        .then(response => {
+        .then(async response => {
+            const texto = await response.text();
+            console.log("Respuesta Atenciones:", response.status);
+
             if (!response.ok) {
-                throw new Error("La cita todavía no tiene una atención médica.");
+                let mensaje = `Error HTTP ${response.status}`;
+                try {
+                    const errorData = JSON.parse(texto);
+                    if (errorData.mensaje) {
+                        mensaje = errorData.mensaje;
+                    }
+                } catch {
+                    if (texto) {
+                        console.error("Respuesta del servidor:", texto);
+                    }
+                }
+                throw new Error(mensaje);
             }
-            return response.json();
+
+            try {
+                return JSON.parse(texto);
+            } catch {
+                throw new Error(
+                    "La respuesta de la API no tiene un formato válido."
+                );
+            }
         })
-        .then(atencion => {
-            console.log("Atención recibida:", atencion);
-            llenarModalVisita(atencion);
-            document.getElementById("modalVisita").classList.add("active");
+        .then(data => {
+            console.log("Datos de atención:", data);
+            if (!data.existe || !data.atencion) {
+                throw new Error(
+                    "La cita todavía no tiene una atención médica registrada."
+                );
+            }
+            llenarModalVisita(data);
+            document
+                .getElementById("modalVisita")
+                .classList.add("active");
         })
         .catch(error => {
             console.error("Error al abrir visita:", error);
@@ -485,20 +514,29 @@ function cerrarVisita() {
     }
 }
 
-function llenarModalVisita(atencion) {
-    const cita = atencion.cita;
+function llenarModalVisita(data) {
+    const cita = data.cita;
+    const atencion = data.atencion;
     const paciente = cita?.interno;
-    document.getElementById("modalNombrePaciente").textContent = paciente ? `${paciente.nombre} ${paciente.apellido}` : "Paciente";
-    document.getElementById("modalIdentificacionAtencion").textContent = paciente?.dpi ? `DPI: ${paciente.dpi}` : "Sin identificación";
-    document.getElementById("modalFecha").textContent = new Date(atencion.fechaAtencion).toLocaleDateString("es-GT");
+
+    document.getElementById("modalNombrePaciente").textContent = paciente
+            ? `${paciente.nombre} ${paciente.apellido}`
+            : "Paciente";
+    document.getElementById("modalIdentificacionAtencion").textContent = paciente?.dpi
+            ? `DPI: ${paciente.dpi}`
+            : "Sin identificación";
+    document.getElementById("modalFecha").textContent = atencion?.fechaAtencion
+            ? new Date(atencion.fechaAtencion)
+                .toLocaleDateString("es-GT")
+            : "—";
     document.getElementById("modalMedico").textContent = cita?.especialista?.nombreCompleto || cita?.especialista?.nombreUsuario || "—";
-    document.getElementById("modalEspecialidad").textContent = cita?.especialista?.perfilUsuario?.especialidad?.nombre || "—";
+    document.getElementById("modalEspecialidad").textContent = "Especialista";
     document.getElementById("modalEnfermero").textContent = cita?.solicitud?.enfermero?.nombreCompleto || "Sin asignar";
     document.getElementById("modalMotivo").textContent = cita?.motivo || cita?.solicitud?.motivo || "—";
-    document.getElementById("modalDiagnostico").textContent = atencion.diagnosticoFinal || atencion.diagnostico || "—";
-    document.getElementById("modalObservaciones").textContent = atencion.observaciones || "Sin observaciones";
-    mostrarExamenesModal(atencion.examenesLaboratorio);
-    mostrarMedicamentosModal(atencion.recetas);
+    document.getElementById("modalDiagnostico").textContent = atencion?.diagnosticoFinal || atencion?.diagnostico || "—";
+    document.getElementById("modalObservaciones").textContent = atencion?.observaciones || "Sin observaciones";
+    mostrarExamenesModal(atencion?.examenesLaboratorio || []);
+    mostrarMedicamentosModal(atencion?.recetas || []);
 }
 
 function mostrarExamenesModal(examenes) {
@@ -540,18 +578,33 @@ function mostrarMedicamentosModal(recetas) {
         `;
         return;
     }
+    let hayMedicamentos = false;
     recetas.forEach(receta => {
         if (!receta.detalleReceta) {
             return;
         }
         receta.detalleReceta.forEach(medicamento => {
+            hayMedicamentos = true;
             const elemento = document.createElement("div");
             elemento.className = "visit-list-item";
             elemento.innerHTML = `
-                <strong>${medicamento.medicamento || ""}</strong>
-                <span>${medicamento.dosis || ""} ${medicamento.frecuencia || ""}</span>
+                <strong>
+                    ${medicamento.medicamento || "Medicamento"}
+                </strong>
+
+                <span>
+                    ${medicamento.dosis || ""}
+                    ${medicamento.frecuencia || ""}
+                </span>
             `;
             contenedor.appendChild(elemento);
         });
     });
+    if (!hayMedicamentos) {
+        contenedor.innerHTML = `
+            <span class="empty-list">
+                No se registraron medicamentos.
+            </span>
+        `;
+    }
 }

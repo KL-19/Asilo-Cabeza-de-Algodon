@@ -2,6 +2,7 @@ const API = "http://localhost:5054/api";
 let citaId = null;
 let citaActual = null;
 let atencionActual = null;
+let resultadosLaboratorioActuales = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     obtenerCitaId();
@@ -43,19 +44,18 @@ function llenarInformacionCita(cita) {
     const nombrePaciente = interno
         ? `${interno.nombre} ${interno.apellido}`
         : "Paciente";
-    document.getElementById("nombrePacien").textContent = nombrePaciente;
+    document.getElementById("nombrePaciente").textContent = nombrePaciente;
     document.getElementById("expedientePaciente").textContent = interno?.dpi
-        ? `DPI: ${interno.dpi}`
-        : `ID interno: ${cita.internoID}`;
-    document.getElementById("fechaVisita").textContent =new Date(cita.fechaHora).toLocaleDateString("es-GT");
+            ? `DPI: ${interno.dpi}`
+            : `ID interno: ${cita.internoID}`;
+    document.getElementById("fechaVisita").textContent = new Date(cita.fechaHora).toLocaleDateString("es-GT");
     document.getElementById("medicoTratante").textContent = cita.especialista?.nombreCompleto || "Médico especialista";
     document.getElementById("especialidadPaciente").textContent = cita.especialista?.perfilUsuario?.especialidad?.nombre || "Especialista";
     document.getElementById("motivoVisita").textContent = cita.motivo || cita.solicitud?.motivo || "Sin motivo";
     document.getElementById("enfermeroRefiere").textContent = cita.solicitud?.enfermero?.nombreCompleto || cita.solicitud?.enfermero?.nombreUsuario || "Sin enfermero asignado";
     document.getElementById("descripcionSolicitud").textContent = cita.solicitud?.observaciones || cita.observaciones || "Sin descripción adicional.";
     document.getElementById("historialNombrePaciente").textContent = nombrePaciente;
-    document.getElementById("historialExpediente").textContent =
-        interno?.dpi
+    document.getElementById("historialExpediente").textContent = interno?.dpi
             ? `DPI: ${interno.dpi}`
             : `ID interno: ${cita.internoID}`;
 }
@@ -63,34 +63,30 @@ function llenarInformacionCita(cita) {
 function cargarAtencionExistente() {
     fetch(`${API}/Atenciones/cita/${citaId}`)
         .then(response => {
-            if (response.status === 404) {
-                prepararPrimeraAtencion();
-                return null;
-            }
-
             if (!response.ok) {
                 throw new Error("No se pudo consultar la atención médica.");
             }
 
             return response.json();
         })
-        .then(atencion => {
-            if (!atencion) {
+        .then(data => {
+            console.log("Respuesta de atención:", data);
+            if (!data.existe) {
+                prepararPrimeraAtencion();
                 return;
             }
-
-            console.log("Atención existente:", atencion);
-            atencionActual = atencion;
-            prepararAtencionExistente(atencion);
+            atencionActual = data.atencion;
+            prepararAtencionExistente(data.atencion);
         })
         .catch(error => {
             console.error(error);
+            alert(error.message);
         });
 }
 
 function prepararPrimeraAtencion() {
     atencionActual = null;
-
+    resultadosLaboratorioActuales = [];
     document.getElementById("diagnostico").value = "";
     document.getElementById("costoConsulta").value = "";
     document.getElementById("observaciones").value = "";
@@ -100,21 +96,108 @@ function prepararPrimeraAtencion() {
     document.getElementById("diagnostico").disabled = false;
     document.getElementById("costoConsulta").disabled = false;
     document.getElementById("observaciones").disabled = false;
+    document.getElementById("diagnosticoFinal").disabled = false;
 }
 
 function prepararAtencionExistente(atencion) {
-    document.getElementById("diagnostico").value =atencion.diagnostico || "";
-    document.getElementById("costoConsulta").value =atencion.costoConsulta || "";
-    document.getElementById("observaciones").value =atencion.observaciones || "";
+    document.getElementById("diagnostico").value = atencion.diagnostico || "";
+    document.getElementById("costoConsulta").value = atencion.costoConsulta ?? "";
+    document.getElementById("observaciones").value = atencion.observaciones || "";
     if (
         atencion.estado === "Completada" || atencion.estado === "Finalizada"
     ) {
         document.getElementById("diagnostico").disabled = true;
         document.getElementById("costoConsulta").disabled = true;
+        document.getElementById("observaciones").disabled = true;
         document.getElementById("diagnosticoFinal").value = atencion.diagnosticoFinal || "";
-        document.getElementById("seccionFinal").style.display = "block";
+        document.getElementById("diagnosticoFinal").disabled = true;
+        document.querySelector(".btn-save").style.display = "none";
+        cargarResultadosLaboratorio(atencion.id, true);
         return;
     }
+
+    if (atencion.estado === "Pendiente resultados") {
+        document.getElementById("diagnostico").disabled = true;
+        document.getElementById("costoConsulta").disabled = true;
+        document.getElementById("observaciones").disabled = false;
+        cargarResultadosLaboratorio(atencion.id, false);
+        return;
+    }
+    cargarResultadosLaboratorio(atencion.id, false);
+}
+
+function cargarResultadosLaboratorio(atencionId, atencionCompletada) {
+    fetch(`${API}/ResultadosLaboratorio/atencion/${atencionId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("No se pudieron consultar los resultados.");
+            }
+            return response.json();
+        })
+        .then(resultados => {
+            resultadosLaboratorioActuales = resultados || [];
+            if (!resultados || resultados.length === 0) {
+                document.getElementById("resultadosLaboratorio").style.display = "none";
+                document.getElementById("seccionFinal").style.display = "none";
+                return;
+            }
+
+            mostrarResultadosLaboratorio(resultados);
+            document.getElementById("resultadosLaboratorio").style.display ="block";
+            if (atencionCompletada) {
+                document.getElementById("seccionFinal").style.display = "none";
+                return;
+            }
+
+            document.getElementById("seccionFinal").style.display = "block";
+            document.getElementById("diagnosticoFinal").disabled = false;
+        })
+        .catch(error => {
+            console.error("ERROR AL CARGAR RESULTADOS:", error);
+        });
+}
+
+function mostrarResultadosLaboratorio(resultados) {
+    const container = document.getElementById("labResultsContent");
+    container.innerHTML = "";
+    resultados.forEach(resultado => {
+        const div = document.createElement("div");
+        div.className = "lab-result-item";
+        div.innerHTML = `
+            <div class="lab-result-header">
+                <strong>
+                    ${
+                        resultado.examenLaboratorio?.tipoExamen || "Examen de laboratorio"
+                    }
+                </strong>
+
+                <span>
+                    ${
+                        resultado.fechaResultado
+                            ? new Date(
+                                  resultado.fechaResultado
+                              ).toLocaleDateString("es-GT")
+                            : ""
+                    }
+                </span>
+            </div>
+
+            <div class="lab-result-body">
+                <p>
+                    <strong>Resultado:</strong>
+                    ${resultado.resultado || "Sin resultado"}
+                </p>
+
+                <p>
+                    <strong>Observaciones:</strong>
+                    ${
+                        resultado.observaciones || "Sin observaciones"
+                    }
+                </p>
+            </div>
+        `;
+        container.appendChild(div);
+    });
 }
 
 function guardarVisita() {
@@ -127,9 +210,12 @@ function guardarVisita() {
         guardarSegundaAtencion();
         return;
     }
+    guardarPrimeraAtencion();
+}
 
+function guardarPrimeraAtencion() {
     const diagnostico = document.getElementById("diagnostico").value.trim();
-    const costo =document.getElementById("costoConsulta").value;
+    const costo = document.getElementById("costoConsulta").value;
     const observaciones = document.getElementById("observaciones").value.trim();
     if (!diagnostico) {
         alert("Debe ingresar el diagnóstico.");
@@ -140,16 +226,19 @@ function guardarVisita() {
         alert("Debe ingresar el costo de la consulta.");
         return;
     }
-
+    const examenes = obtenerExamenes();
+    const medicamentos = obtenerMedicamentos();
+    const estado = examenes.length > 0
+            ? "Pendiente resultados"
+            : "Completada";
     const datos = {
         citaID: parseInt(citaId),
         diagnostico: diagnostico,
         observaciones: observaciones || null,
         costoConsulta: parseFloat(costo),
-        estado: "Completada"
+        estado: estado
     };
-
-    console.log("Enviando atención:", datos);
+    console.log("Enviando primera atención:", datos);
 
     fetch(`${API}/Atenciones`, {
         method: "POST",
@@ -160,27 +249,177 @@ function guardarVisita() {
     })
         .then(response => {
             if (!response.ok) {
-                return response.json()
-                    .then(error => {
-                        throw new Error(
-                            error.mensaje ||
-                            "No se pudo guardar la atención."
-                        );
-                    });
+                return response.json().then(error => {
+                    throw new Error(
+                        error.mensaje || "No se pudo guardar la atención."
+                    );
+                });
             }
-
             return response.json();
         })
         .then(atencion => {
-            console.log("Atención guardada:", atencion);
+            atencionActual = atencion;
 
-            alert("La atención médica se guardó correctamente.");
-
+            return guardarExamenes(
+                atencion.id,
+                examenes
+            ).then(() => {
+                return guardarMedicamentos(
+                    atencion.id,
+                    medicamentos
+                );
+            }).then(() => atencion);
+        })
+        .then(atencion => {
+            console.log("Todo guardado:", atencion);
+            if (estado === "Pendiente resultados") {
+                alert("La atención fue guardada y quedó pendiente de resultados de laboratorio.");
+            } else {
+                alert("La atención médica se guardó correctamente.");
+            }
             window.location.href = "../MisCitas/misCitas.html";
         })
         .catch(error => {
             console.error("ERROR AL GUARDAR:", error);
             alert(error.message);
+        });
+}
+
+function obtenerExamenes() {
+    const elementos = document.querySelectorAll(".examen-item");
+    const examenes = [];
+    elementos.forEach(elemento => {
+        const tipo = elemento.querySelector(".input-examen")?.value.trim();
+        const indicaciones = elemento.querySelector(".input-indicaciones")?.value.trim();
+        if (tipo) {
+            examenes.push({
+                tipoExamen: tipo, indicaciones: indicaciones || null
+            });
+        }
+    });
+    return examenes;
+}
+
+function guardarExamenes(atencionId, examenes) {
+    if (!examenes || examenes.length === 0) {
+        return Promise.resolve();
+    }
+    const promesas = examenes.map(examen => {
+        const datos = {
+            atencionMedicaID: atencionId,
+            tipoExamen: examen.tipoExamen,
+            indicaciones: examen.indicaciones
+        };
+
+        return fetch(`${API}/ExamenesLaboratorio`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(datos)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(error => {
+                        throw new Error(
+                            error.mensaje ||
+                            "No se pudo guardar un examen."
+                        );
+                    });
+                }
+                return response.json();
+            });
+    });
+    return Promise.all(promesas);
+}
+
+function obtenerMedicamentos() {
+    const elementos = document.querySelectorAll(".medicamento-item");
+    const medicamentos = [];
+    elementos.forEach(elemento => {
+        const medicamento = elemento.querySelector(".input-medicamento")?.value.trim();
+        const dosis = elemento.querySelector(".input-dosis")?.value.trim();
+        const frecuencia = elemento.querySelector(".input-frecuencia")?.value.trim();
+        const duracion = elemento.querySelector(".input-duracion")?.value.trim();
+        const cantidad = elemento.querySelector(".input-cantidad")?.value;
+        const indicaciones = elemento
+                .querySelector(".input-indicaciones-medicamento")
+                ?.value.trim();
+        if (medicamento) {
+            medicamentos.push({
+                medicamento: medicamento,
+                dosis: dosis || null,
+                frecuencia: frecuencia || null,
+                duracion: duracion || null,
+                cantidad: cantidad
+                    ? parseInt(cantidad)
+                    : null,
+                indicaciones: indicaciones || null
+            });
+        }
+    });
+    return medicamentos;
+}
+
+function guardarMedicamentos(atencionId, medicamentos) {
+    if (!medicamentos || medicamentos.length === 0) {
+        return Promise.resolve();
+    }
+    const datosReceta = {
+        atencionMedicaID: atencionId,
+        indicacionesGenerales: null,
+        estado: "Pendiente"
+    };
+
+    return fetch(`${API}/Recetas`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datosReceta)
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(error => {
+                    throw new Error(
+                        error.mensaje ||
+                        "No se pudo crear la receta."
+                    );
+                });
+            }
+            return response.json();
+        })
+        .then(receta => {
+            const promesas = medicamentos.map(medicamento => {
+                const datos = {
+                    recetaID: receta.id,
+                    medicamento: medicamento.medicamento,
+                    dosis: medicamento.dosis,
+                    frecuencia: medicamento.frecuencia,
+                    duracion: medicamento.duracion,
+                    cantidad: medicamento.cantidad,
+                    indicaciones: medicamento.indicaciones
+                };
+
+                return fetch(`${API}/DetalleReceta`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(error => {
+                                throw new Error(
+                                    error.mensaje || "No se pudo guardar un medicamento."
+                                );
+                            });
+                        }
+                        return response.json();
+                    });
+            });
+            return Promise.all(promesas);
         });
 }
 
@@ -190,6 +429,10 @@ function guardarSegundaAtencion() {
         return;
     }
 
+    if (resultadosLaboratorioActuales.length === 0) {
+        alert("La atención todavía está pendiente de resultados de laboratorio.");
+        return;
+    }
     const diagnosticoFinal = document.getElementById("diagnosticoFinal").value.trim();
     const observaciones = document.getElementById("observaciones").value.trim();
     if (!diagnosticoFinal) {
@@ -212,12 +455,16 @@ function guardarSegundaAtencion() {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error("No se pudo finalizar la atención.");
+                return response.json().then(error => {
+                    throw new Error(
+                        error.mensaje || "No se pudo finalizar la atención."
+                    );
+                });
             }
-
             return response.json();
         })
-        .then(() => {
+        .then(data => {
+            console.log("Atención finalizada:", data);
             alert("La atención médica fue finalizada correctamente.");
             window.location.href = "../MisCitas/misCitas.html";
         })
@@ -302,14 +549,14 @@ function agregarMedicamento() {
 
 function toggleExamenes() {
     const content = document.getElementById("examenesContent");
-    const button =document.getElementById("btnExamenes");
+    const button = document.getElementById("btnExamenes");
     content.classList.toggle("open");
     button.classList.toggle("active");
 }
 
 function toggleMedicamentos() {
-    const content =document.getElementById("medicamentosContent");
-    const button =document.getElementById("btnMedicamentos");
+    const content = document.getElementById("medicamentosContent");
+    const button = document.getElementById("btnMedicamentos");
     content.classList.toggle("open");
     button.classList.toggle("active");
 }
@@ -327,83 +574,242 @@ function cerrarHistorial() {
     document.getElementById("modalHistorial").classList.remove("active");
 }
 
-function cargarHistorial() {
+async function cargarHistorial() {
     const internoId = citaActual?.internoID;
-    const container =document.getElementById("historialContenido");
+    const container = document.getElementById("historialContenido");
     if (!internoId) {
-        container.innerHTML =
-            "<p>No se encontró el paciente.</p>";
+        container.innerHTML = "<p>No se encontró el paciente.</p>";
         return;
     }
+    container.innerHTML ="<p>Cargando historial médico...</p>";
+    try {
+        const response =
+            await fetch(
+                `${API}/Atenciones/interno/${internoId}`
+            );
+        if (!response.ok) {
+            throw new Error("No se pudo cargar el historial.");
+        }
 
-    container.innerHTML =
-        "<p>Cargando historial...</p>";
-
-    fetch(`${API}/Atenciones/interno/${internoId}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(
-                    "No se pudo cargar el historial."
-                );
-            }
-
-            return response.json();
-        })
-        .then(atenciones => {
-            mostrarHistorial(atenciones);
-        })
-        .catch(error => {
-            console.error(error);
+        const atenciones =await response.json();
+        if (!atenciones || atenciones.length === 0) {
             container.innerHTML = `
                 <p>
-                    No se pudo cargar el historial médico.
+                    No existen atenciones médicas anteriores.
                 </p>
             `;
-        });
-}
+            return;
+        }
 
-function mostrarHistorial(atenciones) {
-    const container =document.getElementById("historialContenido");
-    container.innerHTML = "";
-
-    if (!atenciones || atenciones.length === 0) {
+        const historialCompleto =
+            await Promise.all(
+                atenciones.map(async atencion => {
+                    const [examenes, resultados, receta] =
+                        await Promise.all([
+                            obtenerDatosHistorial(
+                                "ExamenesLaboratorio",
+                                `atencion/${atencion.id}`
+                            ),
+                            obtenerDatosHistorial(
+                                "ResultadosLaboratorio",
+                                `atencion/${atencion.id}`
+                            ),
+                            obtenerDatosHistorial(
+                                "Recetas",
+                                `atencion/${atencion.id}`
+                            )
+                        ]);
+                    let detallesReceta = [];
+                    if (
+                        receta &&
+                        receta.existe &&
+                        receta.receta
+                    ) {
+                        detallesReceta = await obtenerDatosHistorial(
+                                "DetalleReceta",
+                                `receta/${receta.receta.id}`
+                            );
+                    }
+                    return {
+                        atencion,
+                        examenes: examenes || [],
+                        resultados: resultados || [],
+                        receta,
+                        detallesReceta: detallesReceta || []
+                    };
+                })
+            );
+        mostrarHistorial(historialCompleto);
+    }
+    catch (error) {
+        console.error(
+            "ERROR AL CARGAR HISTORIAL:",
+            error
+        );
         container.innerHTML = `
             <p>
-                No existen atenciones médicas anteriores.
+                No se pudo cargar el historial médico.
             </p>
         `;
-        return;
     }
+}
 
-    atenciones.forEach(atencion => {
+async function obtenerDatosHistorial(controlador, ruta) {
+    try {
+        const response =
+            await fetch(
+                `${API}/${controlador}/${ruta}`
+            );
+        if (!response.ok) {
+            return [];
+        }
+
+        const data = await response.json();
+        if (Array.isArray(data)) {
+            return data;
+        }
+        return data;
+    }
+    catch (error) {
+        console.error(
+            `Error consultando ${controlador}:`,
+            error
+        );
+
+        return [];
+    }
+}
+
+function mostrarHistorial(historial) {
+    const container = document.getElementById("historialContenido");
+    container.innerHTML = "";
+    historial.forEach(item => {
+        const atencion =
+            item.atencion;
+
         const div = document.createElement("div");
         div.className = "history-item";
+        const fecha =
+            atencion.fechaAtencion
+                ? new Date(
+                      atencion.fechaAtencion
+                  ).toLocaleDateString("es-GT")
+                : "Sin fecha";
+        const diagnostico = atencion.diagnosticoFinal || atencion.diagnostico || "Sin diagnóstico";
+        let examenesHTML = "";
+        if (
+            item.examenes && item.examenes.length > 0
+        ) {
+            examenesHTML = `
+                <div class="history-section">
+                    <strong>Exámenes solicitados:</strong>
+                    <ul>
+                        ${item.examenes
+                            .map(examen => `
+                                <li>
+                                    ${examen.tipoExamen}
+                                </li>
+                            `)
+                            .join("")}
+                    </ul>
+                </div>
+            `;
+        }
+        let resultadosHTML = "";
+        if (
+            item.resultados && item.resultados.length > 0
+        ) {
+            resultadosHTML = `
+                <div class="history-section">
+                    <strong>Resultados de laboratorio:</strong>
+                    ${item.resultados
+                        .map(resultado => `
+                            <p>
+                                <strong>
+                                    ${
+                                        resultado
+                                            .examenLaboratorio
+                                            ?.tipoExamen ||
+                                        "Examen"
+                                    }:
+                                </strong>
+
+                                ${
+                                    resultado.resultado || "Sin resultado"
+                                }
+                            </p>
+
+                            <p>
+                                <strong>Observaciones:</strong>
+                                ${
+                                    resultado.observaciones || "Sin observaciones"
+                                }
+                            </p>
+                        `)
+                        .join("")}
+                </div>
+            `;
+        }
+        let medicamentosHTML = "";
+        if (
+            item.detallesReceta && item.detallesReceta.length > 0
+        ) {
+            medicamentosHTML = `
+                <div class="history-section">
+                    <strong>Medicamentos:</strong>
+
+                    <ul>
+                        ${item.detallesReceta
+                            .map(medicamento => `
+                                <li>
+                                    <strong>
+                                        ${medicamento.medicamento}
+                                    </strong>
+
+                                    ${
+                                        medicamento.dosis
+                                            ? ` - ${medicamento.dosis}`
+                                            : ""
+                                    }
+
+                                    ${
+                                        medicamento.frecuencia
+                                            ? ` - ${medicamento.frecuencia}`
+                                            : ""
+                                    }
+
+                                    ${
+                                        medicamento.duracion
+                                            ? ` - ${medicamento.duracion}`
+                                            : ""
+                                    }
+                                </li>
+                            `)
+                            .join("")}
+                    </ul>
+                </div>
+            `;
+        }
 
         div.innerHTML = `
-            <div>
-                <strong>
-                    ${
-                        new Date(
-                            atencion.fechaAtencion
-                        ).toLocaleDateString("es-GT")
-                    }
-                </strong>
-                <span>
-                    ${
-                        atencion.diagnosticoFinal ||
-                        atencion.diagnostico ||
-                        "Sin diagnóstico"
-                    }
-                </span>
+            <div class="history-header">
+                <strong>${fecha}</strong>
+                <span>${diagnostico}</span>
             </div>
-            <p>
-                ${
-                    atencion.observaciones ||
-                    "Sin observaciones"
-                }
-            </p>
-        `;
 
+            <div class="history-body">
+                <p>
+                    <strong>Observaciones:</strong>
+                    ${
+                        atencion.observaciones ||
+                        "Sin observaciones"
+                    }
+                </p>
+                ${examenesHTML}
+                ${resultadosHTML}
+                ${medicamentosHTML}
+            </div>
+        `;
         container.appendChild(div);
     });
 }
@@ -414,9 +820,12 @@ function inicializarModalHistorial() {
         return;
     }
 
-    modal.addEventListener("click", function(event) {
-        if (event.target === this) {
-            cerrarHistorial();
+    modal.addEventListener(
+        "click",
+        function(event) {
+            if (event.target === this) {
+                cerrarHistorial();
+            }
         }
-    });
+    );
 }

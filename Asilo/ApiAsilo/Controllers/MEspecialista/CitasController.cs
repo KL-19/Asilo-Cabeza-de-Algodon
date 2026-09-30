@@ -71,15 +71,15 @@ namespace ApiAsilo.Controllers
                             fechaSolicitud = c.Solicitud.FechaSolicitud,
                             fechaAsignacion = c.Solicitud.FechaAsignacion,
                             estado = c.Solicitud.Estado,
-
+                            
                             enfermero = c.Solicitud.Enfermero == null
-                                ? null
-                                : new
-                                {
-                                    id = c.Solicitud.Enfermero.Id,
-                                    nombreUsuario = c.Solicitud.Enfermero.NombreUsuario,
-                                    nombreCompleto = c.Solicitud.Enfermero.NombreCompleto
-                                }
+                                    ? null
+                                    : new
+                                    {
+                                        id = c.Solicitud.Enfermero.Id,
+                                        nombreUsuario = c.Solicitud.Enfermero.NombreUsuario,
+                                        nombreCompleto = c.Solicitud.Enfermero.NombreCompleto
+                                    }
                         }
                 })
                 .ToListAsync();
@@ -92,7 +92,7 @@ namespace ApiAsilo.Controllers
         {
             var cita = await _context.Citas
                 .AsNoTracking()
-                .Where(c => c.Id == id)
+                .Where(c => c.Id == id
                 .Select(c => new
                 {
                     id = c.Id,
@@ -142,15 +142,14 @@ namespace ApiAsilo.Controllers
                             fechaSolicitud = c.Solicitud.FechaSolicitud,
                             fechaAsignacion = c.Solicitud.FechaAsignacion,
                             estado = c.Solicitud.Estado,
-
                             enfermero = c.Solicitud.Enfermero == null
-                                ? null
-                                : new
-                                {
-                                    id = c.Solicitud.Enfermero.Id,
-                                    nombreUsuario = c.Solicitud.Enfermero.NombreUsuario,
-                                    nombreCompleto = c.Solicitud.Enfermero.NombreCompleto
-                                }
+                                    ? null
+                                    : new
+                                    {
+                                        id = c.Solicitud.Enfermero.Id,
+                                        nombreUsuario = c.Solicitud.Enfermero.NombreUsuario,
+                                        nombreCompleto = c.Solicitud.Enfermero.NombreCompleto
+                                    }
                         }
                 })
                 .FirstOrDefaultAsync();
