@@ -19,59 +19,63 @@
 </head>
 
 <body>
-
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
     <aside class="sidebar">
-
         <!-- LOGO -->
         <div class="logo">
-
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
             </div>
 
             <div>
-                <h2>Cabeza de Algodón</h2>
-                <span>Sistema de Gestión</span>
-            </div>
+                <h2>
+                    Cabeza de Algodón
+                </h2>
 
+                <span>
+                    Sistema de Gestión
+                </span>
+            </div>
         </div>
 
         <!-- PERFIL DEL MÉDICO -->
         <div class="doctor-profile">
-
             <div class="doctor-avatar">
                 <i class="ph ph-user"></i>
             </div>
 
             <div>
-                <strong>Dr. Carlos Méndez</strong>
-                <span>
-                    Cardiología
+                <strong id="nombreMedicoSidebar">
+                    —
+                </strong>
+
+                <span id="especialidadMedicoSidebar">
+                    —
                 </span>
             </div>
-
         </div>
 
         <!-- MENÚ -->
         <nav class="menu">
+            <p class="menu-title"> MENÚ PRINCIPAL</p>
 
-            <p class="menu-title">
-                MENÚ PRINCIPAL
-            </p>
-            <a href="../mEspecialista.html" class="menu-item">
+            <a href="../mEspecialista.html"class="menu-item">
                 <i class="ph ph-house"></i>
-                <span>Inicio </span>
+                <span>
+                    Inicio
+                </span>
             </a>
 
             <a href="../MisCitas/misCitas.html" class="menu-item active">
                 <i class="ph ph-calendar-check"></i>
-                <span>Mis citas</span>
-                <span class="menu-badge">
-                    3
+                <span>
+                    Mis citas
+                </span>
+
+                <span
+                    class="menu-badge"
+                    id="badgeCitasPendientes"
+                >
+                    0
                 </span>
             </a>
 
@@ -81,58 +85,21 @@
                     Citas pendientes de resultados
                 </span>
             </a>
-
-            <a href="../pacientes/misPacientes.html"
-               class="menu-item">
-                <i class="ph ph-users-three"></i>
-                <span>
-                    Mis pacientes
-                </span>
-            </a>
-
-            <!-- CONSULTAS -->
-            <p class="menu-title">
-                CONSULTAS
-            </p>
-
-            <a href="../lab/hitorialLaboratorio.html" class="menu-item">
-                <i class="ph ph-test-tube"></i>
-                <span>
-                    Historial de Laboratorio
-                </span>
-                <span class="notification-count">
-                    2
-                </span>
-            </a>
-
-            <a href="../recetas/historialRecetas.html" class="menu-item">
-                <i class="ph ph-pill"></i>
-                <span>
-                    Historial de Recetas
-                </span>
-            </a>
-
         </nav>
 
         <!-- CERRAR SESIÓN -->
         <div class="sidebar-bottom">
-            <a href="../../index.html"
-               class="menu-item logout">
+            <a href="../../index.html"class="menu-item logout">
                 <i class="ph ph-sign-out"></i>
                 <span>
                     Cerrar sesión
                 </span>
             </a>
         </div>
-
     </aside>
 
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
-
-        <!-- TOPBAR -->
         <header class="topbar">
             <div>
                 <p class="welcome-small">
@@ -145,41 +112,82 @@
             </div>
 
             <div class="top-actions">
-                <button class="notification">
+                
+                <button class="notification"
+                        id="btnNotificaciones"
+                        title="Notificaciones">
                     <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
+                    
+                    <span class="notification-dot"
+                        id="notificationDot"></span>
                 </button>
 
                 <div class="top-profile">
-
                     <div class="small-avatar">
                         <i class="ph ph-user"></i>
                     </div>
 
                     <div>
-                        <strong>
-                            Dr. Carlos Méndez
+                        <strong id="nombreMedicoTop">
+                            —
                         </strong>
 
-                        <span>
-                            Cardiología
+                        <span id="especialidadMedicoTop">
+                            —
                         </span>
                     </div>
-
                 </div>
-
             </div>
+            <!-- ============================================================
+     PANEL DE NOTIFICACIONES
+     ============================================================ -->
 
+<div
+    id="panelNotificaciones"
+    class="notification-panel"
+>
+    <div class="notification-panel-header">
+
+        <div>
+            <strong>
+                Notificaciones
+            </strong>
+
+            <span id="contadorNotificaciones">
+                0 nuevas
+            </span>
+        </div>
+
+        <button
+            type="button"
+            id="btnMarcarNotificaciones"
+            class="btn-mark-notifications"
+        >
+            Marcar como vistas
+        </button>
+
+    </div>
+
+    <div
+        id="listaNotificaciones"
+        class="notification-list"
+    >
+        <div class="notificacion-vacia">
+
+            <i class="ph ph-check-circle"></i>
+
+            <p>
+                No tienes notificaciones nuevas.
+            </p>
+
+        </div>
+    </div>
+</div>
         </header>
 
-        <!-- =====================================================
-             CONTENIDO
-        ====================================================== -->
+        <!-- CONTENIDO -->
         <section class="appointments-content">
-
-            <!-- ENCABEZADO -->
             <div class="page-header">
-
                 <div>
                     <span class="section-label">
                         AGENDA MÉDICA
@@ -196,19 +204,68 @@
 
                 <div class="appointment-count">
                     <i class="ph ph-calendar-check"></i>
-                    <span>
-                        3 citas pendientes
+                    <span id="textoCantidadPendientes">
+                        0 citas pendientes
                     </span>
                 </div>
-
             </div>
 
-            <!-- =================================================
-                 TABLA CITAS PENDIENTES
-            ================================================== -->
+            <section
+                class="next-appointment"
+                id="proximaAtencion"
+                style="display: none;"
+            >
+                <div class="next-appointment-icon">
+                    <i class="ph ph-calendar-star"></i>
+                </div>
+
+                <div class="next-appointment-content">
+                    <span class="next-label">
+                        PRÓXIMA ATENCIÓN
+                    </span>
+
+                    <h3 id="proximaPaciente">
+                        —
+                    </h3>
+
+                    <div class="next-details">
+                        <span>
+                            <i class="ph ph-clock"></i>
+                            <strong id="proximaHora">
+                                —
+                            </strong>
+                        </span>
+
+                        <span>
+                            <i class="ph ph-calendar"></i>
+                            <span id="proximaFecha">
+                                —
+                            </span>
+                        </span>
+
+                        <span>
+                            <i class="ph ph-stethoscope"></i>
+                            <span id="proximaMotivo">
+                                —
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="next-appointment-action">
+                    <a
+                        href="#"
+                        class="btn-next-attend"
+                        id="btnProximaAtencion"
+                    >
+                        <i class="ph ph-stethoscope"></i>
+                        Atender
+                    </a>
+                </div>
+            </section>
+
             <div class="table-container">
                 <table>
-
                     <thead>
                         <tr>
                             <th>
@@ -238,188 +295,16 @@
                             <th>
                                 Acción
                             </th>
-
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <!-- CITA 1 -->
-                        <tr>
-
-                            <td>
-                                15 Sep 2026
-                            </td>
-
-                            <td>
-                                <strong class="time">
-                                    09:00 AM
-                                </strong>
-                            </td>
-
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        MP
-                                    </div>
-
-                                    <div>
-                                        <strong>
-                                            María Pérez
-                                        </strong>
-
-                                        <span>
-                                            EXP-00125
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Control médico
-                            </td>
-
-                            <td>
-                                Ana López
-                            </td>
-
-                            <td>
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-                            </td>
-
-                            <td>
-                                <a
-                                    href="../MisCitas/atenderPaciente.html"
-                                    class="btn-attend">
-                                    <i class="ph ph-stethoscope"></i>
-                                    Atender
-
-                                </a>
-                            </td>
-                        </tr>
-
-                        <!-- CITA 2 -->
-                        <tr>
-                            <td>
-                                15 Sep 2026
-                            </td>
-
-                            <td>
-                                <strong class="time">
-                                    11:00 AM
-                                </strong>
-                            </td>
-
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        RP
-                                    </div>
-
-                                    <div>
-                                        <strong>
-                                            Roberto Pérez
-                                        </strong>
-
-                                        <span>
-                                            EXP-00131
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Dolor articular
-                            </td>
-
-                            <td>
-                                Miguel Santos
-                            </td>
-
-                            <td>
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-                            </td>
-
-                            <td>
-                                <a
-                                    href="../MisCitas/atenderPaciente.html"
-                                    class="btn-attend">
-                                    <i class="ph ph-stethoscope"></i>
-                                    Atender
-                                </a>
-                            </td>
-
-                        </tr>
-
-                        <!-- CITA 3 -->
-                        <tr>
-                            <td>
-                                15 Sep 2026
-                            </td>
-
-                            <td>
-                                <strong class="time">
-                                    03:00 PM
-                                </strong>
-                            </td>
-
-                            <td>
-                                <div class="patient-cell">
-                                    <div class="mini-avatar">
-                                        JC
-                                    </div>
-
-                                    <div>
-                                        <strong>
-                                            Juan Carlos López
-                                        </strong>
-
-                                        <span>
-                                            EXP-00142
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                Dolor en el pecho
-                            </td>
-
-                            <td>
-                                Carlos Ramírez
-                            </td>
-
-                            <td>
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-                            </td>
-
-                            <td>
-                                <a
-                                    href="../MisCitas/atenderPaciente.html"
-                                    class="btn-attend">
-                                    <i class="ph ph-stethoscope"></i>
-                                    Atender
-                                </a>
-                            </td>
-
-                        </tr>
-
+                    <tbody id="tablaCitasPendientes">
                     </tbody>
-
                 </table>
-
+                <div id="paginacionPendientes" class="table-pagination"></div>
             </div>
 
-            <!-- =================================================
-                 CITAS COMPLETADAS
-            ================================================== -->
             <details class="completed-section">
-
                 <summary>
                     <div class="completed-title">
                         <div class="completed-icon">
@@ -431,7 +316,7 @@
                                 Citas completadas
                             </strong>
 
-                            <span>
+                            <span id="textoCompletadas">
                                 Consultas que ya fueron atendidas
                             </span>
                         </div>
@@ -440,11 +325,9 @@
                     <i class="ph ph-caret-down arrow"></i>
                 </summary>
 
-                <!-- TABLA COMPLETADAS -->
                 <div class="table-container completed-table">
                     <table>
                         <thead>
-
                             <tr>
                                 <th>
                                     Fecha
@@ -469,124 +352,23 @@
                                 <th>
                                     Acción
                                 </th>
-
                             </tr>
                         </thead>
 
-                        <tbody>
-
-                            <!-- COMPLETADA 1 -->
-                            <tr>
-                                <td>
-                                    14 Sep 2026
-                                </td>
-
-                                <td>
-                                    <strong class="time">
-                                        09:00 AM
-                                    </strong>
-                                </td>
-
-                                <td>
-                                    <div class="patient-cell">
-                                        <div class="mini-avatar">
-                                            AG
-                                        </div>
-
-                                        <div>
-                                            <strong>
-                                                Ana García
-                                            </strong>
-
-                                            <span>
-                                                EXP-00148
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    Seguimiento
-                                </td>
-
-                                <td>
-                                    <span class="status completed">
-                                        Completada
-                                    </span>
-                                </td>
-
-                                <td> 
-                                    <button type="button" class="btn-view" onclick="abrirVisita()" >
-                                        <i class="ph ph-eye"></i>
-                                        Ver visita
-                                    </button>
-                                </td>
-
-                            </tr>
-
-                            <!-- COMPLETADA 2 -->
-                            <tr>
-                                <td>
-                                    13 Sep 2026
-                                </td>
-
-                                <td>
-                                    <strong class="time">
-                                        11:00 AM
-                                    </strong>
-                                </td>
-
-                                <td>
-                                    <div class="patient-cell">
-                                        <div class="mini-avatar">
-                                            MP
-                                        </div>
-
-                                        <div>
-                                            <strong>
-                                                María Pérez
-                                            </strong>
-
-                                            <span>
-                                                EXP-00125
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    Control médico
-                                </td>
-
-                                <td>
-                                    <span class="status completed">
-                                        Completada
-                                    </span>
-                                </td>
-
-                                <td> 
-                                    <button type="button" class="btn-view" onclick="abrirVisita()" >
-                                        <i class="ph ph-eye"></i>
-                                        Ver visita
-                                    </button>
-                                </td>
-                        
-                            </tr>
-
+                        <tbody id="tablaCitasCompletadas">
                         </tbody>
-
                     </table>
-
+                    <div id="paginacionCompletadas" class="table-pagination"></div>
                 </div>
-
             </details>
-
         </section>
-
     </main>
 
-    <!--MODAL VER VISITA MÉDIC-->
-    <div id="modalVisita" class="modal-overlay">
+    <!-- MODAL VER VISITA MÉDICA -->
+    <div
+        id="modalVisita"
+        class="modal-overlay"
+    >
         <div class="modal">
             <div class="modal-header">
                 <div>
@@ -594,93 +376,118 @@
                         VISITA MÉDICA
                     </span>
 
-                    <h2>
-                        Juan Carlos López
+                    <h2 id="modalNombrePaciente">
+                        —
                     </h2>
 
-                    <p>
-                        EXP-00142 · Atención AT-00142
+                    <p id="modalIdentificacionAtencion">
+                        —
                     </p>
                 </div>
 
                 <button
-                    type="button"class="modal-close"
-                    onclick="cerrarVisita()" >
+                    type="button"
+                    class="modal-close"
+                    onclick="cerrarVisita()"
+                >
                     <i class="ph ph-x"></i>
                 </button>
-
             </div>
 
             <div class="modal-body">
                 <!-- INFORMACIÓN GENERAL -->
                 <div class="visit-section">
-
                     <div class="visit-section-title">
                         <i class="ph ph-calendar-check"></i>
-
                         <div>
-                            <strong>Información de la visita</strong>
-                            <span>Datos registrados durante la atención</span>
+                            <strong>
+                                Información de la visita
+                            </strong>
+
+                            <span>
+                                Datos registrados durante la atención
+                            </span>
                         </div>
                     </div>
 
                     <div class="visit-grid">
-
                         <div>
-                            <span>Fecha</span>
-                            <strong>28 de agosto de 2026</strong>
+                            <span>
+                                Fecha
+                            </span>
+
+                            <strong id="modalFecha">
+                                —
+                            </strong>
                         </div>
 
                         <div>
-                            <span>Médico tratante</span>
-                            <strong>Dr. Carlos Méndez</strong>
+                            <span>
+                                Médico tratante
+                            </span>
+
+                            <strong id="modalMedico">
+                                —
+                            </strong>
                         </div>
 
                         <div>
-                            <span>Especialidad</span>
-                            <strong>Cardiología</strong>
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong id="modalEspecialidad">
+                                —
+                            </strong>
                         </div>
 
                         <div>
-                            <span>Enfermero</span>
-                            <strong>Carlos Ramírez</strong>
-                        </div>
+                            <span>
+                                Enfermero
+                            </span>
 
+                            <strong id="modalEnfermero">
+                                —
+                            </strong>
+                        </div>
                     </div>
-
                 </div>
 
                 <!-- MOTIVO -->
                 <div class="visit-section">
-
                     <div class="visit-section-title">
                         <i class="ph ph-file-text"></i>
-
                         <div>
-                            <strong>Motivo de consulta</strong>
+                            <strong>
+                                Motivo de consulta
+                            </strong>
                         </div>
                     </div>
 
-                    <p class="visit-text">
-                        Dolor en el pecho. El paciente presentó molestias
-                        desde la mañana y fue referido para valoración médica.
+                    <p
+                        class="visit-text"
+                        id="modalMotivo"
+                    >
+                        —
                     </p>
-
                 </div>
 
                 <!-- DIAGNÓSTICO -->
                 <div class="visit-section">
-
                     <div class="visit-section-title">
                         <i class="ph ph-stethoscope"></i>
-
                         <div>
-                            <strong>Diagnóstico</strong>
+                            <strong>
+                                Diagnóstico
+                            </strong>
                         </div>
                     </div>
 
-                    <p class="visit-text">
-                        Hipertensión arterial controlada.
+                    <p
+                        class="visit-text"
+                        id="modalDiagnostico"
+                    >
+                        —
                     </p>
                 </div>
 
@@ -688,104 +495,73 @@
                 <div class="visit-section">
                     <div class="visit-section-title">
                         <i class="ph ph-test-tube"></i>
-
                         <div>
-                            <strong>Exámenes solicitados</strong>
-                            <span>Resultados asociados a esta visita</span>
-                        </div>
-                    </div>
+                            <strong>
+                                Exámenes solicitados
+                            </strong>
 
-                    <div class="visit-list">
-
-                        <div class="visit-item">
-                            <div>
-                                <strong>Hemograma completo</strong>
-                                <span>Resultado registrado por laboratorio</span>
-                            </div>
-
-                            <span class="visit-status completed">
-                                Completado
+                            <span>
+                                Resultados asociados a esta visita
                             </span>
                         </div>
+                    </div>
 
-                    <div class="visit-item">
+                    <div
+                        class="visit-list"
+                        id="modalExamenes"
+                    >
+                    </div>
+                </div>
+
+                <!-- MEDICAMENTOS -->
+                <div class="visit-section">
+                    <div class="visit-section-title">
+                        <i class="ph ph-pill"></i>
                         <div>
-                            <strong>Glucosa</strong>
-                            <span>Resultado registrado por laboratorio</span>
+                            <strong>
+                                Medicamentos indicados
+                            </strong>
                         </div>
-
-                        <span class="visit-status completed">
-                            Completado
-                        </span>
-
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <!-- MEDICAMENTOS -->
-
-            <div class="visit-section">
-
-                <div class="visit-section-title">
-
-                    <i class="ph ph-pill"></i>
-
-                    <div>
-                        <strong>Medicamentos indicados</strong>
+                    <div
+                        class="visit-list"
+                        id="modalMedicamentos"
+                    >
                     </div>
-
                 </div>
 
-                <div class="visit-list">
-
-                    <div class="visit-item">
-
+                <!-- OBSERVACIONES -->
+                <div class="visit-section">
+                    <div class="visit-section-title">
+                        <i class="ph ph-notepad"></i>
                         <div>
-                            <strong>Losartán 50 mg</strong>
-                            <span>1 tableta cada 24 horas</span>
+                            <strong>
+                                Observaciones médicas
+                            </strong>
                         </div>
-
-                        <span class="visit-status">
-                            Receta emitida
-                        </span>
-
                     </div>
 
+                    <p
+                        class="visit-text"
+                        id="modalObservaciones"
+                    >
+                        —
+                    </p>
                 </div>
-
             </div>
 
-            <!-- OBSERVACIONES -->
-            <div class="visit-section">
-                <div class="visit-section-title">
-                    <i class="ph ph-notepad"></i>
-                    <div>
-                        <strong>Observaciones médicas</strong>
-                    </div>
-                </div>
-
-                <p class="visit-text">
-                    Se recomienda continuar con el tratamiento indicado
-                    y mantener seguimiento médico.
-                </p>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn-modal-close"
+                    onclick="cerrarVisita()"
+                >
+                    Cerrar
+                </button>
             </div>
         </div>
-
-        <div class="modal-footer">
-            <button
-                type="button"class="btn-modal-close"
-                onclick="cerrarVisita()">
-                Cerrar
-            </button>
-        </div>
-
-        </div>
-
     </div>
     <script src="../MisCitas/misCitas.js"></script>
-
 </body>
 </html>

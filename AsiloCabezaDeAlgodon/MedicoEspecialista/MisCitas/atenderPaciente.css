@@ -971,3 +971,95 @@ body {
     }
 
 }
+
+/* COSTO DE LA ATENCIÓN*/
+.consultation-cost {
+    border: 1px solid var(--border);
+    background: #fafbfc;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.cost-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cost-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #ecfdf5;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.consultation-cost {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cost-text {
+    flex: 1;
+}
+
+.cost-label {
+    display: block;
+    color: var(--green);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.cost-text strong {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+.cost-text p {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.cost-input-wrapper {
+    position: relative;
+    width: 130px;
+    flex-shrink: 0;
+}
+
+.cost-input-wrapper .currency {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.cost-input-wrapper input {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 9px;
+    padding: 11px 10px 11px 28px;
+    outline: none;
+    font-size: 10px;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.cost-input-wrapper input:focus {
+    border-color: #93c5fd;
+}

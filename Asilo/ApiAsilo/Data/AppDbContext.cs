@@ -21,5 +21,6 @@ namespace ApiAsilo.Data
         public DbSet<EvaluacionMedica> EvaluacionesMedicas { get; set; }
         public DbSet<SolicitudEspecialista> SolicitudesEspecialista { get; set; }
         public DbSet<Cita> Citas { get; set; }
+        public DbSet<AtencionMedica> AtencionesMedicas { get; set; }
     }
 }

@@ -207,6 +207,43 @@
                     ></textarea>
                 </div>
 
+                <div class="consultation-cost">
+                    <div class="cost-icon">
+                        <i class="ph ph-money"></i>
+                    </div>
+
+                    <div class="cost-content">
+                        <div class="cost-text">
+                            <span class="cost-label">
+                                COSTO DE LA CONSULTA
+                            </span>
+
+                            <strong>
+                                Costo total de atención médica
+                            </strong>
+
+                            <p>
+                                Ingrese el costo correspondiente a esta consulta médica.
+                            </p>
+                        </div>
+
+                        <div class="cost-input-wrapper">
+                            <span class="currency">
+                                Q
+                            </span>
+
+                            <input
+                                type="number"
+                                id="costoConsulta"
+                                name="costoConsulta"
+                                min="0"
+                                step="0.01"
+                                placeholder="0.00"
+                            >
+                        </div>
+                    </div>
+                </div>
+
                 <div class="subsection">
                     <div class="collapse-header">
                         <div class="subsection-header-content">
@@ -367,18 +404,6 @@
                         <textarea
                             id="diagnosticoFinal"
                             placeholder="Ingrese el diagnóstico final después de revisar los resultados..."
-                        ></textarea>
-                    </div>
-
-                    <!-- OBSERVACIONES FINALES -->
-                    <div class="form-group">
-                        <label for="observacionesFinales">
-                            Observaciones médicas finales
-                        </label>
-
-                        <textarea
-                            id="observacionesFinales"
-                            placeholder="Ingrese las observaciones finales de la atención..."
                         ></textarea>
                     </div>
                 </div>
