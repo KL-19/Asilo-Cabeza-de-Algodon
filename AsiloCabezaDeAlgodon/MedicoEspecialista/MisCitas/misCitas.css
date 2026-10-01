@@ -947,6 +947,19 @@ td {
         align-items: flex-start;
         flex-direction: column;
     }
+
+    .next-appointment {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .next-appointment-action {
+        width: 100%;
+    }
+
+    .btn-next-attend {
+        width: 100%;
+    }
 }
 
 /* PAGINACIÓN DE TABLAS */
@@ -999,4 +1012,105 @@ td {
 .pagination-controls button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+/* =====================================================
+   PRÓXIMA ATENCIÓN
+===================================================== */
+.next-appointment {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #f8faff
+    );
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    padding: 17px 19px;
+    margin-bottom: 20px;
+}
+
+.next-appointment-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 13px;
+    background: white;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    border: 1px solid #dbeafe;
+}
+
+.next-appointment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.next-label {
+    display: block;
+    color: var(--primary);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 4px;
+}
+
+.next-appointment-content h3 {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.next-details {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.next-details span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.next-details i {
+    color: var(--primary);
+    font-size: 13px;
+}
+
+.next-details strong {
+    color: var(--text);
+    font-size: 9px;
+}
+
+.next-appointment-action {
+    flex-shrink: 0;
+}
+
+.btn-next-attend {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 9px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.btn-next-attend:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
 }

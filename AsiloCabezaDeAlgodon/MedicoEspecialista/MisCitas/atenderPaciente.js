@@ -50,7 +50,7 @@ function llenarInformacionCita(cita) {
             : `ID interno: ${cita.internoID}`;
     document.getElementById("fechaVisita").textContent = new Date(cita.fechaHora).toLocaleDateString("es-GT");
     document.getElementById("medicoTratante").textContent = cita.especialista?.nombreCompleto || "Médico especialista";
-    document.getElementById("especialidadPaciente").textContent = cita.especialista?.perfilUsuario?.especialidad?.nombre || "Especialista";
+    document.getElementById("especialidadPaciente").textContent = cita?.solicitud?.especialidad?.nombre || "Especialista";
     document.getElementById("motivoVisita").textContent = cita.motivo || cita.solicitud?.motivo || "Sin motivo";
     document.getElementById("enfermeroRefiere").textContent = cita.solicitud?.enfermero?.nombreCompleto || cita.solicitud?.enfermero?.nombreUsuario || "Sin enfermero asignado";
     document.getElementById("descripcionSolicitud").textContent = cita.solicitud?.observaciones || cita.observaciones || "Sin descripción adicional.";

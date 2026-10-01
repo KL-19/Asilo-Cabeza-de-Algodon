@@ -52,13 +52,14 @@ function cargarCitas() {
                     nombreTop.textContent = nombre;
                 }
             }
+            const especialidad = citas[0]?.solicitud?.especialidad?.nombre || "Especialista";
             const especialidadSidebar = document.getElementById("especialidadMedicoSidebar");
             const especialidadTop = document.getElementById("especialidadMedicoTop");
             if (especialidadSidebar) {
-                especialidadSidebar.textContent = "Especialista";
+                especialidadSidebar.textContent = especialidad;
             }
             if (especialidadTop) {
-                especialidadTop.textContent = "Especialista";
+                especialidadTop.textContent = especialidad;
             }
             separarCitas();
             paginaPendientes = 1;
@@ -102,7 +103,12 @@ function separarCitas() {
     });
     const textoPendientes = document.getElementById("textoCantidadPendientes");
     if (textoPendientes) {
-        textoPendientes.textContent = `${citasPendientes.length} ${citasPendientes.length === 1 ? "cita" : "citas"} pendientes`;
+        textoPendientes.textContent =
+            `${citasPendientes.length} ${
+                citasPendientes.length === 1
+                    ? "cita"
+                    : "citas"
+            } pendientes`;
     }
     const badge = document.getElementById("badgeCitasPendientes");
     if (badge) {
@@ -110,7 +116,12 @@ function separarCitas() {
     }
     const textoCompletadas = document.getElementById("textoCompletadas");
     if (textoCompletadas) {
-        textoCompletadas.textContent = `${citasCompletadas.length} ${citasCompletadas.length === 1 ? "cita completada" : "citas completadas"}`;
+        textoCompletadas.textContent =
+            `${citasCompletadas.length} ${
+                citasCompletadas.length === 1
+                    ? "cita completada"
+                    : "citas completadas"
+            }`;
     }
 }
 
@@ -131,17 +142,19 @@ function mostrarCitasPendientes() {
                 </td>
             </tr>
         `;
-        actualizarPaginacion("paginacionPendientes", citasPendientes.length, paginaPendientes, cambiarPaginaPendientes);
+        actualizarPaginacion("paginacionPendientes",citasPendientes.length,paginaPendientes,cambiarPaginaPendientes);
         return;
     }
     citasPagina.forEach(cita => {
         const fecha = new Date(cita.fechaHora);
         const fechaTexto = fecha.toLocaleDateString("es-GT");
         const horaTexto = fecha.toLocaleTimeString("es-GT", {
-            hour: "numeric",
-            minute: "2-digit"
-        });
-        const nombrePaciente = cita.interno ? `${cita.interno.nombre} ${cita.interno.apellido}` : "Sin paciente";
+                hour: "numeric",
+                minute: "2-digit"
+            });
+        const nombrePaciente = cita.interno
+                ? `${cita.interno.nombre} ${cita.interno.apellido}`
+                : "Sin paciente";
         const motivo = cita.motivo || cita.solicitud?.motivo || "Sin motivo";
         const enfermero = cita.solicitud?.enfermero?.nombreCompleto || "Sin asignar";
         const fila = document.createElement("tr");
@@ -151,9 +164,16 @@ function mostrarCitasPendientes() {
             <td><strong>${nombrePaciente}</strong></td>
             <td>${motivo}</td>
             <td>${enfermero}</td>
-            <td><span class="status-badge pending">${cita.estado}</span></td>
             <td>
-                <a href="atenderPaciente.html?id=${cita.id}" class="btn-attend">
+                <span class="status-badge pending">
+                    ${cita.estado}
+                </span>
+            </td>
+            <td>
+                <a
+                    href="atenderPaciente.html?id=${cita.id}"
+                    class="btn-attend"
+                >
                     <i class="ph ph-stethoscope"></i>
                     Atender
                 </a>
@@ -161,7 +181,7 @@ function mostrarCitasPendientes() {
         `;
         tbody.appendChild(fila);
     });
-    actualizarPaginacion("paginacionPendientes", citasPendientes.length, paginaPendientes, cambiarPaginaPendientes);
+    actualizarPaginacion("paginacionPendientes",citasPendientes.length, paginaPendientes,cambiarPaginaPendientes);
 }
 
 function mostrarCitasCompletadas() {
@@ -181,27 +201,32 @@ function mostrarCitasCompletadas() {
                 </td>
             </tr>
         `;
-        actualizarPaginacion("paginacionCompletadas", citasCompletadas.length, paginaCompletadas, cambiarPaginaCompletadas);
+        actualizarPaginacion("paginacionCompletadas",citasCompletadas.length,paginaCompletadas,cambiarPaginaCompletadas);
         return;
     }
     citasPagina.forEach(cita => {
         const fecha = new Date(cita.fechaHora);
         const fechaTexto = fecha.toLocaleDateString("es-GT");
-        const horaTexto = fecha.toLocaleTimeString("es-GT", {
-            hour: "numeric",
-            minute: "2-digit"
-        });
-        const nombrePaciente = cita.interno ? `${cita.interno.nombre} ${cita.interno.apellido}` : "Sin paciente";
-        const motivo = cita.motivo || cita.solicitud?.motivo || "Sin motivo";
+        const horaTexto = fecha.toLocaleTimeString("es-GT", {hour: "numeric",minute: "2-digit"});
+        const nombrePaciente = cita.interno? `${cita.interno.nombre} ${cita.interno.apellido}`: "Sin paciente";
+        const motivo =cita.motivo || cita.solicitud?.motivo || "Sin motivo";
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${fechaTexto}</td>
             <td>${horaTexto}</td>
             <td><strong>${nombrePaciente}</strong></td>
             <td>${motivo}</td>
-            <td><span class="status-badge completed">${cita.estado}</span></td>
             <td>
-                <button type="button" class="btn-view" onclick="abrirVisita(${cita.id})">
+                <span class="status-badge completed">
+                    ${cita.estado}
+                </span>
+            </td>
+            <td>
+                <button
+                    type="button"
+                    class="btn-view"
+                    onclick="abrirVisita(${cita.id})"
+                >
                     <i class="ph ph-eye"></i>
                     Ver visita
                 </button>
@@ -209,10 +234,16 @@ function mostrarCitasCompletadas() {
         `;
         tbody.appendChild(fila);
     });
-    actualizarPaginacion("paginacionCompletadas", citasCompletadas.length, paginaCompletadas, cambiarPaginaCompletadas);
+    actualizarPaginacion(
+        "paginacionCompletadas",citasCompletadas.length,paginaCompletadas,cambiarPaginaCompletadas);
 }
 
-function actualizarPaginacion(idContenedor, totalRegistros, paginaActual, funcionCambio) {
+function actualizarPaginacion(
+    idContenedor,
+    totalRegistros,
+    paginaActual,
+    funcionCambio
+) {
     const contenedor = document.getElementById(idContenedor);
     if (!contenedor) {
         return;
@@ -237,7 +268,11 @@ function actualizarPaginacion(idContenedor, totalRegistros, paginaActual, funcio
         funcionCambio(paginaActual - 1);
     };
     controles.appendChild(botonAnterior);
-    for (let pagina = 1; pagina <= totalPaginas; pagina++) {
+    for (
+        let pagina = 1;
+        pagina <= totalPaginas;
+        pagina++
+    ) {
         const boton = document.createElement("button");
         boton.type = "button";
         boton.textContent = pagina;
@@ -277,12 +312,18 @@ function actualizarProximaAtencion() {
         return;
     }
     const ahora = new Date();
-    const citasHoy = citasPendientes.filter(cita => {
-        const fecha = new Date(cita.fechaHora);
-        const fechaCita = fecha.toISOString().split("T")[0];
-        const hoy = ahora.toISOString().split("T")[0];
-        return fechaCita === hoy;
-    }).sort((a, b) => new Date(a.fechaHora) - new Date(b.fechaHora));
+    const citasHoy =
+        citasPendientes
+            .filter(cita => {
+                const fecha = new Date(cita.fechaHora);
+                const fechaCita = fecha.toISOString().split("T")[0];
+                const hoy = ahora.toISOString().split("T")[0];
+                return fechaCita === hoy;
+            })
+            .sort(
+                (a, b) =>
+                    new Date(a.fechaHora) - new Date(b.fechaHora)
+            );
     if (citasHoy.length === 0) {
         contenedor.style.display = "none";
         return;
@@ -291,14 +332,8 @@ function actualizarProximaAtencion() {
     const fecha = new Date(cita.fechaHora);
     const paciente = cita.interno ? `${cita.interno.nombre} ${cita.interno.apellido}` : "Sin paciente";
     document.getElementById("proximaPaciente").textContent = paciente;
-    document.getElementById("proximaHora").textContent = fecha.toLocaleTimeString("es-GT", {
-        hour: "numeric",
-        minute: "2-digit"
-    });
-    document.getElementById("proximaFecha").textContent = fecha.toLocaleDateString("es-GT", {
-        day: "numeric",
-        month: "long"
-    });
+    document.getElementById("proximaHora").textContent = fecha.toLocaleTimeString("es-GT", {hour: "numeric",minute: "2-digit"});
+    document.getElementById("proximaFecha").textContent = fecha.toLocaleDateString("es-GT", {day: "numeric",month: "long"});
     document.getElementById("proximaMotivo").textContent = cita.motivo || cita.solicitud?.motivo || "Sin motivo";
     const boton = document.getElementById("btnProximaAtencion");
     if (boton) {
@@ -326,11 +361,19 @@ function renderizarNotificaciones(nuevas) {
         return;
     }
     if (contador) {
-        contador.textContent = `${nuevas.length} ${nuevas.length === 1 ? "nueva" : "nuevas"}`;
+        contador.textContent =
+            `${nuevas.length} ${
+                nuevas.length === 1
+                    ? "nueva"
+                    : "nuevas"
+            }`;
     }
     const punto = document.getElementById("notificationDot");
     if (punto) {
-        punto.style.display = nuevas.length > 0 ? "block" : "none";
+        punto.style.display =
+            nuevas.length > 0
+                ? "block"
+                : "none";
     }
     if (nuevas.length === 0) {
         lista.innerHTML = `
@@ -346,7 +389,9 @@ function renderizarNotificaciones(nuevas) {
         const item = document.createElement("button");
         item.type = "button";
         item.className = "notificacion-item";
-        const paciente = cita.interno ? `${cita.interno.nombre} ${cita.interno.apellido}` : "Interno";
+        const paciente = cita.interno
+                ? `${cita.interno.nombre} ${cita.interno.apellido}`
+                : "Interno";
         const motivo = cita.motivo || cita.solicitud?.motivo || "-";
         item.innerHTML = `
             <div class="notificacion-icon">
@@ -355,7 +400,10 @@ function renderizarNotificaciones(nuevas) {
             <div class="notificacion-text">
                 <strong>Nueva cita programada</strong>
                 <span>${paciente}</span>
-                <small>${motivo} · ${formatearFechaHora(cita.fechaHora)}</small>
+                <small>
+                    ${motivo} ·
+                    ${formatearFechaHora(cita.fechaHora)}
+                </small>
             </div>
         `;
         item.addEventListener("click", function () {
@@ -385,9 +433,18 @@ function marcarUnaNotificacionVista(citaId) {
 function marcarNotificacionesVistas() {
     const usuarioId = localStorage.getItem("usuarioId");
     const clave = `notificacionesEspecialista_${usuarioId}`;
-    const ids = citasPendientes
-        .filter(cita => cita.id && cita.estado && (cita.estado.toLowerCase() === "programada" || cita.estado.toLowerCase() === "pendiente"))
-        .map(cita => cita.id);
+    const ids =
+        citasPendientes
+            .filter(
+                cita =>
+                    cita.id &&
+                    cita.estado &&
+                    (
+                        cita.estado.toLowerCase() === "programada" ||
+                        cita.estado.toLowerCase() === "pendiente"
+                    )
+            )
+            .map(cita => cita.id);
     localStorage.setItem(clave, JSON.stringify(ids));
     prepararNotificaciones();
 }
@@ -428,21 +485,33 @@ function configurarNotificaciones() {
     if (!boton || !panel) {
         return;
     }
-    boton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        mostrarPanelNotificaciones();
-    });
-    panel.addEventListener("click", (event) => {
-        event.stopPropagation();
-    });
-    document.addEventListener("click", () => {
-        panel.style.display = "none";
-    });
+    boton.addEventListener(
+        "click",
+        (event) => {
+            event.stopPropagation();
+            mostrarPanelNotificaciones();
+        }
+    );
+    panel.addEventListener(
+        "click",
+        (event) => {
+            event.stopPropagation();
+        }
+    );
+    document.addEventListener(
+        "click",
+        () => {
+            panel.style.display = "none";
+        }
+    );
     const botonMarcar = document.getElementById("btnMarcarNotificaciones");
     if (botonMarcar) {
-        botonMarcar.addEventListener("click", () => {
-            marcarNotificacionesVistas();
-        });
+        botonMarcar.addEventListener(
+            "click",
+            () => {
+                marcarNotificacionesVistas();
+            }
+        );
     }
 }
 
@@ -496,7 +565,8 @@ function abrirVisita(citaId) {
                     "La cita todavía no tiene una atención médica registrada."
                 );
             }
-            llenarModalVisita(data);
+            const citaActual = citas.find(cita => cita.id === citaId);
+            llenarModalVisita({...data, cita: citaActual || data.cita});
             document
                 .getElementById("modalVisita")
                 .classList.add("active");
@@ -526,11 +596,10 @@ function llenarModalVisita(data) {
             ? `DPI: ${paciente.dpi}`
             : "Sin identificación";
     document.getElementById("modalFecha").textContent = atencion?.fechaAtencion
-            ? new Date(atencion.fechaAtencion)
-                .toLocaleDateString("es-GT")
+            ? new Date(atencion.fechaAtencion).toLocaleDateString("es-GT")
             : "—";
     document.getElementById("modalMedico").textContent = cita?.especialista?.nombreCompleto || cita?.especialista?.nombreUsuario || "—";
-    document.getElementById("modalEspecialidad").textContent = "Especialista";
+    document.getElementById("modalEspecialidad").textContent = cita?.solicitud?.especialidad?.nombre || "Especialista";
     document.getElementById("modalEnfermero").textContent = cita?.solicitud?.enfermero?.nombreCompleto || "Sin asignar";
     document.getElementById("modalMotivo").textContent = cita?.motivo || cita?.solicitud?.motivo || "—";
     document.getElementById("modalDiagnostico").textContent = atencion?.diagnosticoFinal || atencion?.diagnostico || "—";
@@ -557,8 +626,13 @@ function mostrarExamenesModal(examenes) {
         const elemento = document.createElement("div");
         elemento.className = "visit-list-item";
         elemento.innerHTML = `
-            <strong>${examen.tipoExamen || "Examen"}</strong>
-            <span>${examen.estado || ""}</span>
+            <strong>
+                ${examen.tipoExamen || "Examen"}
+            </strong>
+
+            <span>
+                ${examen.estado || ""}
+            </span>
         `;
         contenedor.appendChild(elemento);
     });
@@ -583,22 +657,25 @@ function mostrarMedicamentosModal(recetas) {
         if (!receta.detalleReceta) {
             return;
         }
-        receta.detalleReceta.forEach(medicamento => {
-            hayMedicamentos = true;
-            const elemento = document.createElement("div");
-            elemento.className = "visit-list-item";
-            elemento.innerHTML = `
-                <strong>
-                    ${medicamento.medicamento || "Medicamento"}
-                </strong>
+        receta.detalleReceta.forEach(
+            medicamento => {
+                hayMedicamentos = true;
+                const elemento = document.createElement("div");
+                elemento.className = "visit-list-item";
 
-                <span>
-                    ${medicamento.dosis || ""}
-                    ${medicamento.frecuencia || ""}
-                </span>
-            `;
-            contenedor.appendChild(elemento);
-        });
+                elemento.innerHTML = `
+                    <strong>
+                        ${medicamento.medicamento || "Medicamento"}
+                    </strong>
+
+                    <span>
+                        ${medicamento.dosis || ""}
+                        ${medicamento.frecuencia || ""}
+                    </span>
+                `;
+                contenedor.appendChild(elemento);
+            }
+        );
     });
     if (!hayMedicamentos) {
         contenedor.innerHTML = `

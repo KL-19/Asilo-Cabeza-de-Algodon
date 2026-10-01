@@ -470,41 +470,54 @@ body {
 /* =====================================================
    EXÁMENES
 ===================================================== */
-.exam-item {
+.examen-item {
     display: flex;
-    gap: 12px;
-    padding: 15px;
+    align-items: center;
+    gap: 10px;
+    padding: 13px;
     border: 1px solid var(--border);
     border-radius: 12px;
     background: #fafbfc;
     margin-bottom: 10px;
 }
 
-.exam-number {
-    width: 27px;
-    height: 27px;
+.examen-item input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 9px;
+    padding: 10px 11px;
+    outline: none;
+    font-size: 9px;
+    color: var(--text);
+}
+
+.examen-item input:focus {
+    border-color: #93c5fd;
+}
+
+.examen-item input::placeholder {
+    color: #9ca3af;
+}
+
+.btn-remove {
+    width: 34px;
+    height: 34px;
+    border: none;
     border-radius: 8px;
-    background: #eff6ff;
-    color: var(--primary);
+    background: #fef2f2;
+    color: var(--red);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 9px;
-    font-weight: 700;
+    cursor: pointer;
     flex-shrink: 0;
+    transition: .2s;
 }
 
-.exam-fields {
-    flex: 1;
-}
-
-.exam-fields .form-group {
-    margin-bottom: 0;
-}
-
-.exam-fields input,
-.exam-fields textarea {
-    width: 100%;
+.btn-remove:hover {
+    background: #fee2e2;
 }
 
 .btn-add-exam {
@@ -530,46 +543,42 @@ body {
 /* =====================================================
    MEDICAMENTOS
 ===================================================== */
-
-.medicine-item {
-    display: flex;
-    gap: 12px;
-    padding: 15px;
+.medicamento-item {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr 1fr 1fr .7fr 1.3fr auto;
+    gap: 9px;
+    align-items: center;
+    padding: 13px;
     border: 1px solid var(--border);
     border-radius: 12px;
     background: #fafbfc;
     margin-bottom: 10px;
 }
 
-.medicine-number {
-    width: 27px;
-    height: 27px;
-    border-radius: 8px;
-    background: #f5f3ff;
-    color: var(--purple);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.medicamento-item input {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 9px;
+    padding: 10px 9px;
+    outline: none;
     font-size: 9px;
-    font-weight: 700;
-    flex-shrink: 0;
+    color: var(--text);
 }
 
-.medicine-fields {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1.3fr .8fr 1fr;
-    gap: 14px;
+.medicamento-item input:focus {
+    border-color: #c4b5fd;
 }
 
-.medicine-fields .form-group {
-    margin-bottom: 0;
+.medicamento-item input::placeholder {
+    color: #9ca3af;
 }
 
 .btn-add-medicine {
     border: 1px dashed #cbd5e1;
     background: white;
-    color: var(--primary);
+    color: var(--purple);
     border-radius: 9px;
     padding: 9px 13px;
     font-size: 9px;
@@ -582,10 +591,9 @@ body {
 }
 
 .btn-add-medicine:hover {
-    background: var(--primary-light);
-    border-color: #93c5fd;
+    background: #f5f3ff;
+    border-color: #c4b5fd;
 }
-
 
 /* =====================================================
    BOTONES FORMULARIO
@@ -822,10 +830,30 @@ body {
         padding: 0;
     }
 
-    .request-content,
-    .exam-grid,
-    .medicine-fields {
+    .request-content {
         grid-template-columns: 1fr;
+    }
+
+    .examen-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .examen-item input {
+        width: 100%;
+    }
+
+    .medicamento-item {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .medicamento-item input {
+        width: 100%;
+    }
+
+    .btn-remove {
+        width: 100%;
     }
 
     .request-field.full {
@@ -842,15 +870,14 @@ body {
         flex-direction: column-reverse;
     }
 
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
     .btn-cancel,
     .btn-save {
         justify-content: center;
     }
-
-    .medicine-item {
-        align-items: flex-start;
-    }
-
 }
 
 /* =====================================================

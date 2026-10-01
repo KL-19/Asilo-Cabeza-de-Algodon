@@ -51,6 +51,14 @@ namespace ApiAsilo.Controllers
                     {
                         id = c.Solicitud.Id,
                         motivo = c.Solicitud.Motivo,
+
+                        especialidad = c.Solicitud.Especialidad == null
+                            ? null
+                            : new
+                            {
+                                id = c.Solicitud.Especialidad.Id,
+                                nombre = c.Solicitud.Especialidad.Nombre
+                            },
                         enfermero = c.Solicitud.Enfermero == null
                             ? null
                             : new

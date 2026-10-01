@@ -73,7 +73,14 @@ namespace ApiAsilo.Controllers
             return CreatedAtAction(
                 nameof(GetReceta),
                 new { id = receta.ID },
-                receta
+                new
+                {
+                    id = receta.ID,
+                    atencionMedicaID = receta.AtencionMedicaID,
+                    fechaReceta = receta.FechaReceta,
+                    indicacionesGenerales = receta.IndicacionesGenerales,
+                    estado = receta.Estado
+                }
             );
         }
 

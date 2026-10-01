@@ -75,7 +75,18 @@ namespace ApiAsilo.Controllers
             return CreatedAtAction(
                 nameof(GetDetalle),
                 new { id = detalle.ID },
-                detalle
+                new
+    
+                {
+                    id = detalle.ID,
+                    recetaID = detalle.RecetaID,
+                    medicamento = detalle.Medicamento,
+                    dosis = detalle.Dosis,
+                    frecuencia = detalle.Frecuencia,
+                    duracion = detalle.Duracion,
+                    cantidad = detalle.Cantidad,
+                    indicaciones = detalle.Indicaciones
+                }
             );
         }
 

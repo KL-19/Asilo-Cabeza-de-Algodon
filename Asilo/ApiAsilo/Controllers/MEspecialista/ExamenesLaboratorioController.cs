@@ -74,10 +74,21 @@ namespace ApiAsilo.Controllers
             examen.AtencionMedica = null;
             _context.ExamenesLaboratorio.Add(examen);
             await _context.SaveChangesAsync();
+            
             return CreatedAtAction(
                 nameof(GetExamen),
                 new { id = examen.ID },
-                examen
+                new
+                {
+                    id = examen.ID,
+                    atencionMedicaID = examen.AtencionMedicaID,
+                    tipoExamen = examen.TipoExamen,
+                    indicaciones = examen.Indicaciones,
+                    fechaSolicitud = examen.FechaSolicitud,
+                    fechaTomaMuestra = examen.FechaTomaMuestra,
+                    costo = examen.Costo,
+                    estado = examen.Estado
+                }
             );
         }
 
