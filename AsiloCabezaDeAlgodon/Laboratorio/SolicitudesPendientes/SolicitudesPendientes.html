@@ -18,760 +18,318 @@
 </head>
 
 <body>
-
-    <!-- ============================= -->
-    <!-- BARRA LATERAL -->
-    <!-- ============================= -->
-
-    <aside class="sidebar">
-
-        <!-- LOGO -->
-        <div class="logo">
-
-            <div class="logo-icon">
-                <i class="ph ph-heartbeat"></i>
-            </div>
-
-            <div>
-                <h2>Cabeza de Algodón</h2>
-                <span>Sistema de Gestión</span>
-            </div>
-
+<!-- BARRA LATERAL -->
+<aside class="sidebar">
+    <!-- LOGO -->
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="ph ph-heartbeat"></i>
         </div>
 
+        <div>
+            <h2>
+                Cabeza de Algodón
+            </h2>
 
-        <!-- PERFIL -->
-        <div class="laboratory-profile">
+            <span>
+                Sistema de Gestión
+            </span>
+        </div>
+    </div>
 
-            <div class="laboratory-avatar">
-                <i class="ph ph-flask"></i>
-            </div>
-
-            <div>
-                <strong>Laboratorio</strong>
-                <span>Área de diagnóstico</span>
-            </div>
-
+    <!-- PERFIL -->
+    <div class="laboratory-profile">
+        <div class="laboratory-avatar">
+            <i class="ph ph-flask"></i>
         </div>
 
+        <div>
+            <strong>
+                Laboratorio
+            </strong>
 
-        <!-- MENÚ -->
-        <nav class="menu">
+            <span>
+                Área de diagnóstico
+            </span>
+        </div>
+    </div>
 
-            <p class="menu-title">
-                PRINCIPAL
+    <!-- MENÚ -->
+    <nav class="menu">
+        <p class="menu-title">PRINCIPAL</p>
+        <a href="../Lab.html" class="menu-item">
+            <i class="ph ph-squares-four"></i>
+            <span>Inicio</span>
+        </a>
+
+        <a href="../SolicitudesPendientes/SolicitudesPendientes.html"
+           class="menu-item active">
+            <i class="ph ph-clipboard-text"></i>
+            <span>Solicitudes pendientes</span>
+        </a>
+
+        <a href="../Examenes/Examenes.html" class="menu-item">
+            <i class="ph ph-flask"></i>
+            <span>Exámenes</span>
+        </a>
+    </nav>
+
+    <!-- PARTE INFERIOR -->
+    <div class="sidebar-bottom">
+        <a href="../index.html" class="menu-item logout">
+            <i class="ph ph-sign-out"></i>
+            <span>Cerrar sesión</span>
+        </a>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+    <!-- HEADER -->
+    <header class="topbar">
+        <div>
+            <p class="welcome-small">
+                Panel de Laboratorio
             </p>
 
-            <a href="../Lab.html" class="menu-item">
-                <i class="ph ph-squares-four"></i>
-                <span>Inicio</span>
-            </a>
+            <h1 id="greeting">
+                Buenos días
+            </h1>
 
-            <a href="../SolicitudesPendientes/SolicitudesPendientes.html" class="menu-item active">
-                <i class="ph ph-clipboard-text"></i>
-                <span>Solicitudes pendientes</span>
-            </a>
-
-            <a href="../Examenes/Examenes.html" class="menu-item">
-                <i class="ph ph-flask"></i>
-                <span>Exámenes</span>
-            </a>
-
-            <p class="menu-title">
-                CONSULTAS
+            <p class="welcome-small">
+                Administra las solicitudes y resultados de los
+                exámenes médicos de los internos.
             </p>
-
-            <a href="../historial/HistorialExamenes.html" class="menu-item">
-                <i class="ph ph-clock-counter-clockwise"></i>
-                <span>Historial de exámenes</span>
-            </a>
-
-        </nav>
-
-
-        <!-- PARTE INFERIOR -->
-        <div class="sidebar-bottom">
-            <a href="../index.html" class="menu-item logout">
-                <i class="ph ph-sign-out"></i>
-                <span>Cerrar sesión</span>
-            </a>
-
         </div>
 
-    </aside>
-
-
-    <!-- ============================= -->
-    <!-- CONTENIDO PRINCIPAL -->
-    <!-- ============================= -->
-
-    <main class="main-content">
-
-
-        <!-- HEADER -->
-        <header class="topbar">
-
-            <div>
-
-                <p class="welcome-small">
-                    Laboratorio
-                </p>
-
-                <h1>
-                    Solicitudes pendientes
-                </h1>
-
-                <p class="page-description">
-                    Revise las solicitudes de exámenes y procese las muestras
-                    de los internos que han llegado al laboratorio.
-                </p>
-
-            </div>
-
-
-            <div class="top-actions">
-
-                <!-- NOTIFICACIONES -->
-                <button class="notification">
-
+        <div class="top-actions">
+            <!-- NOTIFICACIONES -->
+            <div class="notification-wrapper">
+                <button class="notification"
+                        id="btnNotificaciones"
+                        type="button">
                     <i class="ph ph-bell"></i>
-
-                    <span class="notification-dot"></span>
-
+                    <span class="notification-dot"
+                          id="notificationDot"></span>
                 </button>
 
-
-                <!-- PERFIL -->
-                <div class="top-profile">
-
-                    <div class="small-avatar">
-                        <i class="ph ph-flask"></i>
+                <div class="notification-panel"
+                    id="notificationPanel">
+                    <div class="notification-header">
+                        <div>
+                            <strong>Notificaciones</strong>
+                            <span id="notificationCount">
+                                0 pendientes
+                            </span>
+                        </div>
                     </div>
 
-                    <div>
-                        <strong>Laboratorio</strong>
-                        <span>Área de diagnóstico</span>
+                    <div class="notification-list"
+                         id="notificationList">
                     </div>
-
                 </div>
-
             </div>
 
-        </header>
-
-
-        <!-- ============================= -->
-        <!-- RESUMEN -->
-        <!-- ============================= -->
-
-        <section class="stats-grid">
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    <i class="ph ph-clock"></i>
-                </div>
-
-                <div>
-                    <span>Solicitudes pendientes</span>
-                    <strong>6</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    <i class="ph ph-users"></i>
-                </div>
-
-                <div>
-                    <span>Internos por atender</span>
-                    <strong>4</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon purple">
+            <!-- PERFIL -->
+            <div class="top-profile">
+                <div class="small-avatar">
                     <i class="ph ph-flask"></i>
                 </div>
 
                 <div>
-                    <span>Exámenes solicitados</span>
-                    <strong>9</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-                    <i class="ph ph-check-circle"></i>
-                </div>
-
-                <div>
-                    <span>Atendidos hoy</span>
-                    <strong>12</strong>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================= -->
-        <!-- PANEL DE SOLICITUDES -->
-        <!-- ============================= -->
-
-        <section class="panel">
-
-            <div class="panel-header">
-
-                <div>
-
-                    <h2>
-                        Solicitudes de exámenes
-                    </h2>
-
-                    <p>
-                        Internos que han llegado al laboratorio y tienen
-                        exámenes solicitados durante su visita médica.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- FILTROS -->
-
-            <div class="filters">
-
-                <div class="filter-group">
-
-                    <label>
-                        Buscar interno
-                    </label>
-
-                    <div class="input-search">
-
-                        <i class="ph ph-magnifying-glass"></i>
-
-                        <input type="text"
-                               placeholder="Nombre o número de interno">
-
-                    </div>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label>
-                        Tipo de examen
-                    </label>
-
-                    <select>
-
-                        <option>
-                            Todos los exámenes
-                        </option>
-
-                        <option>
-                            Hemograma
-                        </option>
-
-                        <option>
-                            Glucosa
-                        </option>
-
-                        <option>
-                            Examen de orina
-                        </option>
-
-                        <option>
-                            Perfil lipídico
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <button class="btn-filter">
-
-                    <i class="ph ph-funnel"></i>
-
-                    Filtrar
-
-                </button>
-
-            </div>
-
-
-            <!-- ============================= -->
-            <!-- TABLA -->
-            <!-- ============================= -->
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Interno</th>
-
-                            <th>Exámenes solicitados</th>
-
-                            <th>Médico solicitante</th>
-
-                            <th>Visita médica</th>
-
-                            <th>Estado</th>
-
-                            <th>Acción</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-
-                        <!-- SOLICITUD 1 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="patient">
-
-                                    <div class="patient-avatar">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>Interno #0025</strong>
-                                        <span>Juan Pérez</span>
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="exam-list">
-
-                                    <span>Hemograma</span>
-                                    <span>Glucosa</span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                Dr. Carlos Méndez
-                            </td>
-
-
-                            <td>
-                                10/09/2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <button class="btn-process"
-                                        onclick="abrirSolicitud()">
-
-                                    <i class="ph ph-flask"></i>
-
-                                    Procesar solicitud
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- SOLICITUD 2 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="patient">
-
-                                    <div class="patient-avatar">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>Interno #0018</strong>
-                                        <span>María López</span>
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="exam-list">
-
-                                    <span>Glucosa</span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                Dra. Andrea Morales
-                            </td>
-
-
-                            <td>
-                                10/09/2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <button class="btn-process"
-                                        onclick="abrirSolicitud()">
-
-                                    <i class="ph ph-flask"></i>
-
-                                    Procesar solicitud
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- SOLICITUD 3 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="patient">
-
-                                    <div class="patient-avatar">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>Interno #0031</strong>
-                                        <span>Pedro García</span>
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="exam-list">
-
-                                    <span>Perfil lipídico</span>
-                                    <span>Glucosa</span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                Dr. Carlos Méndez
-                            </td>
-
-
-                            <td>
-                                10/09/2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <button class="btn-process"
-                                        onclick="abrirSolicitud()">
-
-                                    <i class="ph ph-flask"></i>
-
-                                    Procesar solicitud
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- SOLICITUD 4 -->
-
-                        <tr>
-
-                            <td>
-
-                                <div class="patient">
-
-                                    <div class="patient-avatar">
-                                        <i class="ph ph-user"></i>
-                                    </div>
-
-                                    <div>
-                                        <strong>Interno #0012</strong>
-                                        <span>José Ramírez</span>
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="exam-list">
-
-                                    <span>Examen de orina</span>
-
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                Dra. Laura Castillo
-                            </td>
-
-
-                            <td>
-                                10/09/2026
-                            </td>
-
-
-                            <td>
-
-                                <span class="status pending">
-                                    Pendiente
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <button class="btn-process"
-                                        onclick="abrirSolicitud()">
-
-                                    <i class="ph ph-flask"></i>
-
-                                    Procesar solicitud
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ============================= -->
-    <!-- MODAL PROCESAR SOLICITUD -->
-    <!-- ============================= -->
-
-    <div class="modal" id="modalSolicitud">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <div>
-
-                    <span class="modal-label">
-                        Solicitud de laboratorio
-                    </span>
-
-                    <h2>
-                        Procesar solicitud
-                    </h2>
-
-                </div>
-
-                <button class="modal-close"
-                        onclick="cerrarSolicitud()">
-
-                    <i class="ph ph-x"></i>
-
-                </button>
-
-            </div>
-
-
-            <div class="patient-summary">
-
-                <div class="modal-patient-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-
                     <strong>
-                        Interno #0025
+                        Laboratorio
                     </strong>
 
                     <span>
-                        Juan Pérez
+                        Área de diagnóstico
                     </span>
-
                 </div>
-
             </div>
+        </div>
+    </header>
 
+    <!-- PANEL -->
+    <section class="panel">
+        <!-- ENCABEZADO -->
+        <div class="panel-header">
+            <div>
+                <h2>
+                    Solicitudes de exámenes
+                </h2>
 
-            <div class="modal-section">
-
-                <h3>
-                    Exámenes solicitados
-                </h3>
-
-                <div class="exam-item">
-
-                    <div>
-                        <i class="ph ph-flask"></i>
-                    </div>
-
-                    <span>
-                        Hemograma
-                    </span>
-
-                </div>
-
-
-                <div class="exam-item">
-
-                    <div>
-                        <i class="ph ph-flask"></i>
-                    </div>
-
-                    <span>
-                        Glucosa
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-section">
-
-                <h3>
-                    Información de la visita médica
-                </h3>
-
-                <p class="medical-info">
-                    Los exámenes fueron solicitados durante la visita médica
-                    y deben realizarse al interno antes de registrar los
-                    resultados.
+                <p>
+                    Internos con exámenes de laboratorio pendientes
+                    de procesamiento.
                 </p>
-
             </div>
-
-
-            <div class="modal-note">
-
-                <i class="ph ph-info"></i>
-
-                <span>
-                    Al procesar la solicitud se registrará que las muestras
-                    fueron recibidas y los exámenes pasarán a
-                    <strong>Exámenes en proceso</strong>.
-                </span>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button class="btn-cancel"
-                        onclick="cerrarSolicitud()">
-
-                    Cancelar
-
-                </button>
-
-                <button class="btn-confirm"
-                        onclick="procesarSolicitud()">
-
-                    <i class="ph ph-flask"></i>
-
-                    Procesar solicitud
-
-                </button>
-
-            </div>
-
         </div>
 
+        <!-- BUSCADOR -->
+        <div class="filters">
+            <div class="filter-group">
+                <label>
+                    Buscar interno
+                </label>
+
+                <div class="input-search">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text"
+                           id="buscarInterno"
+                           placeholder="Nombre o número de interno">
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLA -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Interno
+                        </th>
+
+                        <th>
+                            Exámenes solicitados
+                        </th>
+
+                        <th>
+                            Médico solicitante
+                        </th>
+
+                        <th>
+                            Visita médica
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+
+                        <th>
+                            Acción
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="solicitudesBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PAGINACIÓN -->
+        <div class="pagination">
+            <span id="paginationInfo">
+                Mostrando 0 solicitudes
+            </span>
+
+            <div>
+                <button class="page-btn"
+                        id="btnPaginaAnterior"
+                        type="button">
+                    <i class="ph ph-caret-left"></i>
+                </button>
+
+                <button class="page-btn active"
+                        id="paginaActual"
+                        type="button">
+                    1
+                </button>
+
+                <button class="page-btn"
+                        id="btnPaginaSiguiente"
+                        type="button">
+                    <i class="ph ph-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- MODAL PROCESAR SOLICITUD -->
+<div class="modal"
+     id="modalSolicitud">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div>
+                <span class="modal-label">
+                    Solicitud de laboratorio
+                </span>
+
+                <h2>
+                    Procesar solicitud
+                </h2>
+            </div>
+
+            <button class="modal-close"
+                    type="button"
+                    onclick="cerrarSolicitud()">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+        <div class="patient-summary">
+            <div class="modal-patient-avatar">
+                <i class="ph ph-user"></i>
+            </div>
+
+            <div>
+                <strong id="modalInternoNumero">
+                    Interno
+                </strong>
+
+                <span id="modalInternoNombre">
+                    Nombre del interno
+                </span>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3>
+                Exámenes solicitados
+            </h3>
+
+            <div id="modalExamenes">
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3>
+                Información de la visita médica
+            </h3>
+
+            <p class="medical-info"
+               id="modalInformacionVisita">
+                Los exámenes fueron solicitados durante la
+                atención médica del interno.
+            </p>
+        </div>
+
+        <div class="modal-note">
+            <i class="ph ph-info"></i>
+            <span>
+                Registra el costo correspondiente a cada examen
+                antes de procesar la solicitud. Al confirmar,
+                se registrará la toma de muestra y los exámenes
+                pasarán a <strong>En proceso</strong>.
+            </span>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel"
+                    type="button"
+                    onclick="cerrarSolicitud()">
+                Cancelar
+            </button>
+
+            <button class="btn-confirm"
+                    type="button"
+                    onclick="procesarSolicitud()">
+                <i class="ph ph-flask"></i>
+                Procesar solicitud
+            </button>
+        </div>
     </div>
-
-
-    <script src="SolicitudesPendientes.js"></script>
-
+</div>
+<script src="SolicitudesPendientes.js"></script>
 </body>
-
 </html>
