@@ -69,11 +69,14 @@ function renderizarAsignaciones() {
         return;
     }
 
-    panel.querySelectorAll(".assignment-card").forEach(tarjeta => tarjeta.remove());
-    if (
-        asignacionesFiltradas.length === 0
-    ) {
-        const vacio =document.createElement("div");
+    panel.querySelectorAll(
+        ".assignment-card, .assignment-empty"
+    ).forEach(
+        elemento => elemento.remove()
+    );
+
+    if (asignacionesFiltradas.length === 0) {
+        const vacio = document.createElement("div");
         vacio.className = "assignment-empty";
         vacio.innerHTML = `
             <i class="ph ph-clipboard-text"></i>
@@ -91,7 +94,7 @@ function renderizarAsignaciones() {
 
     asignacionesFiltradas.forEach(
         function (asignacion) {
-            const tarjeta =crearTarjetaAsignacion(asignacion);
+            const tarjeta = crearTarjetaAsignacion(asignacion);
             panel.appendChild(tarjeta);
         }
     );
@@ -495,48 +498,32 @@ function configurarEventos() {
 }
 
 function aplicarFiltros() {
-    const texto =
-        (
-            document.getElementById("buscar")?.value || "").trim().toLowerCase();
-    
-        const estado = (document.getElementById("estado")?.value || "").toLowerCase();
+    const texto = (document.getElementById("buscar")?.value || "").trim().toLowerCase();
+    const estado = (document.getElementById("estado")?.value || "").toLowerCase();
     const fecha = document.getElementById("fecha")?.value || "";
-    
-    asignacionesFiltradas =
-        asignaciones.filter(
-            function (asignacion) {
-                const nombre = asignacion.interno
-                        ?.nombreCompleto
-                        ?.toLowerCase() || "";
-                const id = asignacion.interno
-                        ?.id
-                        ?.toString() || "";
-                const coincideTexto = !texto || nombre.includes(texto) || id.includes(texto);
-                const estadoAsignacion =obtenerEstadoAsignacion(asignacion);
-                const coincideEstado = !estado || estadoAsignacion === estado;
-           
-                let coincideFecha =true;
-                if (fecha) {
-                    if (
-                        !asignacion.cita || !asignacion.cita.fechaHora
-                    ) {
-                        coincideFecha = false;
-                    } else {
-                        const fechaCita = new Date(asignacion.cita.fechaHora);
-                        const fechaTexto =
-                            fechaCita
-                                .toISOString()
-                                .split("T")[0];
-                        coincideFecha =
-                            fechaTexto === fecha;
-                    }
+    asignacionesFiltradas = asignaciones.filter(function (asignacion) {
+            const nombre = asignacion.interno?.nombreCompleto
+                    ?.toLowerCase() || "";
+            const numero = String(asignacion.interno?.id || "").toLowerCase();
+            const coincideTexto = !texto || nombre.includes(texto) || numero.includes(texto);
+            const estadoAsignacion = obtenerEstadoAsignacion(asignacion);
+            const coincideEstado = !estado || estadoAsignacion === estado;
+            let coincideFecha = true;
+            if (fecha) {
+                if (
+                    !asignacion.cita || !asignacion.cita.fechaHora
+                ) {
+                    coincideFecha = false;
+                } else {
+                    const fechaCita = new Date(asignacion.cita.fechaHora);
+                    const fechaTexto = fechaCita.toISOString().split("T")[0];
+                    coincideFecha = fechaTexto === fecha;
                 }
-
-                return (
-                    coincideTexto && coincideEstado && coincideFecha
-                );
             }
-        );
+            return (
+                coincideTexto && coincideEstado && coincideFecha
+            );
+        });
     renderizarAsignaciones();
     actualizarContador();
 }
