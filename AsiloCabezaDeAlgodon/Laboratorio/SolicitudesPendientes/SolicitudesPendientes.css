@@ -72,41 +72,7 @@ body {
     color: #9ca3af;
 }
 
-/* PERFIL */
 
-.laboratory-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 14px;
-    margin-bottom: 25px;
-}
-
-.laboratory-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-    font-size: 20px;
-}
-
-.laboratory-profile strong {
-    display: block;
-    font-size: 12px;
-}
-
-.laboratory-profile span {
-    display: block;
-    font-size: 10px;
-    color: #9ca3af;
-    margin-top: 3px;
-}
 
 /* MENU */
 

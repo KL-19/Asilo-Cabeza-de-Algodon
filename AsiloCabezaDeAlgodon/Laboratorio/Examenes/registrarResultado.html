@@ -16,12 +16,9 @@
 </head>
 
 <body>
-
     <main class="main-content">
-
         <!-- ENCABEZADO -->
         <header class="page-header">
-
             <div class="header-left">
 
                 <a href="../Examenes/Examenes.html" class="back-button">
@@ -36,8 +33,7 @@
                 <h1>Registrar resultado</h1>
 
                 <p>
-                    Ingrese los resultados obtenidos del examen realizado
-                    y guarde la información en la visita médica correspondiente.
+                    Registre el resultado obtenido y las observaciones correspondientes.
                 </p>
 
             </div>
@@ -62,11 +58,14 @@
                 </span>
 
                 <h2 id="nombrePaciente">
-                    María López García
+                    Cargando...
                 </h2>
 
-                <span class="patient-code">
-                    Interno #0025
+                <span
+                    class="patient-code"
+                    id="numeroInterno"
+                >
+                    Interno
                 </span>
 
             </div>
@@ -74,16 +73,25 @@
             <div class="patient-details">
 
                 <div>
-                    <span>Atención médica</span>
+
+                    <span>
+                        Atención médica
+                    </span>
+
                     <strong id="atencionId">
-                        AT-00125
+                        Cargando...
                     </strong>
+
                 </div>
 
                 <div>
-                    <span>Fecha</span>
+
+                    <span>
+                        Fecha
+                    </span>
+
                     <strong id="fechaExamen">
-                        10/09/2026
+                        Cargando...
                     </strong>
                 </div>
 
@@ -101,17 +109,22 @@
                 </span>
 
                 <h2 id="nombreExamen">
-                    Hemograma completo
+                    Cargando...
                 </h2>
 
                 <p>
                     Solicitud asociada a la atención médica
-                    <strong id="atencionTexto">AT-00125</strong>.
+                    <strong id="atencionTexto">
+                        Cargando...
+                    </strong>.
                 </p>
 
             </div>
 
-            <span class="status processing">
+            <span
+                class="status processing"
+                id="estadoExamen"
+            >
                 En proceso
             </span>
 
@@ -123,10 +136,13 @@
             <div class="form-header">
 
                 <div>
-                    <h2>Resultados del examen</h2>
+
+                    <h2>
+                        Resultado del examen
+                    </h2>
 
                     <p>
-                        Ingrese los valores obtenidos por el laboratorio.
+                        Registre el resultado obtenido y las observaciones correspondientes.
                     </p>
                 </div>
 
@@ -134,75 +150,19 @@
 
             </div>
 
-     
-            <div id="resultadosContainer" class="results-grid">
 
-                <!-- EJEMPLO: HEMOGRAMA -->
+            <!-- RESULTADO -->
+            <div class="result-section">
 
-                <div class="field-group">
-                    <label for="hemoglobina">
-                        Hemoglobina
-                    </label>
+                <label for="resultado">
+                    Resultado del examen
+                </label>
 
-                    <div class="input-unit">
-                        <input
-                            type="number"
-                            id="hemoglobina"
-                            step="0.1"
-                            placeholder="Ej. 13.2"
-                        >
-
-                        <span>g/dL</span>
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <label for="hematocrito">
-                        Hematocrito
-                    </label>
-
-                    <div class="input-unit">
-                        <input
-                            type="number"
-                            id="hematocrito"
-                            step="0.1"
-                            placeholder="Ej. 40"
-                        >
-
-                        <span>%</span>
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <label for="leucocitos">
-                        Leucocitos
-                    </label>
-
-                    <div class="input-unit">
-                        <input
-                            type="number"
-                            id="leucocitos"
-                            placeholder="Ej. 7200"
-                        >
-                        <span>/µL</span>
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <label for="plaquetas">
-                        Plaquetas
-                    </label>
-
-                    <div class="input-unit">
-                        <input
-                            type="number"
-                            id="plaquetas"
-                            placeholder="Ej. 250000"
-                        >
-
-                        <span>/µL</span>
-                    </div>
-                </div>
+                <textarea
+                    id="resultado"
+                    rows="8"
+                    placeholder="Escriba aquí los resultados obtenidos en el examen..."
+                ></textarea>
 
             </div>
 
@@ -218,19 +178,6 @@
                     rows="5"
                     placeholder="Escriba aquí las observaciones relevantes del examen..."
                 ></textarea>
-
-            </div>
-
-            <!-- INFORMACIÓN -->
-            <div class="info-box">
-
-                <i class="ph ph-info"></i>
-
-                <p>
-                    Los resultados quedarán asociados a la atención médica
-                    correspondiente y podrán ser consultados posteriormente
-                    por el médico especialista.
-                </p>
 
             </div>
 
@@ -262,14 +209,20 @@
 
 
     <!-- MENSAJE DE ÉXITO -->
-    <div id="successMessage" class="success-message">
+    <div
+        id="successMessage"
+        class="success-message"
+    >
 
         <div class="success-icon">
             <i class="ph ph-check"></i>
         </div>
 
         <div>
-            <strong>Resultado registrado</strong>
+
+            <strong>
+                Resultado registrado
+            </strong>
 
             <span>
                 El resultado fue asociado correctamente a la atención médica.

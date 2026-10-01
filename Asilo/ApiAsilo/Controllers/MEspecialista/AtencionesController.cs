@@ -123,7 +123,6 @@ namespace ApiAsilo.Controllers
                 {
                     id = r.ID,
                     fechaReceta = r.FechaReceta,
-                    indicacionesGenerales = r.IndicacionesGenerales,
                     estado = r.Estado
                 })
                 .ToListAsync();
@@ -153,7 +152,6 @@ namespace ApiAsilo.Controllers
                 {
                     r.id,
                     r.fechaReceta,
-                    r.indicacionesGenerales,
                     r.estado,
                     detalleReceta = detalles.Where(d => d.recetaID == r.id).ToList()
                 })

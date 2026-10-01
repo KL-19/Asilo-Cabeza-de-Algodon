@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddControllers();
-
+builder.Services.AddScoped<AtencionMedicaService>();
 var app = builder.Build();
 
 app.UseCors("PermitirWeb"); 

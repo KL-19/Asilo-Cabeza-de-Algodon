@@ -14,9 +14,6 @@ namespace ApiAsilo.Models
 
         public DateTime FechaReceta { get; set; }
 
-        [StringLength(2000)]
-        public string? IndicacionesGenerales { get; set; }
-
         [Required]
         [StringLength(30)]
         public string Estado { get; set; } = "Pendiente";

@@ -68,42 +68,6 @@ body {
     color: #9ca3af;
 }
 
-/* PERFIL */
-
-.laboratory-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 14px;
-    margin-bottom: 25px;
-}
-
-.laboratory-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-    font-size: 20px;
-}
-
-.laboratory-profile strong {
-    display: block;
-    font-size: 12px;
-}
-
-.laboratory-profile span {
-    display: block;
-    font-size: 10px;
-    color: #9ca3af;
-    margin-top: 3px;
-}
-
 /* MENU */
 
 .menu {
@@ -186,30 +150,6 @@ body {
     display: flex;
     align-items: center;
     gap: 22px;
-}
-
-/* NOTIFICACIONES */
-
-.notification {
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    position: relative;
-    font-size: 20px;
-    color: var(--muted);
-}
-
-.notification-dot {
-    width: 7px;
-    height: 7px;
-    background: #ef4444;
-    border-radius: 50%;
-    position: absolute;
-    top: 8px;
-    right: 8px;
 }
 
 /* PERFIL */
@@ -496,6 +436,42 @@ td {
     background: #e5e7eb;
 }
 
+/* PAGINACIÓN */
+.pagination {
+    padding: 16px 25px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination > span {
+    font-size: 9px;
+    color: var(--muted);
+}
+
+.pagination > div {
+    display: flex;
+    gap: 5px;
+}
+
+.page-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 7px;
+    font-size: 9px;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.page-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 /* ================================= */
 /* MODAL */
 /* ================================= */
@@ -727,4 +703,17 @@ td {
         justify-content: center;
     }
 
+}
+
+.loading-message,
+.empty-message {
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }

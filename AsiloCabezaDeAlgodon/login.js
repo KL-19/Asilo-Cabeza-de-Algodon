@@ -57,7 +57,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
                         window.location.href = "MedicoEspecialista/mEspecialista.html";
                         break;
                     case 'Laboratorio':
-                        window.location.href = "Laboratorio/Lab.html";
+                        window.location.href = "Laboratorio/SolicitudesPendientes/SolicitudesPendientes.html";
                         break;
                     case 'Farmacia':
                         window.location.href = "Farmacia/Farmacia.html";

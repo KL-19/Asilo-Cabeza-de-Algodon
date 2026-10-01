@@ -1,5 +1,6 @@
 using ApiAsilo.Data;
 using ApiAsilo.Models;
+using ApiAsilo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,15 +11,53 @@ namespace ApiAsilo.Controllers
     public class ResultadosLaboratorioController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public ResultadosLaboratorioController(AppDbContext context)
+        private readonly AtencionMedicaService _atencionMedicaService;
+
+        public ResultadosLaboratorioController(
+            AppDbContext context,
+            AtencionMedicaService atencionMedicaService)
         {
             _context = context;
+            _atencionMedicaService = atencionMedicaService;
+        }
+
+        [HttpGet("en-proceso")]
+        public async Task<ActionResult> GetExamenesEnProceso()
+        {
+            var examenes = await _context.ExamenesLaboratorio
+                .Where(e => e.Estado == "En proceso")
+                .Include(e => e.AtencionMedica)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Interno)
+                .Include(e => e.AtencionMedica)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Especialista)
+                .OrderBy(e => e.FechaSolicitud)
+                .Select(e => new
+                {
+                    id = e.ID,
+                    tipoExamen = e.TipoExamen,
+                    indicaciones = e.Indicaciones,
+                    fechaSolicitud = e.FechaSolicitud,
+                    fechaTomaMuestra = e.FechaTomaMuestra,
+                    costo = e.Costo,
+                    estado = e.Estado,
+                    atencionId = e.AtencionMedicaID,
+                    internoId = e.AtencionMedica!.Cita!.InternoID,
+                    internoNombre = e.AtencionMedica.Cita.Interno!.Nombre + " " + e.AtencionMedica.Cita.Interno.Apellido,
+                    medicoSolicitante = e.AtencionMedica.Cita.Especialista!.NombreCompleto
+                })
+                .ToListAsync();
+            return Ok(examenes);
         }
 
         [HttpGet("examen/{examenId}")]
         public async Task<ActionResult> GetResultadoPorExamen(int examenId)
         {
             var examen = await _context.ExamenesLaboratorio
+                .Include(e => e.AtencionMedica)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Interno)
                 .FirstOrDefaultAsync(e => e.ID == examenId);
             if (examen == null)
             {
@@ -29,19 +68,32 @@ namespace ApiAsilo.Controllers
             }
             var resultado = await _context.ResultadosLaboratorio
                 .FirstOrDefaultAsync(r => r.ExamenLaboratorioID == examenId);
-            if (resultado == null)
-            {
-                return Ok(new
-                {
-                    existe = false,
-                    examen = examen
-                });
-            }
             return Ok(new
             {
-                existe = true,
-                resultado = resultado,
-                examen = examen
+                existe = resultado != null,
+                examen = new
+                {
+                    id = examen.ID,
+                    atencionMedicaID = examen.AtencionMedicaID,
+                    tipoExamen = examen.TipoExamen,
+                    indicaciones = examen.Indicaciones,
+                    fechaSolicitud = examen.FechaSolicitud,
+                    fechaTomaMuestra = examen.FechaTomaMuestra,
+                    costo = examen.Costo,
+                    estado = examen.Estado,
+                    internoId = examen.AtencionMedica!.Cita!.InternoID,
+                    internoNombre =
+                        examen.AtencionMedica.Cita.Interno!.Nombre + " " + examen.AtencionMedica.Cita.Interno.Apellido
+                },
+                resultado = resultado == null
+                    ? null
+                    : new
+                    {
+                        id = resultado.ID,
+                        fechaResultado = resultado.FechaResultado,
+                        resultado = resultado.Resultado,
+                        observaciones = resultado.Observaciones
+                    }
             });
         }
 
@@ -96,10 +148,17 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            var resultadoExistente = await _context.ResultadosLaboratorio
-                .FirstOrDefaultAsync(
-                    r => r.ExamenLaboratorioID == resultado.ExamenLaboratorioID
-                );
+            if (examen.Estado != "En proceso")
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El examen no se encuentra en proceso y no puede registrar un resultado."
+                });
+            }
+
+            var resultadoExistente =
+                await _context.ResultadosLaboratorio
+                    .FirstOrDefaultAsync( r => r.ExamenLaboratorioID == resultado.ExamenLaboratorioID);
             if (resultadoExistente != null)
             {
                 return BadRequest(new
@@ -113,19 +172,37 @@ namespace ApiAsilo.Controllers
                 return BadRequest(new
                 {
                     mensaje = "Debe ingresar el resultado del examen."
-                });
-            }
-            resultado.FechaResultado = DateTime.Now;
-            resultado.ExamenLaboratorio = null;
-            _context.ResultadosLaboratorio.Add(resultado);
-            examen.Estado = "Completado";
-            await _context.SaveChangesAsync();
+                    });
+                }
+                resultado.FechaResultado = DateTime.Now;
+                resultado.ExamenLaboratorio = null;
+                 _context.ResultadosLaboratorio.Add(resultado);
+                examen.Estado = "Completado";
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction(
-                nameof(GetResultado),
-                new { id = resultado.ID },
-                resultado
-            );
+                await _atencionMedicaService.VerificarEstadoAtencion(examen.AtencionMedicaID);
+                return Ok(new
+                {
+                mensaje = "El resultado de laboratorio fue registrado correctamente.",
+                resultado = new
+                {
+                    id = resultado.ID,
+                    examenLaboratorioID = resultado.ExamenLaboratorioID,
+                    fechaResultado = resultado.FechaResultado,
+                    resultado = resultado.Resultado,
+                    observaciones = resultado.Observaciones,
+                    registradoPorUsuarioID = resultado.RegistradoPorUsuarioID
+                },
+                examen = new
+                {
+                    id = examen.ID,
+                    estado = examen.Estado
+                },
+                atencion = new
+                {
+                    id = examen.AtencionMedicaID
+                }
+            });
         }
 
         [HttpPut("{id}")]
@@ -133,8 +210,7 @@ namespace ApiAsilo.Controllers
             int id,
             ResultadoLaboratorio resultado)
         {
-            var resultadoExistente = await _context.ResultadosLaboratorio
-                .FirstOrDefaultAsync(r => r.ID == id);
+            var resultadoExistente = await _context.ResultadosLaboratorio.FirstOrDefaultAsync(r => r.ID == id);
             if (resultadoExistente == null)
             {
                 return NotFound(new

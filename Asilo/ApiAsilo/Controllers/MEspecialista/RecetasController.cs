@@ -78,7 +78,6 @@ namespace ApiAsilo.Controllers
                     id = receta.ID,
                     atencionMedicaID = receta.AtencionMedicaID,
                     fechaReceta = receta.FechaReceta,
-                    indicacionesGenerales = receta.IndicacionesGenerales,
                     estado = receta.Estado
                 }
             );
@@ -99,7 +98,6 @@ namespace ApiAsilo.Controllers
                 });
             }
             
-            recetaExistente.IndicacionesGenerales = receta.IndicacionesGenerales;
             if (!string.IsNullOrWhiteSpace(receta.Estado))
             {
                 recetaExistente.Estado = receta.Estado;
