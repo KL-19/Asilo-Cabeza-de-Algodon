@@ -1,5 +1,6 @@
 using ApiAsilo.Data;
 using ApiAsilo.Models;
+using ApiAsilo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,14 @@ namespace ApiAsilo.Controllers
     public class EntregasFarmaciaController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public EntregasFarmaciaController(AppDbContext context)
+        private readonly AtencionMedicaService _atencionMedicaService;
+
+        public EntregasFarmaciaController(
+            AppDbContext context,
+            AtencionMedicaService atencionMedicaService)
         {
             _context = context;
+            _atencionMedicaService = atencionMedicaService;
         }
 
         [HttpGet("receta/{recetaId}")]
@@ -26,14 +32,13 @@ namespace ApiAsilo.Controllers
                     mensaje = "La receta no fue encontrada."
                 });
             }
-            
-            var entrega = await _context.EntregasFarmacia
-                .FirstOrDefaultAsync(e => e.RecetaID == recetaId);
+
+            var entrega = await _context.EntregasFarmacia.FirstOrDefaultAsync(e => e.RecetaID == recetaId);
             if (entrega == null)
             {
                 return Ok(new
                 {
-                    existe = false,
+                    existe = false, 
                     receta = receta
                 });
             }
@@ -81,17 +86,26 @@ namespace ApiAsilo.Controllers
                 });
             }
             entrega.FechaEntrega = DateTime.Now;
-            entrega.Estado = "Entregada";
+            entrega.Estado = "Completado";
             entrega.Receta = null;
             _context.EntregasFarmacia.Add(entrega);
-
-            // La receta ya fue entregada
             receta.Estado = "Entregada";
             await _context.SaveChangesAsync();
+            await _atencionMedicaService.VerificarEstadoAtencion(receta.AtencionMedicaID);
+            
             return CreatedAtAction(
                 nameof(GetEntrega),
                 new { id = entrega.ID },
-                entrega
+                new
+                {
+                    id = entrega.ID,
+                    recetaID = entrega.RecetaID,
+                    fechaEntrega = entrega.FechaEntrega,
+                    entregadoPorUsuarioID = entrega.EntregadoPorUsuarioID,
+                    estado = entrega.Estado,
+                    costoTotal = entrega.CostoTotal,
+                    observaciones = entrega.Observaciones
+                }
             );
         }
 
@@ -108,7 +122,7 @@ namespace ApiAsilo.Controllers
                     mensaje = "La entrega de farmacia no fue encontrada."
                 });
             }
-            
+
             entregaExistente.CostoTotal = entrega.CostoTotal;
             entregaExistente.Observaciones = entrega.Observaciones;
             if (!string.IsNullOrWhiteSpace(entrega.Estado))

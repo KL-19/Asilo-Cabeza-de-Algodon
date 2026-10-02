@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar entrega | Farmacia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="registrarEntrega.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="ph ph-heartbeat"></i>
+            </div>
+
+            <div>
+                <h2>Cabeza de Algodón</h2>
+                <span>Sistema de Gestión</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <p class="menu-title">PRINCIPAL</p>
+            <a href="../entrega/registrarEntrega.html" class="menu-item active">
+                <i class="ph ph-hand-heart"></i>
+                <span>Registrar entrega</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../../index.html" class="menu-item logout">
+                <i class="ph ph-sign-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">
+                <span>Farmacia</span>
+                <h1 id="greeting">Buenos días</h1>
+                <p>
+                    Registre la entrega de los medicamentos a los internos.
+                </p>
+            </div>
+
+            <div class="top-actions">
+                <div class="notification-wrapper">
+                    <button
+                        class="notification"
+                        id="btnNotificaciones"
+                        type="button">
+                        <i class="ph ph-bell"></i>
+
+                        <span
+                            class="notification-dot"
+                            id="notificationDot">
+                        </span>
+                    </button>
+
+                    <div
+                        class="notification-panel"
+                        id="notificationPanel">
+
+                        <div class="notification-header">
+                            <div>
+                                <strong>Notificaciones</strong>
+
+                                <span id="notificationCount">
+                                    0 pendientes
+                                </span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="notification-list"
+                            id="notificationList">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-profile">
+                    <div class="small-avatar">
+                        <i class="ph ph-pill"></i>
+                    </div>
+
+                    <div>
+                        <strong>Farmacia</strong>
+                        <span>Área de medicamentos</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="content-panel">
+            <div class="panel-header">
+                <div>
+                    <span>Medicamentos</span>
+                    <h2>Entregas pendientes</h2>
+                </div>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Buscar interno</label>
+
+                    <div class="input-search">
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscarInterno"
+                            placeholder="Nombre o número de interno">
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Interno</th>
+                            <th>Medicamentos</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="entregasBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <span id="paginationInfo">
+                    Mostrando 0 de 0 entregas
+                </span>
+
+                <div id="paginationButtons">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div
+        class="modal-overlay"
+        id="modalEntrega">
+
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <span>Farmacia</span>
+                    <h2>Registrar entrega</h2>
+                </div>
+
+                <button
+                    class="close-modal"
+                    id="cerrarModalEntrega"
+                    type="button">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+
+            <div class="modal-section">
+                <h3>Información del interno</h3>
+
+                <div class="info-grid">
+                    <div>
+                        <span>Interno</span>
+                        <strong id="modalInternoNombre">
+                            Sin nombre
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Número</span>
+                        <strong id="modalInternoNumero">
+                            ----
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Especialista</span>
+                        <strong id="modalEspecialista">
+                            No registrado
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Atención</span>
+                        <strong id="modalAtencion">
+                            ----
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Medicamentos de la receta</h3>
+
+                <div id="modalMedicamentos">
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Información del costo</h3>
+
+                <div class="cost-box">
+                    <div class="family-cost">
+                        <span>
+                            Costo total de medicamentos
+                        </span>
+
+                        <div class="cost-input">
+                            <span>Q</span>
+
+                            <input
+                                type="number"
+                                id="costoTotal"
+                                min="0"
+                                step="0.01"
+                                placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Observaciones</h3>
+
+                <div class="delivery-field">
+                    <textarea
+                        id="observaciones"
+                        placeholder="Agregue alguna observación sobre la entrega...">
+                    </textarea>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    class="btn-cancel"
+                    id="cancelarModalEntrega"
+                    type="button">
+                    Cancelar
+                </button>
+
+                <button
+                    class="btn-confirm"
+                    id="btnConfirmarEntrega"
+                    type="button">
+                    <i class="ph ph-check"></i>
+                    Confirmar entrega
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="registrarEntrega.js"></script>
+</body>
+</html>

@@ -15,12 +15,52 @@ namespace ApiAsilo.Controllers
             _context = context;
         }
 
+        [HttpGet("pendientes")]
+        public async Task<ActionResult> GetRecetasPendientes()
+        {
+            var recetas = await _context.Recetas
+                .AsNoTracking()
+                .Where(r => r.Estado == "Pendiente")
+                .Include(r => r.Detalles)
+                .Include(r => r.AtencionMedica)
+                    .ThenInclude(a => a.Cita)
+                        .ThenInclude(c => c.Interno)
+                .Include(r => r.AtencionMedica)
+                    .ThenInclude(a => a.Cita)
+                        .ThenInclude(c => c.Especialista)
+                .OrderByDescending(r => r.ID)
+                .ToListAsync();
+
+            var resultado = recetas.Select(r => new
+            {
+                id = r.ID,
+                atencionMedicaID = r.AtencionMedicaID,
+                fechaReceta = r.FechaReceta,
+                estado = r.Estado,
+                internoId = r.AtencionMedica?.Cita?.Interno?.Id,
+                internoNombre = r.AtencionMedica?.Cita?.Interno == null
+                    ? "Sin información"
+                    : r.AtencionMedica.Cita.Interno.Nombre + " " + r.AtencionMedica.Cita.Interno.Apellido,
+                medicoSolicitante = r.AtencionMedica?.Cita?.Especialista?.NombreCompleto
+                    ?? "Sin información",
+                detalles = r.Detalles.Select(d => new
+                {
+                    id = d.ID,
+                    medicamento = d.Medicamento,
+                    dosis = d.Dosis,
+                    frecuencia = d.Frecuencia,
+                    duracion = d.Duracion,
+                    cantidad = d.Cantidad,
+                    indicaciones = d.Indicaciones
+                }).ToList()
+            }).ToList();
+            return Ok(resultado);
+        }
+
         [HttpGet("atencion/{atencionId}")]
         public async Task<ActionResult> GetRecetasPorAtencion(int atencionId)
         {
-            var atencion = await _context.AtencionesMedicas
-                .FirstOrDefaultAsync(a => a.ID == atencionId);
-
+            var atencion = await _context.AtencionesMedicas.FirstOrDefaultAsync(a => a.ID == atencionId);
             if (atencion == null)
             {
                 return NotFound(new
@@ -40,7 +80,14 @@ namespace ApiAsilo.Controllers
         public async Task<ActionResult> GetReceta(int id)
         {
             var receta = await _context.Recetas
+                .AsNoTracking()
+                .Include(r => r.Detalles)
                 .Include(r => r.AtencionMedica)
+                    .ThenInclude(a => a.Cita)
+                        .ThenInclude(c => c.Interno)
+                .Include(r => r.AtencionMedica)
+                    .ThenInclude(a => a.Cita)
+                        .ThenInclude(c => c.Especialista)
                 .FirstOrDefaultAsync(r => r.ID == id);
             if (receta == null)
             {
@@ -49,14 +96,36 @@ namespace ApiAsilo.Controllers
                     mensaje = "La receta no fue encontrada."
                 });
             }
-            return Ok(receta);
+
+            return Ok(new
+            {
+                id = receta.ID,
+                atencionMedicaID = receta.AtencionMedicaID,
+                fechaReceta = receta.FechaReceta,
+                estado = receta.Estado,
+                internoId = receta.AtencionMedica?.Cita?.Interno?.Id,
+                internoNombre = receta.AtencionMedica?.Cita?.Interno == null
+                    ? "Sin información"
+                    : receta.AtencionMedica.Cita.Interno.Nombre + " " + receta.AtencionMedica.Cita.Interno.Apellido,
+                medicoSolicitante = receta.AtencionMedica?.Cita?.Especialista?.NombreCompleto
+                    ?? "Sin información",
+                detalles = receta.Detalles.Select(d => new
+                {
+                    id = d.ID,
+                    medicamento = d.Medicamento,
+                    dosis = d.Dosis,
+                    frecuencia = d.Frecuencia,
+                    duracion = d.Duracion,
+                    cantidad = d.Cantidad,
+                    indicaciones = d.Indicaciones
+                }).ToList()
+            });
         }
 
         [HttpPost]
         public async Task<ActionResult> PostReceta(Receta receta)
         {
-            var atencion = await _context.AtencionesMedicas
-                .FirstOrDefaultAsync(a => a.ID == receta.AtencionMedicaID);
+            var atencion = await _context.AtencionesMedicas.FirstOrDefaultAsync(a => a.ID == receta.AtencionMedicaID);
             if (atencion == null)
             {
                 return BadRequest(new
@@ -88,8 +157,7 @@ namespace ApiAsilo.Controllers
             int id,
             Receta receta)
         {
-            var recetaExistente = await _context.Recetas
-                .FirstOrDefaultAsync(r => r.ID == id);
+            var recetaExistente = await _context.Recetas.FirstOrDefaultAsync(r => r.ID == id);
             if (recetaExistente == null)
             {
                 return NotFound(new
@@ -97,7 +165,6 @@ namespace ApiAsilo.Controllers
                     mensaje = "La receta no fue encontrada."
                 });
             }
-            
             if (!string.IsNullOrWhiteSpace(receta.Estado))
             {
                 recetaExistente.Estado = receta.Estado;

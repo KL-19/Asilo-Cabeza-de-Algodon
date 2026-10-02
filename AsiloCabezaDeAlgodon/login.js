@@ -60,7 +60,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
                         window.location.href = "Laboratorio/SolicitudesPendientes/SolicitudesPendientes.html";
                         break;
                     case 'Farmacia':
-                        window.location.href = "Farmacia/Farmacia.html";
+                        window.location.href = "Farmacia/registrarEntrega.html";
                         break;
                     default:
                         window.location.href = "dashboard.html";
