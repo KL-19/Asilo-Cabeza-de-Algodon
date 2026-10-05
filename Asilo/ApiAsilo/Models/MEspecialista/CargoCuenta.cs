@@ -14,13 +14,7 @@ namespace ApiAsilo.Models
 
         public int? InternoID { get; set; }
 
-        public int? CuotaMensualID { get; set; }
-
         public int? AtencionMedicaID { get; set; }
-
-        public int? ExamenLaboratorioID { get; set; }
-
-        public int? EntregaFarmaciaID { get; set; }
 
         [Required]
         [StringLength(250)]
@@ -37,14 +31,9 @@ namespace ApiAsilo.Models
 
         public DateTime FechaCargo { get; set; }
 
-        public DateTime? FechaVencimiento { get; set; }
-
         [Required]
         [StringLength(30)]
         public string Estado { get; set; } = "Pendiente";
-
-        [StringLength(1000)]
-        public string? Observaciones { get; set; }
 
         // Relaciones
         [ForeignKey("FamiliarID")]
@@ -53,16 +42,7 @@ namespace ApiAsilo.Models
         [ForeignKey("InternoID")]
         public virtual Interno? Interno { get; set; }
 
-        [ForeignKey("CuotaMensualID")]
-        public virtual CuotaMensual? CuotaMensual { get; set; }
-
         [ForeignKey("AtencionMedicaID")]
         public virtual AtencionMedica? AtencionMedica { get; set; }
-
-        [ForeignKey("ExamenLaboratorioID")]
-        public virtual ExamenLaboratorio? ExamenLaboratorio { get; set; }
-
-        [ForeignKey("EntregaFarmaciaID")]
-        public virtual EntregaFarmacia? EntregaFarmacia { get; set; }
     }
 }

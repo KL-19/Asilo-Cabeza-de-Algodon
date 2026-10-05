@@ -84,14 +84,9 @@ namespace ApiAsilo.Controllers
             cargo.FechaCargo = DateTime.Now;
             cargo.Estado = "Pendiente";
 
-            // Evitar conflictos con las relaciones
             cargo.Familiar = null;
             cargo.Interno = null;
-            cargo.CuotaMensual = null;
             cargo.AtencionMedica = null;
-            cargo.ExamenLaboratorio = null;
-            cargo.EntregaFarmacia = null;
-            
             _context.CargosCuenta.Add(cargo);
             await _context.SaveChangesAsync();
             return CreatedAtAction(
@@ -115,14 +110,9 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            cargoExistente.Observaciones = cargo.Observaciones;
             if (!string.IsNullOrWhiteSpace(cargo.Estado))
             {
                 cargoExistente.Estado = cargo.Estado;
-            }
-            if (cargo.FechaVencimiento.HasValue)
-            {
-                cargoExistente.FechaVencimiento = cargo.FechaVencimiento;
             }
 
             await _context.SaveChangesAsync();

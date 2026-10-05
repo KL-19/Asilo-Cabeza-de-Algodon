@@ -56,8 +56,7 @@ namespace ApiAsilo.Services
                     PorcentajeDescuento = porcentajeDescuento,
                     Monto = montoFinal,
                     FechaCargo = DateTime.Now,
-                    Estado = "Pendiente",
-                    Observaciones = atencion.Observaciones
+                    Estado = "Pendiente"
                 };
                 _context.CargosCuenta.Add(cargo);
             }
@@ -66,7 +65,6 @@ namespace ApiAsilo.Services
                 cargo.MontoOriginal = montoOriginal;
                 cargo.PorcentajeDescuento = porcentajeDescuento;
                 cargo.Monto = montoFinal;
-                cargo.Observaciones = atencion.Observaciones;
             }
             await _context.SaveChangesAsync();
         }

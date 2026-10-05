@@ -26,11 +26,11 @@ namespace ApiAsilo.Controllers
                 .Where(r => r.Estado == "Pendiente")
                 .Include(r => r.Detalles)
                 .Include(r => r.AtencionMedica)
-                    .ThenInclude(a => a.Cita)
-                        .ThenInclude(c => c.Interno)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Interno)
                 .Include(r => r.AtencionMedica)
-                    .ThenInclude(a => a.Cita)
-                        .ThenInclude(c => c.Especialista)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Especialista)
                 .OrderByDescending(r => r.ID)
                 .ToListAsync();
 
@@ -86,11 +86,11 @@ namespace ApiAsilo.Controllers
                 .AsNoTracking()
                 .Include(r => r.Detalles)
                 .Include(r => r.AtencionMedica)
-                    .ThenInclude(a => a.Cita)
-                        .ThenInclude(c => c.Interno)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Interno)
                 .Include(r => r.AtencionMedica)
-                    .ThenInclude(a => a.Cita)
-                        .ThenInclude(c => c.Especialista)
+                    .ThenInclude(a => a!.Cita)
+                        .ThenInclude(c => c!.Especialista)
                 .FirstOrDefaultAsync(r => r.ID == id);
             if (receta == null)
             {
