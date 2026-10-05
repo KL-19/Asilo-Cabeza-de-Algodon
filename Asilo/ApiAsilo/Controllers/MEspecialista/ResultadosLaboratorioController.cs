@@ -100,20 +100,28 @@ namespace ApiAsilo.Controllers
         [HttpGet("atencion/{atencionId}")]
         public async Task<ActionResult> GetResultadosPorAtencion(int atencionId)
         {
-            var atencion = await _context.AtencionesMedicas
-                .FirstOrDefaultAsync(a => a.ID == atencionId);
-            if (atencion == null)
-            {
-                return NotFound(new
+            var resultados = await _context.ResultadosLaboratorio.AsNoTracking()
+                .Where(r =>
+                r.ExamenLaboratorio != null && r.ExamenLaboratorio.AtencionMedicaID == atencionId
+                )
+                .Select(r => new
                 {
-                    mensaje = "La atención médica no fue encontrada."
-                });
-            }
-
-            var resultados = await _context.ResultadosLaboratorio
-                .Include(r => r.ExamenLaboratorio)
-                .Where(r => r.ExamenLaboratorio!.AtencionMedicaID == atencionId)
-                .OrderBy(r => r.ID)
+                    id = r.ID,
+                    examenLaboratorioID = r.ExamenLaboratorioID,
+                    fechaResultado = r.FechaResultado,
+                    resultado = r.Resultado,
+                    observaciones = r.Observaciones,
+                    examenLaboratorio = new
+                    {
+                        id = r.ExamenLaboratorio!.ID,
+                        tipoExamen = r.ExamenLaboratorio.TipoExamen,
+                        indicaciones = r.ExamenLaboratorio.Indicaciones,
+                        fechaSolicitud = r.ExamenLaboratorio.FechaSolicitud,
+                        fechaTomaMuestra = r.ExamenLaboratorio.FechaTomaMuestra,
+                        costo = r.ExamenLaboratorio.Costo,
+                        estado = r.ExamenLaboratorio.Estado
+                    }
+                })
                 .ToListAsync();
             return Ok(resultados);
         }

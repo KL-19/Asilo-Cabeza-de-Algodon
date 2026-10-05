@@ -1090,3 +1090,219 @@ body {
 .cost-input-wrapper input:focus {
     border-color: #93c5fd;
 }
+
+/* RESULTADOS DE LABORATORIO */
+.lab-results-section {
+    margin-top: 28px;
+    border: 1px solid #dce4e8;
+    border-radius: 16px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.lab-results-section .collapse-header {
+    padding: 22px 24px;
+    background: #f8fafb;
+    border-bottom: 1px solid #e4eaed;
+}
+
+.lab-results-section .subsection-header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lab-results-section .subsection-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.lab-results-section .green-icon {
+    background: #e8f7ef;
+    color: #2f9e68;
+}
+
+.lab-results-section .subsection-label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #2f9e68;
+}
+
+.lab-results-section h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #26343d;
+}
+
+.lab-results-section .collapse-header p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #7a8991;
+}
+
+.lab-results-content {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* TARJETA DE CADA RESULTADO */
+.lab-result-item {
+    border: 1px solid #e1e7ea;
+    border-radius: 13px;
+    background: #ffffff;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.lab-result-item:hover {
+    border-color: #cfd9de;
+    box-shadow: 0 4px 12px rgba(38, 52, 61, 0.06);
+}
+
+/* ENCABEZADO DEL RESULTADO */
+.lab-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 18px;
+    background: #f7faf9;
+    border-bottom: 1px solid #e5ebe8;
+}
+
+.lab-result-header strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #26343d;
+}
+
+.lab-result-header strong::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35a66f;
+    flex-shrink: 0;
+}
+
+.lab-result-header span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7b898f;
+    white-space: nowrap;
+}
+
+/* CONTENIDO */
+.lab-result-body {
+    padding: 18px;
+}
+
+.lab-result-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #53636b;
+}
+
+.lab-result-body p + p {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #edf0f1;
+}
+
+.lab-result-body p strong {
+    color: #34454e;
+    font-weight: 700;
+}
+
+/* DIAGNÓSTICO FINAL */
+#seccionFinal {
+    margin-top: 28px;
+}
+
+#seccionFinal .form-group {
+    margin-bottom: 0;
+}
+
+#seccionFinal label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #34454e;
+}
+
+#diagnosticoFinal {
+    width: 100%;
+    min-height: 130px;
+    padding: 14px 16px;
+    border: 1px solid #d8e0e4;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #34454e;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+#diagnosticoFinal:focus {
+    border-color: #8f79c7;
+    box-shadow: 0 0 0 3px rgba(143, 121, 199, 0.10);
+}
+
+#diagnosticoFinal::placeholder {
+    color: #9aa6ab;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .lab-results-section .collapse-header {
+        padding: 18px;
+    }
+
+    .lab-results-content {
+        padding: 16px;
+    }
+
+    .lab-results-section .subsection-header-content {
+        gap: 12px;
+    }
+
+    .lab-results-section .subsection-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 20px;
+    }
+
+    .lab-result-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .lab-result-body {
+        padding: 16px;
+    }
+}

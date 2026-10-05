@@ -2,6 +2,7 @@ using ApiAsilo.Data;
 using ApiAsilo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ApiAsilo.Services;
 
 namespace ApiAsilo.Controllers
 {
@@ -10,9 +11,11 @@ namespace ApiAsilo.Controllers
     public class RecetasController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public RecetasController(AppDbContext context)
+        private readonly AtencionMedicaService _atencionMedicaService;
+        public RecetasController(AppDbContext context, AtencionMedicaService atencionMedicaService)
         {
             _context = context;
+            _atencionMedicaService = atencionMedicaService;
         }
 
         [HttpGet("pendientes")]
@@ -138,6 +141,7 @@ namespace ApiAsilo.Controllers
             receta.AtencionMedica = null;
             _context.Recetas.Add(receta);
             await _context.SaveChangesAsync();
+            await _atencionMedicaService.VerificarEstadoAtencion(receta.AtencionMedicaID);
 
             return CreatedAtAction(
                 nameof(GetReceta),

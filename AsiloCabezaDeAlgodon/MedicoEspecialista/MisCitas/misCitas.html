@@ -37,23 +37,6 @@
             </div>
         </div>
 
-        <!-- PERFIL DEL MÉDICO -->
-        <div class="doctor-profile">
-            <div class="doctor-avatar">
-                <i class="ph ph-user"></i>
-            </div>
-
-            <div>
-                <strong id="nombreMedicoSidebar">
-                    —
-                </strong>
-
-                <span id="especialidadMedicoSidebar">
-                    —
-                </span>
-            </div>
-        </div>
-
         <!-- MENÚ -->
         <nav class="menu">
             <p class="menu-title"> MENÚ PRINCIPAL</p>
@@ -69,13 +52,6 @@
                 <i class="ph ph-calendar-check"></i>
                 <span>
                     Mis citas
-                </span>
-
-                <span
-                    class="menu-badge"
-                    id="badgeCitasPendientes"
-                >
-                    0
                 </span>
             </a>
 
@@ -138,51 +114,45 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================
-     PANEL DE NOTIFICACIONES
-     ============================================================ -->
 
-<div
-    id="panelNotificaciones"
-    class="notification-panel"
->
-    <div class="notification-panel-header">
+            <!-- PANEL DE NOTIFICACIONES -->
+            <div
+                id="panelNotificaciones"
+                class="notification-panel"
+            >
+                <div class="notification-panel-header">
+                    <div>
+                        <strong>
+                            Notificaciones
+                        </strong>
 
-        <div>
-            <strong>
-                Notificaciones
-            </strong>
+                        <span id="contadorNotificaciones">
+                            0 nuevas
+                        </span>
+                    </div>
 
-            <span id="contadorNotificaciones">
-                0 nuevas
-            </span>
-        </div>
+                    <button
+                        type="button"
+                        id="btnMarcarNotificaciones"
+                        class="btn-mark-notifications"
+                    >
+                        Marcar como vistas
+                    </button>
+                </div>
 
-        <button
-            type="button"
-            id="btnMarcarNotificaciones"
-            class="btn-mark-notifications"
-        >
-            Marcar como vistas
-        </button>
+                <div
+                    id="listaNotificaciones"
+                    class="notification-list"
+                >
+                    <div class="notificacion-vacia">
+                        <i class="ph ph-check-circle"></i>
 
-    </div>
-
-    <div
-        id="listaNotificaciones"
-        class="notification-list"
-    >
-        <div class="notificacion-vacia">
-
-            <i class="ph ph-check-circle"></i>
-
-            <p>
-                No tienes notificaciones nuevas.
-            </p>
-
-        </div>
-    </div>
-</div>
+                        <p>
+                            No tienes notificaciones nuevas.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <!-- CONTENIDO -->
@@ -358,8 +328,8 @@
                         <tbody id="tablaCitasCompletadas">
                         </tbody>
                     </table>
-                    <div id="paginacionCompletadas" class="table-pagination"></div>
                 </div>
+                <div id="paginacionCompletadas" class="table-pagination"></div>
             </details>
         </section>
     </main>

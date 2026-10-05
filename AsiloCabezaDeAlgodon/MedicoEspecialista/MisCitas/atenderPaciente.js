@@ -100,33 +100,66 @@ function prepararPrimeraAtencion() {
 }
 
 function prepararAtencionExistente(atencion) {
-    document.getElementById("diagnostico").value = atencion.diagnostico || "";
-    document.getElementById("costoConsulta").value = atencion.costoConsulta ?? "";
-    document.getElementById("observaciones").value = atencion.observaciones || "";
+    console.log("Preparando atención existente:", atencion);
+    const diagnostico = document.getElementById("diagnostico");
+    const costoConsulta = document.getElementById("costoConsulta");
+    const observaciones = document.getElementById("observaciones");
+    const diagnosticoFinal = document.getElementById("diagnosticoFinal");
+    const seccionPrimera = document.getElementById("seccionPrimeraAtencion");
+    const seccionFinal = document.getElementById("seccionFinal");
+    const resultados = document.getElementById("resultadosLaboratorio");
+    const botonGuardar = document.querySelector(".btn-save");
+    const labelObservaciones = document.getElementById("labelObservaciones");
+
     if (
         atencion.estado === "Completada" || atencion.estado === "Finalizada"
     ) {
-        document.getElementById("diagnostico").disabled = true;
-        document.getElementById("costoConsulta").disabled = true;
-        document.getElementById("observaciones").disabled = true;
-        document.getElementById("diagnosticoFinal").value = atencion.diagnosticoFinal || "";
-        document.getElementById("diagnosticoFinal").disabled = true;
-        document.querySelector(".btn-save").style.display = "none";
+        if (seccionPrimera) {
+            seccionPrimera.style.display = "block";
+        }
+        diagnostico.value = atencion.diagnostico || "";
+        costoConsulta.value = atencion.costoConsulta ?? "";
+        observaciones.value = atencion.observaciones || "";
+        diagnosticoFinal.value = atencion.diagnosticoFinal || "";
+        diagnostico.disabled = true;
+        costoConsulta.disabled = true;
+        observaciones.disabled = true;
+        diagnosticoFinal.disabled = true;
+        if (labelObservaciones) {
+            labelObservaciones.textContent = "Observaciones médicas";
+        }
+        if (botonGuardar) {
+            botonGuardar.style.display = "none";
+        }
         cargarResultadosLaboratorio(atencion.id, true);
         return;
     }
 
-    if (atencion.estado === "Pendiente resultados") {
-        document.getElementById("diagnostico").disabled = true;
-        document.getElementById("costoConsulta").disabled = true;
-        document.getElementById("observaciones").disabled = false;
-        cargarResultadosLaboratorio(atencion.id, false);
-        return;
+    /* SEGUNDA ATENCIÓN */
+    if (seccionPrimera) {
+        seccionPrimera.style.display = "none";
+    }
+
+    diagnostico.value = atencion.diagnostico || "";
+    costoConsulta.value = atencion.costoConsulta ?? "";
+    diagnostico.disabled = true;
+    costoConsulta.disabled = true;
+    diagnosticoFinal.value = atencion.diagnosticoFinal || "";
+    diagnosticoFinal.disabled = false;
+    if (seccionFinal) {
+        seccionFinal.style.display = "block";
+    }
+    if (botonGuardar) {
+        botonGuardar.style.display = "inline-flex";
+        botonGuardar.innerHTML = `
+            <i class="ph ph-check"></i>
+            Finalizar atención
+        `;
     }
     cargarResultadosLaboratorio(atencion.id, false);
 }
 
-function cargarResultadosLaboratorio(atencionId, atencionCompletada) {
+function cargarResultadosLaboratorio(atencionId, atencionCompletada = false) {
     fetch(`${API}/ResultadosLaboratorio/atencion/${atencionId}`)
         .then(response => {
             if (!response.ok) {
@@ -134,26 +167,49 @@ function cargarResultadosLaboratorio(atencionId, atencionCompletada) {
             }
             return response.json();
         })
-        .then(resultados => {
-            resultadosLaboratorioActuales = resultados || [];
-            if (!resultados || resultados.length === 0) {
-                document.getElementById("resultadosLaboratorio").style.display = "none";
-                document.getElementById("seccionFinal").style.display = "none";
+        .then(data => {
+            console.log("RESULTADOS DE LABORATORIO RECIBIDOS:", data);
+            let resultados = [];
+            if (Array.isArray(data)) {
+                resultados = data;
+            }
+            else if (Array.isArray(data.resultados)) {
+                resultados = data.resultados;
+            }
+            else if (Array.isArray(data.resultadosLaboratorio)) {
+                resultados = data.resultadosLaboratorio;
+            }
+            else if (Array.isArray(data.data)) {
+                resultados = data.data;
+            }
+            resultadosLaboratorioActuales = resultados;
+            const seccionResultados = document.getElementById("resultadosLaboratorio");
+            const seccionFinal = document.getElementById("seccionFinal");
+            const diagnosticoFinal = document.getElementById("diagnosticoFinal");
+            console.log("Resultados encontrados:", resultados.length);
+            if (resultados.length === 0) {
+                seccionResultados.style.display = "none";
+                if (!atencionCompletada) {
+                    seccionFinal.style.display = "none";
+                }
                 return;
             }
 
+            // Mostrar resultados
             mostrarResultadosLaboratorio(resultados);
-            document.getElementById("resultadosLaboratorio").style.display ="block";
-            if (atencionCompletada) {
-                document.getElementById("seccionFinal").style.display = "none";
-                return;
+            seccionResultados.style.display = "block";
+            if (!atencionCompletada) {
+                seccionFinal.style.display = "block";
+                diagnosticoFinal.disabled = false;
             }
-
-            document.getElementById("seccionFinal").style.display = "block";
-            document.getElementById("diagnosticoFinal").disabled = false;
+            else {
+                seccionFinal.style.display = "block";
+                diagnosticoFinal.disabled = true;
+            }
         })
         .catch(error => {
             console.error("ERROR AL CARGAR RESULTADOS:", error);
+            document.getElementById("resultadosLaboratorio").style.display = "none";
         });
 }
 
@@ -434,15 +490,8 @@ function guardarSegundaAtencion() {
         return;
     }
     const diagnosticoFinal = document.getElementById("diagnosticoFinal").value.trim();
-    const observaciones = document.getElementById("observaciones").value.trim();
-    if (!diagnosticoFinal) {
-        alert("Debe ingresar el diagnóstico final.");
-        return;
-    }
-
     const datos = {
         diagnosticoFinal: diagnosticoFinal,
-        observaciones: observaciones || null,
         estado: "Completada"
     };
 

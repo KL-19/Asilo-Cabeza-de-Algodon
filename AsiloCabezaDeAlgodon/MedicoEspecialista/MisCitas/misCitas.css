@@ -67,41 +67,6 @@ body {
     color: #9ca3af;
 }
 
-/* PERFIL */
-.doctor-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    background: rgba(255,255,255,.05);
-    border-radius: 14px;
-    margin-bottom: 25px;
-}
-
-.doctor-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-    font-size: 19px;
-}
-
-.doctor-profile strong {
-    display: block;
-    font-size: 12px;
-}
-
-.doctor-profile span {
-    display: block;
-    font-size: 10px;
-    color: #9ca3af;
-    margin-top: 3px;
-}
-
 /* MENÚ */
 .menu {
     flex: 1;
@@ -140,21 +105,6 @@ body {
 .menu-item.active {
     background: var(--primary);
     color: white;
-}
-
-.menu-badge, .notification-count {
-    margin-left: auto;
-    min-width: 19px;
-    height: 19px;
-    padding: 0 5px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ef4444;
-    color: white;
-    font-size: 8px;
-    font-weight: 700;
 }
 
 /* =====================================================
@@ -404,8 +354,10 @@ body {
 }
 
 .top-profile span {
+    display: block;
     font-size: 10px;
     color: var(--muted);
+    margin-top: 3px;
 }
 
 /* =====================================================
@@ -661,61 +613,6 @@ td {
 }
 
 /* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 1100px) {
-    .table-container {
-        overflow-x: auto;
-    }
-
-    table {
-        min-width: 900px;
-    }
-}
-
-@media (max-width: 900px) {
-    .sidebar {
-        width: 75px;
-        padding: 25px 10px;
-    }
-
-    .logo > div:last-child,
-    .doctor-profile > div:last-child,
-    .menu-item span,
-    .menu-title {
-        display: none;
-    }
-
-    .logo {
-        justify-content: center;
-    }
-
-    .menu-item {
-        justify-content: center;
-    }
-
-    .main-content {
-        margin-left: 75px;
-    }
-
-    .page-header {
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-}
-
-@media (max-width: 600px) {
-    .main-content {
-        padding: 25px 18px;
-    }
-
-    .page-header {
-        flex-direction: column;
-    }
-}
-
-/* =====================================================
    MODAL VER VISITA
 ===================================================== */
 
@@ -927,40 +824,6 @@ td {
     background: #e5e7eb;
 }
 
-/* RESPONSIVE */
-@media (max-width: 650px) {
-    .modal {
-        max-height: 92vh;
-    }
-
-    .visit-grid {
-        grid-template-columns: 1fr;
-        padding-left: 0;
-    }
-
-    .visit-text,
-    .visit-list {
-        padding-left: 0;
-    }
-
-    .visit-item {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .next-appointment {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .next-appointment-action {
-        width: 100%;
-    }
-
-    .btn-next-attend {
-        width: 100%;
-    }
-}
 
 /* PAGINACIÓN DE TABLAS */
 .table-pagination {
@@ -1113,4 +976,63 @@ td {
 .btn-next-attend:hover {
     background: #1d4ed8;
     transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+
+    .main-content {
+        padding: 28px 25px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 900px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .main-content {
+        margin-left: 260px;
+        padding: 25px 20px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .appointments-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .main-content {
+        margin-left: 260px;
+        padding: 20px 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .appointment-count {
+        align-self: flex-start;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 900px;
+    }
 }

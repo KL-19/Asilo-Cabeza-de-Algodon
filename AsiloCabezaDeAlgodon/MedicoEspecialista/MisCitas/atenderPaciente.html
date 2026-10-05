@@ -196,166 +196,160 @@
             </div>
 
             <div class="form-content">
-                <div class="form-group">
-                    <label for="diagnostico">
-                        Diagnóstico
-                    </label>
+                <div id="seccionPrimeraAtencion">
+                    <!-- DIAGNÓSTICO INICIAL -->
+                    <div class="form-group">
+                        <label for="diagnostico">
+                            Diagnóstico
+                        </label>
 
-                    <textarea
-                        id="diagnostico"
-                        placeholder="Ingrese el diagnóstico determinado durante la atención..."
-                    ></textarea>
-                </div>
-
-                <div class="consultation-cost">
-                    <div class="cost-icon">
-                        <i class="ph ph-money"></i>
+                        <textarea
+                            id="diagnostico"
+                            placeholder="Ingrese el diagnóstico determinado durante la atención..."
+                        ></textarea>
                     </div>
 
-                    <div class="cost-content">
-                        <div class="cost-text">
-                            <span class="cost-label">
-                                COSTO DE LA CONSULTA
-                            </span>
-
-                            <strong>
-                                Costo total de atención médica
-                            </strong>
-
-                            <p>
-                                Ingrese el costo correspondiente a esta consulta médica.
-                            </p>
+                    <!-- COSTO DE LA CONSULTA -->
+                    <div class="consultation-cost">
+                        <div class="cost-icon">
+                            <i class="ph ph-money"></i>
                         </div>
 
-                        <div class="cost-input-wrapper">
-                            <span class="currency">
-                                Q
-                            </span>
+                        <div class="cost-content">
+                            <div class="cost-text">
+                                <span class="cost-label">
+                                    COSTO DE LA CONSULTA
+                                </span>
 
-                            <input
-                                type="number"
-                                id="costoConsulta"
-                                name="costoConsulta"
-                                min="0"
-                                step="0.01"
-                                placeholder="0.00"
+                                <strong>
+                                    Costo total de atención médica
+                                </strong>
+
+                                <p>
+                                    Ingrese el costo correspondiente a esta consulta médica.
+                                </p>
+                            </div>
+
+                            <div class="cost-input-wrapper">
+                                <span class="currency">
+                                    Q
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="costoConsulta"
+                                    name="costoConsulta"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0.00"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LABORATORIO -->
+                    <div class="subsection">
+                        <div class="collapse-header">
+                            <div class="subsection-header-content">
+                                <div class="subsection-icon blue-icon">
+                                    <i class="ph ph-test-tube"></i>
+                                </div>
+
+                                <div>
+                                    <span class="subsection-label">
+                                        LABORATORIO
+                                    </span>
+
+                                    <h3>
+                                        Solicitar exámenes
+                                    </h3>
+
+                                    <p>
+                                        Registre los exámenes que deben realizarse al paciente.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="collapse-button"
+                                onclick="toggleExamenes()"
+                                id="btnExamenes"
                             >
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <div
+                            class="collapse-content"
+                            id="examenesContent"
+                        >
+                            <div id="examenesContainer">
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add-exam"
+                                onclick="agregarExamen()"
+                            >
+                                <i class="ph ph-plus"></i>
+                                Agregar examen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MEDICAMENTOS -->
+                    <div class="subsection">
+                        <div class="collapse-header">
+                            <div class="subsection-header-content">
+                                <div class="subsection-icon purple-icon">
+                                    <i class="ph ph-pill"></i>
+                                </div>
+
+                                <div>
+                                    <span class="subsection-label">
+                                        TRATAMIENTO
+                                    </span>
+
+                                    <h3>
+                                        Medicamentos a proporcionar
+                                    </h3>
+
+                                    <p>
+                                        Registre los medicamentos indicados para el paciente.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="collapse-button"
+                                onclick="toggleMedicamentos()"
+                                id="btnMedicamentos"
+                            >
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <div
+                            class="collapse-content"
+                            id="medicamentosContent"
+                        >
+                            <div id="medicamentosContainer">
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-add-medicine"
+                                onclick="agregarMedicamento()"
+                            >
+                                <i class="ph ph-plus"></i>
+                                Agregar medicamento
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <div class="collapse-header">
-                        <div class="subsection-header-content">
-                            <div class="subsection-icon blue-icon">
-                                <i class="ph ph-test-tube"></i>
-                            </div>
-
-                            <div>
-                                <span class="subsection-label">
-                                    LABORATORIO
-                                </span>
-
-                                <h3>
-                                    Solicitar exámenes
-                                </h3>
-
-                                <p>
-                                    Registre los exámenes que deben realizarse al paciente.
-                                </p>
-                            </div>
-                        </div>
-                        <button
-                            type="button"
-                            class="collapse-button"
-                            onclick="toggleExamenes()"
-                            id="btnExamenes"
-                        >
-                            <i class="ph ph-caret-down"></i>
-                        </button>
-                    </div>
-
-                    <div
-                        class="collapse-content"
-                        id="examenesContent"
-                    >
-                        <div id="examenesContainer">
-                        </div>
-
-                        <button
-                            type="button"
-                            class="btn-add-exam"
-                            onclick="agregarExamen()"
-                        >
-                            <i class="ph ph-plus"></i>
-                            Agregar examen
-                        </button>
-                    </div>
-                </div>
-
-                <div class="subsection">
-                    <div class="collapse-header">
-                        <div class="subsection-header-content">
-                            <div class="subsection-icon purple-icon">
-                                <i class="ph ph-pill"></i>
-                            </div>
-
-                            <div>
-                                <span class="subsection-label">
-                                    TRATAMIENTO
-                                </span>
-
-                                <h3>
-                                    Medicamentos a proporcionar
-                                </h3>
-
-                                <p>
-                                    Registre los medicamentos indicados para el paciente.
-                                </p>
-                            </div>
-                        </div>
-                        <button
-                            type="button"
-                            class="collapse-button"
-                            onclick="toggleMedicamentos()"
-                            id="btnMedicamentos"
-                        >
-                            <i class="ph ph-caret-down"></i>
-                        </button>
-                    </div>
-
-                    <div
-                        class="collapse-content"
-                        id="medicamentosContent"
-                    >
-                        <div id="medicamentosContainer">
-                        </div>
-
-                        <button
-                            type="button"
-                            class="btn-add-medicine"
-                            onclick="agregarMedicamento()"
-                        >
-                            <i class="ph ph-plus"></i>
-                            Agregar medicamento
-                        </button>
-                    </div>
-                </div>
-
-                <!-- OBSERVACIONES -->
-                <div class="form-group">
-                    <label for="observaciones">
-                        Observaciones médicas
-                    </label>
-
-                    <textarea
-                        id="observaciones"
-                        placeholder="Ingrese observaciones relevantes sobre la atención..."
-                    ></textarea>
-                </div>
-
-                <!-- RESULTADOS DE LABORATORIO, SOLO SE MUESTRA CUANDO EXISTAN RESULTADOS
-                     PARA LA ATENCIÓN. -->
                 <div
                     class="lab-results-section"
                     id="resultadosLaboratorio"
@@ -390,8 +384,6 @@
                     </div>
                 </div>
 
-                <!-- SEGUNDA ATENCIÓN, SOLO APARECE CUANDO EXISTEN RESULTADOS
-                     DE LABORATORIO QUE DEBEN SER REVISADOS. -->
                 <div
                     id="seccionFinal"
                     style="display: none;"

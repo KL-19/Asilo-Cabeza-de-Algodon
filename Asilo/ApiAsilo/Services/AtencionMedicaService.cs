@@ -79,7 +79,7 @@ namespace ApiAsilo.Services
             {
                 if (!laboratorioCompletado)
                 {
-                    atencion.Estado = "Pendiente resultado";
+                    atencion.Estado = "Pendiente resultados";
                 }
                 else if (!tieneDiagnosticoFinal)
                 {
@@ -96,7 +96,7 @@ namespace ApiAsilo.Services
             {
                 if (!laboratorioCompletado)
                 {
-                    atencion.Estado = "Pendiente resultado";
+                    atencion.Estado = "Pendiente resultados";
                 }
 
                 else if (!farmaciaCompletada)

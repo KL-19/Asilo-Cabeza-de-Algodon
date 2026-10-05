@@ -2,6 +2,7 @@ using ApiAsilo.Data;
 using ApiAsilo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ApiAsilo.Services;
 
 namespace ApiAsilo.Controllers
 {
@@ -10,43 +11,42 @@ namespace ApiAsilo.Controllers
     public class ExamenesLaboratorioController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public ExamenesLaboratorioController(AppDbContext context)
+        private readonly AtencionMedicaService _atencionMedicaService;
+        public ExamenesLaboratorioController(AppDbContext context, AtencionMedicaService atencionMedicaService)
         {
             _context = context;
+            _atencionMedicaService = atencionMedicaService;
         }
 
         [HttpGet("atencion/{atencionId}")]
-public async Task<ActionResult> GetExamenesPorAtencion(int atencionId)
-{
-    var atencion = await _context.AtencionesMedicas
-        .FirstOrDefaultAsync(a => a.ID == atencionId);
-
-    if (atencion == null)
-    {
-        return NotFound(new
+        public async Task<ActionResult> GetExamenesPorAtencion(int atencionId)
         {
-            mensaje = "La atención médica no fue encontrada."
-        });
-    }
+            var atencion = await _context.AtencionesMedicas.FirstOrDefaultAsync(a => a.ID == atencionId);
+            if (atencion == null)
+            {
+                return NotFound(new
+                {
+                    mensaje = "La atención médica no fue encontrada."
+                });
+            }
 
-    var examenes = await _context.ExamenesLaboratorio
-        .Where(e => e.AtencionMedicaID == atencionId)
-        .OrderBy(e => e.ID)
-        .Select(e => new
-        {
-            id = e.ID,
-            atencionMedicaID = e.AtencionMedicaID,
-            tipoExamen = e.TipoExamen,
-            indicaciones = e.Indicaciones,
-            fechaSolicitud = e.FechaSolicitud,
-            fechaTomaMuestra = e.FechaTomaMuestra,
-            costo = e.Costo,
-            estado = e.Estado
-        })
-        .ToListAsync();
-
-    return Ok(examenes);
-}
+            var examenes = await _context.ExamenesLaboratorio
+                .Where(e => e.AtencionMedicaID == atencionId)
+                .OrderBy(e => e.ID)
+                .Select(e => new
+                {
+                    id = e.ID,
+                    atencionMedicaID = e.AtencionMedicaID,
+                    tipoExamen = e.TipoExamen,
+                    indicaciones = e.Indicaciones,
+                    fechaSolicitud = e.FechaSolicitud,
+                    fechaTomaMuestra = e.FechaTomaMuestra,
+                    costo = e.Costo,
+                    estado = e.Estado
+                })
+                .ToListAsync();
+            return Ok(examenes);
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetExamen(int id)
@@ -87,6 +87,7 @@ public async Task<ActionResult> GetExamenesPorAtencion(int atencionId)
             examen.AtencionMedica = null;
             _context.ExamenesLaboratorio.Add(examen);
             await _context.SaveChangesAsync();
+            await _atencionMedicaService.VerificarEstadoAtencion(examen.AtencionMedicaID);
             
             return CreatedAtAction(
                 nameof(GetExamen),
