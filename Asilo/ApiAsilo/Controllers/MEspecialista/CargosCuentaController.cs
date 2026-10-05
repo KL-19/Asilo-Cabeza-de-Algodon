@@ -81,9 +81,6 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            // Calcular descuento
-            decimal descuento = cargo.MontoOriginal * (cargo.PorcentajeDescuento / 100);
-            cargo.Monto = cargo.MontoOriginal - descuento;
             cargo.FechaCargo = DateTime.Now;
             cargo.Estado = "Pendiente";
 
@@ -94,6 +91,7 @@ namespace ApiAsilo.Controllers
             cargo.AtencionMedica = null;
             cargo.ExamenLaboratorio = null;
             cargo.EntregaFarmacia = null;
+            
             _context.CargosCuenta.Add(cargo);
             await _context.SaveChangesAsync();
             return CreatedAtAction(
@@ -102,7 +100,7 @@ namespace ApiAsilo.Controllers
                 cargo
             );
         }
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCargo(
             int id,

@@ -2,6 +2,7 @@ using ApiAsilo.Data;
 using ApiAsilo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ApiAsilo.Services;
 
 namespace ApiAsilo.Controllers
 {
@@ -10,9 +11,11 @@ namespace ApiAsilo.Controllers
     public class AtencionesController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public AtencionesController(AppDbContext context)
+        private readonly CargoCuentaService _cargoCuentaService;
+        public AtencionesController(AppDbContext context, CargoCuentaService cargoCuentaService)
         {
             _context = context;
+            _cargoCuentaService = cargoCuentaService;
         }
 
         [HttpGet("cita/{citaId}")]
@@ -22,77 +25,76 @@ namespace ApiAsilo.Controllers
                 .AsNoTracking()
                 .Where(c => c.Id == citaId)
                 .Select(c => new
-            {
-
-                id = c.Id,
-                fechaHora = c.FechaHora,
-                motivo = c.Motivo,
-                estado = c.Estado,
-                interno = c.Interno == null
+                {
+                    id = c.Id,
+                    fechaHora = c.FechaHora,
+                    motivo = c.Motivo,
+                    estado = c.Estado,
+                    interno = c.Interno == null
                         ? null
                         : new
-                    {
-                        id = c.Interno.Id,
-                        nombre = c.Interno.Nombre,
-                        apellido = c.Interno.Apellido,
-                        dpi = c.Interno.DPI
-                    },
+                        {
+                            id = c.Interno.Id,
+                            nombre = c.Interno.Nombre,
+                            apellido = c.Interno.Apellido,
+                            dpi = c.Interno.DPI
+                        },
                     especialista = c.Especialista == null
                         ? null
                         : new
-                    {
-                        id = c.Especialista.Id,
-                        nombreUsuario = c.Especialista.NombreUsuario,
-                        nombreCompleto = c.Especialista.NombreCompleto
-                    },
+                        {
+                            id = c.Especialista.Id,
+                            nombreUsuario = c.Especialista.NombreUsuario,
+                            nombreCompleto = c.Especialista.NombreCompleto
+                        },
                     solicitud = c.Solicitud == null
                         ? null
                         : new
-                    {
-                        id = c.Solicitud.Id,
-                        motivo = c.Solicitud.Motivo,
-                        observaciones = c.Solicitud.Observaciones,
+                        {
+                            id = c.Solicitud.Id,
+                            motivo = c.Solicitud.Motivo,
+                            observaciones = c.Solicitud.Observaciones,
+                            especialidad = c.Solicitud.Especialidad == null
+                                ? null
+                                : new
+                                {
+                                    id = c.Solicitud.Especialidad.Id,
+                                    nombre = c.Solicitud.Especialidad.Nombre
+                                },
+                            enfermero = c.Solicitud.Enfermero == null
+                                ? null
+                                : new
+                                {
+                                    id = c.Solicitud.Enfermero.Id,
+                                    nombreCompleto = c.Solicitud.Enfermero.NombreCompleto
+                                }
+                        }
+                })
+                .FirstOrDefaultAsync();
 
-                        especialidad = c.Solicitud.Especialidad == null
-                            ? null
-                            : new
-                            {
-                                id = c.Solicitud.Especialidad.Id,
-                                nombre = c.Solicitud.Especialidad.Nombre
-                            },
-                        enfermero = c.Solicitud.Enfermero == null
-                            ? null
-                            : new
-                            {
-                                id = c.Solicitud.Enfermero.Id,
-                                nombreCompleto =  c.Solicitud.Enfermero.NombreCompleto
-                            }
-                    }
-            })
-            .FirstOrDefaultAsync();
             if (cita == null)
             {
                 return NotFound(new
-                    {
-                        mensaje = "La cita no fue encontrada."
-                    });
+                {
+                    mensaje = "La cita no fue encontrada."
+                });
             }
 
             var atencion = await _context.AtencionesMedicas
                 .AsNoTracking()
                 .Where(a => a.CitaID == citaId)
                 .Select(a => new
-            {
-                id = a.ID,
-                citaID = a.CitaID,
-                fechaAtencion = a.FechaAtencion,
-                diagnostico = a.Diagnostico,
-                diagnosticoFinal = a.DiagnosticoFinal,
-                observaciones = a.Observaciones,
-                costoConsulta = a.CostoConsulta,
-                estado = a.Estado
-            })
-            .FirstOrDefaultAsync();
+                {
+                    id = a.ID,
+                    citaID = a.CitaID,
+                    fechaAtencion = a.FechaAtencion,
+                    diagnostico = a.Diagnostico,
+                    diagnosticoFinal = a.DiagnosticoFinal,
+                    observaciones = a.Observaciones,
+                    costoConsulta = a.CostoConsulta,
+                    estado = a.Estado
+                })
+                .FirstOrDefaultAsync();
             if (atencion == null)
             {
                 return Ok(new
@@ -157,7 +159,8 @@ namespace ApiAsilo.Controllers
                     detalleReceta = detalles.Where(d => d.recetaID == r.id).ToList()
                 })
                 .ToList();
-            return Ok(new   
+
+            return Ok(new
             {
                 existe = true,
                 atencion = new
@@ -229,13 +232,14 @@ namespace ApiAsilo.Controllers
                     mensaje = "La cita indicada no existe."
                 });
             }
-            
-            var atencionExistente =await _context.AtencionesMedicas.FirstOrDefaultAsync(a => a.CitaID == atencion.CitaID);
+
+            var atencionExistente = await _context.AtencionesMedicas.FirstOrDefaultAsync(a => a.CitaID == atencion.CitaID);
             if (atencionExistente != null)
             {
                 return BadRequest(new
                 {
-                    mensaje = "Esta cita ya tiene una atención médica registrada.", atencionId = atencionExistente.ID
+                    mensaje = "Esta cita ya tiene una atención médica registrada.",
+                    atencionId = atencionExistente.ID
                 });
             }
             if (cita.Interno == null)
@@ -251,28 +255,12 @@ namespace ApiAsilo.Controllers
             {
                 atencion.Estado = "Completada";
             }
+
             atencion.Cita = null;
             _context.AtencionesMedicas.Add(atencion);
             await _context.SaveChangesAsync();
-            if (atencion.CostoConsulta.HasValue &&
-                atencion.CostoConsulta.Value > 0)
-            {
-                var cargo = new CargoCuenta
-                {
-                    FamiliarID = cita.Interno.FamiliarID,
-                    InternoID = cita.Interno.Id,
-                    AtencionMedicaID = atencion.ID,
-                    Concepto = "Consulta médica",
-                    MontoOriginal = atencion.CostoConsulta.Value,
-                    PorcentajeDescuento = 10,
-                    Monto = atencion.CostoConsulta.Value * 0.90m,
-                    FechaCargo = DateTime.Now,
-                    Estado = "Pendiente",
-                    Observaciones = atencion.Observaciones
-                };
-                _context.CargosCuenta.Add(cargo);
-                await _context.SaveChangesAsync();
-            }
+
+            await _cargoCuentaService.ActualizarCargoPorAtencion(atencion.ID);
             if (atencion.Estado == "Completada")
             {
                 cita.Estado = "Completada";
@@ -303,9 +291,7 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            var cita = await _context.Citas
-                .FirstOrDefaultAsync(
-                    c => c.Id == atencionExistente.CitaID);
+            var cita = await _context.Citas.FirstOrDefaultAsync(c => c.Id == atencionExistente.CitaID);
             if (cita == null)
             {
                 return NotFound(new
@@ -316,7 +302,6 @@ namespace ApiAsilo.Controllers
             if (!string.IsNullOrWhiteSpace(atencion.DiagnosticoFinal))
             {
                 atencionExistente.DiagnosticoFinal = atencion.DiagnosticoFinal;
-                atencionExistente.Observaciones = atencion.Observaciones;
                 atencionExistente.Estado = "Completada";
                 cita.Estado = "Completada";
             }
@@ -339,9 +324,11 @@ namespace ApiAsilo.Controllers
                 }
             }
             await _context.SaveChangesAsync();
+            await _cargoCuentaService.ActualizarCargoPorAtencion(id);
             return Ok(new
             {
-                mensaje = "La atención médica fue actualizada correctamente.",atencion = atencionExistente
+                mensaje = "La atención médica fue actualizada correctamente.", 
+                atencion = atencionExistente
             });
         }
     }

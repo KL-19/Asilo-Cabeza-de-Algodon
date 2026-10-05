@@ -30,7 +30,7 @@ namespace ApiAsilo.Models
         public decimal MontoOriginal { get; set; }
 
         [Required]
-        public decimal PorcentajeDescuento { get; set; } = 10;
+        public decimal PorcentajeDescuento { get; set; }
 
         [Required]
         public decimal Monto { get; set; }

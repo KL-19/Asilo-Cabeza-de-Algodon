@@ -12,13 +12,14 @@ namespace ApiAsilo.Controllers
     {
         private readonly AppDbContext _context;
         private readonly AtencionMedicaService _atencionMedicaService;
-
+        private readonly CargoCuentaService _cargoCuentaService;
         public EntregasFarmaciaController(
             AppDbContext context,
-            AtencionMedicaService atencionMedicaService)
+            AtencionMedicaService atencionMedicaService, CargoCuentaService cargoCuentaService)
         {
             _context = context;
             _atencionMedicaService = atencionMedicaService;
+            _cargoCuentaService = cargoCuentaService;
         }
 
         [HttpGet("receta/{recetaId}")]
@@ -92,6 +93,7 @@ namespace ApiAsilo.Controllers
             receta.Estado = "Entregada";
             await _context.SaveChangesAsync();
             await _atencionMedicaService.VerificarEstadoAtencion(receta.AtencionMedicaID);
+            await _cargoCuentaService.ActualizarCargoPorAtencion(receta.AtencionMedicaID);
             
             return CreatedAtAction(
                 nameof(GetEntrega),

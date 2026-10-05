@@ -12,10 +12,12 @@ namespace ApiAsilo.Controllers
     {
         private readonly AppDbContext _context;
         private readonly AtencionMedicaService _atencionMedicaService;
-        public ExamenesLaboratorioController(AppDbContext context, AtencionMedicaService atencionMedicaService)
+        private readonly CargoCuentaService _cargoCuentaService;
+        public ExamenesLaboratorioController(AppDbContext context, AtencionMedicaService atencionMedicaService, CargoCuentaService cargoCuentaService)
         {
             _context = context;
             _atencionMedicaService = atencionMedicaService;
+            _cargoCuentaService = cargoCuentaService;
         }
 
         [HttpGet("atencion/{atencionId}")]
@@ -242,6 +244,7 @@ namespace ApiAsilo.Controllers
                 examen.Estado = "En proceso";
             }
             await _context.SaveChangesAsync();
+            await _cargoCuentaService.ActualizarCargoPorAtencion(atencionId);
             return Ok(new
             {
                 mensaje = "La solicitud fue procesada correctamente.",
