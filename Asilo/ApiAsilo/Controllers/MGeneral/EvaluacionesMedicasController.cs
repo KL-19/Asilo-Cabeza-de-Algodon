@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiAsilo.Data;
 using ApiAsilo.Models;
+using ApiAsilo.Services;
 
 namespace ApiAsilo.Controllers
 {
@@ -10,9 +11,13 @@ namespace ApiAsilo.Controllers
     public class EvaluacionesMedicasController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public EvaluacionesMedicasController(AppDbContext context)
+        private readonly EmailService _emailService;
+        public EvaluacionesMedicasController(
+            AppDbContext context,
+            EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         [HttpGet("interno/{internoId}")]
@@ -86,6 +91,7 @@ namespace ApiAsilo.Controllers
         {
             // 1. VALIDAR INTERNO
             var interno = await _context.Internos
+                .Include(i => i.Familiar)
                 .FirstOrDefaultAsync(i => i.Id == datos.InternoID);
             if (interno == null)
             {
@@ -93,7 +99,10 @@ namespace ApiAsilo.Controllers
                 {
                     mensaje = "El interno no existe."
                 });
-            }if (!interno.Activo){
+            }
+
+            if (!interno.Activo)
+            {
                 return BadRequest(new
                 {
                     mensaje = "El interno se encuentra dado de baja."
@@ -106,12 +115,17 @@ namespace ApiAsilo.Controllers
                 .FirstOrDefaultAsync(u =>
                     u.Id == datos.MedicoGeneralID &&
                     u.Activo);
-            if (medicoGeneral == null){
+
+            if (medicoGeneral == null)
+            {
                 return BadRequest(new
                 {
                     mensaje = "El médico general no existe o está inactivo."
                 });
-            }if (medicoGeneral.Rol == null || medicoGeneral.Rol.Nombre != "MedicoGeneral")
+            }
+
+            if (medicoGeneral.Rol == null ||
+                medicoGeneral.Rol.Nombre != "MedicoGeneral")
             {
                 return BadRequest(new
                 {
@@ -126,45 +140,47 @@ namespace ApiAsilo.Controllers
             // 4. VALIDAR ESPECIALIDAD Y ENFERMERO
             if (datos.RequiereEspecialista)
             {
-                // Especialidad
-                if (!datos.EspecialidadID.HasValue){
+                if (!datos.EspecialidadID.HasValue)
+                {
                     return BadRequest(new
                     {
                         mensaje = "Debe seleccionar una especialidad."
                     });
                 }
 
-                // Enfermero
-                if (!datos.EnfermeroID.HasValue){
+                if (!datos.EnfermeroID.HasValue)
+                {
                     return BadRequest(new
                     {
                         mensaje = "Debe seleccionar un enfermero(a)."
                     });
                 }
 
-                // Buscar especialidad
-                especialidad = await _context.Especialidades
-                    .FirstOrDefaultAsync(e => e.Id == datos.EspecialidadID.Value && e.Activo);
-                if (especialidad == null){
+                especialidad = await _context.Especialidades.FirstOrDefaultAsync(e => e.Id == datos.EspecialidadID.Value && e.Activo);
+                if (especialidad == null)
+                {
                     return BadRequest(new
                     {
                         mensaje = "La especialidad seleccionada no existe o está inactiva."
                     });
                 }
-        
-                // Buscar enfermero
+
                 enfermero = await _context.Usuarios
                     .Include(u => u.Rol)
-                    .FirstOrDefaultAsync(u =>  u.Id == datos.EnfermeroID.Value && u.Activo);
-                if (enfermero == null){
+                    .FirstOrDefaultAsync(u =>
+                        u.Id == datos.EnfermeroID.Value &&
+                        u.Activo);
+                if (enfermero == null)
+                {
                     return BadRequest(new
                     {
                         mensaje = "El enfermero(a) seleccionado no existe o está inactivo."
                     });
                 }
 
-                // Verificar rol de enfermero
-                if (enfermero.Rol == null || enfermero.Rol.Nombre != "Enfermero") {
+                if (enfermero.Rol == null ||
+                    enfermero.Rol.Nombre != "Enfermero")
+                {
                     return BadRequest(new
                     {
                         mensaje = "El usuario seleccionado no tiene el rol de Enfermero."
@@ -214,11 +230,66 @@ namespace ApiAsilo.Controllers
             // 7. GUARDAR
             await _context.SaveChangesAsync();
 
+            // 8. ENVIAR CORREO AL FAMILIAR
             if (solicitud != null)
             {
+                var familiar = interno.Familiar;
+                if (familiar != null &&
+                    !string.IsNullOrWhiteSpace(familiar.Correo))
+                {
+                    var nombreEspecialidad = especialidad?.Nombre ?? "Especialidad médica";
+
+                    var mensajeCorreo = $@"
+                        <div style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+                            <p>Estimado familiar responsable:</p>
+
+                            <p>
+                                Le informamos que el Médico General ha realizado una
+                                evaluación médica a su familiar
+                                <strong>{interno.Nombre} {interno.Apellido}</strong>
+                                y ha generado una solicitud de atención con un médico especialista.
+                            </p>
+
+                            <p>
+                                <strong>Especialidad solicitada:</strong>
+                                {nombreEspecialidad}
+                            </p>
+
+                            <p>
+                                <strong>Diagnóstico de la valoración:</strong>
+                                {datos.Diagnostico}
+                            </p>
+
+                            <p>
+                                <strong>Motivo:</strong>
+                                {datos.MotivoConsulta}
+                            </p>
+
+                            <p>
+                                <strong>Estado:</strong>
+                                Pendiente de programación
+                            </p>
+
+                            <p>
+                                La Fundación gestionará la asignación del médico especialista
+                                y la programación de la atención.
+                                Posteriormente recibirá una nueva notificación con la
+                                información de la cita.
+                            </p>
+
+                            <p>
+                                Atentamente,<br>
+                                <strong>Asilo de Ancianos Nueva Vida</strong>
+                            </p>
+                        </div>";
+                    await _emailService.EnviarCorreoAsync(
+                        familiar.Correo, "Nueva solicitud de atención médica especializada", mensajeCorreo
+                    );
+                }
+
                 return Ok(new
                 {
-                    mensaje = "Evaluación registrada y solicitud de especialista creada correctamente.",
+                    mensaje = "Evaluación registrada, solicitud de especialista creada y correo enviado correctamente.",
                     evaluacionId = evaluacion.Id,
                     solicitudId = solicitud.Id
                 });

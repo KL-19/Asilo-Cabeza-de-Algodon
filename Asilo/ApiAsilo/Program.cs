@@ -22,6 +22,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddControllers();
 builder.Services.AddScoped<AtencionMedicaService>();
 builder.Services.AddScoped<CargoCuentaService>();
+builder.Services.AddScoped<EmailService>();
 var app = builder.Build();
 
 app.UseCors("PermitirWeb"); 

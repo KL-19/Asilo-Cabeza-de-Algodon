@@ -1,6 +1,8 @@
 const API_BASE = "http://localhost:5054";
 let internoSeleccionado = null;
 let internosDisponibles = [];
+let guardandoEvaluacion = false;
+
 document.addEventListener("DOMContentLoaded", () => {
     cargarInternos();
     cargarEspecialidades();
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             buscarInterno
         );
-    } 
+    }
     if (btnHistorial) {
         btnHistorial.addEventListener(
             "click",
@@ -26,7 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnGuardar) {
         btnGuardar.addEventListener(
             "click",
-            guardarEvaluacion
+            function (event) {
+                event.preventDefault(); 
+                guardarEvaluacion(); 
+            }
         );
     }
     if (requiereEspecialista) {
@@ -376,7 +381,7 @@ function mostrarCamposEspecialista() {
     const checkbox = document.getElementById("requiereEspecialista");
     const campos = document.getElementById("camposEspecialista");
     if (!checkbox || !campos) return;
-    
+
     if (checkbox.checked) {
         campos.style.display ="grid";
     } else {
@@ -424,7 +429,7 @@ async function mostrarHistorial() {
         if (!respuesta.ok) {
             throw new Error("No se pudo cargar el historial.");
         }
-        
+
         const historial = await respuesta.json();
         if (historial.length === 0) {
             contenido.innerHTML = `
@@ -599,6 +604,9 @@ function cerrarModalHistorial() {
 
 // GUARDAR EVALUACION
 async function guardarEvaluacion() {
+    if (guardandoEvaluacion) {
+        return;
+    }
     if (!internoSeleccionado) {
         mostrarMensaje("Primero debe seleccionar un interno.", "error");
         return;
@@ -610,8 +618,8 @@ async function guardarEvaluacion() {
         return;
     }
 
-    const motivo = document.getElementById( "motivo" ).value.trim();
-    const diagnostico = document.getElementById("diagnostico" ).value.trim();
+    const motivo = document.getElementById("motivo").value.trim();
+    const diagnostico = document.getElementById("diagnostico").value.trim();
     if (!motivo || !diagnostico) {
         mostrarMensaje("Debe ingresar el motivo de consulta y el diagnóstico.","error");
         return;
@@ -634,12 +642,12 @@ async function guardarEvaluacion() {
             return;
         }
     }
-    
+
     const datos = {
         internoID: internoSeleccionado.id,
         medicoGeneralID: parseInt(usuarioId),
         motivoConsulta: motivo,
-        presionArterial: document.getElementById("presion" ).value.trim() || null,
+        presionArterial: document.getElementById("presion").value.trim() || null,
         temperatura: convertirNumero(document.getElementById("temperatura").value),
         frecuenciaCardiaca: convertirEntero(document.getElementById("frecuencia").value),
         saturacionOxigeno: convertirEntero(document.getElementById("saturacion").value),
@@ -647,14 +655,19 @@ async function guardarEvaluacion() {
         tratamiento: document.getElementById("tratamiento").value.trim() || null,
         observaciones: document.getElementById("observaciones").value.trim() || null,
         requiereEspecialista: requiereEspecialista,
-        especialidadID:
-            requiereEspecialista
+        especialidadID: requiereEspecialista
                 ? parseInt(especialidadID)
                 : null,
-        enfermeroID: requiereEspecialista 
-                ? parseInt(enfermeroID) 
+        enfermeroID: requiereEspecialista
+                ? parseInt(enfermeroID)
                 : null
     };
+
+    guardandoEvaluacion = true;
+    const btnGuardar = document.getElementById("btnGuardar");
+    if (btnGuardar) {
+        btnGuardar.disabled = true;
+    }
 
     try {
         const respuesta =
@@ -669,21 +682,28 @@ async function guardarEvaluacion() {
                     body: JSON.stringify(datos)
                 }
             );
-            const resultado =await respuesta.json();
+        const resultado = await respuesta.json();
 
         if (!respuesta.ok) {
             throw new Error(
                 resultado.mensaje || "No se pudo registrar la evaluación."
             );
         }
-
-        mostrarMensaje(
-            resultado.mensaje, "exito"
-        );
+        mostrarMensaje(resultado.mensaje, "exito");
         limpiarFormulario();
     } catch (error) {
         console.error(error);
-        mostrarMensaje(error.message,"error");
+
+        mostrarMensaje(
+            error.message,
+            "error"
+        );
+
+    } finally {
+        guardandoEvaluacion = false;
+        if (btnGuardar) {
+            btnGuardar.disabled = false;
+        }
     }
 }
 
