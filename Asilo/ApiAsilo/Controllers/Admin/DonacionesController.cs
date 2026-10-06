@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ApiAsilo.Data;
 using ApiAsilo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiAsilo.Controllers
 {
@@ -13,6 +14,24 @@ namespace ApiAsilo.Controllers
         public DonacionesController(AppDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerDonaciones()
+        {
+            var donaciones = await _context.Donaciones.OrderByDescending(d => d.FechaRecepcion)
+                .Select(d => new
+                {
+                    id = d.Id,
+                    fechaRecepcion = d.FechaRecepcion,
+                    nombreDonante = d.NombreDonante,
+                    tipoDonante = d.TipoDonante,
+                    formaRecepcion = d.FormaRecepcion,
+                    monto = d.Monto,
+                    numeroReferencia = d.NumeroReferencia
+                })
+                .ToListAsync();
+            return Ok(donaciones);
         }
 
         [HttpPost]

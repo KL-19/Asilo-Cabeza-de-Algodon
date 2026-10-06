@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ApiAsilo.Data;
 using ApiAsilo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiAsilo.Controllers
 {
@@ -13,6 +14,26 @@ namespace ApiAsilo.Controllers
         public GastosOperativosController(AppDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerGastos()
+        {
+            var gastos = await _context.GastosOperativos
+                .OrderByDescending(g => g.FechaGasto)
+                .Select(g => new
+                {
+                    id = g.Id,
+                    fechaGasto = g.FechaGasto,
+                    tipoGasto = g.TipoGasto,
+                    descripcion = g.Descripcion,
+                    proveedorBeneficiario = g.ProveedorBeneficiario,
+                    monto = g.Monto,
+                    metodoPago = g.MetodoPago,
+                    numeroReferencia = g.NumeroReferencia
+                })
+                .ToListAsync();
+            return Ok(gastos);
         }
 
         [HttpPost]

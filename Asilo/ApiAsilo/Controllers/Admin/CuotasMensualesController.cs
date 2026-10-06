@@ -16,6 +16,28 @@ namespace ApiAsilo.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ObtenerCuotas()
+        {
+            var cuotas = await _context.CuotasMensuales.Include(c => c.Interno).OrderByDescending(c => c.FechaPago)
+                .Select(c => new
+                {
+                    id = c.Id,
+                    fechaPago = c.FechaPago,
+                    interno = c.Interno != null
+                        ? c.Interno.Nombre + " " + c.Interno.Apellido
+                        : "Sin interno",
+                    periodoAnio = c.PeriodoAnio,
+                    periodoMes = c.PeriodoMes,
+                    monto = c.Monto,
+                    metodoPago = c.MetodoPago,
+                    numeroReferencia = c.NumeroReferencia,
+                    estado = c.Estado
+                })
+                .ToListAsync();
+            return Ok(cuotas);
+        }
+
         // OBTENER INTERNOS
         [HttpGet("internos")]
         public async Task<IActionResult> ObtenerInternos(

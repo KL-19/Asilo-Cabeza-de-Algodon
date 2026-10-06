@@ -19,593 +19,551 @@
 </head>
 
 <body>
-
-    <!-- =========================
-         BARRA LATERAL
-    ========================== -->
-    <aside class="sidebar">
-
-        <!-- LOGO -->
-        <div class="logo">
-
-            <div class="logo-icon">
-                <i class="ph ph-heartbeat"></i>
-            </div>
-
-            <div class="logo-text">
-                <h2>Cabeza de Algodón</h2>
-                <span>Administración</span>
-            </div>
-
+<aside class="sidebar">
+    <!-- LOGO -->
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="ph ph-heartbeat"></i>
         </div>
 
-        <!-- NAVEGACIÓN -->
-        <nav class="menu">
+        <div class="logo-text">
+            <h2>Cabeza de Algodón</h2>
+            <span>Administración</span>
+        </div>
+    </div>
 
-            <p class="menu-title">PRINCIPAL</p>
+    <!-- NAVEGACIÓN -->
+    <nav class="menu">
+        <p class="menu-title">PRINCIPAL</p>
+        <a href="../dashboard.html" class="menu-item">
+            <i class="ph ph-squares-four"></i>
+            <span>Inicio</span>
+        </a>
 
-            <a href="../dashboard.html" class="menu-item">
-                <i class="ph ph-squares-four"></i>
-                <span>Inicio</span>
-            </a>
+        <p class="menu-title">GESTIÓN</p>
+        <a href="../usuarios/usuarios.html" class="menu-item">
+            <i class="ph ph-users"></i>
+            <span>Usuarios</span>
+        </a>
 
-            <p class="menu-title">GESTIÓN</p>
+        <a href="../internos/internos.html" class="menu-item">
+            <i class="ph ph-person-simple"></i>
+            <span>Internos</span>
+        </a>
 
-            <a href="../usuarios/usuarios.html" class="menu-item">
-                <i class="ph ph-users"></i>
-                <span>Usuarios</span>
-            </a>
+        <a href="../familiares/familiares.html" class="menu-item">
+            <i class="ph ph-users-three"></i>
+            <span>Familiares</span>
+        </a>
 
-            <a href="../internos/internos.html" class="menu-item">
-                <i class="ph ph-person-simple"></i>
-                <span>Internos</span>
-            </a>
+        <p class="menu-title">ADMINISTRACIÓN</p>
+        <a href="../finanzas/finanzas.html" class="menu-item active">
+            <i class="ph ph-wallet"></i>
+            <span>Finanzas</span>
+        </a>
 
-            <a href="../familiares/familiares.html" class="menu-item">
-                <i class="ph ph-users-three"></i>
-                <span>Familiares</span>
-            </a>
+        <a href="../reportes/reportes.html" class="menu-item">
+            <i class="ph ph-chart-line-up"></i>
+            <span>Reportes</span>
+        </a>
 
-            <p class="menu-title">ADMINISTRACIÓN</p>
+    </nav>
 
-            <a href="../finanzas/finanzas.html" class="menu-item active">
-                <i class="ph ph-wallet"></i>
-                <span>Finanzas</span>
-            </a>
-
-            <a href="../reportes/reportes.html" class="menu-item">
-                <i class="ph ph-chart-line-up"></i>
-                <span>Reportes</span>
-            </a>
-        </nav>
-
-        <!-- USUARIO -->
-        <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-
+    <!-- USUARIO -->
+    <div class="sidebar-bottom">
+        <div class="admin-mini">
+            <div class="admin-avatar">
+                <i class="ph ph-user"></i>
             </div>
 
-            <a href="../../index.html" class="logout">
-                <i class="ph ph-sign-out"></i>
-                <span>Cerrar sesión</span>
-            </a>
-
+            <div>
+                <strong>Administrador</strong>
+                <span>Administrador</span>
+            </div>
         </div>
 
-    </aside>
+        <a href="../../index.html" class="logout">
+            <i class="ph ph-sign-out"></i>
+            <span>Cerrar sesión</span>
+        </a>
+    </div>
+</aside>
 
+<main class="main-content">
+    <header class="topbar">
+        <div class="page-title">
+            <div class="breadcrumb">
+                <a href="../dashboard.html">
+                    Administración
+                </a>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
-    <main class="main-content">
-
-        <!-- HEADER -->
-        <header class="topbar">
-
-            <div class="page-title">
-
-                <div class="breadcrumb">
-
-                    <a href="../dashboard.html">
-                        Administración
-                    </a>
-
-                    <i class="ph ph-caret-right"></i>
-
-                    <strong>Finanzas</strong>
-
-                </div>
-
-                <h1>Finanzas</h1>
-
-                <p>
-                    Administra los ingresos, pagos y gastos
-                    del asilo.
-                </p>
-
+                <i class="ph ph-caret-right"></i>
+                <strong>Finanzas</strong>
             </div>
-
-
-            <div class="topbar-actions">
-
-                <button class="notification-btn">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
-                <div class="profile">
-
-                    <div class="profile-avatar">
-                        A
-                    </div>
-
-                    <div class="profile-info">
-                        <strong>Administrador</strong>
-                        <span>Administrador</span>
-                    </div>
-
-                    <i class="ph ph-caret-down"></i>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- =========================
-             RESUMEN FINANCIERO
-        ========================== -->
-        <section class="stats-grid">
-
-            <!-- INGRESOS -->
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-                    <i class="ph ph-arrow-down-left"></i>
-                </div>
-
-                <div class="stat-info">
-
-                    <span>Ingresos del mes</span>
-
-                    <h2>Q 28,450</h2>
-
-                    <small class="positive">
-                        <i class="ph ph-arrow-up"></i>
-                        8.4% este mes
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <!-- EGRESOS -->
-            <div class="stat-card">
-
-                <div class="stat-icon red">
-                    <i class="ph ph-arrow-up-right"></i>
-                </div>
-
-                <div class="stat-info">
-
-                    <span>Gastos del mes</span>
-
-                    <h2>Q 14,280</h2>
-
-                    <small>
-                        Gastos registrados
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <!-- BALANCE -->
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    <i class="ph ph-wallet"></i>
-                </div>
-
-                <div class="stat-info">
-
-                    <span>Balance actual</span>
-
-                    <h2>Q 14,170</h2>
-
-                    <small class="positive">
-                        Disponible
-                    </small>
-
-                </div>
-
-            </div>
-            
-        </section>
-
-
-        <!-- =========================
-             CONTENIDO FINANCIERO
-        ========================== -->
-        <section class="dashboard-grid">
-
-
-            <!-- MOVIMIENTOS -->
-            <div class="dashboard-card activity-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <h3>Movimientos recientes</h3>
-
-                        <p>
-                            Últimos ingresos y egresos registrados
-                        </p>
-
-                    </div>
-
-                    <a href="#" class="view-all">
-                        Ver todos
-                    </a>
-
-                </div>
-
-
-                <div class="activity-list">
-
-
-                    <!-- INGRESO -->
-                    <div class="activity-item">
-
-                        <div class="activity-icon green">
-                            <i class="ph ph-money"></i>
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Mensualidad recibida
-                            </strong>
-
-                            <span>
-                                Pago correspondiente al interno #00125
-                            </span>
-
-                            <small>
-                                Hoy · Q 2,500
-                            </small>
-
-                        </div>
-
-                        <strong class="amount income">
-                            + Q 2,500
-                        </strong>
-
-                    </div>
-
-
-                    <!-- GASTO -->
-                    <div class="activity-item">
-
-                        <div class="activity-icon red">
-                            <i class="ph ph-lightning"></i>
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Pago de energía eléctrica
-                            </strong>
-
-                            <span>
-                                Factura correspondiente al mes actual
-                            </span>
-
-                            <small>
-                                Ayer · Q 1,280
-                            </small>
-
-                        </div>
-
-                        <strong class="amount expense">
-                            - Q 1,280
-                        </strong>
-
-                    </div>
-
-
-                    <!-- FUNDACIÓN -->
-                    <div class="activity-item">
-
-                        <div class="activity-icon purple">
-                            <i class="ph ph-hospital"></i>
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Pago a Fundación
-                            </strong>
-
-                            <span>
-                                Servicios médicos y de laboratorio
-                            </span>
-
-                            <small>
-                                Hace 2 días · Q 850
-                            </small>
-
-                        </div>
-
-                        <strong class="amount expense">
-                            - Q 850
-                        </strong>
-
-                    </div>
-
-
-                    <!-- DONACIÓN -->
-                    <div class="activity-item">
-
-                        <div class="activity-icon blue">
-                            <i class="ph ph-hand-heart"></i>
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Donación recibida
-                            </strong>
-
-                            <span>
-                                Donación registrada para el asilo
-                            </span>
-
-                            <small>
-                                Hace 3 días · Q 1,500
-                            </small>
-
-                        </div>
-
-                        <strong class="amount income">
-                            + Q 1,500
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- MENSUALIDADES -->
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <h3>
-                            Mensualidades
-                        </h3>
-
-                        <p>
-                            Estado de pagos de los internos
-                        </p>
-
-                    </div>
-
-                    <a href="#" class="view-all">
-                        Ver todas
-                    </a>
-
-                </div>
-
-
-                <div class="payment-list">
-
-
-                    <div class="payment-item">
-
-                        <div class="payment-icon green">
-                            <i class="ph ph-check"></i>
-                        </div>
-
-                        <div class="payment-info">
-
-                            <strong>
-                                Interno #00125
-                            </strong>
-
-                            <span>
-                                Septiembre
-                            </span>
-
-                        </div>
-
-                        <span class="payment-status paid">
-                            Pagado
-                        </span>
-
-                    </div>
-
-
-                    <div class="payment-item">
-
-                        <div class="payment-icon green">
-                            <i class="ph ph-check"></i>
-                        </div>
-
-                        <div class="payment-info">
-
-                            <strong>
-                                Interno #00118
-                            </strong>
-
-                            <span>
-                                Septiembre
-                            </span>
-
-                        </div>
-
-                        <span class="payment-status paid">
-                            Pagado
-                        </span>
-
-                    </div>
-
-
-                    <div class="payment-item">
-
-                        <div class="payment-icon orange">
-                            <i class="ph ph-clock"></i>
-                        </div>
-
-                        <div class="payment-info">
-
-                            <strong>
-                                Interno #00103
-                            </strong>
-
-                            <span>
-                                Septiembre
-                            </span>
-
-                        </div>
-
-                        <span class="payment-status pending">
-                            Pendiente
-                        </span>
-
-                    </div>
-
-
-                    <div class="payment-item">
-
-                        <div class="payment-icon red">
-                            <i class="ph ph-warning"></i>
-                        </div>
-
-                        <div class="payment-info">
-
-                            <strong>
-                                Interno #00098
-                            </strong>
-
-                            <span>
-                                Septiembre
-                            </span>
-
-                        </div>
-
-                        <span class="payment-status overdue">
-                            Vencido
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-     GESTIÓN FINANCIERA
-========================== -->
-<section class="quick-section">
-
-    <div class="card-header">
-
-        <div>
-            <h3>Gestión financiera</h3>
+            <h1>Finanzas</h1>
             <p>
-                Administra los ingresos, gastos y cargos del asilo.
+                Administra los ingresos, pagos y gastos del asilo.
             </p>
         </div>
 
-    </div>
+        <div class="topbar-actions">
+            <div class="profile">
+                <div class="profile-avatar">
+                    A
+                </div>
 
-    <div class="quick-grid">
+                <div class="profile-info">
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+                <i class="ph ph-caret-down"></i>
+            </div>
+        </div>
+    </header>
 
-        <!-- DONACIONES -->
-        <a href="../finanzas/registrarDonacion.html" class="quick-card">
-
-            <div class="quick-icon green">
-                <i class="ph ph-hand-heart"></i>
+    <section class="stats-grid">
+        <!-- INGRESOS -->
+        <div class="stat-card">
+            <div class="stat-icon green">
+                <i class="ph ph-arrow-down-left"></i>
             </div>
 
+            <div class="stat-info">
+                <span>Ingresos del mes</span>
+
+                <h2 id="totalIngresos">Q 0.00</h2>
+
+                <small class="positive">
+                    <i class="ph ph-arrow-up"></i>
+                    Ingresos registrados
+                </small>
+            </div>
+        </div>
+
+        <!-- EGRESOS -->
+        <div class="stat-card">
+            <div class="stat-icon red">
+                <i class="ph ph-arrow-up-right"></i>
+            </div>
+
+            <div class="stat-info">
+                <span>Gastos del mes</span>
+                <h2 id="totalGastos">Q 0.00</h2>
+                <small>
+                    Gastos registrados
+                </small>
+            </div>
+        </div>
+
+        <!-- BALANCE -->
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="ph ph-wallet"></i>
+            </div>
+
+            <div class="stat-info">
+                <span>Balance actual</span>
+
+                <h2 id="balanceActual">Q 0.00</h2>
+
+                <small class="positive">
+                    Disponible
+                </small>
+            </div>
+        </div>
+    </section>
+
+    <section class="finance-section">
+        <div class="card-header">
             <div>
-                <strong>Registrar donación</strong>
-                <span>
-                    Registrar ingresos por donaciones.
-                </span>
+                <h3>Gestión financiera</h3>
+                <p>
+                    Administra los ingresos, gastos y cargos del asilo.
+                </p>
             </div>
+        </div>
 
-            <i class="ph ph-arrow-right"></i>
+        <div class="finance-accordion">
+            <button
+                type="button"
+                class="finance-accordion-header"
+                onclick="toggleFinanceSection('donaciones')">
 
-        </a>
+                <div class="finance-title">
+                    <div class="finance-icon green">
+                        <i class="ph ph-hand-heart"></i>
+                    </div>
 
+                    <div>
+                        <strong>Donaciones</strong>
 
-        <!-- CUOTAS MENSUALES -->
-        <a href="../finanzas/registrarCuota.html" class="quick-card">
+                        <span>
+                            Historial y control de las donaciones recibidas.
+                        </span>
+                    </div>
+                </div>
+                <i
+                    class="ph ph-caret-down accordion-arrow"
+                    id="arrow-donaciones">
+                </i>
+            </button>
 
-            <div class="quick-icon blue">
-                <i class="ph ph-calendar-check"></i>
+            <div
+                class="finance-accordion-content"
+                id="donaciones">
+                <!-- BARRA DE HERRAMIENTAS -->
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscarDonacion"
+                            placeholder="Buscar donación...">
+                    </div>
+                    <a
+                        href="registrarDonacion.html"
+                        class="btn-register">
+                        <i class="ph ph-plus"></i>
+                        Registrar donación
+                    </a>
+                </div>
+
+                <!-- TABLA -->
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Donante</th>
+                                <th>Tipo</th>
+                                <th>Forma de recepción</th>
+                                <th>Monto</th>
+                                <th>Referencia</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaDonaciones">
+                            <tr class="empty-row">
+                                <td colspan="6">
+                                    <div class="empty-state">
+                                        <i class="ph ph-hand-heart"></i>
+
+                                        <strong>No hay donaciones para mostrar</strong>
+
+                                        <span>
+                                            Las donaciones registradas aparecerán aquí.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINACIÓN -->
+                <div class="table-footer">
+                    <span class="table-info" id="infoDonaciones">
+                        Mostrando 0 de 0 donaciones
+                    </span>
+
+                    <div
+                        class="pagination"
+                        id="paginacionDonaciones">
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div>
-                <strong>Registrar cuota mensual</strong>
-                <span>
-                    Registrar el pago mensual del familiar.
-                </span>
+        <div class="finance-accordion">
+            <button
+                type="button"
+                class="finance-accordion-header"
+                onclick="toggleFinanceSection('cuotas')">
+
+                <div class="finance-title">
+                    <div class="finance-icon blue">
+                        <i class="ph ph-calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Cuotas mensuales</strong>
+
+                        <span>
+                            Consulta y controla los pagos mensuales de los familiares.
+                        </span>
+                    </div>
+                </div>
+                <i
+                    class="ph ph-caret-down accordion-arrow"
+                    id="arrow-cuotas">
+                </i>
+            </button>
+
+            <div
+                class="finance-accordion-content"
+                id="cuotas">
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscarCuota"
+                            placeholder="Buscar cuota...">
+                    </div>
+
+                    <a
+                        href="registrarCuota.html"
+                        class="btn-register">
+                        <i class="ph ph-plus"></i>
+                        Registrar cuota
+                    </a>
+                </div>
+
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha de pago</th>
+                                <th>Interno</th>
+                                <th>Periodo</th>
+                                <th>Monto</th>
+                                <th>Método de pago</th>
+                                <th>Referencia</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaCuotas">
+                            <tr class="empty-row">
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <i class="ph ph-calendar-check"></i>
+
+                                        <strong>No hay cuotas para mostrar</strong>
+
+                                        <span>
+                                            Los pagos registrados aparecerán aquí.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINACIÓN -->
+                <div class="table-footer">
+                    <span class="table-info" id="infoCuotas">
+                        Mostrando 0 de 0 cuotas
+                    </span>
+
+                    <div
+                        class="pagination"
+                        id="paginacionCuotas">
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <i class="ph ph-arrow-right"></i>
+        <div class="finance-accordion">
+            <button
+                type="button"
+                class="finance-accordion-header"
+                onclick="toggleFinanceSection('gastos')">
 
-        </a>
+                <div class="finance-title">
+                    <div class="finance-icon orange">
+                        <i class="ph ph-receipt"></i>
+                    </div>
 
+                    <div>
+                        <strong>Gastos</strong>
 
-        <!-- GASTOS -->
-        <a href="../finanzas/registrarGasto.html" class="quick-card">
+                        <span>
+                            Consulta y controla los gastos realizados por el asilo.
+                        </span>
+                    </div>
+                </div>
 
-            <div class="quick-icon orange">
-                <i class="ph ph-receipt"></i>
+                <i
+                    class="ph ph-caret-down accordion-arrow"
+                    id="arrow-gastos">
+                </i>
+            </button>
+
+            <div
+                class="finance-accordion-content"
+                id="gastos">
+
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscarGasto"
+                            placeholder="Buscar gasto...">
+                    </div>
+
+                    <a
+                        href="registrarGasto.html"
+                        class="btn-register">
+                        <i class="ph ph-plus"></i>
+                        Registrar gasto
+                    </a>
+                </div>
+
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Tipo de gasto</th>
+                                <th>Descripción</th>
+                                <th>Proveedor / beneficiario</th>
+                                <th>Monto</th>
+                                <th>Método de pago</th>
+                                <th>Referencia</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaGastos">
+                            <tr class="empty-row">
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <i class="ph ph-receipt"></i>
+
+                                        <strong>No hay gastos para mostrar</strong>
+
+                                        <span>
+                                            Los gastos registrados aparecerán aquí.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span class="table-info" id="infoGastos">
+                        Mostrando 0 de 0 gastos
+                    </span>
+
+                    <div
+                        class="pagination"
+                        id="paginacionGastos">
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div>
-                <strong>Registrar gasto</strong>
-                <span>
-                    Registrar pagos y gastos del asilo.
-                </span>
+        <!-- CARGOS DE FAMILIARES -->
+        <div class="finance-accordion">
+            <button
+                type="button"
+                class="finance-accordion-header"
+                onclick="toggleFinanceSection('cargos')">
+
+                <div class="finance-title">
+                    <div class="finance-icon purple">
+                        <i class="ph ph-file-text"></i>
+                    </div>
+
+                    <div>
+                        <strong>Cargos de familiares</strong>
+
+                        <span>
+                            Consulta los cargos generados a las cuentas de los familiares.
+                        </span>
+                    </div>
+                </div>
+                <i
+                    class="ph ph-caret-down accordion-arrow"
+                    id="arrow-cargos">
+                </i>
+            </button>
+
+            <div
+                class="finance-accordion-content"
+                id="cargos">
+
+                <div class="table-toolbar">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="buscarCargo"
+                            placeholder="Buscar cargo...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Familiar</th>
+                                <th>Concepto</th>
+                                <th>Monto original</th>
+                                <th>Descuento</th>
+                                <th>Monto final</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaCargos">
+                            <tr class="empty-row">
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <i class="ph ph-file-text"></i>
+
+                                        <strong>No hay cargos para mostrar</strong>
+
+                                        <span>
+                                            Los cargos generados aparecerán aquí.
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span class="table-info">
+                        Mostrando 0 de 0 cargos
+                    </span>
+
+                    <div class="pagination">
+                        <button
+                            type="button"
+                            class="pagination-btn"
+                            disabled>
+                            <i class="ph ph-caret-left"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="pagination-btn active">
+                            1
+                        </button>
+
+                        <button
+                            type="button"
+                            class="pagination-btn"
+                            disabled>
+                            <i class="ph ph-caret-right"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <i class="ph ph-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-    </main>
-
+        </div>
+    </section>
+</main>
+<script src="finanzas.js"></script>
 </body>
-
 </html>
