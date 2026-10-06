@@ -2,6 +2,7 @@ using ApiAsilo.Data;
 using ApiAsilo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ApiAsilo.Services;
 
 namespace ApiAsilo.Controllers
 {
@@ -10,8 +11,11 @@ namespace ApiAsilo.Controllers
     public class FundacionController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public FundacionController(AppDbContext context) {
+        private readonly EmailService _emailService;
+        public FundacionController(AppDbContext context, EmailService emailService)
+        {
             _context = context;
+            _emailService = emailService;
         }
 
         [HttpGet("solicitudes")]
@@ -75,7 +79,9 @@ namespace ApiAsilo.Controllers
                 .Include(s => s.MedicoGeneral)
                 .Include(s => s.Evaluacion)
                 .FirstOrDefaultAsync(s => s.Id == id);
-            if (solicitud == null){
+
+            if (solicitud == null)
+            {
                 return NotFound(new
                 {
                     mensaje = "La solicitud no existe."
@@ -207,21 +213,31 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            if (especialista.Rol == null || especialista.Rol.Nombre != "MedicoEspecialista") {
+            if (
+                especialista.Rol == null || especialista.Rol.Nombre != "MedicoEspecialista"
+            )
+            {
                 return BadRequest(new
                 {
                     mensaje = "El usuario seleccionado no es un médico especialista."
                 });
             }
 
-            if (especialista.PerfilUsuario == null || !especialista.PerfilUsuario.Activo) {
+            if (
+                especialista.PerfilUsuario == null || !especialista.PerfilUsuario.Activo
+            )
+            {
                 return BadRequest(new
                 {
                     mensaje = "El especialista no tiene un perfil activo."
                 });
             }
 
-            if (solicitud.EspecialidadID == null || especialista.PerfilUsuario.EspecialidadID != solicitud.EspecialidadID){
+            if (
+                solicitud.EspecialidadID == null || especialista.PerfilUsuario.EspecialidadID
+                    != solicitud.EspecialidadID
+            )
+            {
                 return BadRequest(new
                 {
                     mensaje = "El especialista seleccionado no pertenece a la especialidad solicitada."
@@ -259,6 +275,85 @@ namespace ApiAsilo.Controllers
             _context.Citas.Add(cita);
             await _context.SaveChangesAsync();
 
+            var interno = await _context.Internos.Include(i => i.Familiar).FirstOrDefaultAsync(i => i.Id == solicitud.InternoID);
+            var especialidad = await _context.Especialidades.FirstOrDefaultAsync(e => e.Id == solicitud.EspecialidadID);
+            var enfermero = solicitud.EnfermeroID.HasValue
+                    ? await _context.Usuarios
+                        .FirstOrDefaultAsync(u => u.Id == solicitud.EnfermeroID.Value)
+                    : null;
+            if (
+                interno?.Familiar != null &&
+                !string.IsNullOrWhiteSpace(
+                    interno.Familiar.Correo
+                )
+            )
+            {
+                var nombreEspecialista = especialista.NombreCompleto;
+                var nombreEspecialidad = especialidad?.Nombre ??
+                    "Especialidad médica";
+                var nombreEnfermero = enfermero?.NombreCompleto ??
+                    "No asignado";
+
+                var mensajeCorreo = $@"
+                    <div style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+                        <p>Estimado familiar responsable:</p>
+
+                        <p>
+                            Le informamos que la Fundación ha confirmado
+                            la programación de la atención médica especializada
+                            para su familiar
+                            <strong>
+                                {interno.Nombre} {interno.Apellido}
+                            </strong>.
+                        </p>
+
+                        <p>
+                            <strong>Especialidad:</strong>
+                            {nombreEspecialidad}
+                        </p>
+
+                        <p>
+                            <strong>Médico especialista:</strong>
+                            {nombreEspecialista}
+                        </p>
+
+                        <p>
+                            <strong>Fecha de atención:</strong>
+                            {datos.FechaHora:dd/MM/yyyy}
+                        </p>
+
+                        <p>
+                            <strong>Hora de atención:</strong>
+                            {datos.FechaHora:hh:mm tt}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Enfermero(a) acompañante:
+                            </strong>
+                            {nombreEnfermero}
+                        </p>
+
+                        <p>
+                            <strong>Estado:</strong>
+                            Cita programada
+                        </p>
+
+                        <p>
+                            La atención médica especializada ha sido programada correctamente.
+                            Agradecemos su atención y colaboración.
+                        </p>
+
+                        <p>
+                            Atentamente,<br>
+                            <strong>
+                                Asilo de Ancianos Nueva Vida
+                            </strong>
+                        </p>
+                    </div>";
+
+                await _emailService.EnviarCorreoAsync(interno.Familiar.Correo, "Atención médica especializada programada", mensajeCorreo);
+            }
             return Ok(new
             {
                 mensaje = "La solicitud fue programada correctamente.",
