@@ -34,6 +34,7 @@ namespace ApiAsilo.Controllers
                     porcentajeDescuento = c.PorcentajeDescuento,
                     monto = c.Monto,
                     fechaCargo = c.FechaCargo,
+                    fechaPago = c.FechaPago,
                     estado = c.Estado
                 })
                 .ToListAsync();
@@ -152,6 +153,12 @@ namespace ApiAsilo.Controllers
             }
 
             cargoExistente.Estado = solicitud.Estado;
+            if (solicitud.Estado == "Pagado")
+            {
+                cargoExistente.FechaPago = DateTime.Now;
+            }else{
+                cargoExistente.FechaPago = null;
+            }
             await _context.SaveChangesAsync();
             return Ok(new
             {

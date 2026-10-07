@@ -31,6 +31,8 @@ namespace ApiAsilo.Models
 
         public DateTime FechaCargo { get; set; }
 
+        public DateTime? FechaPago { get; set; }
+
         [Required]
         [StringLength(30)]
         public string Estado { get; set; } = "Pendiente";
