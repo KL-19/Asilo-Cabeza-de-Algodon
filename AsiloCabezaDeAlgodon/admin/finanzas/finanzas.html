@@ -460,7 +460,7 @@
             </div>
         </div>
 
-        <!-- CARGOS DE FAMILIARES -->
+        <!-- PAGOS DE SERVICIOS MÉDICOS -->
         <div class="finance-accordion">
             <button
                 type="button"
@@ -469,14 +469,14 @@
 
                 <div class="finance-title">
                     <div class="finance-icon purple">
-                        <i class="ph ph-file-text"></i>
+                        <i class="ph ph-first-aid-kit"></i>
                     </div>
 
                     <div>
-                        <strong>Cargos de familiares</strong>
+                        <strong>Pagos de servicios médicos</strong>
 
                         <span>
-                            Consulta los cargos generados a las cuentas de los familiares.
+                            Consulta y controla los pagos de los servicios médicos realizados.
                         </span>
                     </div>
                 </div>
@@ -497,7 +497,7 @@
                         <input
                             type="text"
                             id="buscarCargo"
-                            placeholder="Buscar cargo...">
+                            placeholder="Buscar pago...">
                     </div>
                 </div>
 
@@ -512,19 +512,22 @@
                                 <th>Descuento</th>
                                 <th>Monto final</th>
                                 <th>Estado</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
 
                         <tbody id="tablaCargos">
                             <tr class="empty-row">
-                                <td colspan="7">
+                                <td colspan="8">
                                     <div class="empty-state">
-                                        <i class="ph ph-file-text"></i>
+                                        <i class="ph ph-first-aid-kit"></i>
 
-                                        <strong>No hay cargos para mostrar</strong>
+                                        <strong>
+                                            No hay pagos de servicios médicos
+                                        </strong>
 
                                         <span>
-                                            Los cargos generados aparecerán aquí.
+                                            Los cargos de servicios médicos aparecerán aquí.
                                         </span>
                                     </div>
                                 </td>
@@ -534,30 +537,15 @@
                 </div>
 
                 <div class="table-footer">
-                    <span class="table-info">
-                        Mostrando 0 de 0 cargos
+                    <span
+                        class="table-info"
+                        id="infoCargos">
+                        Mostrando 0 de 0 pagos
                     </span>
 
-                    <div class="pagination">
-                        <button
-                            type="button"
-                            class="pagination-btn"
-                            disabled>
-                            <i class="ph ph-caret-left"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="pagination-btn active">
-                            1
-                        </button>
-
-                        <button
-                            type="button"
-                            class="pagination-btn"
-                            disabled>
-                            <i class="ph ph-caret-right"></i>
-                        </button>
+                    <div
+                        class="pagination"
+                        id="paginacionCargos">
                     </div>
                 </div>
             </div>

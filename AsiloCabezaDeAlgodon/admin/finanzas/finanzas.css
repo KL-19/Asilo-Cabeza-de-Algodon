@@ -799,3 +799,20 @@ body {
         font-size: 18px;
     }
 }
+
+.btn-pay {
+    border: none;
+    background: #a568d3;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-pay:hover {
+    background: #6c458a;
+}

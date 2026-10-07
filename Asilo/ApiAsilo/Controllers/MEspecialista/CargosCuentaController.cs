@@ -15,6 +15,31 @@ namespace ApiAsilo.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetCargos()
+        {
+            var cargos = await _context.CargosCuenta
+                .OrderByDescending(c => c.FechaCargo)
+                .Select(c => new
+                {
+                    id = c.ID,
+                    familiarId = c.FamiliarID,
+                    familiar = c.Familiar != null
+                        ? c.Familiar.NombreCompleto
+                        : "Sin familiar",
+                    internoId = c.InternoID,
+                    atencionMedicaId = c.AtencionMedicaID,
+                    concepto = c.Concepto,
+                    montoOriginal = c.MontoOriginal,
+                    porcentajeDescuento = c.PorcentajeDescuento,
+                    monto = c.Monto,
+                    fechaCargo = c.FechaCargo,
+                    estado = c.Estado
+                })
+                .ToListAsync();
+            return Ok(cargos);
+        }
+
         [HttpGet("familiar/{familiarId}")]
         public async Task<ActionResult> GetCargosPorFamiliar(int familiarId)
         {
@@ -99,7 +124,7 @@ namespace ApiAsilo.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCargo(
             int id,
-            CargoCuenta cargo)
+            [FromBody] EstadoCargoRequest solicitud)
         {
             var cargoExistente = await _context.CargosCuenta.FirstOrDefaultAsync(c => c.ID == id);
             if (cargoExistente == null)
@@ -110,16 +135,36 @@ namespace ApiAsilo.Controllers
                 });
             }
 
-            if (!string.IsNullOrWhiteSpace(cargo.Estado))
+            if (solicitud == null || string.IsNullOrWhiteSpace(solicitud.Estado))
             {
-                cargoExistente.Estado = cargo.Estado;
+                return BadRequest(new
+                {
+                    mensaje = "Debe indicar el estado del cargo."
+                });
             }
 
+            if (solicitud.Estado != "Pendiente" && solicitud.Estado != "Pagado")
+            {
+                return BadRequest(new
+                {
+                    mensaje = "El estado debe ser Pendiente o Pagado."
+                });
+            }
+
+            cargoExistente.Estado = solicitud.Estado;
             await _context.SaveChangesAsync();
             return Ok(new
             {
-                mensaje = "El cargo fue actualizado correctamente.", cargo = cargoExistente
+                mensaje = solicitud.Estado == "Pagado"
+                    ? "El pago fue registrado correctamente." 
+                    : "El estado del cargo fue actualizado correctamente.", 
+                cargo = cargoExistente
             });
         }
+    }
+
+    public class EstadoCargoRequest
+    {
+        public string Estado { get; set; } = string.Empty;
     }
 }

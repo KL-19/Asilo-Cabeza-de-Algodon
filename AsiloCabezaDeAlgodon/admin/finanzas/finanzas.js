@@ -3,14 +3,17 @@ const REGISTROS_POR_PAGINA = 10;
 let donaciones = [];
 let cuotas = [];
 let gastos = [];
+let cargos = [];
 let paginaDonaciones = 1;
 let paginaCuotas = 1;
 let paginaGastos = 1;
+let paginaCargos = 1;
 
 async function cargarFinanzas() {
     await cargarDonaciones();
     await cargarCuotas();
     await cargarGastos();
+    await cargarCargos();
     actualizarResumenFinanciero();
 }
 
@@ -73,7 +76,6 @@ function actualizarResumenFinanciero() {
     document.getElementById("balanceActual").textContent = `Q ${formatearMonto(balance)}`;
 }
 
-// DONACIONES
 async function cargarDonaciones() {
     try {
         const response = await fetch(`${API}/Donaciones`);
@@ -103,26 +105,25 @@ function mostrarDonaciones() {
     const tbody = document.getElementById("tablaDonaciones");
     const buscar = document.getElementById("buscarDonacion").value.trim().toLowerCase();
 
-    const filtradas =
-        donaciones.filter(donacion => {
-            const texto = `
-                ${donacion.nombreDonante || ""}
-                ${donacion.tipoDonante || ""}
-                ${donacion.formaRecepcion || ""}
-                ${donacion.numeroReferencia || ""}
-                ${donacion.monto || ""}
-            `.toLowerCase();
-            return texto.includes(buscar);
-        });
+    const filtradas = donaciones.filter(donacion => {
+        const texto = `
+            ${donacion.nombreDonante || ""}
+            ${donacion.tipoDonante || ""}
+            ${donacion.formaRecepcion || ""}
+            ${donacion.numeroReferencia || ""}
+            ${donacion.monto || ""}
+        `.toLowerCase();
+        return texto.includes(buscar);
+    });
 
     const totalRegistros = filtradas.length;
-    const totalPaginas =
-        Math.max(
-            1,
-            Math.ceil(
-                totalRegistros / REGISTROS_POR_PAGINA
-            )
-        );
+    const totalPaginas = Math.max(
+        1,
+        Math.ceil(
+            totalRegistros / REGISTROS_POR_PAGINA
+        )
+    );
+
     if (paginaDonaciones > totalPaginas) {
         paginaDonaciones = totalPaginas;
     }
@@ -186,7 +187,6 @@ function mostrarDonaciones() {
     );
 }
 
-// CUOTAS
 async function cargarCuotas() {
     try {
         const response = await fetch(`${API}/CuotasMensuales`);
@@ -216,30 +216,29 @@ function mostrarCuotas() {
     const buscar = document.getElementById("buscarCuota").value.trim().toLowerCase();
 
     const filtradas = cuotas.filter(cuota => {
-            const periodo =
-                `${cuota.periodoAnio}-${String(
-                    cuota.periodoMes
-                ).padStart(2, "0")}`;
+        const periodo =
+            `${cuota.periodoAnio}-${String(
+                cuota.periodoMes
+            ).padStart(2, "0")}`;
 
-            const texto = `
-                ${cuota.interno || ""}
-                ${periodo}
-                ${cuota.metodoPago || ""}
-                ${cuota.numeroReferencia || ""}
-                ${cuota.estado || ""}
-                ${cuota.monto || ""}
-            `.toLowerCase();
-            return texto.includes(buscar);
-        });
+        const texto = `
+            ${cuota.interno || ""}
+            ${periodo}
+            ${cuota.metodoPago || ""}
+            ${cuota.numeroReferencia || ""}
+            ${cuota.estado || ""}
+            ${cuota.monto || ""}
+        `.toLowerCase();
+        return texto.includes(buscar);
+    });
 
     const totalRegistros = filtradas.length;
-    const totalPaginas =
-        Math.max(
-            1,
-            Math.ceil(
-                totalRegistros / REGISTROS_POR_PAGINA
-            )
-        );
+    const totalPaginas = Math.max(
+        1,
+        Math.ceil(
+            totalRegistros / REGISTROS_POR_PAGINA
+        )
+    );
     if (paginaCuotas > totalPaginas) {
         paginaCuotas = totalPaginas;
     }
@@ -308,7 +307,6 @@ function mostrarCuotas() {
     );
 }
 
-// GASTOS
 async function cargarGastos() {
     try {
         const response = await fetch(`${API}/GastosOperativos`);
@@ -339,25 +337,25 @@ function mostrarGastos() {
     const buscar = document.getElementById("buscarGasto").value.trim().toLowerCase();
 
     const filtrados = gastos.filter(gasto => {
-            const texto = `
-                ${gasto.tipoGasto || ""}
-                ${gasto.descripcion || ""}
-                ${gasto.proveedorBeneficiario || ""}
-                ${gasto.metodoPago || ""}
-                ${gasto.numeroReferencia || ""}
-                ${gasto.monto || ""}
-            `.toLowerCase();
-            return texto.includes(buscar);
-        });
+        const texto = `
+            ${gasto.tipoGasto || ""}
+            ${gasto.descripcion || ""}
+            ${gasto.proveedorBeneficiario || ""}
+            ${gasto.metodoPago || ""}
+            ${gasto.numeroReferencia || ""}
+            ${gasto.monto || ""}
+        `.toLowerCase();
+        return texto.includes(buscar);
+    });
 
     const totalRegistros = filtrados.length;
-    const totalPaginas =
-        Math.max(
-            1,
-            Math.ceil(
-                totalRegistros / REGISTROS_POR_PAGINA
-            )
-        );
+    const totalPaginas = Math.max(
+        1,
+        Math.ceil(
+            totalRegistros / REGISTROS_POR_PAGINA
+        )
+    );
+
     if (paginaGastos > totalPaginas) {
         paginaGastos = totalPaginas;
     }
@@ -424,6 +422,177 @@ function mostrarGastos() {
     );
 }
 
+// PAGOS DE SERVICIOS MÉDICOS
+async function cargarCargos() {
+    try {
+        const response = await fetch(`${API}/CargosCuenta`);
+        if (!response.ok) {
+            throw new Error("No se pudieron cargar los pagos de servicios médicos.");
+        }
+
+        cargos = await response.json();
+        paginaCargos = 1;
+        mostrarCargos();
+    } catch (error) {
+        console.error("Error al cargar pagos de servicios médicos:", error);
+
+        document.getElementById(
+            "tablaCargos"
+        ).innerHTML = `
+            <tr>
+                <td colspan="8">
+                    Error al cargar los pagos de servicios médicos.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+function mostrarCargos() {
+    const tbody = document.getElementById("tablaCargos");
+    const buscar = document.getElementById("buscarCargo").value.trim().toLowerCase();
+    const filtrados = cargos.filter(cargo => {
+        const texto = `
+            ${cargo.familiar || ""}
+            ${cargo.concepto || ""}
+            ${cargo.montoOriginal || ""}
+            ${cargo.porcentajeDescuento || ""}
+            ${cargo.monto || ""}
+            ${cargo.estado || ""}
+        `.toLowerCase();
+        return texto.includes(buscar);
+    });
+
+    const totalRegistros = filtrados.length;
+    const totalPaginas = Math.max(
+        1,
+        Math.ceil(
+            totalRegistros / REGISTROS_POR_PAGINA
+        )
+    );
+
+    if (paginaCargos > totalPaginas) {
+        paginaCargos = totalPaginas;
+    }
+    const inicio = (paginaCargos - 1) * REGISTROS_POR_PAGINA;
+    const fin = inicio + REGISTROS_POR_PAGINA;
+    const registros = filtrados.slice(inicio, fin);
+    tbody.innerHTML = "";
+
+    if (registros.length === 0) {
+        tbody.innerHTML = `
+            <tr class="empty-row">
+                <td colspan="8">
+                    <div class="empty-state">
+                        <i class="ph ph-first-aid-kit"></i>
+                        <strong>
+                            No hay pagos de servicios médicos
+                        </strong>
+                        <span>
+                            Los cargos de servicios médicos aparecerán aquí.
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        `;
+    } else {
+        registros.forEach(cargo => {
+            const fila = document.createElement("tr");
+            const estado = cargo.estado || "Pendiente";
+            const accion = estado === "Pendiente"
+                    ? `
+                        <button
+                            type="button"
+                            class="btn-pay"
+                            onclick="pagarCargo(${cargo.id})">
+                            <i class="ph ph-check"></i>
+                            Pagar
+                        </button>
+                    `
+                    : `
+                        <span class="payment-completed">
+                            Pagado
+                        </span>
+                    `;
+            fila.innerHTML = `
+                <td>
+                    ${formatearFecha(
+                        cargo.fechaCargo
+                    )}
+                </td>
+                <td>
+                    ${cargo.familiar || "Sin familiar"}
+                </td>
+                <td>
+                    ${cargo.concepto || "Sin concepto"}
+                </td>
+                <td>
+                    Q ${formatearMonto(
+                        cargo.montoOriginal
+                    )}
+                </td>
+                <td>
+                    ${formatearMonto(
+                        cargo.porcentajeDescuento
+                    )}%
+                </td>
+                <td>
+                    Q ${formatearMonto(
+                        cargo.monto
+                    )}
+                </td>
+                <td>
+                    ${estado}
+                </td>
+                <td>
+                    ${accion}
+                </td>
+            `;
+            tbody.appendChild(fila);
+        });
+    }
+    actualizarInfo("infoCargos", inicio, registros.length, totalRegistros, "pagos");
+    mostrarPaginacion("paginacionCargos", paginaCargos, totalPaginas,
+        pagina => {
+            paginaCargos = pagina;
+            mostrarCargos();
+        }
+    );
+}
+
+// REGISTRAR PAGO
+async function pagarCargo(cargoId) {
+    const confirmar = confirm("¿Desea registrar este servicio médico como pagado?");
+    if (!confirmar) {
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `${API}/CargosCuenta/${cargoId}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    estado: "Pagado"
+                })
+            }
+        );
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            throw new Error(errorData?.mensaje || "No se pudo registrar el pago.");
+        }
+        alert("El pago fue registrado correctamente.");
+        await cargarCargos();
+    } catch (error) {
+        console.error("Error al registrar pago:", error);
+        alert(error.message || "Ocurrió un error al registrar el pago.");
+    }
+}
+
 function mostrarPaginacion(
     contenedorId,
     paginaActual,
@@ -459,7 +628,6 @@ function mostrarPaginacion(
         const boton = document.createElement("button");
         boton.type = "button";
         boton.className = "pagination-btn";
-        
         boton.textContent = pagina;
         if (pagina === paginaActual) {
             boton.classList.add("active");
@@ -474,13 +642,11 @@ function mostrarPaginacion(
         contenedor.appendChild(boton);
     }
 
-    // BOTÓN SIGUIENTE
     const botonSiguiente = document.createElement("button");
     botonSiguiente.type = "button";
     botonSiguiente.className = "pagination-btn";
     botonSiguiente.innerHTML = `<i class="ph ph-caret-right"></i>`;
-    botonSiguiente.disabled =
-        paginaActual === totalPaginas;
+    botonSiguiente.disabled = paginaActual === totalPaginas;
     botonSiguiente.addEventListener(
         "click",
         function () {
@@ -516,14 +682,13 @@ function actualizarInfo(
     elemento.textContent = `Mostrando ${desde}-${hasta} de ${totalRegistros} ${nombre}`;
 }
 
-// BÚSQUEDA
 document.getElementById("buscarDonacion").addEventListener(
         "input",
         function () {
             paginaDonaciones = 1;
             mostrarDonaciones();
         }
-);
+);  
 
 document.getElementById("buscarCuota").addEventListener(
         "input",
@@ -541,6 +706,14 @@ document.getElementById("buscarGasto").addEventListener(
         }
     );
 
+document.getElementById("buscarCargo").addEventListener(
+        "input",
+        function () {
+            paginaCargos = 1;
+            mostrarCargos();
+        }
+    );
+
 function formatearFecha(fecha) {
     if (!fecha) {
         return "Sin fecha";
@@ -555,7 +728,6 @@ function formatearFecha(fecha) {
     );
 }
 
-// FORMATO DE MONTO
 function formatearMonto(monto) {
     return Number(
         monto || 0
@@ -568,7 +740,6 @@ function formatearMonto(monto) {
     );
 }
 
-// ACORDEONES
 function toggleFinanceSection(sectionId) {
     const contenido = document.getElementById(sectionId);
     const arrow = document.getElementById(`arrow-${sectionId}`);
