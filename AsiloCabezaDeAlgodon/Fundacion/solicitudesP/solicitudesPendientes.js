@@ -4,14 +4,19 @@ let solicitudesFiltradas = [];
 let paginaActual = 1;
 const registrosPorPagina = 5;
 let solicitudSeleccionada = null;
+const NOTIFICACIONES_FUNDACION = "notificacionesFundacionSolicitudesVistas";
+let solicitudesNotificacion = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     actualizarSaludo();
     cargarSolicitudes();
+    cargarNotificacionesFundacion();
+
     document.getElementById("buscarSolicitud").addEventListener("input", filtrarSolicitudes);
     document.getElementById("btnAnterior").addEventListener("click", paginaAnterior);
     document.getElementById("btnSiguiente").addEventListener("click", paginaSiguiente);
     document.getElementById("btnConfirmar").addEventListener("click", confirmarProgramacion);
+    document.getElementById("btnNotificaciones").addEventListener("click", toggleNotificaciones);
 });
 
 function actualizarSaludo() {
@@ -472,4 +477,112 @@ function escapeHtml(texto) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+// NOTIFICACIONES
+async function cargarNotificacionesFundacion() {
+    try {
+        const respuesta = await fetch(`${API}/solicitudes`);
+        if (!respuesta.ok) {
+            return;
+        }
+
+        const solicitudesActuales = await respuesta.json();
+        const solicitudesPendientes = solicitudesActuales.filter(solicitud => solicitud.estado && solicitud.estado.toLowerCase() === "pendiente");
+        solicitudesNotificacion = solicitudesPendientes;
+        mostrarNotificacionesFundacion();
+    } catch (error) {
+        console.error("Error al cargar notificaciones:", error);
+    }
+}
+
+function mostrarNotificacionesFundacion() {
+    const lista = document.getElementById("notificationList");
+    const dot = document.getElementById("notificationDot");
+    const contador = document.getElementById("notificationCount");
+    const vistas = JSON.parse(localStorage.getItem(NOTIFICACIONES_FUNDACION) || "[]");
+    
+    const nuevas = solicitudesNotificacion.filter(solicitud => !vistas.includes(solicitud.id));
+    if (nuevas.length > 0) {
+        dot.style.display = "block";
+        contador.textContent =
+            nuevas.length === 1
+                ? "1 solicitud nueva"
+                : `${nuevas.length} solicitudes nuevas`;
+    } else {
+        dot.style.display = "none";
+        contador.textContent = "No hay notificaciones nuevas";
+    }
+    lista.innerHTML = "";
+    if (nuevas.length === 0) {
+        lista.innerHTML = `
+            <div class="notification-empty">
+                No hay solicitudes nuevas.
+            </div>
+        `;
+        return;
+    }
+    nuevas.forEach(solicitud => {
+        const nombreInterno = solicitud.interno
+                ? solicitud.interno.nombreCompleto
+                : "Un interno";
+        const especialidad = solicitud.especialidad
+                ? solicitud.especialidad.nombre
+                : "especialidad médica";
+        const item = document.createElement("div");
+        item.className = "notification-item";
+        item.style.cursor = "pointer";
+
+        item.addEventListener(
+            "click",
+            async function () {
+                const panel = document.getElementById("notificationPanel");
+                panel.classList.remove("show");
+                await abrirSolicitud(solicitud.id);
+            }
+        );
+        item.innerHTML = `
+            <div class="notification-item-icon">
+                <i class="ph ph-clipboard-text"></i>
+            </div>
+
+            <div class="notification-item-content">
+                <strong>
+                    Nueva solicitud médica
+                </strong>
+
+                <span>
+                    ${escapeHtml(nombreInterno)}
+                    requiere atención de
+                    ${escapeHtml(especialidad)}.
+                </span>
+            </div>
+        `;
+        lista.appendChild(item);
+    });
+}
+
+function toggleNotificaciones() {
+    const panel = document.getElementById("notificationPanel");
+    
+    const estaAbierto = panel.classList.contains("show");
+    if (estaAbierto) {
+        panel.classList.remove("show");
+        marcarNotificacionesComoVistas();
+        return;
+    }
+    panel.classList.add("show");
+}
+
+function marcarNotificacionesComoVistas() {
+    const vistas = JSON.parse(localStorage.getItem(NOTIFICACIONES_FUNDACION) || "[]");
+    solicitudesNotificacion.forEach(
+        solicitud => {
+            if (!vistas.includes(solicitud.id)) {
+                vistas.push(solicitud.id);
+            }
+        }
+    );
+    localStorage.setItem(NOTIFICACIONES_FUNDACION, JSON.stringify(vistas));
+    mostrarNotificacionesFundacion();
 }

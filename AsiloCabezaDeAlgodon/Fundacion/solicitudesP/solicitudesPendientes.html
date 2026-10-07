@@ -33,18 +33,6 @@
             </div>
         </div>
 
-        <!-- PERFIL FUNDACIÓN -->
-        <div class="foundation-profile">
-            <div class="foundation-avatar">
-                <i class="ph ph-buildings"></i>
-            </div>
-
-            <div>
-                <strong>Fundación</strong>
-                <span>Coordinación médica</span>
-            </div>
-        </div>
-
         <!-- MENÚ -->
         <nav class="menu">
             <p class="menu-title">SOLICITUDES</p>
@@ -88,10 +76,38 @@
             <div class="top-actions">
 
                 <!-- NOTIFICACIONES -->
-                <button class="notification">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
+                <div class="notification-wrapper">
+                    <button
+                        type="button"
+                        class="notification"
+                        id="btnNotificaciones">
+                        <i class="ph ph-bell"></i>
+                        
+                        <span
+                            class="notification-dot"
+                            id="notificationDot">
+                        </span>
+                    </button>
+
+                    <div
+                        class="notification-panel"
+                        id="notificationPanel">
+
+                        <div class="notification-header">
+                            <div>
+                                <strong>Notificaciones</strong>
+                                <span id="notificationCount">
+                                    No hay notificaciones nuevas
+                                </span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="notification-list"
+                            id="notificationList">
+                        </div>
+                    </div>
+                </div>
 
                 <!-- PERFIL -->
                 <div class="top-profile">

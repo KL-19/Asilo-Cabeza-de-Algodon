@@ -68,42 +68,6 @@ body {
     color: #9ca3af;
 }
 
-/* PERFIL FUNDACIÓN */
-.foundation-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 14px;
-   margin-bottom: 25px;
-}
-
-.foundation-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-    font-size: 19px;
-}
-
-.foundation-profile strong {
-    display: block;
-    font-size: 12px;
-}
-
-.foundation-profile span {
-    display: block;
-    font-size: 10px;
-    color: #9ca3af;
-    margin-top: 3px;
-}
-
-
 /* MENÚ */
 .menu {
     flex: 1;
@@ -201,6 +165,112 @@ body {
     position: absolute;
     top: 8px;
     right: 8px;
+}
+
+.notification-wrapper {
+    position: relative;
+}
+
+.notification {
+    position: relative;
+}
+
+.notification-dot {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    background: #e05252;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.notification-panel {
+    display: none;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 350px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-panel.show {
+    display: block;
+}
+
+.notification-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.notification-header strong {
+    display: block;
+    font-size: 15px;
+    color: #2f3441;
+}
+
+.notification-header span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #8b8f98;
+}
+
+.notification-list {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #eee9f8;
+    color: #6f5aa8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notification-item-content strong {
+    display: block;
+    font-size: 13px;
+    color: #2f3441;
+}
+
+.notification-item-content span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #777b84;
+}
+
+.notification-empty {
+    padding: 25px 18px;
+    text-align: center;
+    color: #8b8f98;
+    font-size: 13px;
 }
 
 /* PERFIL SUPERIOR */
