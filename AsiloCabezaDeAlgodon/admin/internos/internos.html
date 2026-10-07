@@ -16,10 +16,7 @@
 </head>
 
 <body>
-    <!-- BARRA LATERAL -->
     <aside class="sidebar">
-
-        <!-- Logo -->
         <div class="logo">
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
@@ -66,22 +63,8 @@
                 <span>Reportes</span>
             </a>
         </nav>
-
-
-        <!-- USUARIO -->
+        
         <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-            </div>
-
             <a href="../../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
@@ -89,12 +72,8 @@
         </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
-
-        <!-- HEADER -->
         <header class="topbar">
-
             <div class="page-title">
                 <div class="breadcrumb">  
                     <a href="../dashboard.html" class="breadcrumb-link">
@@ -112,17 +91,8 @@
                 </p>
             </div>
 
-
             <div class="topbar-actions">
-
-                <button class="notification-btn">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
-
                 <div class="profile">
-
                     <div class="profile-avatar">
                         A
                     </div>
@@ -138,9 +108,7 @@
 
         <!-- RESUMEN -->
         <section class="summary-grid">
-
             <div class="summary-card">
-
                 <div class="summary-icon blue">
                     <i class="ph ph-users"></i>
                 </div>
@@ -149,7 +117,6 @@
                     <span>Total de internos</span>
                     <strong id="totalInternos">0</strong>
                 </div>
-
             </div>
 
             <div class="summary-card">
@@ -161,14 +128,11 @@
                     <span>Internos activos</span>
                     <strong id="internosActivos">0</strong>
                 </div>
-
             </div>
         </section>
 
         <!-- PANEL DE INTERNOS -->
         <section class="internos-panel">
-
-            <!-- CABECERA -->
             <div class="panel-header">
                 <div>
                     <h2>Internos registrados</h2>
@@ -231,7 +195,6 @@
 
                     <tbody id="internosTableBody">
                     </tbody>
-
                 </table>
             </div>
 
@@ -245,20 +208,14 @@
                 <div class="pagination"
                 id="pagination">
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
     <!-- MODAL EXPEDIENTE-->
     <div class="modal-overlay" id="expedienteModal">
-
         <div class="modal">
-            <!-- CABECERA DEL MODAL -->
             <div class="modal-header">
-
                 <div>
                     <span class="modal-label">
                         EXPEDIENTE DEL INTERNO
@@ -282,17 +239,13 @@
 
             <!-- CONTENIDO -->
             <div class="modal-body">
-
-                <!-- DATOS PERSONALES -->
                 <div class="modal-section">
-
                     <h3>
                         <i class="ph ph-user"></i>
                         Datos personales
                     </h3>
 
                     <div class="modal-grid">
-
                         <div class="modal-field">
                             <span>Nombre completo</span>
                             <strong id="modalNombreCompleto">
@@ -327,21 +280,16 @@
                                 -
                             </strong>
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- FAMILIAR -->
                 <div class="modal-section">
-
                     <h3>
                         <i class="ph ph-users-three"></i>
                         Familiar responsable
                     </h3>
 
                     <div class="modal-grid">
-
                         <div class="modal-field">
                             <span>Nombre</span>
                             <strong id="modalFamiliar">
@@ -369,14 +317,10 @@
                                 -
                             </strong>
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- PSICOPATOLOGÍA -->
                 <div class="modal-section">
-
                     <h3>
                         <i class="ph ph-brain"></i>
                         Condiciones y padecimientos
@@ -387,31 +331,22 @@
                         id="modalPsicopatologia">
                         No registrado.
                     </div>
-
                 </div>
 
-
-                <!-- MEDICAMENTOS -->
                 <div class="modal-section">
-
                     <h3>
                         <i class="ph ph-pill"></i>
                         Medicamentos de cajón
                     </h3>
 
                     <div id="modalMedicamentos">
-
                         <div class="modal-info-box">
                             No hay medicamentos registrados.
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- PIE DEL MODAL -->
             <div class="modal-footer">
                 <button
                     class="modal-button"
@@ -420,7 +355,6 @@
                 </button>
             </div>
         </div>
-
     </div>
     <script src="internos.js"></script>
 </body>

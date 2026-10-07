@@ -100,7 +100,7 @@ body {
 }
 
 .menu-item:hover {
-    background: rgba(255,255,255,0.07);
+    background: rgba(255, 255, 255, 0.07);
     color: white;
 }
 
@@ -112,37 +112,6 @@ body {
 /* SIDEBAR BOTTOM */
 .sidebar-bottom {
     margin-top: auto;
-}
-
-.admin-mini {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-}
-
-.admin-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-}
-
-.admin-mini strong {
-    display: block;
-    font-size: 11px;
-}
-
-.admin-mini span {
-    font-size: 9px;
-    color: #9ca3af;
 }
 
 .logout {
@@ -158,7 +127,7 @@ body {
 }
 
 .logout:hover {
-    background: rgba(239,68,68,0.15);
+    background: rgba(239, 68, 68, 0.15);
     color: #fca5a5;
 }
 
@@ -185,13 +154,6 @@ body {
     margin-bottom: 8px;
 }
 
-.section-label {
-    color: var(--primary);
-    font-size: 10px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
 .page-title h1 {
     font-size: 25px;
 }
@@ -206,28 +168,6 @@ body {
     display: flex;
     align-items: center;
     gap: 22px;
-}
-
-.notification-btn {
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    position: relative;
-    font-size: 20px;
-    color: var(--muted);
-}
-
-.notification-dot {
-    width: 7px;
-    height: 7px;
-    background: #ef4444;
-    border-radius: 50%;
-    position: absolute;
-    top: 8px;
-    right: 8px;
 }
 
 .profile {
@@ -370,10 +310,11 @@ body {
 .btn-primary:hover {
     background: #1d4ed8;
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(37,99,235,0.18);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
 }
 
-/* FILTROS*/
+/* FILTROS */
+
 .filters {
     display: flex;
     gap: 10px;
@@ -412,7 +353,7 @@ body {
 
 .search-box input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.07);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.07);
 }
 
 .filters select {
@@ -485,7 +426,7 @@ tbody tr:hover {
     background: #fafbfe;
 }
 
-/* RESIDENTE*/
+/* RESIDENTE */
 .resident {
     display: flex;
     align-items: center;
@@ -649,6 +590,7 @@ tbody tr:hover {
     color: #4b5563;
 }
 
+/* PAGINACIÓN */
 .pagination {
     display: flex;
     align-items: center;
@@ -682,15 +624,9 @@ tbody tr:hover {
     cursor: not-allowed;
 }
 
-.pagination span {
-    font-size: 9px;
-    color: var(--muted);
-    padding: 0 3px;
-}
-
 /* RESPONSIVE */
 @media (max-width: 1150px) {
-    .stats-grid {
+    .summary-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -704,7 +640,6 @@ tbody tr:hover {
     .logo-text,
     .menu-item span,
     .menu-title,
-    .admin-mini div:last-child,
     .logout span {
         display: none;
     }
@@ -714,10 +649,6 @@ tbody tr:hover {
     }
 
     .menu-item {
-        justify-content: center;
-    }
-
-    .admin-mini {
         justify-content: center;
     }
 
@@ -742,14 +673,18 @@ tbody tr:hover {
         justify-content: flex-end;
     }
 
-    .stats-grid {
+    .summary-grid {
         grid-template-columns: 1fr;
     }
 
-    .card-header {
+    .panel-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+    }
+
+    .filters {
+        flex-direction: column;
     }
 
     .search-box {
@@ -790,12 +725,12 @@ tbody tr:hover {
     max-height: 90vh;
     background: #ffffff;
     border-radius: 18px;
-    box-shadow:0 20px 50px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transform: translateY(15px);
-    transition:transform 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .modal-overlay.show .modal {
@@ -890,7 +825,7 @@ tbody tr:hover {
 /* CAMPOS */
 .modal-grid {
     display: grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -984,7 +919,7 @@ tbody tr:hover {
     color: #202735;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE MODAL */
 @media (max-width: 700px) {
     .modal-overlay {
         padding: 15px;

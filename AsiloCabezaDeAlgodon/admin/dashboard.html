@@ -7,22 +7,15 @@
 
     <title>Dashboard - Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         BARRA LATERAL
-    ========================== -->
     <aside class="sidebar">
         <!-- Logo -->
         <div class="logo">
@@ -45,7 +38,6 @@
             </a>
 
             <p class="menu-title">GESTIÓN</p>
-
             <a href="../admin/usuarios/usuarios.html" class="menu-item">
                 <i class="ph ph-users"></i>
                 <span>Usuarios</span>
@@ -62,7 +54,6 @@
             </a>
 
             <p class="menu-title">ADMINISTRACIÓN</p>
-
             <a href="../admin/finanzas/finanzas.html" class="menu-item">
                 <i class="ph ph-wallet"></i>
                 <span>Finanzas</span>
@@ -74,33 +65,16 @@
             </a>
         </nav>
 
-        <!-- Usuario / cerrar sesión -->
+        <!-- cerrar sesión -->
         <div class="sidebar-bottom">
-            <div class="admin-mini">
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-
-            </div>
-
             <a href="../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
             </a>
-
         </div>
     </aside>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
     <main class="main-content">
-
         <!-- HEADER -->
         <header class="topbar">
             <div class="page-title">
@@ -112,11 +86,6 @@
             </div>
 
             <div class="topbar-actions">
-                <button class="notification-btn">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
                 <div class="profile">
                     <div class="profile-avatar">
                         A
@@ -128,182 +97,10 @@
                     </div>
                     <i class="ph ph-caret-down"></i>
                 </div>
-
             </div>
-
         </header>
 
-        <!-- =========================
-             TARJETAS DE RESUMEN
-        ========================== -->
-        <section class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon green">
-                    <i class="ph ph-calendar-check"></i>
-                </div>
-
-                <div class="stat-info">
-                    <span>Citas programadas Fundacion</span>
-                    <h2>18</h2>
-                    <small>
-                        Esta semana
-                    </small>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================
-             CONTENIDO INFERIOR
-        ========================== -->
-        <section class="dashboard-grid">
-
-            <!-- ACTIVIDAD RECIENTE -->
-            <div class="dashboard-card activity-card">
-                <div class="card-header">
-                    <div>
-                        <h3>Actividad reciente</h3>
-                        <p>Últimos movimientos registrados</p>
-                    </div>
-
-                    <button class="more-btn">
-                        <i class="ph ph-dots-three"></i>
-                    </button>
-                </div>
-
-                <div class="activity-list">
-                    <div class="activity-item">
-
-                        <div class="activity-icon blue">
-                            <i class="ph ph-user-plus"></i>
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Nuevo interno registrado</strong>
-                            <span>
-                                Se registró un nuevo interno en el sistema.
-                            </span>
-                            <small>Hace 15 minutos</small>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon purple">
-                            <i class="ph ph-calendar-plus"></i>
-                        </div>
-                        <div class="activity-text">
-                            <strong>Nueva solicitud médica</strong>
-                            <span>
-                                Se creó una solicitud para especialista.
-                            </span>
-                            <small>Hace 1 hora</small>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon green">
-                            <i class="ph ph-hand-heart"></i>
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Donación registrada</strong>
-                            <span>
-                                Se registró una nueva donación.
-                            </span>
-                            <small>Hace 3 horas</small>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-icon orange">
-                            <i class="ph ph-receipt"></i>
-                        </div>
-                        <div class="activity-text">
-                            <strong>Pago pendiente</strong>
-                            <span>
-                                Existe un pago pendiente a la fundación.
-                            </span>
-                            <small>Ayer</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PRÓXIMAS CITAS -->
-            <div class="dashboard-card appointments-card">
-                <div class="card-header">
-                    <div>
-                        <h3>Próximas citas</h3>
-                        <p>Agenda médica</p>
-                    </div>
-                    <a href="#" class="view-all">
-                        Ver todas
-                    </a>
-                </div>
-
-                <div class="appointments-list">
-                    <div class="appointment">
-                        <div class="appointment-date">
-                            <strong>26</strong>
-                            <span>AGO</span>
-                        </div>
-
-                        <div class="appointment-info">
-                            <strong>Consulta médica</strong>
-                            <span>
-                                Interno #00125
-                            </span>
-                        </div>
-
-                        <span class="appointment-status scheduled">
-                            Programada
-                        </span>
-                    </div>
-
-                    <div class="appointment">
-                        <div class="appointment-date">
-                            <strong>27</strong>
-                            <span>AGO</span>
-                        </div>
-
-                        <div class="appointment-info">
-                            <strong>Cardiología</strong>
-                            <span>
-                                Interno #00118
-                            </span>
-                        </div>
-
-                        <span class="appointment-status scheduled">
-                            Programada
-                        </span>
-                    </div>
-
-                    <div class="appointment">
-                        <div class="appointment-date">
-                            <strong>29</strong>
-                            <span>AGO</span>
-                        </div>
-
-                        <div class="appointment-info">
-                            <strong>Examen de laboratorio</strong>
-                            <span>
-                                Interno #00103
-                            </span>
-                        </div>
-
-                        <span class="appointment-status pending">
-                            Pendiente
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================
-             ACCESOS RÁPIDOS
-        ========================== -->
+        <!-- ACCESOS RÁPIDOS -->
         <section class="quick-section">
             <div class="card-header">
                 <div>
@@ -352,16 +149,11 @@
                             Agregar donación
                         </span>
                     </div>
-
                     <i class="ph ph-arrow-right"></i>
                 </a>
-
             </div>
-
         </section>
-
     </main>
     <script src="admin.js"></script>
 </body>
-
 </html>

@@ -8,7 +8,6 @@
     --border: #e8ebf2;
     --sidebar: #111827;
     --green: #10b981;
-    --orange: #f59e0b;
     --purple: #8b5cf6;
 }
 
@@ -113,37 +112,6 @@ body {
     margin-top: auto;
 }
 
-.admin-mini {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    margin-bottom: 8px;
-}
-
-.admin-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-}
-
-.admin-mini strong {
-    display: block;
-    font-size: 11px;
-}
-
-.admin-mini span {
-    display: block;
-    font-size: 9px;
-    color: #9ca3af;
-    margin-top: 3px;
-}
-
 .logout {
     display: flex;
     align-items: center;
@@ -220,28 +188,6 @@ body {
     gap: 22px;
 }
 
-.notification-btn {
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    position: relative;
-    font-size: 20px;
-    color: var(--muted);
-}
-
-.notification-dot {
-    width: 7px;
-    height: 7px;
-    background: #ef4444;
-    border-radius: 50%;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-}
-
 .profile {
     display: flex;
     align-items: center;
@@ -307,16 +253,6 @@ body {
 .stat-icon.green {
     background: #ecfdf5;
     color: #10b981;
-}
-
-.stat-icon.purple {
-    background: #f5f3ff;
-    color: #8b5cf6;
-}
-
-.stat-icon.orange {
-    background: #fffbeb;
-    color: #f59e0b;
 }
 
 .stat-info span {
@@ -995,7 +931,6 @@ td {
     .logo-text,
     .menu-item span,
     .menu-title,
-    .admin-mini div:last-child,
     .logout span {
         display: none;
     }
@@ -1005,10 +940,6 @@ td {
     }
 
     .menu-item {
-        justify-content: center;
-    }
-
-    .admin-mini {
         justify-content: center;
     }
 
