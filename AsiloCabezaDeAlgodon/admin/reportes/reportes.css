@@ -15,9 +15,6 @@
     --teal: #14b8a6;
 }
 
-/* =========================================================
-   RESET
-========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -855,7 +852,7 @@ body {
     }
 }
 
-/* MODAL - ANÁLISIS MÉDICOS*/
+/* MODAL - ANALISIS MEDICOS*/
 .modal-medico {
     max-width: 900px;
 }
@@ -866,7 +863,7 @@ body {
     max-width: 400px;
 }
 
-/* RESULTADO MÉDICO*/
+/* RESULTADO MÉDICO */
 .medical-result {
     border-top: 1px solid var(--border);
     padding-top: 22px;
@@ -875,6 +872,10 @@ body {
 /* SECCIONES MÉDICAS */
 .medical-section {
     margin-bottom: 25px;
+}
+
+.medical-section:last-child {
+    margin-bottom: 0;
 }
 
 .medical-section-title {
@@ -887,6 +888,7 @@ body {
 .medical-title-icon {
     width: 38px;
     height: 38px;
+    min-width: 38px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -952,82 +954,51 @@ body {
     color: var(--text);
 }
 
-/* FICHA MÉDICA*/
-.medical-box {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.medical-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 13px;
-    border-bottom: 1px solid var(--border);
-}
-
-.medical-row:last-child {
-    border-bottom: none;
-}
-
-.medical-row span {
-    font-size: 9px;
-    color: var(--muted);
-    min-width: 150px;
-}
-
-.medical-row strong {
-    font-size: 10px;
-    color: var(--text);
-    text-align: right;
-}
-
-/* HISTORIAL MÉDICO*/
+/* HISTORIAL MÉDICO */
 .medical-history {
     border-left: 2px solid #dbeafe;
     padding-left: 18px;
 }
 
-.history-item {
+/* ELEMENTOS GENERADOS POR REPORTES.JS */
+.medical-history-item {
     position: relative;
     display: flex;
-    gap: 15px;
-    padding-bottom: 20px;
+    flex-direction: column;
+    gap: 5px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
 }
 
-.history-item:last-child {
-    padding-bottom: 0;
+.medical-history-item:last-child {
+    margin-bottom: 0;
 }
 
-.history-date {
-    min-width: 55px;
-    height: 28px;
-    border-radius: 7px;
-    background: var(--primary-light);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    font-weight: 700;
+.medical-history-item::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 17px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #dbeafe;
 }
 
-.history-content strong {
+.medical-history-item strong {
     display: block;
     font-size: 10px;
-    margin-bottom: 3px;
+    color: var(--text);
+    margin-bottom: 2px;
 }
 
-.history-content span {
+.medical-history-item span {
     display: block;
-    color: var(--primary);
-    font-size: 8px;
-    margin-bottom: 6px;
-}
-
-.history-content p {
     color: var(--muted);
     font-size: 9px;
     line-height: 1.5;
@@ -1043,7 +1014,7 @@ body {
 .medicine-header,
 .medicine-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
+    grid-template-columns: 2fr 1fr 1.5fr 1fr;
     gap: 15px;
     padding: 12px;
 }
@@ -1066,25 +1037,37 @@ body {
     font-size: 10px;
 }
 
-/* RESPONSIVE - ANÁLISIS MÉDICOS */
+.medicine-row span {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+/* RESPONSIVE - ANALISIS MEDICOS */
 @media (max-width: 650px) {
     .medical-data-grid {
         grid-template-columns: 1fr;
     }
 
-    .medical-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
+    .medical-history {
+        padding-left: 14px;
     }
 
-    .medical-row strong {
-        text-align: left;
+    .medical-history-item {
+        padding: 12px;
+    }
+
+    .medical-history-item::before {
+        left: -21px;
     }
 
     .medicine-header,
     .medicine-row {
         grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .medicine-header {
+        display: none;
     }
 }
 

@@ -233,7 +233,6 @@
                 </button>
             </div>
 
-
             <!-- REPORTE 4 -->
             <div class="report-card">
                 <div class="report-icon orange">
@@ -265,7 +264,6 @@
                 </button>
             </div>
 
-
             <!-- REPORTE 5 -->
             <div class="report-card">
                 <div class="report-icon teal">
@@ -296,7 +294,6 @@
                     <i class="ph ph-arrow-right"></i>
                 </button>
             </div>
-
 
             <!-- REPORTE 6 -->
             <div class="report-card">
@@ -954,16 +951,6 @@
                     <div class="fundacion-summary">
                         <div class="expense-summary">
                             <span>
-                                TOTAL DE PAGOS
-                            </span>
-
-                            <strong id="totalRegistrosPagos">
-                                0
-                            </strong>
-                        </div>
-
-                        <div class="expense-summary">
-                            <span>
                                 MONTO TOTAL
                             </span>
 
@@ -1080,12 +1067,9 @@
                                     Q 0.00
                                 </strong>
                             </div>
-
                         </div>
 
-
                         <div class="income-card">
-
                             <div class="income-icon blue">
                                 <i class="ph ph-users-three"></i>
                             </div>
@@ -1096,12 +1080,9 @@
                                     Q 0.00
                                 </strong>
                             </div>
-
                         </div>
 
-
                         <div class="income-card">
-
                             <div class="income-icon purple">
                                 <i class="ph ph-wallet"></i>
                             </div>
@@ -1112,16 +1093,11 @@
                                     Q 0.00
                                 </strong>
                             </div>
-
                         </div>
-
                     </div>
 
-
                     <div class="charges-section">
-
                         <div class="charges-title">
-
                             <div class="charges-title-icon green">
                                 <i class="ph ph-arrow-down"></i>
                             </div>
@@ -1133,16 +1109,11 @@
                                     Donaciones, cuotas y servicios médicos pagados
                                 </span>
                             </div>
-
                         </div>
 
-
                         <div class="charges-table">
-
                             <table>
-
                                 <thead>
-
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Tipo</th>
@@ -1150,23 +1121,16 @@
                                         <th>Responsable</th>
                                         <th>Monto</th>
                                     </tr>
-
                                 </thead>
 
                                 <tbody id="tablaDonacionesCobros">
                                 </tbody>
-
                             </table>
-
                         </div>
-
                     </div>
 
-
                     <div class="income-total">
-
                         <div>
-
                             <span>
                                 Total de entradas del período
                             </span>
@@ -1174,14 +1138,10 @@
                             <strong id="totalEntradasFinal">
                                 Q 0.00
                             </strong>
-
                         </div>
-
                     </div>
 
-
                     <div class="download-actions">
-
                         <button
                             type="button"
                             class="btn-pdf"
@@ -1190,28 +1150,16 @@
                             <i class="ph ph-file-pdf"></i>
                             Descargar PDF
                         </button>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- =====================================================
-             MODAL 6 - EXÁMENES MÉDICOS
-        ====================================================== -->
-
+        <!-- MODAL 6 - EXAMENES MEDICOS -->
         <div class="modal-overlay" id="modalExamenesPaciente">
-
             <div class="modal modal-examenes">
-
                 <div class="modal-header">
-
                     <div>
-
                         <span class="modal-label">
                             REPORTE MÉDICO
                         </span>
@@ -1222,7 +1170,6 @@
                             Consulta los exámenes y resultados
                             registrados para un paciente.
                         </p>
-
                     </div>
 
                     <button
@@ -1232,14 +1179,10 @@
                     >
                         <i class="ph ph-x"></i>
                     </button>
-
                 </div>
 
-
                 <div class="modal-filters">
-
                     <div class="form-group">
-
                         <label for="pacienteExamenes">
                             Paciente
                         </label>
@@ -1249,11 +1192,9 @@
                                 Seleccione un paciente
                             </option>
                         </select>
-
                     </div>
 
                     <div class="form-group">
-
                         <label for="fechaInicioExamenes">
                             Fecha inicial
                         </label>
@@ -1262,11 +1203,9 @@
                             type="date"
                             id="fechaInicioExamenes"
                         >
-
                     </div>
 
                     <div class="form-group">
-
                         <label for="fechaFinExamenes">
                             Fecha final
                         </label>
@@ -1275,14 +1214,10 @@
                             type="date"
                             id="fechaFinExamenes"
                         >
-
                     </div>
-
                 </div>
 
-
                 <div class="modal-actions">
-
                     <button
                         type="button"
                         class="btn-generate"
@@ -1291,18 +1226,14 @@
                         <i class="ph ph-file-search"></i>
                         Generar reporte
                     </button>
-
                 </div>
-
 
                 <div
                     class="report-result exams-result"
                     id="resultadoExamenesPaciente"
                     style="display: none;"
                 >
-
                     <div class="result-header">
-
                         <div>
                             <span>PACIENTE</span>
 
@@ -1591,6 +1522,8 @@
             </div>
         </div>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     <script src="reportes.js"></script>
 </body>
 </html>

@@ -1,5 +1,12 @@
 const API = "http://localhost:5054/api";
 let modalAbierto = null;
+let reporteCostosActual = null;
+let reporteAnalisisActual = null;
+let reporteCobrosActual = null;
+let reportePagosActual = null;
+let reporteDonacionesActual = null;
+let reporteExamenesActual = null;
+let reporteMedicamentosActual = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("periodoActual").textContent = new Date().getFullYear();
@@ -44,6 +51,14 @@ function configurarReportes() {
     document.getElementById("generarDonacionesCobros").addEventListener("click", generarDonacionesCobros);
     document.getElementById("generarExamenesPaciente").addEventListener("click", generarExamenesPaciente);
     document.getElementById("generarMedicamentosPaciente").addEventListener("click", generarMedicamentosPaciente);
+
+    document.getElementById("pdfCostosCitas").addEventListener("click", descargarPDFCostosCitas);
+    document.getElementById("pdfAnalisisMedicos").addEventListener("click", descargarPDFAnalisisMedicos);
+    document.getElementById("pdfCobrosPaciente").addEventListener("click", descargarPDFCobrosPaciente);
+    document.getElementById("pdfPagosServicios").addEventListener("click", descargarPDFPagosServicios);
+    document.getElementById("pdfDonacionesCobros").addEventListener("click", descargarPDFDonacionesCobros);
+    document.getElementById("pdfExamenesPaciente").addEventListener("click", descargarPDFExamenesPaciente);
+    document.getElementById("pdfMedicamentosPaciente").addEventListener("click", descargarPDFMedicamentosPaciente);
 }
 
 function configurarModales() {
@@ -78,7 +93,6 @@ function configurarModales() {
         }
     });
 }
-
 
 function abrirModal(id) {
     const modal = document.getElementById(id);
@@ -115,14 +129,8 @@ async function cargarPacientes() {
         }
 
         const pacientes = await response.json();
-        const selects = [
-            "pacienteReporte",
-            "pacienteAnalisis",
-            "pacienteCobros",
-            "pacienteExamenes",
-            "pacienteMedicamentos"
-        ];
-
+        
+        const selects = ["pacienteReporte", "pacienteAnalisis", "pacienteCobros", "pacienteExamenes", "pacienteMedicamentos"];
         selects.forEach(id => {
             const select = document.getElementById(id);
             if (!select) {
@@ -223,6 +231,11 @@ async function generarCostosCitas() {
         }
 
         const datos = await response.json();
+        reporteCostosActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const registros = datos.registros || [];
         const tbody = document.getElementById("tablaCostosCitas");
         tbody.innerHTML = "";
@@ -286,6 +299,8 @@ async function generarAnalisisMedicos() {
         }
 
         const datos = await response.json();
+        reporteAnalisisActual = datos;
+
         document.getElementById("listaEvaluaciones").innerHTML = "";
         document.getElementById("listaAtenciones").innerHTML = "";
         document.getElementById("tablaMedicamentosAnalisis").innerHTML = "";
@@ -388,6 +403,11 @@ async function generarCobrosPaciente() {
             throw new Error("No se pudo generar el reporte.");
         }
         const datos = await response.json();
+        reporteCobrosActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const registros = datos.registros || [];
         
         const tbody = document.getElementById("tablaCobrosPaciente");
@@ -438,6 +458,11 @@ async function generarPagosServicios() {
             throw new Error("No se pudo generar el reporte.");
         }
         const datos = await response.json();
+        reportePagosActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const pagos = datos.pagos || [];
         
         const tbody = document.getElementById("tablaPagosServicios");
@@ -466,7 +491,6 @@ async function generarPagosServicios() {
 
         document.getElementById("periodoPagosServicios").textContent = obtenerPeriodo(fechaInicio, fechaFin);
         document.getElementById("cantidadPagosServicios").textContent = datos.totalPagos ?? pagos.length;
-        document.getElementById("totalRegistrosPagos").textContent = datos.totalPagos ?? pagos.length;
         document.getElementById("montoTotalPagos").textContent = `Q ${formatearMonto(datos.montoTotal)}`;
         mostrarResultado("resultadoPagosServicios");
     } catch (error) {
@@ -487,6 +511,11 @@ async function generarDonacionesCobros() {
             throw new Error("No se pudo generar el reporte.");
         }
         const datos = await response.json();
+        reporteDonacionesActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const registros = datos.registros || [];
         
         const tbody = document.getElementById("tablaDonacionesCobros");
@@ -542,6 +571,11 @@ async function generarExamenesPaciente() {
             throw new Error("No se pudo generar el reporte.");
         }
         const datos = await response.json();
+        reporteExamenesActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const examenes = datos.examenes || [];
         
         const tbody = document.getElementById("tablaExamenesPaciente");
@@ -601,6 +635,11 @@ async function generarMedicamentosPaciente() {
             throw new Error("No se pudo generar el reporte.");
         }
         const datos = await response.json();
+        reporteMedicamentosActual = {
+            datos,
+            fechaInicio,
+            fechaFin
+        };
         const medicamentos = datos.medicamentos || [];
         
         const tbody = document.getElementById("tablaMedicamentosPaciente");
@@ -651,4 +690,504 @@ async function generarMedicamentosPaciente() {
         console.error(error);
         alert("No se pudo generar el reporte de medicamentos.");
     }
+}
+
+// FUNCIONES GENERALES PARA PDF
+function crearDocumentoPDF(titulo, orientacion = "portrait") {
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert("No se pudo cargar la librería para generar el PDF.");
+        return null;
+    }
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF({
+        orientation: orientacion,
+        unit: "mm",
+        format: "a4"
+    });
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("Cabeza de Algodón", 14, 18);
+
+    doc.setFontSize(13);
+    doc.text(titulo, 14, 27);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+
+    doc.text(`Fecha de generación: ${formatearFecha(new Date())}`, 14, 34);
+    return doc;
+}
+
+function agregarPiePDF(doc) {
+    const paginas = doc.getNumberOfPages();
+    for (let pagina = 1; pagina <= paginas; pagina++) {
+        doc.setPage(pagina);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+
+        doc.text(
+            `Página ${pagina} de ${paginas}`,
+            doc.internal.pageSize.getWidth() - 14,
+            doc.internal.pageSize.getHeight() - 8,
+            {
+                align: "right"
+            }
+        );
+    }
+}
+
+function guardarPDF(doc, nombreArchivo) {
+    agregarPiePDF(doc);
+    doc.save(`${nombreArchivo}.pdf`);
+}
+
+function limpiarNombreArchivo(nombre) {
+    return String(nombre || "reporte").replace(/[\\/:*?"<>|]/g, "").trim().replace(/\s+/g, "_");
+}
+
+function validarTablaPDF(doc) {
+    if (!doc.autoTable) {
+        alert("No se pudo cargar la libreria para generar las tablas del PDF.");
+        return false;
+    }
+    return true;
+}
+
+function agregarInformacionPacientePDF(doc, nombre, periodo, inicioY = 43) {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text("Paciente:", 14, inicioY);
+    doc.setFont("helvetica", "normal");
+    doc.text(String(nombre || "—"), 35, inicioY);
+    doc.setFont("helvetica", "bold");
+    doc.text("Período:", 14, inicioY + 6);
+    doc.setFont("helvetica", "normal");
+    doc.text(String(periodo || "Todos los registros"), 35, inicioY + 6);
+    return inicioY + 14;
+}
+
+// PDF 1 COSTOS DE CITAS
+function descargarPDFCostosCitas() {
+    if (!reporteCostosActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reporteCostosActual;
+    
+    const doc = crearDocumentoPDF("Costos de citas por paciente");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const registros = datos.registros || [];
+    const nombre = datos.paciente?.nombre || document.getElementById("pacienteReporte").options[document.getElementById("pacienteReporte").selectedIndex]?.text || "Paciente";
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    let posicionY = agregarInformacionPacientePDF(doc, nombre, periodo);
+    const filas = registros.map(item => {
+        const detalles = [];
+        if (item.costoConsulta > 0) {
+            detalles.push(`Consulta: Q ${formatearMonto(item.costoConsulta)}`);
+        }
+        if (item.costoExamenes > 0) {
+            detalles.push(`Exámenes: Q ${formatearMonto(item.costoExamenes)}`);
+        }
+        if (item.costoMedicamentos > 0) {
+            detalles.push(`Medicamentos: Q ${formatearMonto(item.costoMedicamentos)}`);
+        }
+        return [item.motivo || "Servicio médico", formatearFecha(item.fecha), detalles.length ? detalles.join("\n") : "-", `Q ${formatearMonto(item.montoFinal)}`];
+    });
+
+    if (!filas.length) {
+        filas.push(["-", "-", "No hay registros para este paciente.", "Q 0.00" ]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Concepto", "Fecha", "Detalle", "Costo"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+
+    const total =
+        datos.totalFinal ??
+        registros.reduce((sum, item) => sum + Number(item.montoFinal || 0), 0);
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de costos: Q ${formatearMonto(total)}`, 14, finalY);
+    guardarPDF(doc, `Costos_Citas_${limpiarNombreArchivo(nombre)}`);
+}
+
+// PDF 2. ANALISIS MEDICO
+function descargarPDFAnalisisMedicos() {
+    if (!reporteAnalisisActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+
+    const datos = reporteAnalisisActual;
+    const doc = crearDocumentoPDF("Análisis médicos por paciente", "landscape");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const paciente = datos.paciente || {};
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text("Información del paciente", 14, 45);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text(`Nombre: ${paciente.nombre || "—"}`, 14, 52);
+    doc.text(`Fecha de nacimiento: ${formatearFecha(paciente.fechaNacimiento)}`, 14, 58);
+    doc.text(`Fecha de ingreso: ${formatearFecha(paciente.fechaIngreso)}`, 14, 64);
+    doc.text(`Género: ${paciente.genero || "—"}`, 14, 70);
+    let posicionY = 80;
+
+    // EVALUACIONES
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("Evaluaciones médicas", 14, posicionY);
+    posicionY += 4;
+    const evaluaciones = datos.evaluaciones || [];
+
+    const filasEvaluaciones = evaluaciones.map(evaluacion => [formatearFecha(evaluacion.fecha), evaluacion.motivoConsulta || "-", evaluacion.diagnostico || "-", evaluacion.observaciones || "-"]);
+    if (!filasEvaluaciones.length) {
+        filasEvaluaciones.push(["-", "No hay evaluaciones médicas registradas.", "-", "-"]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Motivo", "Diagnóstico", "Observaciones"]],
+        body: filasEvaluaciones,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    posicionY = doc.lastAutoTable.finalY + 10;
+
+    // ATENCIONES
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("Historial de atenciones médicas", 14, posicionY);
+    posicionY += 4;
+
+    const filasAtenciones = [];
+    (datos.historialAtenciones || []).forEach(cita => {
+        (cita.atenciones || []).forEach(atencion => {
+            filasAtenciones.push([formatearFecha(cita.fecha), cita.motivo || "-", atencion.diagnostico || "-", atencion.diagnosticoFinal || "-", atencion.observaciones || "-"]);
+        });
+    });
+    if (!filasAtenciones.length) {
+        filasAtenciones.push(["-", "No hay atenciones médicas registradas.", "-", "-", "-"]);
+    }
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Motivo", "Diagnóstico", "Diagnóstico final", "Observaciones"]],
+        body: filasAtenciones,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    posicionY = doc.lastAutoTable.finalY + 10;
+
+    // MEDICAMENTOS
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("Medicamentos recetados", 14, posicionY);
+    posicionY += 4;
+
+    const filasMedicamentos = [];
+    (datos.recetas || []).forEach(receta => {
+        (receta.medicamentos || []).forEach(medicamento => {
+            filasMedicamentos.push([medicamento.medicamento || "-", medicamento.dosis || "-", medicamento.frecuencia || "-", medicamento.duracion || "-"]);
+        });
+    });
+
+    if (!filasMedicamentos.length) {
+        filasMedicamentos.push(["No hay medicamentos recetados.", "-", "-", "-"]);
+    }
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Medicamento", "Dosis", "Frecuencia", "Duración"]],
+        body: filasMedicamentos,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    guardarPDF(doc, `Analisis_Medico_${limpiarNombreArchivo(paciente.nombre)}`);
+}
+
+// PDF 3 COBROS POR PACIENTE
+function descargarPDFCobrosPaciente() {
+    if (!reporteCobrosActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reporteCobrosActual;
+    
+    const doc = crearDocumentoPDF("Cobros por paciente");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const registros = datos.registros || [];
+    const nombre = datos.paciente?.nombre || document.getElementById("pacienteCobros").options[document.getElementById("pacienteCobros").selectedIndex]?.text || "Paciente";
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    const posicionY = agregarInformacionPacientePDF(doc, nombre, periodo);
+    
+    const filas = registros.map(item => [formatearFecha(item.fecha), item.concepto || "-", item.tipo || "-", `Q ${formatearMonto(item.monto)}`, item.estado || "-"]);
+    if (!filas.length) {
+        filas.push(["-", "No hay cobros registrados.", "-", "Q 0.00", "-"]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Concepto", "Tipo", "Monto", "Estado"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    const total = datos.total ??
+        registros.reduce((sum, item) => sum + Number(item.monto || 0), 0);
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de cobros: Q ${formatearMonto(total)}`, 14, finalY);
+    guardarPDF(doc, `Cobros_${limpiarNombreArchivo(nombre)}`);
+}
+
+// PDF 4 PAGOS DE SERVICIOS MEDICOS
+function descargarPDFPagosServicios() {
+    if (!reportePagosActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reportePagosActual;
+    
+    const doc = crearDocumentoPDF("Pagos de servicios médicos");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const pagos = datos.pagos || [];
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    const posicionY = agregarInformacionPacientePDF(doc, "Todos los pacientes", periodo);
+
+    const filas = pagos.map(item => [formatearFecha(item.fechaPago), item.paciente || "-", item.familiar || "-", item.concepto || "-", `Q ${formatearMonto(item.monto)}`]);
+    if (!filas.length) {
+        filas.push(["-", "No hay pagos registrados.", "-", "-", "Q 0.00"]);
+    }
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha de pago", "Paciente", "Familiar", "Concepto", "Monto"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de pagos: ${datos.totalPagos ?? pagos.length}`,14, finalY);
+    doc.text(`Monto total pagado: Q ${formatearMonto(datos.montoTotal)}`, 14, finalY + 6);
+    guardarPDF(doc, "Pagos_Servicios_Medicos");
+}
+
+// PDF 5 DONACIONES Y COBROS
+function descargarPDFDonacionesCobros() {
+    if (!reporteDonacionesActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reporteDonacionesActual;
+
+    const doc = crearDocumentoPDF("Entradas de donaciones y cobros");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const registros = datos.registros || [];
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    const posicionY = agregarInformacionPacientePDF(doc, "Fundación Cabeza de Algodón", periodo);
+
+    const filas = registros.map(item => [formatearFecha(item.fecha), item.tipo || "-", item.descripcion || "-", item.responsable || "-", `Q ${formatearMonto(item.monto)}`]);
+    if (!filas.length) {
+        filas.push(["-", "-", "No hay entradas económicas registradas.", "-", "Q 0.00"]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Tipo", "Descripción", "Responsable", "Monto"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de donaciones: Q ${formatearMonto(datos.donaciones)}`, 14, finalY);
+    doc.text(`Total de cobros: Q ${formatearMonto(datos.cobros)}`, 14, finalY + 6);
+    doc.text(`Total de entradas: Q ${formatearMonto(datos.totalEntradas)}`, 14, finalY + 12);
+    guardarPDF(doc, "Entradas_Donaciones_Cobros");
+}
+
+// PDF 6 EXAMENES MEDICOS
+function descargarPDFExamenesPaciente() {
+    if (!reporteExamenesActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reporteExamenesActual;
+
+    const doc = crearDocumentoPDF("Exámenes médicos por paciente");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const examenes = datos.examenes || [];
+    const nombre = datos.paciente?.nombre || document.getElementById("pacienteExamenes").options[document.getElementById("pacienteExamenes").selectedIndex]?.text || "Paciente";
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    let posicionY = agregarInformacionPacientePDF(doc, nombre, periodo);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text(`Fecha de nacimiento: ${formatearFecha(datos.paciente?.fechaNacimiento)}`, 14, posicionY);
+    doc.text(`Fecha de ingreso: ${formatearFecha(datos.paciente?.fechaIngreso)}`, 14, posicionY + 6);
+    posicionY += 14;
+
+    const filas = examenes.map(item => [formatearFecha(item.fechaSolicitud), item.tipoExamen || "-", item.indicaciones || "-", item.resultado || "Pendiente", item.estado || "Pendiente"]);
+    if (!filas.length) {
+        filas.push(["-", "No hay exámenes registrados.", "-", "Pendiente", "Pendiente"]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Examen", "Indicaciones", "Resultado", "Estado"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    const finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de exámenes: ${datos.totalExamenes ?? examenes.length}`, 14, finalY);
+    doc.text( `Exámenes pendientes: ${
+            datos.pendientes ??
+            examenes.filter(e => (e.estado || "").toLowerCase() !== "completado").length
+        }`, 14, finalY + 6);
+    guardarPDF(doc, `Examenes_Medicos_${limpiarNombreArchivo(nombre)}`);
+}
+
+// PDF 7 MEDICAMENTOS RECETADOS Y ENTREGADOS
+function descargarPDFMedicamentosPaciente() {
+    if (!reporteMedicamentosActual) {
+        alert("Primero debe generar el reporte.");
+        return;
+    }
+    const { datos, fechaInicio, fechaFin } = reporteMedicamentosActual;
+
+    const doc = crearDocumentoPDF("Medicamentos recetados y entregados por paciente", "landscape");
+    if (!doc || !validarTablaPDF(doc)) {
+        return;
+    }
+    const medicamentos = datos.medicamentos || [];
+    const nombre = datos.paciente?.nombre || document.getElementById("pacienteMedicamentos").options[document.getElementById("pacienteMedicamentos").selectedIndex]?.text || "Paciente";
+    const periodo = obtenerPeriodo(fechaInicio, fechaFin);
+    let posicionY = agregarInformacionPacientePDF(doc, nombre, periodo);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text(`Fecha de nacimiento: ${formatearFecha(datos.paciente?.fechaNacimiento)}`, 14, posicionY);
+    doc.text(`Fecha de ingreso: ${formatearFecha(datos.paciente?.fechaIngreso)}`, 14, posicionY + 6);
+    posicionY += 14;
+
+    const filas = medicamentos.map(item => [
+        formatearFecha(item.fechaReceta), item.medicamento || "-", item.dosis || "-", item.frecuencia || "-", item.cantidad ?? "-",
+        item.fechaEntrega
+            ? formatearFecha(item.fechaEntrega)
+            : "Pendiente"]);
+    if (!filas.length) {
+        filas.push(["-", "No hay medicamentos registrados.", "-", "-", "-", "Pendiente"]);
+    }
+
+    doc.autoTable({
+        startY: posicionY,
+        head: [["Fecha", "Medicamento", "Dosis", "Frecuencia", "Cantidad", "Entrega"]],
+        body: filas,
+        theme: "grid",
+        styles: {
+            fontSize: 8,
+            cellPadding: 2
+        },
+        headStyles: {
+            fillColor: [55, 65, 81],
+            textColor: [255, 255, 255],
+            fontStyle: "bold"
+        }
+    });
+    const finalY = doc.lastAutoTable.finalY + 10;
+    const medicamentosDiferentes = datos.medicamentosDiferentes ??
+        new Set(medicamentos.filter(item => item.medicamento).map(item => item.medicamento)).size;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(`Total de medicamentos: ${datos.totalMedicamentos ?? medicamentos.length}`, 14, finalY);
+    doc.text(`Medicamentos diferentes: ${medicamentosDiferentes}`, 14, finalY + 6);
+    guardarPDF(doc, `Medicamentos_${limpiarNombreArchivo(nombre)}`);
 }
