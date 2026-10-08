@@ -7,18 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarInternos();
     cargarEspecialidades();
     cargarEnfermeros();
-    const btnSeleccionar = document.getElementById("btnSeleccionar");
+    cargarUsuario();
     const btnHistorial = document.getElementById("btnHistorial");
     const btnGuardar = document.getElementById("btnGuardar");
     const campoInterno = document.getElementById("interno");
     const requiereEspecialista = document.getElementById("requiereEspecialista");
 
-    if (btnSeleccionar) {
-        btnSeleccionar.addEventListener(
-            "click",
-            buscarInterno
-        );
-    }
     if (btnHistorial) {
         btnHistorial.addEventListener(
             "click",
@@ -57,6 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     mostrarCamposEspecialista();
 });
+
+/* USUARIO LOGUEADO*/
+function cargarUsuario() {
+    const nombreCompleto = localStorage.getItem("nombreCompleto");
+    const elemento = document.getElementById("nombreUsuario");
+    if (!elemento) {
+        return;
+    }
+    elemento.textContent = nombreCompleto || "Médico General";
+}
 
 // CARGAR INTERNOS
 async function cargarInternos() {

@@ -14,245 +14,99 @@
 </head>
 
 <body>
-
-    <!-- =====================================================
-         BARRA LATERAL
-    ====================================================== -->
-
     <aside class="sidebar">
-
-        <!-- LOGO -->
-
         <div class="logo">
-
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
             </div>
 
             <div>
-                <h2>Cabeza de Algodón</h2>
-                <span>Sistema de Gestión</span>
-            </div>
+                <h2>
+                    Cabeza de Algodón
+                </h2>
 
+                <span>
+                    Sistema de Gestión
+                </span>
+            </div>
         </div>
-
-
-        <!-- PERFIL DEL MÉDICO -->
-
-        <div class="doctor-profile">
-
-            <div class="doctor-avatar">
-                <i class="ph ph-user"></i>
-            </div>
-
-            <div>
-                <strong>Dr. Médico General</strong>
-                <span>Médico General</span>
-            </div>
-
-        </div>
-
-
-        <!-- MENÚ -->
 
         <nav class="menu">
-
             <p class="menu-title">PRINCIPAL</p>
-
-            <a href="../medicoGeneral.html" class="menu-item">
-                <i class="ph ph-squares-four"></i>
-                <span>Inicio</span>
-            </a>
-
             <a href="../evaluarInterno/evaluarInterno.html" class="menu-item">
                 <i class="ph ph-stethoscope"></i>
                 <span>Evaluar interno</span>
             </a>
-
 
             <p class="menu-title">SOLICITUDES</p>
             <a href="../misSolicitudes/misSolicitudes.html" class="menu-item active">
                 <i class="ph ph-clipboard-text"></i>
                 <span>Mis solicitudes</span>
             </a>
-
         </nav>
 
-
-        <!-- CERRAR SESIÓN -->
-
         <div class="sidebar-bottom">
-
             <a href="../../index.html" class="menu-item logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
             </a>
-
         </div>
-
     </aside>
 
 
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
-
     <main class="main-content">
-
-
-        <!-- =================================================
-             BARRA SUPERIOR
-        ================================================== -->
-
         <header class="topbar">
-
             <div>
-
                 <p class="welcome-small">
                     Solicitudes médicas
                 </p>
 
-                <h1>Mis solicitudes</h1>
-
+                <h1>
+                    Mis solicitudes
+                </h1>
             </div>
 
-
             <div class="top-actions">
-
-                <button class="notification">
-
-                    <i class="ph ph-bell"></i>
-
-                    <span class="notification-dot"></span>
-
-                </button>
-
-
                 <div class="top-profile">
-
                     <div class="small-avatar">
                         <i class="ph ph-user"></i>
                     </div>
 
                     <div>
-                        <strong>Dr. Médico General</strong>
-                        <span>Médico General</span>
+                        <strong id="nombreUsuario"></strong>
+                        <span>
+                            Médico General
+                        </span>
                     </div>
-
                 </div>
-
             </div>
-
         </header>
 
-
-        <!-- =================================================
-             ENCABEZADO
-        ================================================== -->
-
         <section class="page-header">
-
             <div>
-
-                <h2>Solicitudes de atención especializada</h2>
+                <h2>
+                    Solicitudes de atención especializada
+                </h2>
 
                 <p>
                     Consulta las solicitudes enviadas a la Fundación
                     y revisa el estado de cada una.
                 </p>
-
             </div>
 
-
-            <a href="../nuevaSolicitud/nuevaSolicitud.html" class="btn-primary">
-
+            <a href="../evaluarInterno/evaluarInterno.html" class="btn-primary">
                 <i class="ph ph-plus"></i>
-
                 Nueva solicitud
-
             </a>
-
         </section>
-
-
-        <!-- =================================================
-             RESUMEN
-        ================================================== -->
-
-        <section class="stats-grid">
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    <i class="ph ph-paper-plane-tilt"></i>
-                </div>
-
-                <div>
-                    <span>Total de solicitudes</span>
-                    <strong>12</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    <i class="ph ph-hourglass"></i>
-                </div>
-
-                <div>
-                    <span>Pendientes</span>
-                    <strong>3</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-                    <i class="ph ph-calendar-check"></i>
-                </div>
-
-                <div>
-                    <span>Programadas</span>
-                    <strong>4</strong>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon purple">
-                    <i class="ph ph-check-circle"></i>
-                </div>
-
-                <div>
-                    <span>Atendidas</span>
-                    <strong>5</strong>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FILTROS
-        ================================================== -->
 
         <section class="panel filters-panel">
-
             <div class="filter-group">
-
                 <label for="buscar">
                     Buscar interno
                 </label>
 
                 <div class="input-icon">
-
                     <i class="ph ph-magnifying-glass"></i>
 
                     <input
@@ -260,402 +114,293 @@
                         id="buscar"
                         placeholder="Nombre o número de interno..."
                     >
-
                 </div>
-
             </div>
 
-
             <div class="filter-group">
-
                 <label for="estado">
                     Estado
                 </label>
 
                 <select id="estado">
-
                     <option value="">
                         Todos los estados
                     </option>
 
-                    <option value="pendiente">
+                    <option value="Pendiente">
                         Pendiente
                     </option>
 
-                    <option value="revision">
-                        En revisión
-                    </option>
-
-                    <option value="programada">
+                    <option value="Programada">
                         Programada
                     </option>
 
-                    <option value="atendida">
-                        Atendida
+                    <option value="Completada">
+                        Completada
                     </option>
-
                 </select>
-
             </div>
-
-
-            <div class="filter-group">
-
-                <label for="especialidad">
-                    Especialidad
-                </label>
-
-                <select id="especialidad">
-
-                    <option value="">
-                        Todas
-                    </option>
-
-                    <option value="cardiologia">
-                        Cardiología
-                    </option>
-
-                    <option value="neurologia">
-                        Neurología
-                    </option>
-
-                    <option value="traumatologia">
-                        Traumatología
-                    </option>
-
-                    <option value="geriatria">
-                        Geriatría
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <button class="filter-button">
-
-                <i class="ph ph-funnel"></i>
-
-                Filtrar
-
-            </button>
-
         </section>
 
-
-        <!-- =================================================
-             LISTADO DE SOLICITUDES
-        ================================================== -->
-
         <section class="panel">
-
             <div class="panel-header">
-
                 <div>
-
-                    <h2>Solicitudes enviadas</h2>
+                    <h2>
+                        Solicitudes enviadas
+                    </h2>
 
                     <p>
                         Historial de referencias realizadas.
                     </p>
-
                 </div>
-
             </div>
 
-
-            <div class="requests-list">
-
-
-                <!-- =================================================
-                     SOLICITUD 1 - PROGRAMADA
-                ================================================== -->
-
-                <div class="request-card">
-
-                    <div class="request-icon blue">
-                        <i class="ph ph-heartbeat"></i>
-                    </div>
-
-
-                    <div class="request-main">
-
-                        <strong>Interno #0025</strong>
-
-                        <span>
-                            María López García
-                        </span>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Especialidad</span>
-
-                        <strong>Cardiología</strong>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Enfermero</span>
-
-                        <strong>María López</strong>
-
-                    </div>
-
-
-                    <div class="request-info schedule">
-
-                        <span>Atención</span>
-
-                        <strong>28 Sep · 10:00 AM</strong>
-
-                    </div>
-
-
-                    <div class="request-status">
-
-                        <span class="status scheduled">
-                            Programada
-                        </span>
-
-                        <small>
-                            Dr. Carlos Méndez
-                        </small>
-
-                    </div>
-
-
-                    <button class="view-button">
-
-                        <i class="ph ph-eye"></i>
-
-                    </button>
-
-                </div>
-
-
-                <!-- =================================================
-                     SOLICITUD 2 - EN REVISIÓN
-                ================================================== -->
-
-                <div class="request-card">
-
-                    <div class="request-icon purple">
-                        <i class="ph ph-brain"></i>
-                    </div>
-
-
-                    <div class="request-main">
-
-                        <strong>Interno #0018</strong>
-
-                        <span>
-                            José Ramírez López
-                        </span>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Especialidad</span>
-
-                        <strong>Neurología</strong>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Enfermero</span>
-
-                        <strong>Juan Pérez</strong>
-
-                    </div>
-
-
-                    <div class="request-info schedule">
-
-                        <span>Atención</span>
-
-                        <strong>Por asignar</strong>
-
-                    </div>
-
-
-                    <div class="request-status">
-
-                        <span class="status review">
-                            En revisión
-                        </span>
-
-                        <small>
-                            Fundación
-                        </small>
-
-                    </div>
-
-
-                    <button class="view-button">
-
-                        <i class="ph ph-eye"></i>
-
-                    </button>
-
-                </div>
-
-
-                <!-- =================================================
-                     SOLICITUD 3 - PENDIENTE
-                ================================================== -->
-
-                <div class="request-card">
-
-                    <div class="request-icon orange">
-                        <i class="ph ph-bone"></i>
-                    </div>
-
-
-                    <div class="request-main">
-
-                        <strong>Interno #0031</strong>
-
-                        <span>
-                            Pedro González
-                        </span>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Especialidad</span>
-
-                        <strong>Traumatología</strong>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Enfermero</span>
-
-                        <strong>Carlos García</strong>
-
-                    </div>
-
-
-                    <div class="request-info schedule">
-
-                        <span>Atención</span>
-
-                        <strong>Por asignar</strong>
-
-                    </div>
-
-
-                    <div class="request-status">
-
-                        <span class="status pending">
-                            Pendiente
-                        </span>
-
-                        <small>
-                            Enviada hoy
-                        </small>
-
-                    </div>
-
-
-                    <button class="view-button">
-
-                        <i class="ph ph-eye"></i>
-
-                    </button>
-
-                </div>
-
-
-                <!-- =================================================
-                     SOLICITUD 4 - ATENDIDA
-                ================================================== -->
-
-                <div class="request-card">
-
-                    <div class="request-icon green">
-                        <i class="ph ph-user-doctor"></i>
-                    </div>
-
-
-                    <div class="request-main">
-
-                        <strong>Interno #0012</strong>
-
-                        <span>
-                            Ana Martínez
-                        </span>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Especialidad</span>
-
-                        <strong>Geriatría</strong>
-
-                    </div>
-
-
-                    <div class="request-info">
-
-                        <span>Enfermero</span>
-
-                        <strong>María López</strong>
-
-                    </div>
-
-
-                    <div class="request-info schedule">
-
-                        <span>Atención</span>
-
-                        <strong>20 Sep · 09:30 AM</strong>
-
-                    </div>
-
-
-                    <div class="request-status">
-
-                        <span class="status completed">
-                            Atendida
-                        </span>
-
-                        <small>
-                            Completada
-                        </small>
-
-                    </div>
-
-
-                    <button class="view-button">
-
-                        <i class="ph ph-eye"></i>
-
-                    </button>
-
-                </div>
-
+            <div class="table-container">
+                <table class="requests-table">
+                    <thead>
+                        <tr>
+                            <th>Interno</th>
+                            <th>Especialidad</th>
+                            <th>Enfermero(a)</th>
+                            <th>Especialista</th>
+                            <th>Fecha solicitud</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaSolicitudes">
+                    </tbody>
+                </table>
             </div>
 
+            <div
+                id="paginacionSolicitudes"
+                class="table-pagination"
+            ></div>
         </section>
-
-
     </main>
 
+    <!-- MODAL RESULTADO ESPECIALISTA -->
+    <div
+        class="modal-overlay"
+        id="modalResultado"
+    >
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <p class="modal-subtitle">
+                        Atención médica especializada
+                    </p>
+
+                    <h2>
+                        Resultado de la atención
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="cerrarModal"
+                >
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+
+            <!-- CUERPO -->
+            <div class="modal-body">
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon blue">
+                            <i class="ph ph-user"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Información del interno
+                            </h3>
+
+                            <span>
+                                Datos de la atención especializada
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="result-grid">
+                        <div class="result-data">
+                            <span>
+                                Interno
+                            </span>
+
+                            <strong id="resultadoInterno">
+                                —
+                            </strong>
+                        </div>
+
+                        <div class="result-data">
+                            <span>
+                                Especialidad
+                            </span>
+
+                            <strong id="resultadoEspecialidad">
+                                —
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon purple">
+                            <i class="ph ph-stethoscope"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Atención especializada
+                            </h3>
+
+                            <span>
+                                Información registrada por el especialista
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="result-grid">
+                        <div class="result-data">
+                            <span>
+                                Médico especialista
+                            </span>
+
+                            <strong id="resultadoEspecialista">
+                                —
+                            </strong>
+                        </div>
+
+                        <div class="result-data">
+                            <span>
+                                Fecha de atención
+                            </span>
+
+                            <strong id="resultadoFechaAtencion">
+                                —
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIAGNOSTICO FINAL -->
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon green">
+                            <i class="ph ph-first-aid-kit"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Diagnóstico final
+                            </h3>
+
+                            <span>
+                                Resultado registrado por el médico especialista
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="result-text-box">
+                        <p id="resultadoDiagnostico">
+                            —
+                        </p>
+                    </div>
+                </div>
+
+                <!-- OBSERVACIONES -->
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon orange">
+                            <i class="ph ph-note"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Observaciones
+                            </h3>
+
+                            <span>
+                                Observaciones registradas durante la atención
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="result-text-box">
+                        <p id="resultadoObservaciones">
+                            —
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEDICAMENTOS -->
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon blue">
+                            <i class="ph ph-pill"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Medicamentos
+                            </h3>
+
+                            <span>
+                                Medicamentos indicados por el especialista
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="result-list"
+                        id="resultadoMedicamentos"
+                    >
+                    </div>
+                </div>
+
+                <!-- LABORATORIO -->
+                <div class="result-section">
+                    <div class="result-section-title">
+                        <div class="result-icon purple">
+                            <i class="ph ph-test-tube"></i>
+                        </div>
+
+                        <div>
+                            <h3>
+                                Resultados de laboratorio
+                            </h3>
+
+                            <span>
+                                Exámenes realizados durante la atención
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="result-list"
+                        id="resultadoLaboratorio"
+                    >
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cerrarModalFooter"
+                >
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="misSolicitudes.js"></script>
 </body>
 </html>

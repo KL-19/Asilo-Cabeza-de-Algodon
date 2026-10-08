@@ -133,6 +133,58 @@ namespace ApiAsilo.Controllers
             });
         }
 
+        [HttpGet("solicitudes/medico/{medicoGeneralId}")]
+        public async Task<IActionResult> ObtenerSolicitudesPorMedico(
+            int medicoGeneralId)
+        {
+            var solicitudes = await _context.SolicitudesEspecialista.AsNoTracking().Where(s => s.MedicoGeneralID == medicoGeneralId).OrderByDescending(s => s.FechaSolicitud)
+                .Select(s => new
+                {
+                    id = s.Id,
+                    internoID = s.InternoID,
+                    interno = s.Interno == null
+                        ? null
+                        : new
+                        {
+                            id = s.Interno.Id,
+                            nombre = s.Interno.Nombre,
+                            apellido = s.Interno.Apellido,
+                            nombreCompleto =
+                                s.Interno.Nombre + " " + s.Interno.Apellido,
+                            fechaNacimiento = s.Interno.FechaNacimiento
+                        },
+                    especialidadID = s.EspecialidadID,
+                    especialidad = s.Especialidad == null
+                        ? null
+                        : new
+                        {
+                            id = s.Especialidad.Id,
+                            nombre = s.Especialidad.Nombre
+                        },
+                    enfermero = s.Enfermero == null
+                        ? null
+                        : new
+                        {
+                            id = s.Enfermero.Id,
+                            nombreCompleto = s.Enfermero.NombreCompleto
+                        },
+                    especialista = s.Especialista == null
+                        ? null
+                        : new
+                        {
+                            id = s.Especialista.Id,
+                            nombreCompleto = s.Especialista.NombreCompleto
+                        },
+                    motivo = s.Motivo,
+                    observaciones = s.Observaciones,
+                    fechaSolicitud = s.FechaSolicitud,
+                    fechaAsignacion = s.FechaAsignacion,
+                    estado = s.Estado
+                })
+                .ToListAsync();
+            return Ok(solicitudes);
+        }
+
         [HttpGet("especialistas")]
         public async Task<IActionResult> ObtenerEspecialistas(
             [FromQuery] int especialidadId)

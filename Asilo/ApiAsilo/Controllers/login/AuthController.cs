@@ -45,6 +45,7 @@ namespace ApiAsilo.Controllers
                 mensaje = "Acceso concedido", 
                 usuarioId = usuario.Id,
                 usuario = usuario.NombreUsuario,
+                nombreCompleto = usuario.NombreCompleto,
                 rol = usuario.Rol?.Nombre 
             });
         }

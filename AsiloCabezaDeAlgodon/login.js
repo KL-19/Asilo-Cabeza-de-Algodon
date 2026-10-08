@@ -38,6 +38,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             localStorage.setItem('usuarioLogueado', data.usuario);
             localStorage.setItem('rolUsuario', data.rol);
             localStorage.setItem('usuarioId', data.usuarioId);
+            localStorage.setItem('nombreCompleto', data.nombreCompleto);
 
             setTimeout(() => {
                 switch (data.rol) {
@@ -45,7 +46,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
                         window.location.href = "admin/dashboard.html";
                         break;
                     case 'MedicoGeneral':
-                        window.location.href = "MedicoGeneral/medicoGeneral.html";
+                        window.location.href = "MedicoGeneral/evaluarInterno/evaluarInterno.html";
                         break;
                     case 'Enfermero':
                         window.location.href = "Enfermero/Enfermero.html";
