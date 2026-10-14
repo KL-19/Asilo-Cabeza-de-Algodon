@@ -199,17 +199,23 @@ formulario.addEventListener("submit", async function (event) {
             }
         );
 
-        const resultado = await response.json();
+        const respuestaTexto = await response.text();
+        console.log("Código HTTP:", response.status);
+        console.log("Respuesta del API:", respuestaTexto);
         
-        // respuesta del Api
+        let resultado;
+        try {
+            resultado = JSON.parse(respuestaTexto);
+        } catch {
+            resultado = { mensaje: respuestaTexto };
+        }
+        
         if (response.ok) {
-            alert(resultado.mensaje);
+            alert(resultado.mensaje || "Interno registrado correctamente.");
             formulario.reset();
         } else {
-            alert("Error al registrar el interno.");
-            console.log(resultado);
+            alert("Error del API: " + (resultado.mensaje || "No se pudo completar la operación."));
         }
-
     } catch (error) {
         console.error("Error:", error);
         alert("No se pudo conectar con el API.");
