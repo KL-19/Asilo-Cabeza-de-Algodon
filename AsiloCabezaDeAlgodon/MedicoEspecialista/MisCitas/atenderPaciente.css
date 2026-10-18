@@ -24,21 +24,11 @@ body {
     min-height: 100vh;
 }
 
-
-/* =====================================================
-   CONTENIDO
-===================================================== */
-
 .main-content {
     max-width: 1250px;
     margin: auto;
     padding: 35px 45px 60px;
 }
-
-
-/* =====================================================
-   ENCABEZADO
-===================================================== */
 
 .page-header {
     margin-bottom: 28px;
@@ -77,11 +67,6 @@ body {
     color: var(--muted);
     font-size: 11px;
 }
-
-
-/* =====================================================
-   TARJETA PACIENTE
-===================================================== */
 
 .patient-card {
     background: white;
@@ -153,10 +138,7 @@ body {
 }
 
 
-/* =====================================================
-   TARJETAS
-===================================================== */
-
+/* TARJETAS */
 .request-card,
 .form-card {
     background: white;
@@ -211,10 +193,7 @@ body {
 }
 
 
-/* =====================================================
-   SOLICITUD
-===================================================== */
-
+/* SOLICITUD */
 .request-content {
     padding: 20px 22px;
     display: grid;
@@ -242,11 +221,6 @@ body {
 .request-field.full {
     grid-column: 1 / -1;
 }
-
-
-/* =====================================================
-   ACCESO HISTORIAL
-===================================================== */
 
 .history-access {
     background: #f8faff;
@@ -307,11 +281,7 @@ body {
     opacity: .9;
 }
 
-
-/* =====================================================
-   FORMULARIO
-===================================================== */
-
+/* FORMULARIO */
 .form-content {
     padding: 25px 22px;
 }
@@ -352,22 +322,12 @@ body {
     background: white;
 }
 
-
-/* =====================================================
-   SUBSECCIONES
-===================================================== */
-
 .subsection {
     border-top: 1px solid var(--border);
     padding-top: 24px;
     margin-top: 10px;
     margin-bottom: 25px;
 }
-
-
-/* =====================================================
-   CABECERA DESPLEGABLE
-===================================================== */
 
 .collapse-header {
     display: flex;
@@ -423,10 +383,7 @@ body {
 }
 
 
-/* =====================================================
-   BOTÓN DESPLEGAR
-===================================================== */
-
+/* BOTÓN DESPLEGAR */
 .collapse-button {
     width: 34px;
     height: 34px;
@@ -452,11 +409,6 @@ body {
     transform: rotate(180deg);
 }
 
-
-/* =====================================================
-   CONTENIDO DESPLEGABLE
-===================================================== */
-
 .collapse-content {
     display: none;
     padding-top: 20px;
@@ -466,10 +418,6 @@ body {
     display: block;
 }
 
-
-/* =====================================================
-   EXÁMENES
-===================================================== */
 .examen-item {
     display: flex;
     align-items: center;
@@ -540,9 +488,6 @@ body {
     border-color: #93c5fd;
 }
 
-/* =====================================================
-   MEDICAMENTOS
-===================================================== */
 .medicamento-item {
     display: grid;
     grid-template-columns: 1.4fr .8fr 1fr 1fr .7fr 1.3fr auto;
@@ -595,10 +540,6 @@ body {
     border-color: #c4b5fd;
 }
 
-/* =====================================================
-   BOTONES FORMULARIO
-===================================================== */
-
 .form-actions {
     padding: 17px 22px;
     border-top: 1px solid var(--border);
@@ -637,11 +578,6 @@ body {
 .btn-save:hover {
     opacity: .9;
 }
-
-
-/* =====================================================
-   MODAL
-===================================================== */
 
 .modal-overlay {
     position: fixed;
@@ -791,10 +727,7 @@ body {
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
+/* RESPONSIVE */
 @media (max-width: 900px) {
 
     .main-content {
@@ -880,9 +813,7 @@ body {
     }
 }
 
-/* =====================================================
-   RESULTADOS DE LABORATORIO
-===================================================== */
+/* RESULTADOS DE LABORATORIO */
 .lab-results-section {
     border-top: 1px solid var(--border);
     padding-top: 24px;
@@ -983,9 +914,7 @@ body {
     line-height: 1.5;
 }
 
-/* =====================================================
-   RESPONSIVE RESULTADOS
-===================================================== */
+/* RESPONSIVE RESULTADOS */
 @media (max-width: 650px) {
 
     .lab-result-header {

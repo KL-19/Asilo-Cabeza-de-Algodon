@@ -25,10 +25,6 @@ body {
     min-height: 100vh;
 }
 
-/* ================================= */
-/* SIDEBAR */
-/* ================================= */
-
 .sidebar {
     position: fixed;
     left: 0;
@@ -43,7 +39,6 @@ body {
 }
 
 /* LOGO */
-
 .logo {
     display: flex;
     align-items: center;
@@ -72,10 +67,7 @@ body {
     color: #9ca3af;
 }
 
-
-
 /* MENU */
-
 .menu {
     flex: 1;
 }
@@ -120,18 +112,10 @@ body {
     color: #fca5a5;
 }
 
-/* ================================= */
-/* CONTENIDO */
-/* ================================= */
-
 .main-content {
     margin-left: 260px;
     padding: 32px 40px;
 }
-
-/* ================================= */
-/* TOPBAR */
-/* ================================= */
 
 .topbar {
     display: flex;
@@ -163,7 +147,6 @@ body {
 }
 
 /* NOTIFICACIONES */
-
 .notification {
     width: 42px;
     height: 42px;
@@ -362,10 +345,6 @@ body {
     color: var(--muted);
 }
 
-/* ================================= */
-/* PANEL */
-/* ================================= */
-
 .panel {
     background: white;
     border: 1px solid var(--border);
@@ -387,10 +366,6 @@ body {
     font-size: 10px;
     margin-top: 5px;
 }
-
-/* ================================= */
-/* FILTROS */
-/* ================================= */
 
 .filters {
     display: grid;
@@ -448,10 +423,7 @@ body {
     opacity: 0.9;
 }
 
-/* ================================= */
 /* TABLA */
-/* ================================= */
-
 .table-container {
     width: 100%;
     overflow-x: auto;
@@ -483,10 +455,6 @@ td {
     white-space: nowrap;
 }
 
-/* ================================= */
-/* PACIENTE */
-/* ================================= */
-
 .patient {
     display: flex;
     align-items: center;
@@ -517,10 +485,6 @@ td {
     margin-top: 3px;
 }
 
-/* ================================= */
-/* EXÁMENES */
-/* ================================= */
-
 .exam-list {
     display: flex;
     flex-direction: column;
@@ -531,10 +495,6 @@ td {
     font-size: 9px;
     color: var(--text);
 }
-
-/* ================================= */
-/* ESTADOS */
-/* ================================= */
 
 .status {
     padding: 6px 9px;
@@ -547,10 +507,6 @@ td {
     background: #fff7ed;
     color: #ea580c;
 }
-
-/* ================================= */
-/* BOTÓN PROCESAR */
-/* ================================= */
 
 .btn-process {
     border: none;
@@ -606,10 +562,6 @@ td {
     border-color: var(--primary);
 }
 
-/* ================================= */
-/* MODAL */
-/* ================================= */
-
 .modal {
     position: fixed;
     inset: 0;
@@ -664,7 +616,6 @@ td {
 }
 
 /* PACIENTE DEL MODAL */
-
 .patient-summary {
     display: flex;
     align-items: center;
@@ -700,7 +651,6 @@ td {
 }
 
 /* SECCIONES */
-
 .modal-section {
     margin-bottom: 20px;
 }
@@ -842,7 +792,6 @@ td {
 }
 
 /* BOTONES MODAL */
-
 .modal-actions {
     display: flex;
     justify-content: flex-end;
@@ -879,10 +828,7 @@ td {
     opacity: 0.9;
 }
 
-/* ================================= */
 /* RESPONSIVE */
-/* ================================= */
-
 @media (max-width: 1100px) {
 
     .stats-grid {

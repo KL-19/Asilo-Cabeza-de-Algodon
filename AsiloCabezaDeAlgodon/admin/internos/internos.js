@@ -136,7 +136,7 @@ function mostrarPagina() {
                 interno.activo
                     ? "Activo"
                     : "Inactivo";
-
+                const internoInactivo = interno.activo === false;
             const iniciales =obtenerIniciales(interno.nombreCompleto);
 
             fila.innerHTML = `
@@ -212,14 +212,14 @@ function mostrarPagina() {
 
                         <button
                             class="action-btn edit"
-                            title="Editar interno"
+                            title="${internoInactivo ? 'Interno inactivo' : 'Editar interno'}"
                             data-id="${interno.id}">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
 
                         <button
                             class="action-btn delete"
-                            title="Dar de baja"
+                            title="${internoInactivo ? 'Interno ya inactivo' : 'Dar de baja'}"
                             data-id="${interno.id}">
                             <i class="ph ph-user-minus"></i>
                         </button>
@@ -628,6 +628,10 @@ async function darDeBaja(id) {
         );
         return;
     }
+    if (interno.activo === false) {
+        alert("Este interno ya está dado de baja.");
+        return;
+    }
 
     // CONFIRMAR
     const confirmar = confirm(
@@ -691,10 +695,21 @@ tablaInternos.addEventListener(
     "click",
     function (event) {
         const boton = event.target.closest(".action-btn.edit");
-        if (!boton) {
+        if (!boton || boton.disabled) {
             return;
         }
-        const id =boton.dataset.id;
+
+        const id = parseInt(boton.dataset.id);
+        const interno = internos.find(
+            function (item) {
+                return item.id === id;
+            }
+        );
+
+        if (!interno || interno.activo === false) {
+            alert("No se puede editar un interno inactivo.");
+            return;
+        }
         window.location.href = "editarInterno.html?id=" + id;
     }
 );

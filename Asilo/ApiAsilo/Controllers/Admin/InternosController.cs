@@ -216,10 +216,7 @@ namespace ApiAsilo.Controllers
             int id,
             [FromBody] EditarInternoDTO datos)
         {
-            var interno = await _context.Internos
-                .Include(i => i.Familiar)
-                .FirstOrDefaultAsync(i => i.Id == id);
-
+            var interno = await _context.Internos.FirstOrDefaultAsync(i => i.Id == id);
             if (interno == null){
                 return NotFound(new
                 {
@@ -237,14 +234,6 @@ namespace ApiAsilo.Controllers
             interno.DireccionAnterior = datos.Direccion;
             interno.TelefonoEmergencia = datos.Telefono;
 
-            // Datos del familiar
-            if (interno.Familiar != null){
-                interno.Familiar.NombreCompleto = datos.FamiliarNombre;
-                interno.Familiar.Parentesco = datos.Parentesco;
-                interno.Familiar.Telefono = datos.FamiliarTelefono;
-                interno.Familiar.Correo = datos.FamiliarCorreo;
-                interno.Familiar.Direccion = datos.FamiliarDireccion;
-            }
             await _context.SaveChangesAsync();
             return Ok(new
             {
@@ -298,12 +287,6 @@ namespace ApiAsilo.Controllers
             public DateTime FechaIngreso { get; set; }
             public string? Direccion { get; set; }
             public string? Telefono { get; set; }
-
-            public string FamiliarNombre { get; set; } = string.Empty;
-            public string Parentesco { get; set; } = string.Empty;
-            public string FamiliarTelefono { get; set; } = string.Empty;
-            public string FamiliarCorreo { get; set; } = string.Empty;
-            public string? FamiliarDireccion { get; set; }
         }   
     }
 }

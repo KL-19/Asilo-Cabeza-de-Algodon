@@ -107,17 +107,11 @@ body {
     color: white;
 }
 
-/* =====================================================
-   CONTENIDO
-===================================================== */
 .main-content {
     margin-left: 260px;
     padding: 32px 40px;
 }
 
-/* =====================================================
-   TOPBAR
-===================================================== */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -597,24 +591,32 @@ td {
 .btn-view {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: #f3f4f6;
-    color: #4b5563;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid #3e5fce;
+    border-radius: 10px;
+    background: #96b8ea;
+    color: #1460ca;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
     text-decoration: none;
-    padding: 8px 11px;
-    border-radius: 8px;
-    font-size: 8px;
-    font-weight: 600;
-    transition: .2s;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-view i {
+    font-size: 17px;
 }
 
 .btn-view:hover {
-    background: #e5e7eb;
+    background: #f4f1ff;
+    border-color: #3e5fce;
+    color: #3062cd;
+    transform: translateY(-1px);
 }
-
-/* =====================================================
-   MODAL VER VISITA
-===================================================== */
 
 .modal-overlay {
     position: fixed;
@@ -768,38 +770,73 @@ td {
     padding-left: 44px;
 }
 
-.visit-item {
+.visit-list-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    padding: 11px 13px;
-    background: #fafbfc;
-    border: 1px solid var(--border);
-    border-radius: 9px;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    transition: background 0.2s, border-color 0.2s;
 }
 
-.visit-item strong {
-    display: block;
-    font-size: 9px;
+.visit-list-item:hover {
+    background: #f0fdfa;
+    border-color: #99f6e4;
 }
 
-.visit-item span {
-    display: block;
-    color: var(--muted);
-    font-size: 8px;
-    margin-top: 3px;
+.visit-list-item strong {
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
-.visit-item > .visit-status {
-    display: inline-block;
-    background: #ecfdf5;
-    color: #059669;
-    padding: 5px 8px;
+.visit-list-item span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 5px 10px;
     border-radius: 20px;
-    font-weight: 600;
-    white-space: nowrap;
+    background: #d1fae5;
+    color: #047857;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
 }
+
+.empty-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.empty-list::before {
+    content: "i";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 800;
+}
+
 
 /* FOOTER */
 .modal-footer {

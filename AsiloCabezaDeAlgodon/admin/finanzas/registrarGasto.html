@@ -7,26 +7,17 @@
 
     <title>Registrar Gasto | Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="registrarGasto.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
     <aside class="sidebar">
-
         <div class="logo">
-
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
             </div>
@@ -35,11 +26,9 @@
                 <h2>Cabeza de Algodón</h2>
                 <span>Administración</span>
             </div>
-
         </div>
 
         <nav class="menu">
-
             <p class="menu-title">PRINCIPAL</p>
             <a href="../dashboard.html" class="menu-item">
                 <i class="ph ph-squares-four"></i>
@@ -63,7 +52,6 @@
             </a>
 
             <p class="menu-title">ADMINISTRACIÓN</p>
-
             <a href="../finanzas/finanzas.html" class="menu-item active">
                 <i class="ph ph-wallet"></i>
                 <span>Finanzas</span>
@@ -76,41 +64,16 @@
         </nav>
 
         <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-
-            </div>
-
             <a href="../../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
             </a>
-
         </div>
-
     </aside>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
     <main class="main-content">
-
-        <!-- =========================
-             TOPBAR
-        ========================== -->
         <header class="topbar">
-
             <div class="page-title">
-
                 <div class="breadcrumb">
                     <a href="../dashboard.html">
                         Administración
@@ -129,29 +92,18 @@
                 <h1>
                     Registrar gasto
                 </h1>
-
                 <p>
                     Registra los gastos realizados por el asilo.
                 </p>
-
             </div>
 
-
             <div class="topbar-actions">
-
-                <button class="notification-btn">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
                 <div class="profile">
-
                     <div class="profile-avatar">
                         A
                     </div>
 
                     <div class="profile-info">
-
                         <strong>
                             Administrador
                         </strong>
@@ -159,38 +111,19 @@
                         <span>
                             Administrador
                         </span>
-
                     </div>
-
                     <i class="ph ph-caret-down"></i>
-
                 </div>
-
             </div>
-
         </header>
 
-
-
-        <!-- =========================
-             FORMULARIO
-        ========================== -->
-
         <section class="form-card">
-
-
-            <!-- ENCABEZADO -->
-
             <div class="form-header">
-
                 <div class="form-icon">
-
                     <i class="ph ph-money"></i>
-
                 </div>
 
                 <div>
-
                     <h2>
                         Información del gasto
                     </h2>
@@ -198,62 +131,33 @@
                     <p>
                         Registra los datos correspondientes al gasto realizado.
                     </p>
-
                 </div>
-
             </div>
 
-
-
             <form id="gastoForm">
-
-
-                <!-- =========================
-                     DATOS DEL GASTO
-                ========================== -->
-
                 <div class="form-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-receipt"></i>
 
                         <div>
-
                             <h3>
                                 Datos del gasto
                             </h3>
-
                             <p>
                                 Indica el tipo y los detalles del gasto realizado.
                             </p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="form-grid">
-
-
-                        <!-- TIPO DE GASTO -->
-
                         <div class="form-group">
-
                             <label for="tipoGasto">
-
                                 Tipo de gasto
-
                                 <span>*</span>
-
                             </label>
 
-
                             <div class="input-wrapper select-wrapper">
-
                                 <i class="ph ph-list"></i>
-
                                 <select
                                     id="tipoGasto"
                                     name="tipoGasto"
@@ -297,61 +201,34 @@
                                     <option value="otros">
                                         Otros
                                     </option>
-
                                 </select>
-
                                 <i class="ph ph-caret-down select-arrow"></i>
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- FECHA -->
-
                         <div class="form-group">
-
                             <label for="fechaGasto">
-
                                 Fecha del gasto
-
                                 <span>*</span>
-
                             </label>
 
-
                             <div class="input-wrapper">
-
                                 <i class="ph ph-calendar"></i>
-
                                 <input
                                     type="date"
                                     id="fechaGasto"
                                     name="fechaGasto"
                                     required>
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- MONTO -->
-
                         <div class="form-group">
-
                             <label for="monto">
-
                                 Monto del gasto
-
                                 <span>*</span>
-
                             </label>
 
-
                             <div class="input-wrapper money-wrapper">
-
                                 <span class="currency">
                                     Q
                                 </span>
@@ -364,55 +241,31 @@
                                     min="0"
                                     step="0.01"
                                     required>
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- PROVEEDOR -->
-
                         <div class="form-group">
-
                             <label for="proveedor">
-
                                 Proveedor / beneficiario
-
                             </label>
 
-
                             <div class="input-wrapper">
-
                                 <i class="ph ph-storefront"></i>
-
                                 <input
                                     type="text"
                                     id="proveedor"
                                     name="proveedor"
                                     placeholder="Nombre del proveedor o beneficiario">
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- DESCRIPCIÓN -->
-
                         <div class="form-group full">
-
                             <label for="descripcion">
-
                                 Descripción del gasto
-
                                 <span>*</span>
-
                             </label>
 
-
                             <div class="textarea-wrapper">
-
                                 <i class="ph ph-note"></i>
 
                                 <textarea
@@ -420,63 +273,34 @@
                                     name="descripcion"
                                     placeholder="Describe en qué se realizó el gasto..."
                                     required></textarea>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
-
-
-                <!-- =========================
-                     PAGO
-                ========================== -->
-
                 <div class="form-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-credit-card"></i>
 
                         <div>
-
                             <h3>
                                 Información del pago
                             </h3>
-
                             <p>
                                 Indica cómo se realizó el pago del gasto.
                             </p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="form-grid">
-
-
-                        <!-- MÉTODO DE PAGO -->
-
                         <div class="form-group">
-
                             <label for="metodoPago">
-
                                 Método de pago
-
                                 <span>*</span>
-
                             </label>
 
-
                             <div class="input-wrapper select-wrapper">
-
                                 <i class="ph ph-wallet"></i>
-
                                 <select
                                     id="metodoPago"
                                     name="metodoPago"
@@ -500,130 +324,67 @@
                                     <option value="deposito">
                                         Depósito bancario
                                     </option>
-
                                 </select>
-
                                 <i class="ph ph-caret-down select-arrow"></i>
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- REFERENCIA -->
-
                         <div class="form-group">
-
                             <label for="referencia">
-
                                 Número de referencia
-
                             </label>
 
-
                             <div class="input-wrapper">
-
                                 <i class="ph ph-hash"></i>
-
                                 <input
                                     type="text"
                                     id="referencia"
                                     name="referencia"
                                     placeholder="Ej. TRANS-001245">
-
                             </div>
-
                         </div>
 
-
-
-                        <!-- OBSERVACIONES -->
-
                         <div class="form-group full">
-
                             <label for="observaciones">
-
                                 Observaciones
-
                             </label>
 
-
                             <div class="textarea-wrapper">
-
                                 <i class="ph ph-chat-text"></i>
-
                                 <textarea
                                     id="observaciones"
                                     name="observaciones"
                                     placeholder="Agrega información adicional sobre el gasto..."></textarea>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
-
-
-                <!-- =========================
-                     INFORMACIÓN
-                ========================== -->
-
                 <div class="info-panel">
-
                     <i class="ph ph-info"></i>
-
                     <p>
-
                         El gasto quedará registrado en el control financiero
                         del asilo y podrá ser consultado posteriormente en
                         los reportes financieros.
-
                     </p>
-
                 </div>
 
-
-
-                <!-- =========================
-                     BOTONES
-                ========================== -->
-
                 <div class="form-actions">
-
-                    <a
-                        href="../finanzas/finanzas.html"
-                        class="btn-secondary">
-
+                    <a href="../finanzas/finanzas.html" class="btn-secondary">
                         <i class="ph ph-x"></i>
-
                         Cancelar
-
                     </a>
-
 
                     <button
                         type="submit"
                         class="btn-primary">
-
                         <i class="ph ph-check"></i>
-
                         Registrar gasto
-
                     </button>
-
                 </div>
-
-
             </form>
-
         </section>
-
     </main>
     <script src="registrarGasto.js"></script>
 </body>
-
 </html>

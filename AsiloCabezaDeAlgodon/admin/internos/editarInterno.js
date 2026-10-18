@@ -78,13 +78,7 @@ formulario.addEventListener(
             dpi:document.getElementById("dpi").value.trim(),
             fechaIngreso:document.getElementById("fechaIngreso").value,
             direccion:document.getElementById("direccion").value.trim(),
-            telefono:document.getElementById("telefono").value.trim(),
-            familiarNombre:document.getElementById("familiarNombre").value.trim(),
-            parentesco:document.getElementById("parentesco").value.trim(),
-            familiarTelefono:document.getElementById("familiarTelefono").value.trim(),
-            familiarCorreo:document.getElementById("familiarCorreo").value.trim(),
-            familiarDireccion: document.getElementById("familiarDireccion").value.trim()
-
+            telefono:document.getElementById("telefono").value.trim()
         };
         console.log(
             "Datos que se enviarán:", datos

@@ -94,6 +94,7 @@ function mostrarPagina() {
                     ? "active"
                     : "inactive";
             const claseRol = obtenerClaseRol(usuario.rol);
+            const usuarioInactivo = usuario.activo === false;
             
             fila.innerHTML = `
                 <td>
@@ -148,14 +149,14 @@ function mostrarPagina() {
 
                         <button
                             class="action-btn edit"
-                            title="Editar usuario"
+                            title="${usuarioInactivo ? 'Usuario inactivo' : 'Editar usuario'}"
                             data-id="${usuario.id}">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
 
                         <button
                             class="action-btn delete"
-                            title="Dar de baja"
+                            title="${usuarioInactivo ? 'Usuario inactivo' : 'Dar de baja'}"
                             data-id="${usuario.id}">
                             <i class="ph ph-user-minus"></i>
                         </button>
@@ -459,7 +460,22 @@ tablaUsuarios.addEventListener(
         // EDITAR
         const botonEditar = event.target.closest(".edit");
         if (botonEditar) {
-            const id = botonEditar.dataset.id;
+            if (botonEditar.disabled) {
+                return;
+            }
+
+            const id = parseInt(botonEditar.dataset.id);
+            const usuario = usuarios.find(
+                function (item) {
+                    return item.id === id;
+                }
+            );
+
+            if (!usuario || usuario.activo === false) {
+                alert("No se puede editar un usuario inactivo.");
+                return;
+            }
+
             window.location.href = "editarUsuario.html?id=" + id;
             return;
         }
@@ -482,6 +498,11 @@ async function darDeBajaUsuario(id) {
             }
         );
     if (!usuario) {
+        return;
+    }
+
+    if (usuario.activo === false) {
+        alert("Este usuario ya está inactivo.");
         return;
     }
     const confirmar =

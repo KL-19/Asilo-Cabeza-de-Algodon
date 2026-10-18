@@ -1014,9 +1014,9 @@ function mostrarGreeting() {
 
     const hora = new Date().getHours();
     let saludo = "Buenos días";
-    if (hora >= 12 && hora < 19) {
+    if (hora >= 12 && hora < 18) {
         saludo = "Buenas tardes";
-    } else if (hora >= 19) {
+    } else if (hora >= 18) {
         saludo = "Buenas noches";
     }
 

@@ -104,6 +104,13 @@ function mostrarPagina() {
                     ? "Activo"
                     : "Inactivo";
 
+                    const todosInactivos =
+                        familiar.internos &&
+                        familiar.internos.length > 0 && 
+                        familiar.internos.every(function (interno) {
+                            return interno.activo === false;
+                        });
+
             const claseEstado =
                 familiar.activo
                     ? "active"
@@ -157,7 +164,7 @@ function mostrarPagina() {
 
                         <button
                             class="action-btn edit"
-                            title="Editar familiar"
+                            title="${todosInactivos ? 'Todos los internos están inactivos' : 'Editar familiar'}"
                             data-id="${familiar.id}">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
@@ -438,7 +445,30 @@ tablaFamiliares.addEventListener(
         // EDITAR
         const botonEditar = event.target.closest(".edit");
         if (botonEditar) {
-            const id = botonEditar.dataset.id;
+            if (botonEditar.disabled) {
+                return;
+            }
+
+            const id = parseInt(botonEditar.dataset.id);
+            const familiar = familiares.find(function (item) {
+                return item.id === id;
+            });
+
+            if (!familiar) {
+                return;
+            }
+
+            const todosInactivos =
+                familiar.internos &&
+                familiar.internos.length > 0 &&
+                familiar.internos.every(function (interno) {
+                    return interno.activo === false;
+                });
+
+            if (todosInactivos) {
+                alert("No se puede editar el familiar porque todos sus internos están inactivos.");
+                return;
+            }
             window.location.href = "editarFamiliar.html?id=" + id;
             return;
         }

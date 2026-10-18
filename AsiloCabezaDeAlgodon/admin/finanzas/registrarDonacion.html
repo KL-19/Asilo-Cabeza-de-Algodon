@@ -7,26 +7,17 @@
 
     <title>Registrar Donación | Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="registrarDonacion.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
     <aside class="sidebar">
-
         <div class="logo">
-
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
             </div>
@@ -35,11 +26,9 @@
                 <h2>Cabeza de Algodón</h2>
                 <span>Administración</span>
             </div>
-
         </div>
 
         <nav class="menu">
-
             <p class="menu-title">PRINCIPAL</p>
             <a href="../dashboard.html" class="menu-item">
                 <i class="ph ph-squares-four"></i>
@@ -63,7 +52,6 @@
             </a>
 
             <p class="menu-title">ADMINISTRACIÓN</p>
-
             <a href="../finanzas/finanzas.html" class="menu-item active">
                 <i class="ph ph-wallet"></i>
                 <span>Finanzas</span>
@@ -76,164 +64,86 @@
         </nav>
 
         <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-
-            </div>
-
             <a href="../../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
                 <span>Cerrar sesión</span>
             </a>
-
         </div>
-
     </aside>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
     <main class="main-content">
-
-        <!-- TOPBAR -->
         <header class="topbar">
-
             <div class="page-title">
-
                 <div class="breadcrumb">
-
                     <a href="../dashboard.html">
                         Administración
                     </a>
-
                     <i class="ph ph-caret-right"></i>
-
                     <a href="../finanzas/finanzas.html">
                         Finanzas
                     </a>
-
                     <i class="ph ph-caret-right"></i>
                     <strong>Registrar donación</strong>
-
                 </div>
 
                 <h1>Registrar donación</h1>
                 <p>
                     Registra los ingresos recibidos mediante donaciones.
                 </p>
-
             </div>
 
             <div class="topbar-actions">
-
-                <button class="notification-btn">
-
-                    <i class="ph ph-bell"></i>
-
-                    <span class="notification-dot"></span>
-
-                </button>
-
-
                 <div class="profile">
-
                     <div class="profile-avatar">
                         A
                     </div>
 
                     <div class="profile-info">
-
                         <strong>Administrador</strong>
-
                         <span>Administrador</span>
-
                     </div>
 
                     <i class="ph ph-caret-down"></i>
-
                 </div>
-
             </div>
-
         </header>
 
-        <!-- =========================
-             FORMULARIO
-        ========================== -->
         <section class="form-card">
-
-
-            <!-- ENCABEZADO -->
             <div class="form-header">
-
                 <div class="form-icon">
-
                     <i class="ph ph-hand-heart"></i>
-
                 </div>
 
                 <div>
-
                     <h2>Información de la donación</h2>
-
                     <p>
                         Completa los datos correspondientes a la donación recibida.
                     </p>
-
                 </div>
-
             </div>
 
-
             <form id="donationForm">
-
-                <!-- =========================
-                     DATOS DEL DONANTE
-                ========================== -->
                 <div class="form-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-user"></i>
-
                         <div>
-
                             <h3>Datos del donante</h3>
-
                             <p>
                                 Identifica a la persona o entidad que realiza la donación.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <div class="form-grid">
-
-
-                        <!-- TIPO DE DONANTE -->
                         <div class="form-group">
-
                             <label for="tipoDonante">
                                 Tipo de donante <span>*</span>
                             </label>
 
                             <div class="input-wrapper select-wrapper">
-
                                 <i class="ph ph-buildings"></i>
 
                                 <select id="tipoDonante" name="tipoDonante" required>
-
                                     <option value="" selected disabled>
                                         Seleccione un tipo
                                     </option>
@@ -253,121 +163,79 @@
                                     <option value="persona-particular">
                                         Persona particular
                                     </option>
-
                                 </select>
-
                                 <i class="ph ph-caret-down select-arrow"></i>
-
                             </div>
-
                         </div>
 
-
-                        <!-- NOMBRE DEL DONANTE -->
                         <div class="form-group">
-
                             <label for="nombreDonante">
                                 Nombre del donante <span>*</span>
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-user"></i>
-
                                 <input
                                     type="text"
                                     id="nombreDonante"
                                     name="nombreDonante"
                                     placeholder="Ej. Fundación Esperanza"
                                     required>
-
                             </div>
-
                         </div>
-
 
                         <!-- CONTACTO -->
                         <div class="form-group">
-
                             <label for="contacto">
                                 Teléfono o contacto
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-phone"></i>
-
                                 <input
                                     type="tel"
                                     id="contacto"
                                     name="contacto"
                                     placeholder="Ej. 5555-5555">
-
                             </div>
-
                         </div>
-
 
                         <!-- CORREO -->
                         <div class="form-group">
-
                             <label for="correo">
                                 Correo electrónico
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-envelope"></i>
-
                                 <input
                                     type="email"
                                     id="correo"
                                     name="correo"
                                     placeholder="Ej. contacto@empresa.com">
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
-
-                <!-- =========================
-                     DATOS DE LA DONACIÓN
-                ========================== -->
                 <div class="form-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-money"></i>
-
                         <div>
-
                             <h3>Datos de la donación</h3>
-
                             <p>
                                 Registra el monto y la forma en que fue recibida.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <div class="form-grid">
-
-
-                        <!-- MONTO -->
                         <div class="form-group">
-
                             <label for="monto">
                                 Monto de la donación <span>*</span>
                             </label>
 
                             <div class="input-wrapper money-wrapper">
-
                                 <span class="currency">
                                     Q
                                 </span>
@@ -380,25 +248,18 @@
                                     min="0"
                                     step="0.01"
                                     required>
-
                             </div>
-
                         </div>
 
-
-                        <!-- FORMA DE PAGO -->
                         <div class="form-group">
-
                             <label for="formaPago">
                                 Forma de recepción <span>*</span>
                             </label>
 
                             <div class="input-wrapper select-wrapper">
-
                                 <i class="ph ph-credit-card"></i>
 
                                 <select id="formaPago" name="formaPago" required>
-
                                     <option value="" selected disabled>
                                         Seleccione una opción
                                     </option>
@@ -414,90 +275,58 @@
                                     <option value="deposito">
                                         Depósito bancario
                                     </option>
-
                                 </select>
-
                                 <i class="ph ph-caret-down select-arrow"></i>
-
                             </div>
-
                         </div>
 
-
-                        <!-- FECHA -->
                         <div class="form-group">
-
                             <label for="fecha">
                                 Fecha de recepción <span>*</span>
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-calendar"></i>
-
                                 <input
                                     type="date"
                                     id="fecha"
                                     name="fecha"
                                     required>
-
                             </div>
-
                         </div>
 
-
-                        <!-- REFERENCIA -->
                         <div class="form-group">
-
                             <label for="referencia">
                                 Número de referencia
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-hash"></i>
-
                                 <input
                                     type="text"
                                     id="referencia"
                                     name="referencia"
                                     placeholder="Ej. DEP-001245">
-
                             </div>
-
                         </div>
 
-
-                        <!-- OBSERVACIONES -->
                         <div class="form-group full">
-
                             <label for="observaciones">
                                 Observaciones
                             </label>
 
                             <div class="textarea-wrapper">
-
                                 <i class="ph ph-note"></i>
-
                                 <textarea
                                     id="observaciones"
                                     name="observaciones"
                                     placeholder="Agrega información adicional sobre la donación..."></textarea>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
-
-                <!-- =========================
-                     INFORMACIÓN
-                ========================== -->
+                
                 <div class="info-panel">
-
                     <i class="ph ph-info"></i>
 
                     <p>
@@ -505,15 +334,9 @@
                         del asilo y permitirán llevar un control financiero para
                         efectos de fiscalización.
                     </p>
-
                 </div>
 
-
-                <!-- =========================
-                     BOTONES
-                ========================== -->
                 <div class="form-actions">
-
                     <a href="../finanzas/finanzas.html" class="btn-secondary">
                         <i class="ph ph-x"></i>
                         Cancelar
@@ -523,16 +346,10 @@
                         <i class="ph ph-hand-heart"></i>
                         Registrar donación
                     </button>
-
                 </div>
-
             </form>
-
         </section>
-
     </main>
     <script src="registrarDonacion.js"></script>
-
 </body>
-
 </html>

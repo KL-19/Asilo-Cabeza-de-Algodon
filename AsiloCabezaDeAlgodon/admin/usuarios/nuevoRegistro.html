@@ -7,25 +7,16 @@
 
     <title>Nuevo Usuario | Cabeza de Algodón</title>
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="nuevoRegistro.css">
 </head>
 
 <body>
-
-    <!-- =========================
-         BARRA LATERAL
-    ========================== -->
     <aside class="sidebar">
-
-        <!-- LOGO -->
         <div class="logo">
             <div class="logo-icon">
                 <i class="ph ph-heartbeat"></i>
@@ -38,12 +29,9 @@
 
         </div>
 
-        <!-- NAVEGACIÓN -->
         <nav class="menu">
-
             <p class="menu-title">
-                PRINCIPAL
-            </p>
+                PRINCIPAL</p>
 
             <a href="../dashboard.html" class="menu-item">
                 <i class="ph ph-squares-four"></i>
@@ -85,19 +73,6 @@
 
         <!-- USUARIO -->
         <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-                <div class="admin-avatar">
-                    <i class="ph ph-user"></i>
-                </div>
-
-                <div>
-                    <strong>Administrador</strong>
-                    <span>Administrador</span>
-                </div>
-            </div>
-
-
             <a href="../../index.html" class="logout">
                 <i class="ph ph-sign-out"></i>
                 <span>
@@ -107,14 +82,8 @@
         </div>
     </aside>
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================== -->
     <main class="main-content">
-
-        <!-- HEADER -->
         <header class="topbar">
-
             <div class="page-title">
                 <div class="breadcrumb">
                     <a href="../dashboard.html">
@@ -141,13 +110,7 @@
                 </p>
             </div>
 
-            <!-- ACCIONES DEL HEADER -->
             <div class="topbar-actions">
-                <button class="notification-btn">
-                    <i class="ph ph-bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
                 <div class="profile">
                     <div class="profile-avatar">
                         A
@@ -165,12 +128,7 @@
             </div>
         </header>
 
-        <!-- =========================
-             FORMULARIO
-        ========================== -->
         <section class="form-card">
-
-            <!-- ENCABEZADO -->
             <div class="form-header">
                 <div class="form-icon">
                     <i class="ph ph-user-plus"></i>
@@ -187,7 +145,6 @@
                 </div>
             </div>
 
-            <!-- FORMULARIO -->
             <form id="userForm">
                 <div class="form-section">
                     <div class="section-title">
@@ -204,8 +161,6 @@
                     </div>
 
                     <div class="form-grid">
-
-                        <!-- NOMBRE COMPLETO -->
                         <div class="form-group full">
                             <label for="nombreCompleto">
                                 Nombre completo
@@ -222,7 +177,6 @@
                             </div>
                         </div>
 
-                        <!-- NOMBRE DE USUARIO -->
                         <div class="form-group">
                             <label for="nombreUsuario">
                                 Nombre de usuario
@@ -239,7 +193,6 @@
                             </div>
                         </div>
 
-                        <!-- CORREO -->
                         <div class="form-group">
                             <label for="correo">
                                 Correo electrónico
@@ -258,7 +211,6 @@
                             </div>
                         </div>
 
-                        <!-- NÚMERO DE COLEGIADO -->
                         <div class="form-group">
                             <label for="numeroColegiado">
                                 Número de colegiado
@@ -274,26 +226,21 @@
                             </div>
                         </div>
 
-                        <!-- TELÉFONO -->
                         <div class="form-group">
-
                             <label for="telefono">
                                 Teléfono
                             </label>
 
                             <div class="input-wrapper">
                                 <i class="ph ph-phone"></i>
-
                                 <input
                                     type="tel"
                                     id="telefono"
                                     name="telefono"
                                     placeholder="Ej. 5555-5555">
                             </div>
-
                         </div>
 
-                        <!-- ESPECIALIDAD -->
                         <div class="form-group">
                             <label for="especialidad">
                                 Especialidad
@@ -309,21 +256,13 @@
                                 <i class="ph ph-caret-down select-arrow"></i>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 
-                <!-- =========================
-                     ACCESO AL SISTEMA
-                ========================== -->
                 <div class="form-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-lock-key"></i>
-
                         <div>
-
                             <h3>
                                 Acceso al sistema
                             </h3>
@@ -331,59 +270,40 @@
                             <p>
                                 Configura las credenciales de acceso.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <div class="form-grid">
-
-
-                        <!-- CONTRASEÑA -->
                         <div class="form-group">
-
                             <label for="password">
                                 Contraseña
                                 <span>*</span>
                             </label>
 
                             <div class="input-wrapper">
-
                                 <i class="ph ph-lock"></i>
-
                                 <input
                                     type="password"
                                     id="password"
                                     name="password"
                                     placeholder="Ingrese una contraseña"
                                     required>
-
                                 <button
                                     type="button"
                                     class="password-btn">
-
                                     <i class="ph ph-eye"></i>
-
                                 </button>
-
                             </div>
-
                         </div>
 
-
-                        <!-- ROL -->
                         <div class="form-group">
-
                             <label for="rol">
                                 Rol
                                 <span>*</span>
                             </label>
 
                             <div class="input-wrapper select-wrapper">
-
                                 <i class="ph ph-shield-check"></i>
-
                                 <select
                                     id="rol"
                                     name="rol"
@@ -417,29 +337,16 @@
                                         Farmacia
                                     </option>
                                 </select>
-
                                 <i class="ph ph-caret-down select-arrow"></i>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
-
-                <!-- =========================
-                     ESTADO
-                ========================== -->
                 <div class="form-section status-section">
-
                     <div class="section-title">
-
                         <i class="ph ph-user-circle-check"></i>
-
                         <div>
-
                             <h3>
                                 Estado de la cuenta
                             </h3>
@@ -448,14 +355,10 @@
                                 Define si el usuario podrá acceder
                                 al sistema.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <label class="switch-container">
-
                         <input
                             type="checkbox"
                             id="activo"
@@ -463,9 +366,7 @@
                             checked>
 
                         <span class="switch"></span>
-
                         <div class="switch-text">
-
                             <strong>
                                 Usuario activo
                             </strong>
@@ -474,43 +375,23 @@
                                 El usuario podrá iniciar sesión
                                 en el sistema.
                             </span>
-
                         </div>
-
                     </label>
-
                 </div>
 
-
-                <!-- =========================
-                     INFORMACIÓN
-                ========================== -->
                 <div class="info-panel">
-
                     <i class="ph ph-info"></i>
-
                     <p>
                         El rol asignado determinará los módulos
                         y funciones a los que tendrá acceso
                         el usuario dentro del sistema.
                     </p>
-
                 </div>
 
-
-                <!-- =========================
-                     BOTONES
-                ========================== -->
                 <div class="form-actions">
-
-                    <a
-                        href="../usuarios/usuarios.html"
-                        class="btn-secondary">
-
+                    <a href="../usuarios/usuarios.html" class="btn-secondary">
                         <i class="ph ph-x"></i>
-
                         Cancelar
-
                     </a>
 
                     <button
@@ -520,11 +401,8 @@
                         Crear usuario
                     </button>
                 </div>
-
             </form>
-
         </section>
-
     </main>
     <script src="nuevoRegistro.js"></script>
 </body>

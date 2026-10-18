@@ -25,9 +25,6 @@ body {
     min-height: 100vh;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
 .sidebar {
     position: fixed;
     left: 0;
@@ -69,9 +66,7 @@ body {
     color: #9ca3af;
 }
 
-/* =========================
-   MENU
-========================= */
+/* MENU */
 .menu {
     flex: 1;
 }
@@ -111,42 +106,8 @@ body {
     color: white;
 }
 
-/* =========================
-   SIDEBAR BOTTOM
-========================= */
 .sidebar-bottom {
     margin-top: auto;
-}
-
-.admin-mini {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    margin-bottom: 8px;
-}
-
-.admin-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #374151;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #93c5fd;
-}
-
-.admin-mini strong {
-    display: block;
-    font-size: 11px;
-}
-
-.admin-mini span {
-    display: block;
-    font-size: 9px;
-    color: #9ca3af;
-    margin-top: 3px;
 }
 
 .logout {
@@ -170,17 +131,12 @@ body {
     color: #fca5a5;
 }
 
-/* =========================
-   CONTENIDO
-========================= */
 .main-content {
     margin-left: 260px;
     padding: 32px 40px;
 }
 
-/* =========================
-   TOPBAR
-========================= */
+/* TOPBAR */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -221,35 +177,10 @@ body {
     color: #aab1c0;
 }
 
-/* =========================
-   TOPBAR ACTIONS
-========================= */
 .topbar-actions {
     display: flex;
     align-items: center;
     gap: 22px;
-}
-
-.notification-btn {
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 12px;
-    cursor: pointer;
-    position: relative;
-    font-size: 20px;
-    color: var(--muted);
-}
-
-.notification-dot {
-    width: 7px;
-    height: 7px;
-    background: #ef4444;
-    border-radius: 50%;
-    position: absolute;
-    top: 8px;
-    right: 8px;
 }
 
 .profile {
@@ -280,9 +211,6 @@ body {
     color: var(--muted);
 }
 
-/* =========================
-   TARJETA DEL FORMULARIO
-========================= */
 .form-card {
     max-width: 1050px;
     margin: 0 auto;
@@ -292,9 +220,7 @@ body {
     padding: 30px;
 }
 
-/* =========================
-   ENCABEZADO
-========================= */
+/* ENCABEZADO */
 .form-header {
     display: flex;
     align-items: center;
@@ -325,9 +251,7 @@ body {
     color: var(--muted);
 }
 
-/* =========================
-   SECCIONES
-========================= */
+/* SECCIONES */
 .form-section {
     padding: 25px 0;
     border-bottom: 1px solid var(--border);
@@ -356,9 +280,7 @@ body {
     color: var(--muted);
 }
 
-/* =========================
-   GRID
-========================= */
+/* GRID */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -385,9 +307,6 @@ body {
     color: #ef4444;
 }
 
-/* =========================
-   INPUTS
-========================= */
 .input-wrapper {
     height: 44px;
     border: 1px solid var(--border);
@@ -424,9 +343,6 @@ body {
     color: #aab1c0;
 }
 
-/* =========================
-   SELECT
-========================= */
 .select-wrapper {
     position: relative;
 }
@@ -455,9 +371,6 @@ body {
     color: #9ca3af;
 }
 
-/* =========================
-   MONTO
-========================= */
 .money-wrapper {
     gap: 7px;
 }
@@ -472,9 +385,7 @@ body {
     padding-left: 2px;
 }
 
-/* =========================
-   TEXTAREA
-========================= */
+/* TEXTAREA */
 .textarea-wrapper {
     min-height: 100px;
     border: 1px solid var(--border);
@@ -511,9 +422,7 @@ body {
     color: #aab1c0;
 }
 
-/* =========================
-   PANEL DE INFORMACIÓN
-========================= */
+/* PANEL DE INFORMACIÓN */
 .info-panel {
     margin-top: 22px;
     padding: 14px 16px;
@@ -536,9 +445,7 @@ body {
     color: #4b6385;
 }
 
-/* =========================
-   BOTONES
-========================= */
+/* BOTONES */
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -589,9 +496,7 @@ body {
     font-size: 16px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 @media (max-width: 1150px) {
     .form-card {
         max-width: 100%;

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function actualizarSaludo() {
     const greeting = document.getElementById("greeting");
     const hora = new Date().getHours();
-    if (hora >= 5 && hora < 12) {
+    if (hora >= 0 && hora < 12) {
         greeting.textContent = "¡Buenos días!";
     } else if (hora >= 12 && hora < 18) {
         greeting.textContent = "¡Buenas tardes!";
