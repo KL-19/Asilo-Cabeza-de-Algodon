@@ -11,7 +11,7 @@ async function cargarFamiliar() {
         return;
     }
     try {
-        const response = await fetch("http://localhost:5054/api/Familiares/" + id);
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Familiares/" + id);
 
         if (!response.ok) {
             throw new Error("No se pudo obtener el familiar.");
@@ -119,7 +119,7 @@ formulario.addEventListener(
         };
 
         try {
-            const response = await fetch("http://localhost:5054/api/Familiares/" + id,
+            const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Familiares/" + id,
                     {
                         method: "PUT",
                         headers: {

@@ -21,7 +21,7 @@ formulario.addEventListener("submit", async function (event) {
 
     try {
         const response = await fetch(
-            "http://localhost:5054/api/GastosOperativos",
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/GastosOperativos",
             {
                 method: "POST",
                 headers: {

@@ -13,7 +13,7 @@ const camposFamiliar = [
 async function cargarFamiliares() {
     try {
         const response = await fetch(
-            "http://localhost:5054/api/Familiares"
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Familiares"
         );
 
         const familiares = await response.json();
@@ -189,7 +189,7 @@ formulario.addEventListener("submit", async function (event) {
     // enviar al Api
     try {
         const response = await fetch(
-            "http://localhost:5054/api/Internos",
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Internos",
             {
                 method: "POST",
                 headers: {

@@ -11,7 +11,7 @@ async function cargarInterno() {
     }
 
     try {
-        const response = await fetch("http://localhost:5054/api/Internos");
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Internos");
         if (!response.ok) {
             throw new Error("Error al obtener los internos.");
         }
@@ -87,7 +87,7 @@ formulario.addEventListener(
         try {
             const response =
                 await fetch(
-                    "http://localhost:5054/api/Internos/" + id,
+                    "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Internos/" + id,
                     {
                         method: "PUT",
                         headers: {

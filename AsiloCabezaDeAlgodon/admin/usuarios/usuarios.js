@@ -17,7 +17,7 @@ const usuariosPorPagina = 10;
 // CARGAR USUARIOS
 async function cargarUsuarios() {
     try {
-        const response = await fetch("http://localhost:5054/api/Usuarios");
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Usuarios");
         if (!response.ok) {
             throw new Error(
                 "Error al obtener usuarios."
@@ -517,7 +517,7 @@ async function darDeBajaUsuario(id) {
     }
 
     try {
-        const response = await fetch("http://localhost:5054/api/Usuarios/" + id + "/baja",
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Usuarios/" + id + "/baja",
                 {
                     method: "PUT"
                 }

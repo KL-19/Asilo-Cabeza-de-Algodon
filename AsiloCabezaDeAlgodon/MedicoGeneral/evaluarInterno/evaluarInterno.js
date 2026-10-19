@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5054";
+const API_BASE = "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api";
 let internoSeleccionado = null;
 let internosDisponibles = [];
 let guardandoEvaluacion = false;

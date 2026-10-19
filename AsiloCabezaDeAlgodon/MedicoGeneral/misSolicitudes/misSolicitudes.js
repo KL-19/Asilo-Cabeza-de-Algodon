@@ -1,4 +1,4 @@
-const API = "http://localhost:5054/api";
+const API = "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api";
 let solicitudes = [];
 let solicitudesProcesadas = [];
 let citasPorSolicitud = new Map();

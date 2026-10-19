@@ -13,7 +13,7 @@ const familiaresPorPagina = 10;
 // CARGAR FAMILIARES
 async function cargarFamiliares() {
     try {
-        const response = await fetch("http://localhost:5054/api/Familiares");
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Familiares");
         if (!response.ok) {
             throw new Error("Error al obtener familiares.");
         }

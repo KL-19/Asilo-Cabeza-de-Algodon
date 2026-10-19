@@ -4,7 +4,7 @@ const selectEspecialidad = document.getElementById("especialidad");
 async function cargarEspecialidades() {
     try {
         const response = await fetch(
-            "http://localhost:5054/api/Especialidades"
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Especialidades"
         );
         if (!response.ok) {
             throw new Error("No se pudieron obtener las especialidades.");
@@ -43,7 +43,7 @@ formulario.addEventListener("submit", async function (event) {
     console.log("Datos que se enviarán al API:", datosUsuario);
 
     try {
-        const response = await fetch("http://localhost:5054/api/Usuarios", {
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Usuarios", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

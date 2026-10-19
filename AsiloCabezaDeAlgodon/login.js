@@ -17,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     messageElement.style.color = "#60a5fa";
 
     try {
-        const response = await fetch('http://localhost:5054/api/Auth/login', {
+        const response = await fetch('https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

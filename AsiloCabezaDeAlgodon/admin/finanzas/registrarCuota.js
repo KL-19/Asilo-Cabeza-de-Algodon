@@ -15,7 +15,7 @@ internoInput.addEventListener("input", async function () {
     try {
 
         const response = await fetch(
-            "http://localhost:5054/api/CuotasMensuales/internos?buscar="
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/CuotasMensuales/internos?buscar="
             + encodeURIComponent(texto)
         );
 
@@ -83,7 +83,7 @@ formulario.addEventListener("submit", async function (event) {
 
     try {
         const response = await fetch(
-            "http://localhost:5054/api/CuotasMensuales",
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/CuotasMensuales",
             {
                 method: "POST",
                 headers: {

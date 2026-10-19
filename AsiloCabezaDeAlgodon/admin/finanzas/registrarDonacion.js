@@ -18,7 +18,7 @@ formulario.addEventListener("submit", async function (event) {
     };
 
     try {
-        const response = await fetch('http://localhost:5054/api/Donaciones', {
+        const response = await fetch('https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Donaciones', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -21,7 +21,7 @@ async function cargarInternos() {
         console.log("Iniciando carga de internos...");
 
         const response = await fetch(
-            "http://localhost:5054/api/Internos"
+            "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Internos"
         );
 
         console.log(
@@ -645,7 +645,7 @@ async function darDeBaja(id) {
 
     // ENVIAR SOLICITUD AL API
     try {
-        const response = await fetch("http://localhost:5054/api/Internos/" + id + "/baja",
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Internos/" + id + "/baja",
                 {
                     method: "PUT"
                 }

@@ -5,7 +5,7 @@ const selectEspecialidad = document.getElementById("especialidad");
 
 async function cargarEspecialidades() {
     try {
-        const response = await fetch("http://localhost:5054/api/Especialidades");
+        const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Especialidades");
         if (!response.ok) {
             throw new Error("No se pudieron obtener las especialidades.");
         }
@@ -30,7 +30,7 @@ async function cargarUsuario() {
         return;
     }
     try {
-        const response =await fetch("http://localhost:5054/api/Usuarios");
+        const response =await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Usuarios");
         if (!response.ok) {
             throw new Error("No se pudieron obtener los usuarios.");
         }
@@ -88,7 +88,7 @@ formulario.addEventListener(
         };
 
         try {
-            const response = await fetch("http://localhost:5054/api/Usuarios/" + id,
+            const response = await fetch("https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Usuarios/" + id,
                     {
                         method: "PUT",
                         headers: {

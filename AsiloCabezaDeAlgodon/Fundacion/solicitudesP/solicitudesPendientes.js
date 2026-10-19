@@ -1,4 +1,4 @@
-const API = "http://localhost:5054/api/Fundacion";
+const API = "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api/Fundacion";
 let solicitudes = [];
 let solicitudesFiltradas = [];
 let paginaActual = 1;
