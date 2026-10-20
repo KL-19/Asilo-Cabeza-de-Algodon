@@ -1,4 +1,4 @@
-const API_BASE = "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net/api";
+const API_BASE = "https://app-cabeza-algodon-f9ewg3ghcadhb6a6.mexicocentral-01.azurewebsites.net";
 let internoSeleccionado = null;
 let internosDisponibles = [];
 let guardandoEvaluacion = false;
